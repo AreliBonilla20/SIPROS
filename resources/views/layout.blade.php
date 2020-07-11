@@ -61,14 +61,21 @@
     <!-- notification CSS
 		============================================ -->
     <link rel="stylesheet" href="css/notification/notification.css">
+    <!-- Data Table JS
+		============================================ -->
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+     <!-- Notika icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/notika-custom-icon.css">
     <!-- dropzone CSS
 		============================================ -->
     <link rel="stylesheet" href="css/dropzone/dropzone.css">
     <!-- wave CSS
 		============================================ -->
     <link rel="stylesheet" href="css/wave/waves.min.css">
+    <link rel="stylesheet" href="css/wave/button.css">
     <!-- main CSS
-		============================================ -->
+        ============================================ -->
     <link rel="stylesheet" href="css/main.css">
     <!-- style CSS
 		============================================ -->
@@ -76,9 +83,11 @@
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="css/responsive.css">
+    
     <!-- modernizr JS
-		============================================ -->
+        ============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+   
 </head>
 
 <body>
@@ -307,7 +316,12 @@
         <script src="js/main.js"></script>
         <!-- tawk chat JS
             ============================================ -->
-        <script src="js/tawk-chat.js"></script>
+
+        <!-- Data Table JS
+            ============================================ -->
+            <script src="js/data-table/jquery.dataTables.min.js"></script>
+            <script src="js/data-table/data-table-act.js"></script>
+            <script src="js/tawk-chat.js"></script>
 </body>
 
 </html>
