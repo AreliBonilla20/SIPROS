@@ -40,115 +40,116 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    
-                                    <div class="form-example-int">
-                                        <div class="form-group">
-                                            <label><strong>Nombre</strong> </label>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Nombre de la institución">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <form action="{{route('guardarInstitucion')}}" method="POST">
+                                        @csrf
 
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                    
-                                            <label><strong>Tipo</strong></label>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker">
-                                                    <option>-Seleccione una opción-</option>
-                                                    <option>Industria</option>
-                                                    <option>Finanzas</option>
-                                                </select>
-                                        </div>
-                                        </div>
-                                    
-                                    </div>
-                                    <br><br>
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                    
-                                            <label><strong>Sector</strong></label>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker">
-                                                        <option>Sector</option>
-                                                        <option>Público</option>
-                                                        <option>Privado</option>
-                                                        <option>Social</option>
-                                                    </select>
-                                            </div>
-                                        </div>
-                                    
-                                    </div>
-                                    <br><br>
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                    
-                                            <label><strong>Dirección</strong></label>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker">
-                                                        <option>Región</option>
-                                                        <option>Occidental</option>
-                                                        <option>Oriental</option>
-                                                        <option>Central</option>
-                                                    </select>
-                                            </div>
-                                        </div>
-
-                 
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker">
-                                                    <option>Departamento</option>
-                                                    <option>Ahuachapán</option>
-                                                    <option>La Libertad</option>
-                                                </select>
-                                        </div>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker">
-                                                        <option>Municipio</option>
-                                                        <option>Mejicanos</option>
-                                                        <option>San Salvador</option>
-                                                    </select>
-                                            </div>
-                                        </div>
-                                        <br><br>
-                                        <div class="form-example-int mg-t-15">
+                                        <div class="form-example-int">
                                             <div class="form-group">
-                                               
+                                                <label for="nombre"><strong>Nombre</strong> </label>
                                                 <div class="nk-int-st">
-                                                    <input type="text" class="form-control input-sm" placeholder="Dirección de la empresa">
+                                                    <input type="text" class="form-control input-sm" name="nombre" id="nombre" placeholder="Nombre de la institución" value="{{old('nombre')}}" required>
                                                 </div>
                                             </div>
                                         </div>
-                                    
-                                    </div>
+    
+                                        <div class="form-example-int mg-t-15">
+                                            <div class="form-group">
+                                                <label><strong>Tipo de institución</strong></label>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" name="tipo_institucion_id" id="tipo_institucion_id" required>
+                                                        <option value="">-Seleccione una opción-</option>
+                                                        @foreach ($tipoInstituciones as $tipoInstitucion)
+                                                            <option value="{{$tipoInstitucion->id}}">{{$tipoInstitucion->tipoInstitucion}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                   
-                                    <br>
-                             
-                                    <div class="form-example-int mg-t-15">
-                                        <button class="btn btn-success notika-btn-success">Guardar</button>
-                                    </div>
+                                        <br><br>
+
+                                        <div class="form-example-int mg-t-15">
+                                            <div class="form-group">
+                                                <label for="sector_id"><strong>Sector</strong></label>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" name="sector_id" id="sector_id" required>
+                                                        @foreach ($sectores as $sector)
+                                                            <option value="{{$sector->id}}">{{$sector->nombreSector}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br><br>
+
+                                        <div class="form-example-int mg-t-15">
+                                            <div class="form-group">
+                                                <label><strong>Dirección</strong></label>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" name="id_region" id="id_region" required>
+                                                        <option value="">-Región-</option>
+                                                        @foreach ($regiones as $region)
+                                                            <option value="{{$region->id}}">{{$region->nombre_region}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" name="id_departamento" id="id_departamento" required>
+                                                        <option value="">-Departamento-</option>
+                                                        @foreach ($departamentos as $departamento)
+                                                            <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" name="id_municipio" id="id_municipio" required>
+                                                        <option value="">-Municipio-</option>
+                                                        @foreach ($municipios as $municipio)
+                                                            <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <div class="form-example-int mg-t-15">
+                                                <div class="form-group">
+                                                    <div class="nk-int-st">
+                                                        <input type="text" class="form-control input-sm" name="direccion" id="direccion" placeholder="Dirección de la institución" value="{{old('direccion')}}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="form-example-int mg-t-15">
+                                            <button class="btn btn-success notika-btn-success">Guardar</button>
+                                        </div>
+                                    </form>
+                                    @if (session('agregada'))
+                                        <div class="alert alert-success mt-3">
+                                            {{ session('agregada') }}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    
-                     
+                    </div>
                 </div>
             </div>
-       
-        
         </div>
     </div>
 @endsection

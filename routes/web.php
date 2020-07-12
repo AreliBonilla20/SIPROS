@@ -39,6 +39,17 @@ Route::get('/institucion_nueva', function () {
     return view('Instituciones/institucion_nueva');
 });
 
+Route::get('/Instituciones', 'InstitucionController@index')->name('instituciones');
+
+Route::get('/Instituciones/crear', 'InstitucionController@create')->name('crearInstitucion');
+
+Route::post('/Instituciones/guardar', 'InstitucionController@store')->name('guardarInstitucion');
+
+Route::get('/Instituciones/editar/{id}', 'InstitucionController@edit')->name('editarInstitucion');
+
+Route::put('/Instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizarInstitucion');
+
+Route::delete('/Instituciones/eliminar/{id}', 'InstitucionController@destroy')->name('eliminarInstitucion');
 
 //Rutas de los proyectos
 Route::get('/proyectos_listado', function () {
