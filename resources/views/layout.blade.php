@@ -302,9 +302,7 @@
         <!--  chosen JS
             ============================================ -->
         <script src="js/chosen/chosen.jquery.js"></script>
-        <!--  Chat JS
-            ============================================ -->
-        <script src="js/chat/jquery.chat.js"></script>
+       
         <!--  todo JS
             ============================================ -->
         <script src="js/todo/jquery.todo.js"></script>
@@ -321,7 +319,6 @@
             ============================================ -->
             <script src="js/data-table/jquery.dataTables.min.js"></script>
             <script src="js/data-table/data-table-act.js"></script>
-            <script src="js/tawk-chat.js"></script>
-</body>
+           
 
 </html>
