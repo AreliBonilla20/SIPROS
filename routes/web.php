@@ -19,6 +19,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::middleware(['auth'])->group(function(){
+
 
 //Rutas de los expedientes
 Route::get('/expedientes_listado', function () {
@@ -57,4 +59,6 @@ Route::get('/usuarios_listado', function () {
 
 Route::get('/usuario_nuevo', function () {
     return view('Usuarios/usuario_nuevo');
+});
+
 });

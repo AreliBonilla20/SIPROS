@@ -122,12 +122,15 @@
                                         <li><a href="{{ url('welcome') }}.html">Inicio</a></li>
                                     </ul>
                                 </li>
+                               
                                 <li><a data-toggle="collapse" data-target="#demoevent" href="#">Expedientes</a>
-                                    <ul id="demoevent" class="collapse dropdown-header-top">
-                                        <li><a href="expediente_lista.html">Expedientes</a></li>
-                                        <li><a href="expediente_nuevo.html">Agregar expediente</a></li>
-                                    </ul>
-                                </li>
+                                  <ul id="demoevent" class="collapse dropdown-header-top">
+                                      <li><a href="expediente_lista.html">Expedientes</a></li>
+                                      <li><a href="expediente_nuevo.html">Agregar expediente</a></li>
+                                  </ul>
+                              </li>
+                               
+              
                                 <li><a data-toggle="collapse" data-target="#democrou" href="#">Proyectos</a>
                                     <ul id="democrou" class="collapse dropdown-header-top">
                                         <li><a href="proyecto_lista.html">Proyectos</a></li>
@@ -162,23 +165,25 @@
     <div class="contact-area" style="text-align: center;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="contact-list">
-                        <div class="contact-win">
-                            <div class="contact-img">
-                                <img src="img/post/expediente.jpg" alt="" width="80px"/>
-                            </div>
-    
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="contact-list">
+                    <div class="contact-win">
+                        <div class="contact-img">
+                            <img src="img/post/expediente.jpg" alt="" width="80px"/>
                         </div>
-                        <div class="contact-ctn">
-                            <div class="contact-ad-hd">
-								<h2>Expediente</h2>
-							</div>
-                            <p>Creación de un expediente nuevo, edición y consultas.</p>
-                        </div>
-                        <a href="{{ url('expedientes_listado') }}"><button class="btn btn-success notika-btn-success">Expediente</button></a>
+
                     </div>
+                    <div class="contact-ctn">
+                    
+                        <div class="contact-ad-hd">
+
+            <h2>Expediente</h2>
+          </div>
+                        <p>Creación de un expediente nuevo, edición y consultas.</p>
+                    </div>
+                    <a href="{{ url('expedientes_listado') }}"><button class="btn btn-success notika-btn-success">Expediente</button></a>
                 </div>
+            </div> 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="contact-list sm-res-mg-t-30">
                         <div class="contact-win">
