@@ -74,6 +74,7 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="header-top-menu">
                         
+
                         <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -84,17 +85,37 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    @can('usuario_listado')
+                                     
+                                        <a class="dropdown-item" href = "usuario_listado">
+                                            {{ __('Usuarios') }}
+                                        </a>
+                                    <br>
+                                    @endcan
+
+                                    @can('roles.index')
+                                    
+                                        <a class="dropdown-item" href="roles.index">
+                                            {{ __('Roles') }}
+                                        </a>
+                                    <br>
+                                   
+                                    @endcan
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
