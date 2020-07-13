@@ -10,7 +10,6 @@ use App\Region;
 use App\Departamento;
 use App\Municipio;
 use Illuminate\Http\Request;
-// use Input;
 
 class InstitucionController extends Controller
 {
@@ -22,7 +21,6 @@ class InstitucionController extends Controller
     public function index()
     {
         $instituciones = App\Institucion::all();
-        // $instituciones = App\Institucion::paginate(100);
 
         return view('Instituciones/instituciones_listado', compact('instituciones'));
     }
@@ -40,7 +38,6 @@ class InstitucionController extends Controller
         $departamentos = App\Departamento::all();
         $municipios = App\Municipio::all();
 
-        // return view('Instituciones/institucion_nueva');
         return view('Instituciones/institucion_nueva', compact('sectores'))
         ->with(compact('tipoInstituciones'))
         ->with(compact('regiones'))
@@ -76,7 +73,6 @@ class InstitucionController extends Controller
         $nuevaInstitucion->sector_id = $request->sector_id;
         $nuevaInstitucion->save();
 
-        // return redirect('Instituciones/institucion_nueva')->with('agregada', 'Institución agregada correctamente.');
         return back()->with('agregada', 'Institución agregada correctamente.');
     }
 
@@ -106,7 +102,7 @@ class InstitucionController extends Controller
         $departamentos = App\Departamento::all();
         $municipios = App\Municipio::all();
 
-        return view('Instituciones/editar', compact('institucionActualizar'))
+        return view('Instituciones/institucion_editar', compact('institucionActualizar'))
         ->with(compact('sectores'))
         ->with(compact('tipoInstituciones'))
         ->with(compact('regiones'))

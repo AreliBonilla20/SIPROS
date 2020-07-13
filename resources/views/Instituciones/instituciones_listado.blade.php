@@ -77,11 +77,11 @@
                                             <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
                                             <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombreSector')->first() }}</td>
                                             <td>
-                                                <a href="{{route('editarInstitucion', $institucion->id)}}" class="btn btn-warning">Editar</a>
+                                                <a href="{{route('editarInstitucion', $institucion->id)}}" class="btn btn-warning notika-btn-warning">Editar</a>
                                                 {{-- <form action="{{route('eliminarInstitucion', $institucion->id)}}" class="d-inline" method="POST">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger notika-btn-danger">Eliminar</button>
                                                 </form> --}}
                                             </td>
                                         </tr>

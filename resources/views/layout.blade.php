@@ -129,8 +129,8 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
                                     <ul class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('instituciones_listado') }}.html">Listado instituciones</a></li>
-                                        <li><a href="{{ url('institucion_nueva') }}">Agregar institución</a></li>
+                                        <li><a href="{{ route('instituciones') }}.html">Listado instituciones</a></li>
+                                        <li><a href="{{ route('crearInstitucion') }}">Agregar institución</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Empresas" href="#">Instituciones</a>
@@ -179,8 +179,8 @@
                         </div>
                         <div id="Instituciones" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url('instituciones_listado') }}">Listado instituciones</a></li>
-                                <li><a href="{{ url('institucion_nueva') }}">Agregar institución</a></li>
+                                <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
+                                <li><a href="{{ route('crearInstitucion') }}">Agregar institución</a></li>
                             </ul>
                         </div>
                          <div id="Proyectos" class="tab-pane notika-tab-menu-bg animated flipInX">

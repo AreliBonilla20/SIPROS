@@ -31,13 +31,14 @@ Route::get('/expediente_nuevo', function () {
 
 
 //Rutas de las instituciones
-Route::get('/instituciones_listado', function () {
-    return view('Instituciones/instituciones_listado');
-});
 
-Route::get('/institucion_nueva', function () {
-    return view('Instituciones/institucion_nueva');
-});
+// Route::get('/instituciones_listado', function () {
+//     return view('Instituciones/instituciones_listado');
+// });
+
+// Route::get('/institucion_nueva', function () {
+//     return view('Instituciones/institucion_nueva');
+// });
 
 Route::get('/Instituciones', 'InstitucionController@index')->name('instituciones');
 
