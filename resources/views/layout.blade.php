@@ -15,78 +15,79 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/wave/button.css">
+       
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/wave/button.css') }}">
     <!-- font awesome CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <!-- owl.carousel CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}">
     <!-- meanmenu CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/meanmenu/meanmenu.min.css">
+    <link rel="stylesheet" href="{{ asset('css/meanmenu/meanmenu.min.css') }}">
     <!-- animate CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <!-- summernote CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/summernote/summernote.css">
+    <link rel="stylesheet" href="{{ asset('css/summernote/summernote.css') }}">
     <!-- Range Slider CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/themesaller-forms.css">
+    <link rel="stylesheet" href="{{ asset('css/themesaller-forms.css') }}">
     <!-- normalize CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
     <!-- mCustomScrollbar CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="{{ asset('css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
     <!-- Notika icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/notika-custom-icon.css">
+    <link rel="stylesheet" href="{{ asset('css/notika-custom-icon.css') }}">
     <!-- bootstrap select CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/bootstrap-select/bootstrap-select.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-select/bootstrap-select.css') }}">
     <!-- datapicker CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/datapicker/datepicker3.css">
+    <link rel="stylesheet" href="{{ asset('css/datapicker/datepicker3.css') }}">
     <!-- Color Picker CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/color-picker/farbtastic.css">
+    <link rel="stylesheet" href="{{ asset('css/color-picker/farbtastic.css') }}">
     <!-- main CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/chosen/chosen.css">
+    <link rel="stylesheet" href="{{ asset('css/chosen/chosen.css') }}">
     <!-- notification CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/notification/notification.css">
+    <link rel="stylesheet" href="{{ asset('css/notification/notification.css') }}">
     <!-- Data Table JS
 		============================================ -->
-    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
      <!-- Notika icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/notika-custom-icon.css">
+    <link rel="stylesheet" href="{{ asset('css/notika-custom-icon.css') }}">
     <!-- dropzone CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/dropzone/dropzone.css">
+    <link rel="stylesheet" href="{{ asset('css/dropzone/dropzone.css') }}">
     <!-- wave CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/wave/waves.min.css">
-    <link rel="stylesheet" href="css/wave/button.css">
+    <link rel="stylesheet" href="{{ asset('css/wave/waves.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/wave/button.css') }}">
     <!-- main CSS
         ============================================ -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- responsive CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     
     <!-- modernizr JS
         ============================================ -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
    
 </head>
 
@@ -100,7 +101,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="{{ url ('home') }}"><img src="img/logo/logo.png" width="350px"/></a>
+                        <a href="{{ url ('home') }}"><img src="{{ asset('img/logo/logo.png') }}" width="350px"/></a>
                     </div>
                 </div>
 
@@ -212,7 +213,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="footer-copy-right">
                         <p>Derechos reservados © 2020 
-                        . Proyeccción social FCE <a href="">Universidad de El Salvador</a>.</p>
+                        <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
                     </div>
                 </div>
             </div>
@@ -220,105 +221,105 @@
     </div>
   <!-- jquery
 		============================================ -->
-        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
         <!-- bootstrap JS
             ============================================ -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <!-- wow JS
             ============================================ -->
-        <script src="js/wow.min.js"></script>
+        <script src="{{ asset('js/wow.min.js') }}"></script>
         <!-- price-slider JS
             ============================================ -->
-        <script src="js/jquery-price-slider.js"></script>
+        <script src="{{ asset('js/jquery-price-slider.js') }}"></script>
         <!-- owl.carousel JS
             ============================================ -->
-        <script src="js/owl.carousel.min.js"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
         <!-- scrollUp JS
             ============================================ -->
-        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
         <!-- meanmenu JS
             ============================================ -->
-        <script src="js/meanmenu/jquery.meanmenu.js"></script>
+        <script src="{{ asset('js/meanmenu/jquery.meanmenu.js') }}"></script>
         <!-- counterup JS
             ============================================ -->
-        <script src="js/counterup/jquery.counterup.min.js"></script>
-        <script src="js/counterup/waypoints.min.js"></script>
-        <script src="js/counterup/counterup-active.js"></script>
+        <script src="{{ asset('js/counterup/jquery.counterup.min.js') }}"></script>
+        <script src="{{ asset('js/counterup/waypoints.min.js') }}"></script>
+        <script src="{{ asset('js/counterup/counterup-active.js') }}"></script>
         <!-- mCustomScrollbar JS
             ============================================ -->
-        <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="{{ asset('js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
         <!-- sparkline JS
             ============================================ -->
-        <script src="js/sparkline/jquery.sparkline.min.js"></script>
-        <script src="js/sparkline/sparkline-active.js"></script>
+        <script src="{{ asset('js/sparkline/jquery.sparkline.min.js') }}"></script>
+        <script src="{{ asset('js/sparkline/sparkline-active.js') }}"></script>
         <!-- flot JS
             ============================================ -->
-        <script src="js/flot/jquery.flot.js"></script>
-        <script src="js/flot/jquery.flot.resize.js"></script>
-        <script src="js/flot/flot-active.js"></script>
+        <script src="{{ asset('js/flot/jquery.flot.js') }}"></script>
+        <script src="{{ asset('js/flot/jquery.flot.resize.js') }}"></script>
+        <script src="{{ asset('js/flot/flot-active.js') }}"></script>
         <!-- knob JS
             ============================================ -->
-        <script src="js/knob/jquery.knob.js"></script>
-        <script src="js/knob/jquery.appear.js"></script>
-        <script src="js/knob/knob-active.js"></script>
+        <script src="{{ asset('js/knob/jquery.knob.js') }}"></script>
+        <script src="{{ asset('js/knob/jquery.appear.js') }}"></script>
+        <script src="{{ asset('js/knob/knob-active.js') }}"></script>
         <!-- Input Mask JS
             ============================================ -->
-        <script src="js/jasny-bootstrap.min.js"></script>
+        <script src="{{ asset('js/jasny-bootstrap.min.js') }}"></script>
         <!-- icheck JS
             ============================================ -->
-        <script src="js/icheck/icheck.min.js"></script>
-        <script src="js/icheck/icheck-active.js"></script>
+        <script src="{{ asset('js/icheck/icheck.min.js') }}"></script>
+        <script src="{{ asset('js/icheck/icheck-active.js') }}"></script>
         <!-- rangle-slider JS
             ============================================ -->
-        <script src="js/rangle-slider/jquery-ui-1.10.4.custom.min.js"></script>
-        <script src="js/rangle-slider/jquery-ui-touch-punch.min.js"></script>
-        <script src="js/rangle-slider/rangle-active.js"></script>
+        <script src="{{ asset('js/rangle-slider/jquery-ui-1.10.4.custom.min.js') }}"></script>
+        <script src="{{ asset('js/rangle-slider/jquery-ui-touch-punch.min.js') }}"></script>
+        <script src="{{ asset('js/rangle-slider/rangle-active.js') }}"></script>
         <!-- datapicker JS
             ============================================ -->
-        <script src="js/datapicker/bootstrap-datepicker.js"></script>
-        <script src="js/datapicker/datepicker-active.js"></script>
+        <script src="{{ asset('js/datapicker/bootstrap-datepicker.js') }}"></script>
+        <script src="{{ asset('js/datapicker/datepicker-active.js') }}"></script>
         <!-- bootstrap select JS
             ============================================ -->
-        <script src="js/bootstrap-select/bootstrap-select.js"></script>
+        <script src="{{ asset('js/bootstrap-select/bootstrap-select.js') }}"></script>
         <!--  color-picker JS
             ============================================ -->
-        <script src="js/color-picker/farbtastic.min.js"></script>
-        <script src="js/color-picker/color-picker.js"></script>
+        <script src="{{ asset('js/color-picker/farbtastic.min.js') }}"></script>
+        <script src="{{ asset('js/color-picker/color-picker.js') }}"></script>
         <!--  notification JS
             ============================================ -->
-        <script src="js/notification/bootstrap-growl.min.js"></script>
-        <script src="js/notification/notification-active.js"></script>
+        <script src="{{ asset('js/notification/bootstrap-growl.min.js') }}"></script>
+        <script src="{{ asset('js/notification/notification-active.js') }}"></script>
         <!--  summernote JS
             ============================================ -->
-        <script src="js/summernote/summernote-updated.min.js"></script>
-        <script src="js/summernote/summernote-active.js"></script>
+        <script src="{{ asset('js/summernote/summernote-updated.min.js') }}"></script>
+        <script src="{{ asset('js/summernote/summernote-active.js') }}"></script>
         <!-- dropzone JS
             ============================================ -->
-        <script src="js/dropzone/dropzone.js"></script>
+        <script src="{{ asset('js/dropzone/dropzone.js') }}"></script>
         <!--  wave JS
             ============================================ -->
-        <script src="js/wave/waves.min.js"></script>
-        <script src="js/wave/wave-active.js"></script>
+        <script src="{{ asset('js/wave/waves.min.js') }}"></script>
+        <script src="{{ asset('js/wave/wave-active.js') }}"></script>
         <!--  chosen JS
             ============================================ -->
-        <script src="js/chosen/chosen.jquery.js"></script>
+        <script src="{{ asset('js/chosen/chosen.jquery.js') }}"></script>
        
         <!--  todo JS
             ============================================ -->
-        <script src="js/todo/jquery.todo.js"></script>
+        <script src="{{ asset('js/todo/jquery.todo.js') }}"></script>
         <!-- plugins JS
             ============================================ -->
-        <script src="js/plugins.js"></script>
+        <script src="{{ asset('js/plugins.js') }}"></script>
         <!-- main JS
             ============================================ -->
-        <script src="js/main.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
         <!-- tawk chat JS
             ============================================ -->
 
         <!-- Data Table JS
             ============================================ -->
-            <script src="js/data-table/jquery.dataTables.min.js"></script>
-            <script src="js/data-table/data-table-act.js"></script>
+        <script src="{{ asset('js/data-table/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('js/data-table/data-table-act.js') }}"></script>
            
 
 </html>
