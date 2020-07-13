@@ -20,7 +20,7 @@ class RoleController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *git comm
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -81,7 +81,7 @@ class RoleController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
