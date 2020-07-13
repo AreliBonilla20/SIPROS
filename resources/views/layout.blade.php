@@ -127,13 +127,13 @@
                                         <li><a href="{{ url('expediente_nuevo') }}">Agregar expediente</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
+                                <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
                                     <ul class="collapse dropdown-header-top">
-                                        <li><a href="{{ route('instituciones') }}.html">Listado instituciones</a></li>
+                                        <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
                                         <li><a href="{{ route('crearInstitucion') }}">Agregar institución</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#Empresas" href="#">Instituciones</a>
+                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
                                     <ul  class="collapse dropdown-header-top">
                                         <li><a href="{{ url('proyectos_listado') }}">Listado proyectos</a></li>
                                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>

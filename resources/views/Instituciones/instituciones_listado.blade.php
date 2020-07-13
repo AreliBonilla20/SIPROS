@@ -101,6 +101,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            <br>
                             @if (session('eliminada'))
                                 <div class="alert alert-success mt-3">
                                     {{session('eliminada')}}
