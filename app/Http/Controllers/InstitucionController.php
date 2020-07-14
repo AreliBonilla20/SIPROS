@@ -20,7 +20,7 @@ class InstitucionController extends Controller
      */
     public function index()
     {
-        $instituciones = App\Institucion::all();
+        $instituciones = Institucion::paginate();
 
         return view('Instituciones/instituciones_listado', compact('instituciones'));
     }

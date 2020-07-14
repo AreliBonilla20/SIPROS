@@ -48,17 +48,17 @@ Route::post('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
 Route::get('users', 'UserController@index')->name('users.index')
     ->middleware('permission:users.index');
 
+Route::get('users/create', 'UserController@create')->name('users.create')
+    ->middleware('permission:users.create');
+
+Route::get('users/store', 'UserController@store')->name('users.store')
+    ->middleware('permission:users.store');
+
 Route::post('users/{role}', 'UserController@update')->name('users.update')
     ->middleware('permission:users.edit');
 
-Route::post('users/{role}', 'UserController@show')->name('users.show')
-    ->middleware('permission:users.show');
-
 Route::post('users/{role}/edit', 'UserController@edit')->name('users.edit')
     ->middleware('permission:users.edit');
-
-
-
 
 
 //Rutas de los expedientes
@@ -71,27 +71,12 @@ Route::get('/expediente_nuevo', function () {
     return view('Expedientes/expediente_nuevo');
 });
 
-
-//Rutas de las instituciones
-
-// Route::get('/instituciones_listado', function () {
-//     return view('Instituciones/instituciones_listado');
-// });
-
-// Route::get('/institucion_nueva', function () {
-//     return view('Instituciones/institucion_nueva');
-// });
-
+//Instituciones
 Route::get('/Instituciones', 'InstitucionController@index')->name('instituciones');
-
 Route::get('/Instituciones/crear', 'InstitucionController@create')->name('crearInstitucion');
-
 Route::post('/Instituciones/guardar', 'InstitucionController@store')->name('guardarInstitucion');
-
 Route::get('/Instituciones/editar/{id}', 'InstitucionController@edit')->name('editarInstitucion');
-
 Route::put('/Instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizarInstitucion');
-
 Route::delete('/Instituciones/eliminar/{id}', 'InstitucionController@destroy')->name('eliminarInstitucion');
 
 //Rutas de los proyectos

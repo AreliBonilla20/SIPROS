@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class UserController extends Controller
     {
         $users = User::paginate();
 
-        return view('users.index', \compact('users'));
+        return view('Usuarios/usuarios_listado', compact('users'));
     }
 
     /**
@@ -25,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('register');
     }
 
     /**

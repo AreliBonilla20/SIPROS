@@ -95,8 +95,8 @@
                                     
                                     @can('usuario_listado')
                                      
-                                        <a class="dropdown-item" href = "usuario_listado">
-                                            {{ __('Usuarios') }}
+                                        <a class="dropdown-item" href = "{{ route('users.index') }}">
+                                           Usuarios
                                         </a>
                                     <br>
                                     @endcan
