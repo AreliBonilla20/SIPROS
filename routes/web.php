@@ -79,14 +79,13 @@ Route::get('/Instituciones/editar/{id}', 'InstitucionController@edit')->name('ed
 Route::put('/Instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizarInstitucion');
 Route::delete('/Instituciones/eliminar/{id}', 'InstitucionController@destroy')->name('eliminarInstitucion');
 
-//Rutas de los proyectos
-Route::get('/proyectos_listado', function () {
-    return view('Proyectos/proyectos_listado');
-});
-
-Route::get('/proyecto_nuevo', function () {
-    return view('Proyectos/proyecto_nuevo');
-});
+//Rutas de proyectos
+Route::get('/Proyectos', 'ProyectoController@index')->name('proyectos');
+Route::get('/proyecto_nuevo', 'ProyectoController@create')->name('crear_proyecto');
+Route::post('/Proyectos/guardar', 'ProyectoController@store')->name('guardar_proyecto');
+Route::get('/Proyectos/editar/{id}', 'ProyectoController@edit')->name('editar_proyecto');
+Route::put('/Proyectos/actualizar/{id}', 'ProyectoController@update')->name('actualizar_proyecto');
+//Route::delete('/Proyectos/eliminar/{id}', 'ProyectoController@destroy')->name('eliminar_proyecto');
 
 
 //Rutas para los usuarios

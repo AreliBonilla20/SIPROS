@@ -136,7 +136,7 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
                                     <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('proyectos_listado') }}">Listado proyectos</a></li>
+                                        <li><a href="{{ url('Proyectos') }}">Listado proyectos</a></li>
                                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                                     </ul>
                                 </li>
@@ -186,7 +186,7 @@
                         </div>
                          <div id="Proyectos" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url('proyectos_listado') }}">Listado proyectos</a></li>
+                                <li><a href="{{ url('Proyectos') }}">Listado proyectos</a></li>
                                 <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                             </ul>
                         </div>
