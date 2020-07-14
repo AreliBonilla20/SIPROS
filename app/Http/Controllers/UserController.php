@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        $users = User::all();
 
         return view('Usuarios/usuarios_listado', compact('users'));
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('register');
+        return view('Usuarios/usuario_nuevo');
     }
 
     /**
@@ -39,8 +39,7 @@ class UserController extends Controller
     {
         $user = User::Create($request->all());
 
-        return redirect()->route('users.edit', $user->id)
-        ->with('info', 'Usuario guardado con éxito');
+        return back()->with('agregado', 'Usuario guardado correctamente.');
     }
 
     /**
@@ -60,9 +59,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('users.edit', compact('user'));
+        $usuario = User::findOrFail($id);
+        return view('Usuarios/usuario_editar', compact('usuario'));
     }
 
     /**
@@ -72,12 +72,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
-        $user->update($request->all());
+    public function update(Request $request, $id)
+    {   
+        $usuario = User::findOrFail($id);
+        $usuario->update($request->all());
 
-        return redirect()->route('users.edit', $user->id)
-        ->with('info', 'Usuario actualizado con éxito');
+        return back()->with('actualizado', 'Usuario actualizado correctamente.');
     }
 
     /**

@@ -119,31 +119,13 @@
                             <ul class="mobile-menu-nav">
                                 <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
                                     <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
-                                        <li><a href="index.html">Inicio</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
-                                    <ul class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('expedientes_listado') }}">Listado expedientes</a></li>
-                                        <li><a href="{{ url('expediente_nuevo') }}">Agregar expediente</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
-                                    <ul class="collapse dropdown-header-top">
-                                        <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
-                                        <li><a href="{{ route('crear_institucion') }}">Agregar institución</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
-                                    <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('proyectos') }}">Listado proyectos</a></li>
-                                        <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
-                                    </ul>
-                                </li>
+                                
                                 <li><a data-toggle="collapse" data-target="#Usuarios" href="#">Usuarios</a>
                                     <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('usuarios_listado') }}">Listado usuarios</a></li>
-                                        <li><a href="{{ url('usuario_nuevo') }}">Agregar usuarios</a></li>
+                                        <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
+                                        <li><a href="{{ route('crear_usuario') }}">Agregar usuarios</a></li>
                                     </ul>
                                 </li>
                                
@@ -162,37 +144,14 @@
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li><a href="{{ url ('home')}}"><i class="notika-icon notika-house"></i> Inicio</a>
                         </li>
-                         <li><a data-toggle="tab" href="#Expediente"><i class="notika-icon notika-form"></i> Expediente</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Instituciones"><i class="notika-icon notika-edit"></i> Instituciones</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
-                        </li>
                         <li><a data-toggle="tab" href="#Usuarios"><i class="notika-icon notika-support"></i> Usuarios</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url('expedientes_listado') }}">Listado expedientes</a></li>
-                                <li><a href="{{ url('expediente_nuevo') }}">Agregar expediente</a></li>
-                            </ul>
-                        </div>
-                        <div id="Instituciones" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
-                                <li><a href="{{ route('crear_institucion') }}">Agregar institución</a></li>
-                            </ul>
-                        </div>
-                         <div id="Proyectos" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
-                                <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
-                            </ul>
-                        </div>
                         <div id="Usuarios" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ route('usuarios') }}">Listado proyectos</a></li>
+                                <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
+                                <li><a href="{{ route('crear_usuario') }}">Agregar usuarios</a></li>
                                 
                             </ul>
                         </div>

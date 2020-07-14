@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('actualizarInstitucion', $institucionActualizar->id)}}" method="POST">
+                                    <form action="{{route('actualizar_institucion', $institucionActualizar->id)}}" method="POST">
                                         @method('PUT')
                                         @csrf
 
@@ -137,7 +137,7 @@
                                         <br>
 
                                         <div class="form-example-int mg-t-15">
-                                            <button class="btn btn-warning notika-btn-warning">Actualizar institución</button>
+                                            <button class="btn btn-success notika-btn-success">Actualizar institución</button>
                                         </div>
                                     </form>
                                     @if (session('actualizada'))

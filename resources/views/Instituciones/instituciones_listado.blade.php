@@ -46,7 +46,7 @@
                                 <h2>Nueva institución</h2>
                                 <p>Agregar una nueva institución</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('crearInstitucion') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_institucion') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -77,12 +77,8 @@
                                             <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
                                             <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombreSector')->first() }}</td>
                                             <td>
-                                                <a href="{{route('editarInstitucion', $institucion->id)}}" class="btn btn-warning notika-btn-warning">Editar</a>
-                                                {{-- <form action="{{route('eliminarInstitucion', $institucion->id)}}" class="d-inline" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger notika-btn-danger">Eliminar</button>
-                                                </form> --}}
+                                                <a href="{{route('editar_institucion', $institucion->id)}}" class="btn btn-warning notika-btn-warning">Editar</a>
+                        
                                             </td>
                                         </tr>
                                     @endforeach
