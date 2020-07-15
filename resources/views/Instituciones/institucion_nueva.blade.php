@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('guardarInstitucion')}}" method="POST">
+                                    <form action="{{route('guardar_institucion')}}" method="POST">
                                         @csrf
 
                                         <div class="form-example-int">
@@ -58,10 +58,10 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="tipo_institucion_id" id="tipo_institucion_id" required>
+                                                    <select class="selectpicker" data-live-search="true" name="tipo_institucion_id" id="tipo_institucion_id" required>
                                                         <option value="">-Seleccione una opción-</option>
                                                         @foreach ($tipoInstituciones as $tipoInstitucion)
-                                                            <option value="{{$tipoInstitucion->id}}">{{$tipoInstitucion->tipoInstitucion}}</option>
+                                                            <option value="{{$tipoInstitucion->id}}">{{$tipoInstitucion->tipo_institucion}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -76,9 +76,9 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="sector_id" id="sector_id" required>
+                                                    <select class="selectpicker" data-live-search="true" name="sector_id" id="sector_id" required>
                                                         @foreach ($sectores as $sector)
-                                                            <option value="{{$sector->id}}">{{$sector->nombreSector}}</option>
+                                                            <option value="{{$sector->id}}">{{$sector->nombre_sector}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="id_region" id="id_region" required>
+                                                    <select class="selectpicker" data-live-search="true" name="id_region" id="id_region" required>
                                                         <option value="">-Región-</option>
                                                         @foreach ($regiones as $region)
                                                             <option value="{{$region->id}}">{{$region->nombre_region}}</option>
@@ -104,7 +104,7 @@
 
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="id_departamento" id="id_departamento" required>
+                                                    <select class="selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>
                                                         <option value="">-Departamento-</option>
                                                         @foreach ($departamentos as $departamento)
                                                             <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
@@ -115,7 +115,7 @@
     
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="id_municipio" id="id_municipio" required>
+                                                    <select class="selectpicker" data-live-search="true" name="id_municipio" id="id_municipio" required>
                                                         <option value="">-Municipio-</option>
                                                         @foreach ($municipios as $municipio)
                                                             <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
@@ -137,8 +137,10 @@
 
                                         <div class="form-example-int mg-t-15">
                                             <button class="btn btn-success notika-btn-success">Guardar institución</button>
+                                            <a class="btn btn-danger notika-btn-danger" href="{{route('instituciones')}}">Cancelar</a>
                                         </div>
                                     </form>
+                                    <br>
                                     @if (session('agregada'))
                                         <div class="alert alert-success mt-3">
                                             {{ session('agregada') }}

@@ -14,8 +14,8 @@
 										<i class="notika-icon notika-form"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Registro de institución</h2>
-										<p>Ingrese los datos de la institución</p>
+										<h2>Edición de institución</h2>
+										<p>Ingrese los datos a modificar de la institución</p>
 									</div>
 								</div>
 							</div>
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('actualizarInstitucion', $institucionActualizar->id)}}" method="POST">
+                                    <form action="{{route('actualizar_institucion', $institucionActualizar->id)}}" method="POST">
                                         @method('PUT')
                                         @csrf
 
@@ -59,10 +59,10 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="tipo_institucion_id" id="tipo_institucion_id" required>
+                                                    <select class="selectpicker" data-live-search="true" name="tipo_institucion_id" id="tipo_institucion_id" required>
                                                         <option value="">-Seleccione una opción-</option>
                                                         @foreach ($tipoInstituciones as $tipoInstitucion)
-                                                            <option value="{{$tipoInstitucion->id}}" {{ ($institucionActualizar->tipo_institucion_id == $loop->iteration ? "selected":"") }}>{{$tipoInstitucion->tipoInstitucion}}</option>
+                                                            <option value="{{$tipoInstitucion->id}}" {{ ($institucionActualizar->tipo_institucion_id == $loop->iteration ? "selected":"") }}>{{$tipoInstitucion->tipo_institucion}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -77,9 +77,9 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="sector_id" id="sector_id" required>
+                                                    <select class="selectpicker" data-live-search="true" name="sector_id" id="sector_id" required>
                                                         @foreach ($sectores as $sector)
-                                                            <option value="{{$sector->id}}" {{ ($institucionActualizar->sector_id == $loop->iteration ? "selected":"") }}>{{$sector->nombreSector}}</option>
+                                                            <option value="{{$sector->id}}" {{ ($institucionActualizar->sector_id == $loop->iteration ? "selected":"") }}>{{$sector->nombre_sector}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="id_region" id="id_region" required>
+                                                    <select class="selectpicker" data-live-search="true" name="id_region" id="id_region" required>
                                                         <option value="">-Región-</option>
                                                         @foreach ($regiones as $region)
                                                             <option value="{{$region->id}}" {{ ($institucionActualizar->id_region == $loop->iteration ? "selected":"") }}>{{$region->nombre_region}}</option>
@@ -105,7 +105,7 @@
 
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="id_departamento" id="id_departamento" required>
+                                                    <select class="selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>
                                                         <option value="">-Departamento-</option>
                                                         @foreach ($departamentos as $departamento)
                                                             <option value="{{$departamento->id}}" {{ ($institucionActualizar->id_departamento == $loop->iteration ? "selected":"") }}>{{$departamento->nombre_departamento}}</option>
@@ -116,7 +116,7 @@
     
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" name="id_municipio" id="id_municipio" required>
+                                                    <select class="selectpicker" data-live-search="true" name="id_municipio" id="id_municipio" required>
                                                         <option value="">-Municipio-</option>
                                                         @foreach ($municipios as $municipio)
                                                             <option value="{{$municipio->id}}" {{ ($institucionActualizar->id_municipio == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
@@ -137,9 +137,11 @@
                                         <br>
 
                                         <div class="form-example-int mg-t-15">
-                                            <button class="btn btn-warning notika-btn-warning">Actualizar institución</button>
+                                            <button class="btn btn-success notika-btn-success">Actualizar institución</button>
+                                            <a class="btn btn-danger notika-btn-danger" href="{{route('instituciones')}}">Cancelar</a>
                                         </div>
                                     </form>
+                                    <br>
                                     @if (session('actualizada'))
                                         <div class="alert alert-success mt-3">
                                             {{ session('actualizada') }}

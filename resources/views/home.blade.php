@@ -95,7 +95,7 @@
                                     
                                     @can('usuario_listado')
                                      
-                                        <a class="dropdown-item" href = "{{ route('users.index') }}">
+                                        <a class="dropdown-item" href = "{{ route('usuarios') }}">
                                            Usuarios
                                         </a>
                                     <br>
@@ -218,7 +218,7 @@
 							</div>
                             <p>Ingreso, edición, consultas y reportes de proyectos.</p>
                         </div>
-                        <a href="{{ url('proyectos_listado') }}"><button class="btn btn-warning notika-btn-warning">Proyectos</button></a>
+                        <a href="{{ route('proyectos') }}"><button class="btn btn-warning notika-btn-warning">Proyectos</button></a>
                     </div>
                 </div>
                 

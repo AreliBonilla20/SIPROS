@@ -46,7 +46,7 @@
                                 <h2>Nueva institución</h2>
                                 <p>Agregar una nueva institución</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('crearInstitucion') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_institucion') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -54,49 +54,45 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        {{-- <th>ID</th> --}}
+                                        <th>#</th>
                                         <th>Nombre</th>
                                         <th>Tipo</th>
+                                        <th>Sector</th>
                                         <th>Dirección</th>
                                         <th>Región</th>
                                         <th>Departamento</th>
                                         <th>Municipio</th>
-                                        <th>Sector</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($instituciones as $institucion)
                                         <tr>
-                                            {{-- <td>{{$institucion->id}}</td> --}}
+                                            <td>{{$institucion->id}}</td>
                                             <td>{{$institucion->nombre}}</td>
-                                            <td>{{ \App\TipoInstitucion::where(['id' => $institucion->tipo_institucion_id])->pluck('tipoInstitucion')->first() }}</td>
+                                            <td>{{ \App\TipoInstitucion::where(['id' => $institucion->tipo_institucion_id])->pluck('tipo_institucion')->first() }}</td>
+                                            <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombre_sector')->first() }}</td>
                                             <td>{{$institucion->direccion}}</td>
                                             <td>{{ \App\Region::where(['id' => $institucion->id_region])->pluck('nombre_region')->first() }}</td>
                                             <td>{{ \App\Departamento::where(['id' => $institucion->id_departamento])->pluck('nombre_departamento')->first() }}</td>
                                             <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
-                                            <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombreSector')->first() }}</td>
                                             <td>
-                                                <a href="{{route('editarInstitucion', $institucion->id)}}" class="btn btn-warning notika-btn-warning">Editar</a>
-                                                {{-- <form action="{{route('eliminarInstitucion', $institucion->id)}}" class="d-inline" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger notika-btn-danger">Eliminar</button>
-                                                </form> --}}
+                                                <a href="{{route('editar_institucion', $institucion->id)}}" class="btn btn-warning notika-btn-warning">Editar</a>
+                        
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        {{-- <th>ID</th> --}}
+                                        <th>#</th>
                                         <th>Nombre</th>
                                         <th>Tipo</th>
+                                        <th>Sector</th>
                                         <th>Dirección</th>
                                         <th>Región</th>
                                         <th>Departamento</th>
                                         <th>Municipio</th>
-                                        <th>Sector</th>
                                         <th>Acción</th>
                                     </tr>
                                 </tfoot>

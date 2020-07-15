@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout_usuarios')
 
 @section('content')
 
@@ -47,7 +47,7 @@
                                 <h2>Nuevo usuario</h2>
                                 <p>Agregar un nuevo usuario</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ url('usuario_nuevo') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_usuario') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -70,7 +70,7 @@
                                             <td>{{$usuario->id}}</td>
                                             <td>{{$usuario->name}}</td>
                                             <td>{{$usuario->email}}</td>
-                                            <td><a href=""><button class="btn btn-warning notika-btn-warning">Editar</button></a></td>
+                                            <td><a href="{{route('editar_usuario', $usuario->id)}}" class="btn btn-warning notika-btn-warning">Editar</a></td>
                                             <td><a href=""><button class="btn btn-danger notika-btn-danger">Suspender</button></a></td>
                                         </tr>
                                 @endforeach
