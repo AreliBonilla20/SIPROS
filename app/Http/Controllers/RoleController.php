@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Caffeinated\Shinobi\Models\Role;
+
+
 class RoleController extends Controller
 {
     /**
@@ -13,9 +16,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::paginate();
 
-        return view('roles.index', \compact('roles'));
+        return view('Roles/rol_listado', compact('roles'));
     }
 
     /**
@@ -25,7 +28,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        return view('Roles/rol_nuevo');
     }
 
     /**

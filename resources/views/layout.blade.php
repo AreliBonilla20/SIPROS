@@ -146,7 +146,7 @@
                                         <li><a href="{{ url('usuario_nuevo') }}">Agregar usuarios</a></li>
                                     </ul>
                                 </li>
-                               
+                                
                             </ul>
                         </nav>
                     </div>
@@ -170,6 +170,7 @@
                         </li>
                         <li><a data-toggle="tab" href="#Usuarios"><i class="notika-icon notika-support"></i> Usuarios</a>
                         </li>
+                        <li><a data-toggle="tab" href="#Roles"><i class="notika-icon notika-support"></i> Roles</a></li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -194,6 +195,12 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="{{ route('usuarios') }}">Listado proyectos</a></li>
                                 
+                            </ul>
+                        </div>
+                        <div id="Roles" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ url('roles') }}">Listado de roles</a></li>
+                                <li><a href="{{ url('rol_nuevo') }}">Agregar rol</a></li>
                             </ul>
                         </div>
                     </div>
