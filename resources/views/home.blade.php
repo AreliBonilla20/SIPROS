@@ -202,7 +202,7 @@
           </div>
                         <p>Creación de un expediente nuevo, edición y consultas.</p>
                     </div>
-                    <a href="{{ url('expedientes_listado') }}"><button class="btn btn-success notika-btn-success">Expediente</button></a>
+                    <a href="{{ route('Expedientes.index') }}"><button class="btn btn-success notika-btn-success">Expediente</button></a>
                 </div>
             </div> 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">

@@ -59,13 +59,14 @@ Route::put('usuarios/actualizar/{id}', 'UserController@update')->name('actualiza
     ->middleware('permission:actualizar_usuario');
 
 ///////////////////////////////////////Rutas de la gestión de expedientes/////////////////////////////////////////
-Route::get('/expedientes_listado', function () {
+/*Route::get('/expedientes_listado', function () {
     return view('Expedientes/expedientes_listado');
 });
 
 Route::get('/expediente_nuevo', function () {
     return view('Expedientes/expediente_nuevo');
-});
+});*/
+Route::resource('Expedientes','estudianteController');
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones');
