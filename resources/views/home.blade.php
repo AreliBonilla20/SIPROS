@@ -65,18 +65,17 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Start Header Top Area -->
-    <div class="header-top-area" style="background:  #2d2e2e;">
-        <div class="container" >
+    <div class="header-top-area" style="background: #2d2e2e;">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <div class="header-top-menu">
-                        
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
 
-                        <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+                    <div class="header-top-menu">
+                        <ul class="nav navbar-nav notika-top-nav">
+                           
+                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"></a>
+                                <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -86,8 +85,8 @@
                             </li>
                         @else
 
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li style="background: black," onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" class="nav-item dropdown">
+                                <a style="font-size: 15px;" onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -95,7 +94,7 @@
                                     
                                     @can('usuario_listado')
                                      
-                                        <a class="dropdown-item" href = "{{ route('usuarios') }}">
+                                        <a  style="font-size: 15px; color: #908C8C; class="dropdown-item" href = "{{ route('usuarios') }}">
                                            Usuarios
                                         </a>
                                     <br>
@@ -103,14 +102,14 @@
 
                                     @can('roles.index')
                                     
-                                        <a class="dropdown-item" href="{{ route('roles.index') }}">
+                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('roles.index') }}">
                                             {{ __('Roles') }}
                                         </a>
                                     <br>
                                    
                                     @endcan
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -123,13 +122,13 @@
                                 </div>
                             </li>
                         @endguest
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
     <!-- End Header Top Area -->
     <div class="mobile-menu-area">
         <div class="container">

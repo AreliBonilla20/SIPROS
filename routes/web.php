@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::middleware(['auth'])->group(function(){
 
 ///////////////////////////////////////Rutas de la gestión de roles////////////////////////////////////////////////
@@ -66,6 +67,8 @@ Route::get('/expedientes_listado', function () {
 Route::get('/expediente_nuevo', function () {
     return view('Expedientes/expediente_nuevo');
 });
+Route::resource('Expedientes','estudianteController');
+
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones');
@@ -81,11 +84,5 @@ Route::get('/proyectos/crear', 'ProyectoController@create')->name('crear_proyect
 Route::post('/proyectos/guardar', 'ProyectoController@store')->name('guardar_proyecto');
 Route::get('/proyectos/editar/{id}', 'ProyectoController@edit')->name('editar_proyecto');
 Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('actualizar_proyecto');
-
-
-Route::get('/rol_nuevo', function () {
-    return view('Roles/rol_nuevo');
-});
-
 
 });

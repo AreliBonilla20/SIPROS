@@ -1,8 +1,30 @@
-@extends('layout')
+@extends('layout_usuarios')
 
 @section('content')
 
-
+<div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="breadcomb-wp">
+                            <div class="breadcomb-icon">
+                                <i class="notika-icon notika-edit"></i>
+                            </div>
+                            <div class="breadcomb-ctn">
+                                <h2>Nuevo rol</h2>
+                                <p>Agregar un nuevo rol</p>
+                                <div class="form-example-int mg-t-15">
+                                    <a href="{{ url('rol_nuevo') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="breadcomb-area">
 		<div class="container">
 			<div class="row">
@@ -63,29 +85,6 @@
 			</div>
 		</div>
     </div>
-    
-    <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        <div class="breadcomb-wp">
-                            <div class="breadcomb-icon">
-                                <i class="notika-icon notika-edit"></i>
-                            </div>
-                            <div class="breadcomb-ctn">
-                                <h2>Nuevo rol</h2>
-                                <p>Agregar un nuevo rol</p>
-                                <div class="form-example-int mg-t-15">
-                                    <a href="{{ url('rol_nuevo') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
-                                </div>
-                            </div>
-                        </div>                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<br><br><br><br>
 
 @endsection

@@ -140,13 +140,7 @@
                                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#Usuarios" href="#">Usuarios</a>
-                                    <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('usuarios_listado') }}">Listado usuarios</a></li>
-                                        <li><a href="{{ url('usuario_nuevo') }}">Agregar usuarios</a></li>
-                                    </ul>
-                                </li>
-                                
+                              
                             </ul>
                         </nav>
                     </div>
@@ -168,9 +162,6 @@
                         </li>
                         <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Usuarios"><i class="notika-icon notika-support"></i> Usuarios</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Roles"><i class="notika-icon notika-support"></i> Roles</a></li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -191,18 +182,7 @@
                                 <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
                             </ul>
                         </div>
-                        <div id="Usuarios" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ route('usuarios') }}">Listado proyectos</a></li>
-                                
-                            </ul>
-                        </div>
-                        <div id="Roles" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url('roles') }}">Listado de roles</a></li>
-                                <li><a href="{{ url('rol_nuevo') }}">Agregar rol</a></li>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
