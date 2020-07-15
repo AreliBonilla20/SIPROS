@@ -78,7 +78,7 @@
                                 <h2>Nuevo rol</h2>
                                 <p>Agregar un nuevo rol</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ url('rol_nuevo') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ url('roles/create') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
                                 </div>
                             </div>
                         </div>                       

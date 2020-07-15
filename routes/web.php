@@ -22,13 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function(){
 
 //Roles
-Route::get('roles', 'RoleController@store')->name('roles.store')
+Route::post('roles/guardar', 'RoleController@store')->name('roles.store')
     ->middleware('permission:roles.store');
 
 Route::get('roles', 'RoleController@index')->name('roles.index')
     ->middleware('permission:roles.index');
 
-Route::post('roles/create', 'RoleController@create')->name('roles.create')
+Route::get('roles/create', 'RoleController@create')->name('roles.create')
     ->middleware('permission:roles.create');
 
 Route::post('roles/{role}', 'RoleController@update')->name('roles.update')
