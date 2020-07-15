@@ -15,7 +15,7 @@ class CreateTipoInstitucionsTable extends Migration
     {
         Schema::create('tipo_institucions', function (Blueprint $table) {
             $table->unsignedInteger('id');
-            $table->string('tipoInstitucion');
+            $table->string('tipo_institucion');
         });
     }
 

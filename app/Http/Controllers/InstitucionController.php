@@ -38,11 +38,7 @@ class InstitucionController extends Controller
         $departamentos = App\Departamento::all();
         $municipios = App\Municipio::all();
 
-        return view('Instituciones/institucion_nueva', compact('sectores'))
-        ->with(compact('tipoInstituciones'))
-        ->with(compact('regiones'))
-        ->with(compact('departamentos'))
-        ->with(compact('municipios'));
+        return view('Instituciones/institucion_nueva', compact('sectores', 'tipoInstituciones', 'regiones', 'departamentos', 'municipios'));
     }
 
     /**
@@ -102,12 +98,7 @@ class InstitucionController extends Controller
         $departamentos = App\Departamento::all();
         $municipios = App\Municipio::all();
 
-        return view('Instituciones/institucion_editar', compact('institucionActualizar'))
-        ->with(compact('sectores'))
-        ->with(compact('tipoInstituciones'))
-        ->with(compact('regiones'))
-        ->with(compact('departamentos'))
-        ->with(compact('municipios'));
+        return view('Instituciones/institucion_editar', compact('institucionActualizar', 'sectores', 'tipoInstituciones', 'regiones', 'departamentos', 'municipios'));
     }
 
     /**
