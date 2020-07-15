@@ -67,8 +67,8 @@ Route::get('/expedientes_listado', function () {
 Route::get('/expediente_nuevo', function () {
     return view('Expedientes/expediente_nuevo');
 });
-Route::resource('Expedientes','estudianteController');
 
+Route::resource('Expedientes','estudianteController');
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones');

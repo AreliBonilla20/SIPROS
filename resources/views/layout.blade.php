@@ -124,8 +124,8 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
                                     <ul class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('expedientes_listado') }}">Listado expedientes</a></li>
-                                        <li><a href="{{ url('expediente_nuevo') }}">Agregar expediente</a></li>
+                                        <li><a href="{{ route('Expedientes.index') }}">Listado expedientes</a></li>
+                                        <li><a href="{{ route('Expedientes.create) }}">Agregar expediente</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
@@ -166,8 +166,8 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url('expedientes_listado') }}">Listado expedientes</a></li>
-                                <li><a href="{{ url('expediente_nuevo') }}">Agregar expediente</a></li>
+                                <li><a href="{{ route('Expedientes.index') }}">Listado expedientes</a></li>
+                                <li><a href="{{ route('Expedientes.create') }}">Agregar expediente</a></li>
                             </ul>
                         </div>
                         <div id="Instituciones" class="tab-pane notika-tab-menu-bg animated flipInX">
