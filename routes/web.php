@@ -98,4 +98,9 @@ Route::get('/usuario_nuevo', function () {
     return view('Usuarios/usuario_nuevo');
 });
 
+Route::get('/rol_nuevo', function () {
+    return view('Roles/rol_nuevo');
+});
+
+
 });
