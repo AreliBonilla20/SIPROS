@@ -83,4 +83,9 @@ Route::get('/proyectos/editar/{id}', 'ProyectoController@edit')->name('editar_pr
 Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('actualizar_proyecto');
 
 
+Route::get('/rol_nuevo', function () {
+    return view('Roles/rol_nuevo');
+});
+
+
 });
