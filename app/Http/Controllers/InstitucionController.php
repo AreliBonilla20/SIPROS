@@ -20,7 +20,7 @@ class InstitucionController extends Controller
      */
     public function index()
     {
-        $instituciones = App\Institucion::all();
+        $instituciones = Institucion::paginate();
 
         return view('Instituciones/instituciones_listado', compact('instituciones'));
     }
@@ -32,7 +32,7 @@ class InstitucionController extends Controller
      */
     public function create()
     {
-        /*$sectores = App\Sector::all();
+        $sectores = App\Sector::all();
         $tipoInstituciones = App\TipoInstitucion::all();
         $regiones = App\Region::all();
         $departamentos = App\Departamento::all();
@@ -42,14 +42,7 @@ class InstitucionController extends Controller
         ->with(compact('tipoInstituciones'))
         ->with(compact('regiones'))
         ->with(compact('departamentos'))
-        ->with(compact('municipios'));*/
-        $sectores=Sector::all();
-        $tipoInstituciones=TipoInstitucion::all();
-        $regiones=Region::all();
-        $departamentos=departamento::all();
-        $municipios=municipio::all();
-        return view('Instituciones.institucion_nueva',compact('sectores','tipoInstituciones','regiones','departamentos','municipios'));//
-
+        ->with(compact('municipios'));
     }
 
     /**
@@ -152,15 +145,3 @@ class InstitucionController extends Controller
         return back()->with('eliminada', 'Institución eliminada correctamente');
     }
 }
-
-        /*$sectores = App\Sector::all();
-        $tipoInstituciones = App\TipoInstitucion::all();
-        $regiones = App\Region::all();
-        $departamentos = App\Departamento::all();
-        $municipios = App\Municipio::all();
-
-        return view('Instituciones/institucion_nueva', compact('sectores'))
-        ->with(compact('tipoInstituciones'))
-        ->with(compact('regiones'))
-        ->with(compact('departamentos'))
-        ->with(compact('municipios'));*/

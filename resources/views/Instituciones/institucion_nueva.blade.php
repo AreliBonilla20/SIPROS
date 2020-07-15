@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
 
@@ -107,7 +107,7 @@
                                                     <select class="selectpicker" name="id_departamento" id="id_departamento" required>
                                                         <option value="">-Departamento-</option>
                                                         @foreach ($departamentos as $departamento)
-                                                            <option value="{{$departamento->id}}">{{$departamento->nombreDepto}}</option>
+                                                            <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -118,7 +118,7 @@
                                                     <select class="selectpicker" name="id_municipio" id="id_municipio" required>
                                                         <option value="">-Municipio-</option>
                                                         @foreach ($municipios as $municipio)
-                                                            <option value="{{$municipio->id}}">{{$municipio->nombreMunicipio}}</option>
+                                                            <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -152,4 +152,6 @@
             </div>
         </div>
     </div>
+
+    
 @endsection
