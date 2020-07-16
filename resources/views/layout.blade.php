@@ -177,7 +177,7 @@
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
                                 <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
-                                    <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
+                                  <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
                                         <li><a href="index.html">Inicio</a></li>
                                     </ul>
                                 </li>

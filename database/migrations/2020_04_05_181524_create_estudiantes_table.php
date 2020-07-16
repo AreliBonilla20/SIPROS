@@ -23,9 +23,11 @@ class CreateEstudiantesTable extends Migration
             $table->string('direccion');
             $table->string('email');
             $table->string('telefono');
+            $table->string('area');
             $table->string('codigo')->foreing()->references('codigo')->on('carreras')->onDelete('cascade');
             $table->integer('sexo_id')->unsigned()->foreing()->references('id')->on('sexo')->onDelete('cascade');
             $table->integer('municipio_id')->unsigned()->foreing()->references('id')->on('municipios')->onDelete('cascade');
+            $table->integer('departamento_id')->unsigned()->foreing()->references('id')->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

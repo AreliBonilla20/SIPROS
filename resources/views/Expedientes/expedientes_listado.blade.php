@@ -67,7 +67,7 @@
                                         <td>{{$estudiante->nombres}}</td>
                                         <td>{{$estudiante->apellidos}}</td>
                                         <td>
-                                        <a href="#" class=" btn btn-info">Editar</a>
+                                        <a href="/Expedientes/{{$estudiante->carne}}/edit" class=" btn btn-primary">Editar</a>
                                         </td>
                                     </tr>
                                 @endforeach 

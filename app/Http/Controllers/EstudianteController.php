@@ -57,31 +57,33 @@ class estudianteController extends Controller
     {
         //
         $estudiante = new Estudiante();
-        $inscripcion = new Inscripcion();
+        //$inscripcion = new Inscripcion();
         $estudiante->carne=$request->input('carne');
         $estudiante->nombres=$request->input('nombres');
         $estudiante->apellidos=$request->input('apellidos');
         $estudiante->edad=$request->input('edad');
         $estudiante->dui=$request->input('dui');
         $sexo=sexo::find(request('sexo'));
-        $carrera=carrera::find(request('carrera'));
-        $departamento=departamento::find(request('departamento'));
+        $carrera=Carrera::find(request('carrera'));
+        $departamento=Departamento::find(request('departamento'));
         $municipio=municipio::find(request('municipio'));
         $estudiante->sexo()->associate($sexo);
         $estudiante->carrera()->associate($carrera);
         $estudiante->municipio()->associate($municipio);
+        $estudiante->departamento()->associate($departamento);
         $estudiante->direccion=$request->input('direccion');
         $estudiante->email=$request->input('email');
         $estudiante->telefono=$request->input('telefono');
+        $estudiante->area=$request->input('area');
         $estudiante->save();
         
-        $fecha=Carbon::now();
+        /*$fecha=Carbon::now();
         $fecha=$fecha->format('d-m-y');
         $inscripcion->fecha=$fecha;
         $inscripcion->estudiante()->associate($estudiante);
         $area=area::find(request('area'));
         $inscripcion->area()->associate($area);
-        $inscripcion->save();
+        $inscripcion->save();*/
        // 
         //
         return redirect()->route('Expedientes.index');
@@ -105,7 +107,7 @@ class estudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(estudiante $estudiante)
+    public function edit(Estudiante $estudiante)
     {
         
         $carreras=Carrera::all();
@@ -114,7 +116,7 @@ class estudianteController extends Controller
         $municipios=Municipio::all();
         $areas=Area::all();
         $instituciones=Institucion::all();
-        return view('Expedientes.expediente_nuevo', compact('estudiante','carreras','sexos','departamentos','municipios','areas','instituciones'));
+        return view('Expedientes.expediente_editar', compact('estudiante','carreras','sexos','departamentos','municipios','areas','instituciones'));
     }
 
     /**
@@ -127,33 +129,17 @@ class estudianteController extends Controller
     public function update(Request $request, estudiante $estudiante)
     {
         
-        $estudiante = new Estudiante();
-        $inscripcion = new Inscripcion();
-        $estudiante->carne=$request->input('carne');
-        $estudiante->nombres=$request->input('nombres');
-        $estudiante->apellidos=$request->input('apellidos');
-        $estudiante->edad=$request->input('edad');
-        $estudiante->dui=$request->input('dui');
-        $sexo=sexo::find(request('sexo'));
-        $carrera=carrera::find(request('carrera'));
-        $departamento=departamento::find(request('departamento'));
-        $municipio=municipio::find(request('municipio'));
-        $estudiante->sexo()->associate($sexo);
-        $estudiante->carrera()->associate($carrera);
-        $estudiante->municipio()->associate($municipio);
-        $estudiante->direccion=$request->input('direccion');
-        $estudiante->email=$request->input('email');
-        $estudiante->telefono=$request->input('telefono');
+        $estudiante->fill($request->all());
         $estudiante->save();
-        
-        $fecha=Carbon::now();
+        return redirect()->route('Expedientes.index',[$estudiante])->with('status','Expediente actualizado correctamente');
+        /*$fecha=Carbon::now();
         $fecha=$fecha->format('d-m-y');
         $inscripcion->fecha=$fecha;
         $inscripcion->estudiante()->associate($estudiante);
         $area=area::find(request('area'));
         $inscripcion->area()->associate($area);
-        $inscripcion->save();
-       return redirect()->route('Expedientes.index',[$estudiante])->with('status','Expediente actualizado correctamente');
+        $inscripcion->save();*/
+       
     }
 
     /**
