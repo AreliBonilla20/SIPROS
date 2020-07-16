@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
 <div class="form-element-area">
@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                        <div class="basic-tb-hd">
-                            <h2>Expediente</h2>
-                            <p>Complete los campos del formulario</p>
-                        </div>
+                        <div class="breadcomb-ctn">
+                                        <h2>Edición de expediente</h2>
+                                        <p>Ingrese los datos a modificar del estudiante</p>
+                                    </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
