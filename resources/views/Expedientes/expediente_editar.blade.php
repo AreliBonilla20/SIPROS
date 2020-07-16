@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <label><strong>Edad</strong></label>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Edad del estudiante" name="edad" value="{{$estudiante->edad}}">
+                                                <input type="number" class="form-control input-sm" placeholder="Edad del estudiante" name="edad" value="{{$estudiante->edad}}">
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                             <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker">
+                                                <select class="selectpicker" name="departamento">
                                                     <option>Seleccione el departamento</option>
                                                     @foreach($departamentos as $departamento)
                                                     <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <!--div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                             <div class="bootstrap-select fm-cmp-mg">
                                                 <select class="selectpicker" name="institucion">
                                                     <option>Seleccione la institucion</option>
@@ -189,9 +189,17 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <br><br>
+                                        <br><br-->
                                     <br>
                                     <br>
+                                     <div class="form-example-int mg-t-15">
+                                        <div class="form-group">
+                                            <label><strong>Área de interés</strong></label>
+                                            <div class="nk-int-st">
+                                                <input type="text" class="form-control input-sm" placeholder="Área de interés"  name="area" value="{{$estudiante->area}}">
+                                            </div>
+                                        </div>
+                                    </div>
                              
                                     <div class="form-example-int mg-t-15">
                                         <button class="btn btn-success notika-btn-primary">Actualizar</button>

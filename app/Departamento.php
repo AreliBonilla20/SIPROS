@@ -15,4 +15,8 @@ class Departamento extends Model
     public function region(){
     	return $this->belongsTo(Region::class, 'id_region','id');
     }
+
+    public function estudiantes(){
+      return $this->hasMany(Estudiante::class);
+   }
 }
