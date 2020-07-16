@@ -21,27 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function(){
 
-//Roles
-Route::post('roles/guardar', 'RoleController@store')->name('roles.store')
-    ->middleware('permission:roles.store');
-
-Route::get('roles', 'RoleController@index')->name('roles.index')
+///////////////////////////////////////Rutas de la gestión de roles///////////////////////////////////////////////
+Route::get('roles', 'RoleController@index')->name('roles')
     ->middleware('permission:roles.index');
 
-Route::get('roles/create', 'RoleController@create')->name('roles.create')
+Route::get('roles/crear', 'RoleController@create')->name('crear_rol')
     ->middleware('permission:roles.create');
 
-Route::post('roles/{role}', 'RoleController@update')->name('roles.update')
+Route::post('roles/guardar', 'RoleController@store')->name('guardar_rol')
+    ->middleware('permission:roles.store');
+
+Route::post('roles/editar/{id}', 'RoleController@edit')->name('editar_rol')
     ->middleware('permission:roles.edit');
 
-Route::post('roles/{role}', 'RoleController@show')->name('roles.show')
-    ->middleware('permission:roles.show');
+Route::post('roles/actualizar/{id}', 'RoleController@update')->name('actualizar_rol')
+    ->middleware('permission:roles.edit');
 
-Route::post('roles/{role}', 'RoleController@destroy')->name('roles.destroy')
+Route::post('roles/eliminar/{id}', 'RoleController@destroy')->name('eliminar_rol')
     ->middleware('permission:roles.destroy');
-
-Route::post('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
-    ->middleware('permission:roles.edit');
 
 ///////////////////////////////////////Rutas de la gestión de usuarios////////////////////////////////////////////
 Route::get('/usuarios', 'UserController@index')->name('usuarios')
@@ -53,11 +50,11 @@ Route::get('usuarios/crear', 'UserController@create')->name('crear_usuario')
 Route::post('usuarios/guardar', 'UserController@store')->name('guardar_usuario')
     ->middleware('permission:guardar_usuario');
 
-Route::get('usuarios/editar/{id}', 'UserController@edit')->name('editar_usuario')
-    ->middleware('permission:editar_usuario');
+Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
+    ->middleware('permission:users.edit');
 
-Route::put('usuarios/actualizar/{id}', 'UserController@update')->name('actualizar_usuario')
-    ->middleware('permission:actualizar_usuario');
+Route::put('users/{user}', 'UserController@update')->name('users.update')
+    ->middleware('permission:users.edit');
 
 ///////////////////////////////////////Rutas de la gestión de expedientes/////////////////////////////////////////
 Route::get('/expedientes_listado', function () {

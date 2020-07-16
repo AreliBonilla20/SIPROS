@@ -74,7 +74,7 @@
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
                            
-                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"></a>
+                            
                                 <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -92,7 +92,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
-                                    @can('usuario_listado')
+                                    @can('usuario')
                                      
                                         <a  style="font-size: 15px; color: #908C8C; class="dropdown-item" href = "{{ route('usuarios') }}">
                                            Usuarios
@@ -100,9 +100,9 @@
                                     <br>
                                     @endcan
 
-                                    @can('roles.index')
+                                    @can('roles')
                                     
-                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('roles.index') }}">
+                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('roles') }}">
                                             {{ __('Roles') }}
                                         </a>
                                     <br>

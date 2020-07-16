@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
 <div class="form-element-area">
@@ -22,7 +22,7 @@
                                                  <li>{{$error}}</li>
                                                 @endforeach
                                             </ul>
-                                        </div
+                                        </div>
                                      @endif
                                      
                                     <div class="form-example-int">
@@ -64,14 +64,21 @@
 
                                     <div class="form-example-int mg-t-15">
                                         <div class="form-group">
-                                            <label><strong>Genero</strong></label>
-                                            <div class="nk-int-st">
-                                                    @foreach($sexos as $sexo)
-                                                    <input type="radio" name="sexo" value="{{$sexo->id}}">{{$sexo->sexo}}
-                                                    @endforeach
-                                            </div>
+                                         <label><strong>Género</strong></label>
                                         </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" name="sexo">
+                                                    <option>-Seleccione una opción-</option>
+                                                    @foreach($sexos as $sexo)
+                                                    <option value="{{$sexo->id}}">{{$sexo->sexo}}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                        </div>
+                                    
                                     </div>
+                                    <br><br>
 
                                     <div class="form-example-int mg-t-15">
                                         <div class="form-group">
@@ -193,7 +200,7 @@
                                     <br>
                              
                                     <div class="form-example-int mg-t-15">
-                                        <button class="btn btn-success notika-btn-primary">Guardar</button>
+                                        <button class="btn btn-success notika-btn-success">Guardar</button>
                                     </div>
                                     </form>
                                    

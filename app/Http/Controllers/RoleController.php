@@ -53,7 +53,7 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return redirect()->route('roles.index')->with('info','Rol Guardado con exito');
+        return redirect()->route('roles')->with('info','Rol Guardado con exito');
 
     }
 

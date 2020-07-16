@@ -104,6 +104,63 @@
                         <a href="{{ url ('home') }}"><img src="{{ asset('img/logo/logo.png') }}" width="350px"/></a>
                     </div>
                 </div>
+                <br><br><br><br><br>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+                    <div class="header-top-menu">
+                        <ul class="nav navbar-nav notika-top-nav">
+                           
+                            
+                                <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @else
+
+                            <li style="background: black," onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" class="nav-item dropdown">
+                                <a style="font-size: 15px;" onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    @can('usuario')
+                                     
+                                        <a  style="font-size: 15px; color: #908C8C; class="dropdown-item" href = "{{ route('usuarios') }}">
+                                           Usuarios
+                                        </a>
+                                    <br>
+                                    @endcan
+
+                                    @can('roles')
+                                    
+                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('roles') }}">
+                                            {{ __('Roles') }}
+                                        </a>
+                                    <br>
+                                   
+                                    @endcan
+
+                                    <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -145,6 +202,7 @@
                         <li><a href="{{ url ('home')}}"><i class="notika-icon notika-house"></i> Inicio</a>
                         </li>
                         <li><a data-toggle="tab" href="#Usuarios"><i class="notika-icon notika-support"></i> Usuarios</a>
+                        <li><a data-toggle="tab" href="#Roles"><i class="notika-icon notika-support"></i> Roles</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
@@ -152,6 +210,16 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
                                 <li><a href="{{ route('crear_usuario') }}">Agregar usuarios</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-content custom-menu-content">
+                        <div id="Roles" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('roles') }}">Listado roles</a></li>
+                                <li><a href="{{ route('crear_rol') }}">Agregar rol</a></li>
                                 
                             </ul>
                         </div>

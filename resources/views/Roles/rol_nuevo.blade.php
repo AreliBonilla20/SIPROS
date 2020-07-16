@@ -1,95 +1,145 @@
-@extends('layout')
+@extends('layout_usuarios')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Registro de nuevo rol</div>
 
+<div class="breadcomb-area" >
+		<div class="container" >
+			<div class="row" >
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-icon">
+										<i class="notika-icon notika-form"></i>
+									</div>
+									<div class="breadcomb-ctn">
+										<h2>Registro de rol</h2>
+										<p>Ingrese los datos y permisos que contendrá el rol</p>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcomb area End-->
+    <!-- Form Element area Start-->
+    <div class="form-element-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd">
+                            <h2>Rol</h2>
+                            <p>Complete los campos del formulario</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-example-wrap">
+                                    <form action="{{route('guardar_rol')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
 
-                    <form class="form-horizontal" action="{{ route('roles.store') }}" id="frmnuevorol" name="frmnuevorol" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                            @endif
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="name">Nombre de rol</label>
-                                        <input type="text"  class="form-control  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre del rol" required>
-                                        @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
+                                        @if (session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                            {{ session('status') }}
+                                            </div>
                                         @endif
-                                    </div>
 
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="slug">Slug(identificador del rol)</label>
-                                        <input type="text"  class="form-control  @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="xxxx.xxxx" required>
-                                        @if ($errors->has('slug'))
-                                            <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('slug') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="description">Descripción del rol</label>
-                                        <textarea type="text"  class="form-control  @error('description') is-invalid @enderror" id="description" name="description" placeholder="Ingrese la descripción" required></textarea>
-                                        @if ($errors->has('description'))
-                                            <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('description') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <h4>Permisos especiales</h4>
-                                    <div class="form-check-inline">
-                                        <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="special" value="all-access">Acceso Total
+                                        <div class="form-example-int">
+                                            <div class="form-group">
+                                                <label for="nombre"><strong>Nombre del rol</strong> </label>
+                                                <div class="nk-int-st">
+                                                    <input type="text" class="form-control input-sm  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre del rol" required>
+                                                </div>
+                                                @if ($errors->has('name'))
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+    
+                                        
+                                        <div class="form-example-int">
+                                            <div class="form-group">
+                                                <label for="nombre"><strong>Slug o identificador del rol</strong> </label>
+                                                <div class="nk-int-st">
+                                                    <input type="text" class="form-control input-sm  @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Identificador del rol" required>
+                                                </div>
+                                                @if ($errors->has('slug'))
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('slug') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-example-int">
+                                            <div class="form-group">
+                                                <label for="nombre"><strong>Descripción del rol</strong> </label>
+                                                <div class="nk-int-st">
+                                                <input type="text"  class="form-control input-sm @error('description') is-invalid @enderror" id="description" name="description" placeholder="Ingrese la descripción" required></textarea>
+                                                </div>
+                                                @if ($errors->has('description'))
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('description') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                        
+
+                                        <div class="floating-numner form-rlt-mg">
+                                            <p><strong>Permisos especiales</strong></p>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input type="radio" class="i-checks" name="special" value="all-access">Acceso Total
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input type="radio" class="i-checks" name="special" value="no-access">Ningun Acceso
                                         </label>
                                     </div>
-                                    <div class="form-check-inline">
-                                        <label class="form-check-label">
-                                            <input type="radio" class="form-check-input" name="special" value="no-access">Ningun Acceso
-                                        </label>
-                                    </div>
-                            
+                                    <br>
                                     <hr>
                                     <h4>Lista de Permisos</h4>
                                     
-                                    <div id="permissions-group" class="form-group">
-                                        <ul id="permissions" class="list-group-item scrollbar">
+                                    
                                             @foreach ($permissions as $permission)
-                                            <li>
-                                                    <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="permissions[]" value="{{ $permission->id }}"><spam class="font-weight-bold">{{ $permission->name }}  </spam>
-                                                              <em>{{  $permission->description ?: 'N/A' }}</em>
-                                                    </label>
-                                            </li>
+                                            
+                                            <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="fm-checkbox">
+                                            <label><input type="checkbox" class="i-checks" name="permissions[]" value="{{ $permission->id }}"> <i></i>  <strong>{{ $permission->name }} : </strong> {{  $permission->description ?: 'N/A' }}</label>
+                                            </div>
+                                            </div>
+                                            </div>
                                             @endforeach
                 
-                                        </ul>
-                                    </div>
+                                    
 
-            
+                                    <button type="submit" class="btn btn-success notika-btn-success">Guardar</button>
+
+                                    </form>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Guardar nuevo Rol</button>
+                        
+                            
+                                    <br>
+                                    @if (session('agregada'))
+                                        <div class="alert alert-success mt-3">
+                                            {{ session('agregada') }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </form>
-
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

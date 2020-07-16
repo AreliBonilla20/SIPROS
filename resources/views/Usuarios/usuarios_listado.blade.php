@@ -56,34 +56,35 @@
                                 <thead>
                                     <tr>
                                         <th></th>
+                                        <th></th>
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Correo electrónico</th>
-                                        <th>Editar</th>
-                                        <th>Suspender</th>
+                                        <th>Rol</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($users as $usuario)
                                         <tr>
                                             <td></td>
+                                            <td></td>
                                             <td>{{$usuario->id}}</td>
                                             <td>{{$usuario->name}}</td>
                                             <td>{{$usuario->email}}</td>
-                                            <td><a href="{{route('editar_usuario', $usuario->id)}}" class="btn btn-warning notika-btn-warning">Editar</a></td>
-                                            <td><a href=""><button class="btn btn-danger notika-btn-danger">Suspender</button></a></td>
+                                            <td><a href="{{ route('users.edit', $usuario->id) }}" class="btn btn-warning notika-btn-warning">Asignar rol</a></td>
                                         </tr>
                                 @endforeach
                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                    <th></th>
+                                        <th></th>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Correo electrónico</th>
+                                        <th>Rol</th>
                                     </tr>
                                 </tfoot>
                             </table>
