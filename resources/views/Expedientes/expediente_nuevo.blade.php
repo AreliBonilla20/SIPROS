@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('Expedientes.store')}}" method="POST">
+                                    <form action="{{route('guardar_expediente')}}" method="POST">
                                     @csrf
                                         @if($errors->any())
                                          <div class="alert alert-danger">
@@ -109,41 +109,34 @@
                                     </div>
 
                                     <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                    
-                                            <label><strong>Dirección</strong></label>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                        </div>
-                                        </div>
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker" name="departamento">
-                                                    <option>Seleccione el departamento</option>
-                                                    @foreach($departamentos as $departamento)
-                                                    <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="form-group">
+                                                <label><strong>Dirección</strong></label>
                                             </div>
-                                        </div>
-                                        <br><br>
-
-
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker" name="municipio">
-                                                    <option>Seleccione el municipio</option>
-                                                    @foreach($municipios as $municipio)
-                                                    <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
-                                                    @endforeach
-                                                </select>
+                                            
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" data-live-search="true" name="departamento" id="departamento" required>
+                                                        <option value="">-Departamento-</option>
+                                                        @foreach ($departamentos as $departamento)
+                                                            <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <br><br>
+    
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" data-live-search="true" name="municipio" id="municipio" required>
+                                                        <option value="">-Municipio-</option>
+                                                        @foreach ($municipios as $municipio)
+                                                            <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br><br>
 
-                                        <div class="form-example-int mg-t-15">
+                                            <div class="form-example-int mg-t-15">
                                             <div class="form-group">
                                                
                                                 <div class="nk-int-st">
@@ -152,6 +145,11 @@
                                             </div>
                                         </div>
                                     
+                                        
+                                        
+                                       
+
+                                       
                                     </div>
 
                                     <div class="form-example-int mg-t-15">
@@ -172,32 +170,7 @@
                                         </div>
                                     </div>
 
-                                    <!--div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker" name="institucion">
-                                                    <option>Seleccione la institucion</option>
-                                                    @foreach($instituciones as $institucion)
-                                                    <option value="{{$institucion->id}}">{{$institucion->nombre}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <br><br>
-
-
-                                       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker" name="area">
-                                                    <option>Seleccione el área</option>
-                                                    @foreach($areas as $area)
-                                                    <option value="{{$area->id}}">{{$area->nombre_area}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <br><br-->
-                                    <br>
-                                    <br>
+                                   
                                     <div class="form-example-int mg-t-15">
                                         <div class="form-group">
                                             <label><strong>Área de interés</strong></label>

@@ -119,7 +119,7 @@
                                                     <select class="selectpicker" data-live-search="true" name="id_municipio" id="id_municipio" required>
                                                         <option value="">-Municipio-</option>
                                                         @foreach ($municipios as $municipio)
-                                                            <option value="{{$municipio->id}}" {{ ($institucionActualizar->id_municipio == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
+                                                            <option value="{{$municipio->id}}" {{ ($institucionActualizar->id_municipio == $loop->iteration ? "selected":"") }}> {{$municipio->nombre_municipio}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

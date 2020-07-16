@@ -20,7 +20,6 @@ class Estudiante extends Model
    	return $this->belongsTo(Carrera::class,'codigo');
    }
 
-
    public function sexo(){
       return $this->belongsTo(Sexo::class);
    }

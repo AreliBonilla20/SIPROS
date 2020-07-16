@@ -42,9 +42,9 @@ class estudianteController extends Controller
         $sexos=Sexo::all();
         $departamentos=Departamento::all();
         $municipios=Municipio::all();
-        $areas=Area::all();
         $instituciones=Institucion::all();
-        return view('Expedientes.expediente_nuevo',compact('carreras','sexos','departamentos','municipios','areas','instituciones'));//
+
+        return view('Expedientes/expediente_nuevo',compact('carreras','sexos','departamentos','municipios','instituciones'));
     }
 
     /**
@@ -55,9 +55,8 @@ class estudianteController extends Controller
      */
     public function store(storeEstudianteRequest $request)
     {
-        //
+    
         $estudiante = new Estudiante();
-        //$inscripcion = new Inscripcion();
         $estudiante->carne=$request->input('carne');
         $estudiante->nombres=$request->input('nombres');
         $estudiante->apellidos=$request->input('apellidos');
@@ -76,17 +75,8 @@ class estudianteController extends Controller
         $estudiante->telefono=$request->input('telefono');
         $estudiante->area=$request->input('area');
         $estudiante->save();
-        
-        /*$fecha=Carbon::now();
-        $fecha=$fecha->format('d-m-y');
-        $inscripcion->fecha=$fecha;
-        $inscripcion->estudiante()->associate($estudiante);
-        $area=area::find(request('area'));
-        $inscripcion->area()->associate($area);
-        $inscripcion->save();*/
-       // 
-        //
-        return redirect()->route('Expedientes.index');
+    
+        return redirect()->route('expedientes');
     }
 
     /**
@@ -107,8 +97,9 @@ class estudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Estudiante $estudiante)
+    public function edit($id)
     {
+        $estudianteActualizar = Estudiante::findOrFail($id);
         
         $carreras=Carrera::all();
         $sexos=Sexo::all();
@@ -116,7 +107,8 @@ class estudianteController extends Controller
         $municipios=Municipio::all();
         $areas=Area::all();
         $instituciones=Institucion::all();
-        return view('Expedientes.expediente_editar', compact('estudiante','carreras','sexos','departamentos','municipios','areas','instituciones'));
+
+        return view('Expedientes/expediente_editar', compact('estudianteActualizar','carreras','sexos','departamentos','municipios','areas','instituciones'));
     }
 
     /**
@@ -126,19 +118,26 @@ class estudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, estudiante $estudiante)
+    public function update(Request $request, $carne)
     {
-        
-        $estudiante->fill($request->all());
-        $estudiante->save();
-        return redirect()->route('Expedientes.index',[$estudiante])->with('status','Expediente actualizado correctamente');
-        /*$fecha=Carbon::now();
-        $fecha=$fecha->format('d-m-y');
-        $inscripcion->fecha=$fecha;
-        $inscripcion->estudiante()->associate($estudiante);
-        $area=area::find(request('area'));
-        $inscripcion->area()->associate($area);
-        $inscripcion->save();*/
+        $estudianteActualizar = Estudiante::findOrFail($carne);
+
+        $estudianteActualizar->carne = $request->carne;
+        $estudianteActualizar->nombres = $request->nombres;
+        $estudianteActualizar->apellidos = $request->apellidos;
+        $estudianteActualizar->edad = $request->edad;
+        $estudianteActualizar->dui = $request->dui;
+        $estudianteActualizar->direccion = $request->direccion;
+        $estudianteActualizar->email = $request->email;
+        $estudianteActualizar->telefono = $request->telefono;
+        $estudianteActualizar->area = $request->area;
+        $estudianteActualizar->codigo = $request->codigo;
+        $estudianteActualizar->sexo_id = $request->sexo_id;
+        $estudianteActualizar->municipio_id = $request->municipio_id;
+        $estudianteActualizar->departamento_id = $request->departamento_id;
+        $estudianteActualizar->save();
+
+        return back()->with('actualizada', 'Institución actualizada correctamente.');
        
     }
 

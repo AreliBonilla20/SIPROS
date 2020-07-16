@@ -57,15 +57,11 @@ Route::put('users/{user}', 'UserController@update')->name('users.update')
     ->middleware('permission:users.edit');
 
 ///////////////////////////////////////Rutas de la gestión de expedientes/////////////////////////////////////////
-Route::get('/expedientes_listado', function () {
-    return view('Expedientes/expedientes_listado');
-});
-
-Route::get('/expediente_nuevo', function () {
-    return view('Expedientes/expediente_nuevo');
-});
-
-Route::resource('Expedientes','estudianteController');
+Route::get('/expedientes', 'EstudianteController@index')->name('expedientes');
+Route::get('/expedientes/crear', 'EstudianteController@create')->name('crear_expediente');
+Route::post('/expedientes/guardar', 'EstudianteController@store')->name('guardar_expediente');
+Route::get('/expedientes/editar/{id}', 'EstudianteController@edit')->name('editar_expediente');
+Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name('actualizar_expediente');
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones');

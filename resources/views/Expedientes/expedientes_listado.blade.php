@@ -46,7 +46,7 @@
                                 <h2>Nuevo expediente</h2>
                                 <p>Agregar un nuevo expediente</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('Expedientes.create') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_expediente') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -57,6 +57,7 @@
                                         <th>Carnet</th>
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
+                                        <th>Carrera</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -66,8 +67,9 @@
                                         <td>{{$estudiante->carne}}</td>
                                         <td>{{$estudiante->nombres}}</td>
                                         <td>{{$estudiante->apellidos}}</td>
+                                        <td>{{$estudiante->carrera->nombre_carrera}}</td>
                                         <td>
-                                        <a href="/Expedientes/{{$estudiante->carne}}/edit" class=" btn btn-primary">Editar</a>
+                                        <a href="{{route('editar_expediente', $estudiante->carne)}}" class="btn btn-warning notika-btn-warning">Editar</a>
                                         </td>
                                     </tr>
                                 @endforeach 
