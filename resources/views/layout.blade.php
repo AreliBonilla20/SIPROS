@@ -118,14 +118,14 @@
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
                                 <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
-                                    <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
+                                  <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
                                         <li><a href="index.html">Inicio</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
                                     <ul class="collapse dropdown-header-top">
                                         <li><a href="{{ route('Expedientes.index') }}">Listado expedientes</a></li>
-                                        <li><a href="{{ route('Expedientes.create) }}">Agregar expediente</a></li>
+                                        <li><a href="{{ route('Expedientes.create') }}">Agregar expediente</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>

@@ -105,7 +105,7 @@ class estudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(estudiante $estudiante)
+    public function edit(Estudiante $estudiante)
     {
         
         $carreras=Carrera::all();
@@ -114,7 +114,7 @@ class estudianteController extends Controller
         $municipios=Municipio::all();
         $areas=Area::all();
         $instituciones=Institucion::all();
-        return view('Expedientes.expediente_nuevo', compact('estudiante','carreras','sexos','departamentos','municipios','areas','instituciones'));
+        return view('Expedientes.expediente_editar', compact('estudiante','carreras','sexos','departamentos','municipios','areas','instituciones'));
     }
 
     /**
