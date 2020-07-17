@@ -85,20 +85,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Área de conocimiento</th>
-                                        <th>Objetivos</th>
-                                        <th>Logros</th>
-                                        <th>Institución</th>
-                                        <th>Cantidad de estudiantes</th>
-                                        <th>Encargado</th>
-                                        <th>Teléfono</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Acción</th>
-                                    </tr>
-                                </tfoot>
+                               
                             </table>
                         </div>
                     </div>
@@ -106,4 +93,5 @@
             </div>
         </div>
     </div>
+    <br>
 @endsection

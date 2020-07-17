@@ -54,20 +54,20 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Carnet</th>
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
-                                        <th>Carrera</th>
-                                        <th>Acciones</th>
+                                        <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($estudiantes as $estudiante)
                                     <tr>
+                                        <td></td>
                                         <td>{{$estudiante->carne}}</td>
                                         <td>{{$estudiante->nombres}}</td>
                                         <td>{{$estudiante->apellidos}}</td>
-                                        <td>{{$estudiante->carrera->nombre_carrera}}</td>
                                         <td>
                                         <a href="{{route('editar_expediente', $estudiante->carne)}}" class="btn btn-warning notika-btn-warning">Editar</a>
                                         </td>

@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 	<!-- Breadcomb area End-->
     <!-- Form Element area Start-->
     <div class="form-element-area">
@@ -33,6 +33,11 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
+                    @if (session('actualizada'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('actualizada') }}
+                    </div>                   
+                    @endif
                         <div class="basic-tb-hd">
                             <h2>Editar la institución: {{$institucionActualizar->nombre}}</h2>
                             <p>Complete los campos del formulario</p>
@@ -142,11 +147,7 @@
                                         </div>
                                     </form>
                                     <br>
-                                    @if (session('actualizada'))
-                                        <div class="alert alert-success mt-3">
-                                            {{ session('actualizada') }}
-                                        </div>
-                                    @endif
+                                    
                                 </div>
                             </div>
                         </div>

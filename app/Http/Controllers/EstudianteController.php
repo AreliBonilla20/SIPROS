@@ -76,7 +76,7 @@ class estudianteController extends Controller
         $estudiante->area=$request->input('area');
         $estudiante->save();
     
-        return redirect()->route('expedientes');
+        return back()->with('agregado', 'Expediente agregado correctamente.');
     }
 
     /**
@@ -137,7 +137,7 @@ class estudianteController extends Controller
         $estudianteActualizar->departamento_id = $request->departamento_id;
         $estudianteActualizar->save();
 
-        return back()->with('actualizada', 'Institución actualizada correctamente.');
+        return back()->with('actualizado', 'Expediente actualizado correctamente.');
        
     }
 

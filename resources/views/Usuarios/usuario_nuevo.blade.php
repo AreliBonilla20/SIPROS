@@ -33,6 +33,11 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
+                    @if (session('agregado'))
+                        <div class="alert alert-success mt-3">
+                            {{ session('agregado') }}
+                        </div>
+                    @endif
                         <div class="basic-tb-hd">
                             <h2>Usuario</h2>
                             <p>Complete los campos del formulario</p>
@@ -75,13 +80,7 @@
                                         </div>
                                     </form>
                                     <br>
-                                    <br>
-                                    @if (session('agregado'))
-                                        <div class="alert alert-success mt-3">
-                                
-                                            {{ session('agregado') }}
-                                        </div>
-                                    @endif
+                                    
                                 </div>
                             </div>
                         </div>

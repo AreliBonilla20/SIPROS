@@ -83,26 +83,10 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Tipo</th>
-                                        <th>Sector</th>
-                                        <th>Dirección</th>
-                                        <th>Región</th>
-                                        <th>Departamento</th>
-                                        <th>Municipio</th>
-                                        <th>Acción</th>
-                                    </tr>
-                                </tfoot>
+                        
                             </table>
                             <br>
-                            @if (session('eliminada'))
-                                <div class="alert alert-success mt-3">
-                                    {{session('eliminada')}}
-                                </div>
-                            @endif
+                           
                         </div>
                     </div>
                 </div>

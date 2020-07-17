@@ -1,12 +1,41 @@
 @extends('layout')
 
 @section('content')
+<div class="breadcomb-area" >
+		<div class="container" >
+			<div class="row" >
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-icon">
+										<i class="notika-icon notika-form"></i>
+									</div>
+									<div class="breadcomb-ctn">
+										<h2>Edición de proyecto</h2>
+										<p>Ingrese los datos a modificar del proyecto</p>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <div class="form-element-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
+                    @if (session('actualizado'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('actualizado') }}
+                    </div>                   
+                    @endif
                         <div class="basic-tb-hd">
                             <h2>Proyecto</h2>
                             <p>Complete los campos del formulario</p>
@@ -117,11 +146,7 @@
                                             <a class="btn btn-danger notika-btn-danger" href="{{route('proyectos')}}">Cancelar</a>                                    
                                         </div>
                                     </form> 
-                                    @if (session('actualizado'))
-                                    <div class="alert alert-success mt-3">
-                                        {{ session('actualizado') }}
-                                    </div>
-                                    @endif   
+                                     
                                 </div>
                             </div>
                         </div>

@@ -58,10 +58,11 @@
                                             <tr>
                                                 <th></th>
                                                 <th></th>
+                                                <th></th>
                                                 <th>ID</th>
                                                 <th>Nombre</th>                                      
                                                 <th>Editar</th>
-                                                <th>Suspender</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -69,10 +70,11 @@
                                                 <tr>
                                                     <td></td>
                                                     <td></td>
+                                                    <td></td>
                                                     <td>{{$rol->id}}</td>
                                                     <td>{{$rol->name}}</td>                                           
                                                     <td><a href=""><button class="btn btn-warning notika-btn-warning">Editar</button></a></td>
-                                                    <td><a href=""><button class="btn btn-danger notika-btn-danger">Suspender</button></a></td>
+                            
                                                 </tr>
                                         @endforeach
                                            

@@ -46,8 +46,8 @@
 						<br>
 					</span>
 
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Ingrese el nombre de usuario">
-						<input style="color: white;" id="email" type="email" class="input100 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocustype="text">
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Ingrese el correo electrónico">
+						<input style="background: white; color: #2d2e2e;" id="email" type="email" class="input100 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocustype="text">
 						<span class="focus-input100" data-placeholder="Usuario"></span>
                         @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-50" data-validate="Ingrese la contraseña">
-						<input  style="color: black;" id="password" type="password" name="password" class="input100 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required>
+						<input  style="background: white; color: #2d2e2e;" id="password" type="password" name="password" class="input100 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required>
 						<span class="focus-input100" data-placeholder="Contraseña"></span>
                         @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" style="background: #23b8a4;">
-                        {{ __('Cerrar sesión') }}
+                        {{ __('Iniciar sesión') }}
 						</button>
 					</div>
 
