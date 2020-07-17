@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
+use \DB;
 
 use Illuminate\Http\Request;
 
@@ -77,10 +78,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {   
+       
         $user = User::find($id);
+
         $user->update($request->all());
 
-        $user->roles()->sync($request->get('roles'));
+        $resultado = DB::table('role_user')->where('user_id', '=', $user->id)->get();
+        if ($resultado->isEmpty()) {
+            DB::table('role_user')->insert([
+                'role_id' => $request->role_id,
+                'user_id' => $user->id,
+            ]);
+        }else{
+            DB::table('role_user')->where('user_id', '=', $user->id)->update([
+                'role_id' => $request->role_id
+            ]);            
+        }
 
         return redirect()->route('users.edit', $user->id)
             ->with('info', 'Usuario guardado con éxito');
