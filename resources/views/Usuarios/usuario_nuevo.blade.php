@@ -77,6 +77,7 @@
 
                                         <div class="form-example-int mg-t-15">
                                             <button class="btn btn-success notika-btn-success">Guardar usuario</button>
+                                            <a class="btn btn-danger notika-btn-danger" href="{{route('usuarios')}}">Cancelar</a>
                                         </div>
                                     </form>
                                     <br>

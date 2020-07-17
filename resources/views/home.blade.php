@@ -137,38 +137,33 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Inicio</a>
-                                    <ul class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('welcome') }}">Inicio</a></li>
+                                <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
+                                    <ul id="Inicio" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('home') }}">Inicio</a></li>
                                     </ul>
                                 </li>
                                
-                                <li><a data-toggle="collapse" data-target="#demoevent" href="#">Expedientes</a>
-                                  <ul id="demoevent" class="collapse dropdown-header-top">
-                                      <li><a href="expediente_lista.html">Expedientes</a></li>
-                                      <li><a href="expediente_nuevo.html">Agregar expediente</a></li>
+                                <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
+                                  <ul id="Expedientes" class="collapse dropdown-header-top">
+                                      <li><a href="{{ route('expedientes') }}">Expedientes</a></li>
+                                      <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
                                   </ul>
                               </li>
-                               
-              
-                                <li><a data-toggle="collapse" data-target="#democrou" href="#">Proyectos</a>
-                                    <ul id="democrou" class="collapse dropdown-header-top">
-                                        <li><a href="proyecto_lista.html">Proyectos</a></li>
-                                        <li><a href="proyecto_nuevo.html">Agregar proyectos</a></li>
+
+                              <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
+                                    <ul id="Instituciones" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('instituciones') }}">Proyectos</a></li>
+                                        <li><a href="{{ route('crear_institucion') }}">Agregar proyectos</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demolibra" href="#">Empresas</a>
-                                    <ul id="demolibra" class="collapse dropdown-header-top">
-                                        <li><a href="instituciones_lista.html">Proyectos</a></li>
-                                        <li><a href="instituciones_nuevo.html">Agregar proyectos</a></li>
+
+                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
+                                    <ul id="Proyectos" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('proyectos') }}">Proyectos</a></li>
+                                        <li><a href="{{ route('crear_proyecto') }}">Agregar proyectos</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Usuarios</a>
-                                    <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="usuario_lista.html">Proyectos</a></li>
-                                        <li><a href="usuario_nuevo.html">Agregar proyectos</a></li>
-                                    </ul>
-                                </li>
+                        
                                
                             </ul>
                         </nav>

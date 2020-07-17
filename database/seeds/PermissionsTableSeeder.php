@@ -138,7 +138,7 @@ class PermissionsTableSeeder extends Seeder
 
 
 
-        //empresas
+        //Institucines
         Permission::create([
             'name'           => 'Navegar en instituciones',
             'slug'           => 'institucion.index',

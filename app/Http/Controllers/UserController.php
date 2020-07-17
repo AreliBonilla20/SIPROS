@@ -95,8 +95,7 @@ class UserController extends Controller
             ]);            
         }
 
-        return redirect()->route('users.edit', $user->id)
-            ->with('info', 'Usuario guardado con éxito');
+        return back()->with('agregado', 'Rol asignado correctamente.');
     }
 
     /**
