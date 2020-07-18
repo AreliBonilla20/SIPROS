@@ -11,7 +11,7 @@ use App\Area;
 use App\Institucion;
 use App\Inscripcion;
 use Illuminate\Http\Request;
-use App\http\Requests\storeEstudianteRequest;
+
 
 class EstudianteController extends Controller
 {
@@ -52,7 +52,7 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storeEstudianteRequest $request)
+    public function store(Request $request)
     {
     
         $estudiante = new Estudiante();
