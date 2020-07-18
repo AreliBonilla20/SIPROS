@@ -12,9 +12,8 @@ use App\Institucion;
 use App\Inscripcion;
 use Illuminate\Http\Request;
 use App\http\Requests\storeEstudianteRequest;
-use Carbon\Carbon;
 
-class estudianteController extends Controller
+class EstudianteController extends Controller
 {
     /**
      * Display a listing of the resource.
