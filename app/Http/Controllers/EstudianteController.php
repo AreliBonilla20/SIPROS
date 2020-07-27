@@ -11,7 +11,8 @@ use App\Area;
 use App\Institucion;
 use App\Inscripcion;
 use Illuminate\Http\Request;
-
+use RealRashid\SweerAlert\Facades\Alert;
+use App\Http\Requests\EstudianteRequest;
 
 class EstudianteController extends Controller
 {
@@ -52,9 +53,8 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-    
+    public function store(EstudianteRequest $request)
+    {   
         $estudiante = new Estudiante();
         $estudiante->carne=$request->input('carne');
         $estudiante->nombres=$request->input('nombres');
@@ -74,8 +74,10 @@ class EstudianteController extends Controller
         $estudiante->telefono=$request->input('telefono');
         $estudiante->area=$request->input('area');
         $estudiante->save();
-    
-        return back()->with('agregado', 'Expediente agregado correctamente.');
+
+        toast('Expediente agregado correctamente', 'success');
+        return redirect('expedientes');
+        
     }
 
     /**

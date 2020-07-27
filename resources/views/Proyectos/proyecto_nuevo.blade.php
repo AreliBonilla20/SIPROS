@@ -31,11 +31,6 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                    @if (session('agregado'))
-                        <div class="alert alert-success mt-3">
-                            {{ session('agregado') }}
-                        </div>
-                    @endif
                         <div class="basic-tb-hd">
                             <h2>Proyecto</h2>
                             <p>Complete los campos del formulario</p>
@@ -50,7 +45,10 @@
                                             <div class="form-group">
                                                 <label><strong>Nombre</strong></label>
                                                 <div class="nk-int-st">
-                                                    <input type="text" class="form-control input-sm" name="nombre" id="nombre" placeholder="Nombre del proyecto" value="{{old('nombre')}}" required>
+                                                    <input type="text" class="form-control input-sm" name="nombre" id="nombre" placeholder="Nombre del proyecto" value="{{old('nombre')}}">
+                                                    @foreach ($errors->get('nombre') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>

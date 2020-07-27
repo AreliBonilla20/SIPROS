@@ -10,6 +10,8 @@ use App\Region;
 use App\Departamento;
 use App\Municipio;
 use Illuminate\Http\Request;
+use RealRashid\SweerAlert\Facades\Alert;
+use App\Http\Requests\InstitucionRequest;
 
 class InstitucionController extends Controller
 {
@@ -47,20 +49,10 @@ class InstitucionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InstitucionRequest $request)
     {
         $nuevaInstitucion = new Institucion;
-        $request->validate([
-            'nombre'=>'required',
-            'tipo_institucion_id'=>'required',
-            'direccion'=>'required',
-            'id_region'=>'required',
-            'id_departamento'=>'required',
-            'id_municipio'=>'required',
-            'sector_id'=>'required',
-        ]);
-
-        $nuevaInstitucion->nombre = $request->nombre;
+        $nuevaInstitucion->nombre = $request->input('nombre');
         $nuevaInstitucion->tipo_institucion_id = $request->tipo_institucion_id;
         $nuevaInstitucion->direccion = $request->direccion;
         $nuevaInstitucion->id_region = $request->id_region;
@@ -69,7 +61,8 @@ class InstitucionController extends Controller
         $nuevaInstitucion->sector_id = $request->sector_id;
         $nuevaInstitucion->save();
 
-        return back()->with('agregada', 'Institución agregada correctamente.');
+        toast('Institución agregada correctamente', 'success');
+        return redirect('instituciones');
     }
 
     /**
@@ -108,7 +101,7 @@ class InstitucionController extends Controller
      * @param  \App\Institucion  $institucion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InstitucionRequest $request, $id)
     {
         $institucionActualizar = App\Institucion::findOrFail($id);
         $institucionActualizar->nombre = $request->nombre;

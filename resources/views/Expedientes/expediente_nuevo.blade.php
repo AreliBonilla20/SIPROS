@@ -30,188 +30,215 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                    @if (session('agregado'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('agregado') }}
-                    </div>                   
-                    @endif
                         <div class="basic-tb-hd">
                             <h2>Expediente</h2>
                             <p>Complete los campos del formulario</p>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('guardar_expediente')}}" method="POST">
+                                    <form action="{{route('guardar_expediente')}}" method="POST" >
                                     @csrf
-                                        @if($errors->any())
-                                         <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach($errors->all() as $error)
-                                                 <li>{{$error}}</li>
-                                                @endforeach
-                                            </ul>
+                                       
+                                    <label for="carne">Carnet <small style="color:#16D195;" >*</small></label>
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
                                         </div>
-                                     @endif
-                                     
-                                    <div class="form-example-int">
-                                        <div class="form-group">
-                                            <label><strong>Carnet</strong> </label>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Carnet del estudiante" name="carne">
-                                            </div>
-                                        </div>
-                                    </div>
-                                  
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                            <label><strong>Nombres</strong></label>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Nombres del estudiante" name="nombres">
-                                            </div>
-                                        </div>
-                                    </div>
-                             
-                                    <div class="form-example-int">
-                                        <div class="form-group">
-                                            <label><strong>Apellidos</strong></label>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Apellidos del estudiante" name="apellidos">
-                                            </div>
-                                        </div>
-                                    </div>
-                                  
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                            <label><strong>Edad</strong></label>
-                                            <div class="nk-int-st">
-                                                <input type="number" class="form-control input-sm" placeholder="Edad del estudiante" name="edad">
-                                            </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" name="carne" placeholder="AA#####">
+                                            @foreach ($errors->get('carne') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
                                         </div>
                                     </div>
 
-
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                         <label><strong>Género</strong></label>
+                                    <label for="nombres">Nombres <small style="color:#16D195;" >*</small></label>
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" name="nombres" placeholder="Nombres del estudiante">
+                                            @foreach ($errors->get('nombres') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                  
+                                    <label for="apellidos">Apellidos <small style="color:#16D195;" >*</small></label>
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos del estudiante">
+                                            @foreach ($errors->get('apellidos') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                
+                                    <label for="edad">Edad <small style="color:#16D195;" >*</small></label>
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="number" class="form-control" name="edad" placeholder="Edad del estudiante">
+                                            @foreach ($errors->get('edad') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <label for="sexo" >Género <small style="color:#16D195;" >*</small></label>
+                                    <div class="form-example-int mg-t-15">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="sexo">
-                                                    <option>-Seleccione una opción-</option>
+                                            <select class="selectpicker" name="sexo_id">
+                                                    <option value="">-Seleccione una opción-</option>
                                                     @foreach($sexos as $sexo)
                                                     <option value="{{$sexo->id}}">{{$sexo->sexo}}</option>
                                                     @endforeach
-                                                </select>
+                                            </select>
+                                            @foreach ($errors->get('sexo') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
                                         </div>
-                                        </div>
-                                    
+                                        </div> 
                                     </div>
-                                    <br><br>
-
+                                    <br><br><br>
+                                    
+                                    <label for="codigo">Carrera <small style="color:#16D195;" >*</small></label>
                                     <div class="form-example-int mg-t-15">
                                         <div class="form-group">
-                                         <label><strong>Carrera</strong></label>
+                                        
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="carrera">
-                                                    <option>-Seleccione una opción-</option>
+                                            <select class="selectpicker" name="codigo">
+                                                    <option value="">-Seleccione una opción-</option>
                                                     @foreach($carreras as $carrera)
                                                     <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option>
                                                     @endforeach
-                                                </select>
+                                            </select>
+                                            @foreach ($errors->get('codigo') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
                                         </div>
                                         </div>
                                     
                                     </div>
-                                    <br><br>
+                                    <br><br><br>
 
 
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                            <label><strong>DUI</strong></label>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Documento único de identidad del estudiante" name="dui">
-                                            </div>
+                                    <label for="dui">DUI</label>
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" name="dui" placeholder="00000000-0">
+                                            @foreach ($errors->get('dui') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
                                         </div>
                                     </div>
 
+                                    <label>Dirección <small style="color:#16D195;" >*</small></label>
                                     <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Dirección</strong></label>
-                                            </div>
-                                            
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="departamento" id="departamento" required>
-                                                        <option value="">-Departamento-</option>
+                                                    <select class="selectpicker" data-live-search="true" name="departamento" id="departamento" >
+                                                        <option value="">-Seleccione una opción-</option>
                                                         @foreach ($departamentos as $departamento)
                                                             <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
                                                         @endforeach
                                                     </select>
+                                                    @foreach ($errors->get('departamento') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                                                    
                                                 </div>
                                             </div>
     
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="municipio" id="municipio" required>
-                                                        <option value="">-Municipio-</option>
+                                                    <select class="selectpicker" data-live-search="true" name="municipio" id="municipio" >
+                                                        <option value="">-Seleccione una opción-</option>
                                                         @foreach ($municipios as $municipio)
                                                             <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
                                                         @endforeach
                                                     </select>
+                                                    @foreach ($errors->get('municipio') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                            <br><br>
+                                            <br><br><br>
 
-                                            <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                               
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-support"></i>
+                                                </div>
                                                 <div class="nk-int-st">
-                                                    <input type="text" class="form-control input-sm" placeholder="Dirección del estudiante" name="direccion">
+                                                <input type="text" class="form-control" name="direccion" placeholder="Dirección del estudiante">
+                                                @foreach ($errors->get('direccion') as $mensaje)
+                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                                 </div>
                                             </div>
                                         </div>
-                                    
-                                        
-                                        
-                                       
 
-                                       
-                                    </div>
-
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                            <label><strong>Teléfono</strong></label>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Teléfono del estudiante" name="telefono">
+                                        <label for="telefono">Teléfono <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-phone"></i>
                                             </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" name="telefono" placeholder="0000-0000">
+                                            @foreach ($errors->get('telefono') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
                                         </div>
-                                    </div>
+                                        </div>
     
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                            <label><strong>Correo Electrónico</strong></label>
+                                        <label for="email">Correo electrónico <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-mail"></i>
+                                            </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Correo electrónico del estudiante"  name="email">
+                                                <input type="text" class="form-control" name="email" placeholder="Correo electrónico del estudiante">
+                                                @foreach ($errors->get('email') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
                                             </div>
                                         </div>
-                                    </div>
 
-                                   
-                                    <div class="form-example-int mg-t-15">
-                                        <div class="form-group">
-                                            <label><strong>Área de interés</strong></label>
+                                    
+                                        <label for="area">Área de interés <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-support"></i>
+                                            </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control input-sm" placeholder="Área de interés"  name="area">
+                                                <input type="text" class="form-control" name="area" placeholder="Área de interés del estudiante">
+                                                @foreach ($errors->get('area') as $mensaje)
+                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
-                                    </div>
-                             
-                                    <div class="form-example-int mg-t-15">
-                                        <button class="btn btn-success notika-btn-success">Guardar</button>
-                                        <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
+
+                                        <br>
+
+                                        <div class="form-example-int mg-t-15">
+                                            <button class="btn btn-success notika-btn-success">Guardar</button>
+                                            <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
+                                        </div>
+ 
                                     </div>
                                     </form>
                                    

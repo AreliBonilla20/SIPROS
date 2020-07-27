@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Institucion;
 use App\Proyecto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProyectoRequest;
 
 class ProyectoController extends Controller
 {
@@ -39,7 +40,7 @@ class ProyectoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProyectoRequest $request)
     {
         //Guarda un proyecto
          $proyecto = new Proyecto();
