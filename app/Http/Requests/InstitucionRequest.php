@@ -24,7 +24,7 @@ class InstitucionRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|max:150|alpha',
+            'nombre'=>'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'tipo_institucion_id'=>'required',
             'sector_id'=>'required',
             'id_region'=>'required',
@@ -39,7 +39,7 @@ class InstitucionRequest extends FormRequest
         return[
             'nombre.required'=>'* El campo nombre es obligatorio.',
             'nombre.max'=>'* La cantidad máxima de carácteres es 150.',
-            'nombre.alpha'=>'* Los carácteres deben ser solo letras.',
+            'nombre.regex'=>'* Los carácteres deben ser solo letras.',
             
             'tipo_institucion_id.required'=>'* Debe seleccionar una institución.',
 

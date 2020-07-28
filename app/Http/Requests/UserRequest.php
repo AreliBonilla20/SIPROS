@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,28 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ];
+    }
+
+    public function messages()
+    {   
+        return [
+        'name.required'=>'El campo nombre de usuario es obligatorio.',
+        'name.max'=>'La cantidad máxima de caracteres es 255.',
+
+        'email.required'=>'El campo correo electrónico es obligatorio.',
+        'email.max'=>'La cantidad máxima de caracteres es 255.',
+        'email.email'=>'El valor ingresado no corresponde a una dirección de correo electónico.',
+        'email.unique'=>'Ya existe un registro con este correo electrónico',
+
+        'password.required'=>'El campo contraseña es obligatorio.',
+        'password.min'=>'Deben ser más de 6 caracteres como mínimo.',
+        'password.confirmed'=>'Las contraseñas deben coincidir.',
+
+
+         ];
     }
 }

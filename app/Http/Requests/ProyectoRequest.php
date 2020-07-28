@@ -24,12 +24,13 @@ class ProyectoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|max:200|alpha',
-            'area'=>'required|max:250|alpha',
-            'ojetivos'=>'required|max:250|alpha',
-            'logro'=>'required|max:250|alpha',
+            'nombre'=>'required|max:200|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
+            'area'=>'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
+            'objetivos'=>'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
+            'logro'=>'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
+            'institucion'=>'required',
             'cantidad'=>'required|numeric|min:0',
-            'encargado'=>'required|max:150|alpha',
+            'encargado'=>'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'correo'=>'required|max:100|regex:/[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}/',
             'telefono'=>'required|max:9|regex:/[0-9]{4}-[0-9]{4}/',
         ];
@@ -50,9 +51,11 @@ class ProyectoRequest extends FormRequest
             'objetivos.max'=>'* La cantidad máxima de carácteres es 250.',
             'objetivos.alpha'=>'* Los carácteres deben ser solo letras.',
 
-            'logro.required'=>'* El campo logro es obligatorio.',
+            'logro.required'=>'* El campo logros es obligatorio.',
             'logro.max'=>'* La cantidad máxima de carácteres es 250.',
             'logro.alpha'=>'* Los carácteres deben ser solo letras.',
+
+            'institucion.required'=>'* Debe seleccionar una institución.',
 
             'cantidad.required'=>'* El campo cantidad es obligatorio.',
             'cantidad.numeric'=>'* La cantidad ingresada debe ser numérica.',

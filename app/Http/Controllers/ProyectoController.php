@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Institucion;
 use App\Proyecto;
 use Illuminate\Http\Request;
+use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\ProyectoRequest;
 
 class ProyectoController extends Controller
@@ -55,8 +56,8 @@ class ProyectoController extends Controller
          $proyecto->email = $request->correo;
          $proyecto->save();
  
-         //return redirect('Proyectos');
-         return back()->with('agregado', 'Proyecto agregado correctamente.');
+         toast('Proyecto agregado correctamente', 'success');
+         return redirect('proyectos');
     }
 
     /**
@@ -91,7 +92,7 @@ class ProyectoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProyectoRequest $request, $id)
     {
         //Actualizar un proyecto
         $proyecto = Proyecto::findOrFail($id);
@@ -106,8 +107,8 @@ class ProyectoController extends Controller
         $proyecto->email = $request->correo;
         $proyecto->save();
         
-        //return redirect('Proyectos');
-        return back()->with('actualizado', 'Proyecto actualizado correctamente.');
+        toast('Proyecto actualizado correctamente', 'success');
+         return redirect('proyectos');
     }
 
     /**

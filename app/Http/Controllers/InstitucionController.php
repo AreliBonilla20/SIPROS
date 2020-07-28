@@ -113,7 +113,8 @@ class InstitucionController extends Controller
         $institucionActualizar->sector_id = $request->sector_id;
         $institucionActualizar->save();
 
-        return back()->with('actualizada', 'Institución actualizada correctamente.');
+        toast('Institución actualizada correctamente', 'success');
+        return redirect('instituciones');
     }
 
     /**

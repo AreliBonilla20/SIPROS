@@ -55,7 +55,10 @@ class EstudianteController extends Controller
      */
     public function store(EstudianteRequest $request)
     {   
+        $carnet_registrado = false;
+        $dui_registrado = false;
         $estudiante = new Estudiante();
+
         $estudiante->carne=$request->input('carne');
         $estudiante->nombres=$request->input('nombres');
         $estudiante->apellidos=$request->input('apellidos');
@@ -73,10 +76,32 @@ class EstudianteController extends Controller
         $estudiante->email=$request->input('email');
         $estudiante->telefono=$request->input('telefono');
         $estudiante->area=$request->input('area');
-        $estudiante->save();
 
-        toast('Expediente agregado correctamente', 'success');
-        return redirect('expedientes');
+        $alumnos=Estudiante::all();
+
+        foreach($alumnos as $a){
+            if($a->carne == $estudiante->carne){
+                $carnet_registrado = true;
+            }
+
+            if($a->dui == $estudiante->dui){
+                $dui_registrado = true;
+            }
+        }
+
+        if($carnet_registrado==true){
+            alert()->error('Error','Ya existe un registro con el carnet ingresado');
+            return redirect('expedientes');
+        }
+        elseif($dui_registrado==true){
+            alert()->error('Error','Ya existe un registro con el DUI ingresado');
+            return redirect('expedientes');
+        }
+        else{
+            $estudiante->save();
+            toast('Expediente agregado correctamente', 'success');
+            return redirect('expedientes');
+        };
         
     }
 
@@ -119,7 +144,7 @@ class EstudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $carne)
+    public function update(EstudianteRequest $request, $carne)
     {
         $estudianteActualizar = Estudiante::findOrFail($carne);
 
@@ -132,13 +157,14 @@ class EstudianteController extends Controller
         $estudianteActualizar->email = $request->email;
         $estudianteActualizar->telefono = $request->telefono;
         $estudianteActualizar->area = $request->area;
-        $estudianteActualizar->codigo = $request->codigo;
-        $estudianteActualizar->sexo_id = $request->sexo_id;
-        $estudianteActualizar->municipio_id = $request->municipio_id;
-        $estudianteActualizar->departamento_id = $request->departamento_id;
+        $estudianteActualizar->codigo = $request->carrera;
+        $estudianteActualizar->sexo_id = $request->sexo;
+        $estudianteActualizar->municipio_id = $request->municipio;
+        $estudianteActualizar->departamento_id = $request->departamento;
         $estudianteActualizar->save();
 
-        return back()->with('actualizado', 'Expediente actualizado correctamente.');
+        toast('Expediente actualizado correctamente', 'success');
+        return redirect('expedientes');
        
     }
 

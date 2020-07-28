@@ -85,7 +85,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="number" class="form-control" name="edad" placeholder="Edad del estudiante">
+                                            <input type="number" class="form-control" min="15" max="90" name="edad" placeholder="Edad del estudiante">
                                             @foreach ($errors->get('edad') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -96,8 +96,8 @@
                                     <div class="form-example-int mg-t-15">
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="sexo_id">
-                                                    <option value="">-Seleccione una opción-</option>
+                                            <select class="selectpicker" name="sexo">
+                                                    <option value="">-Seleccione un género-</option>
                                                     @foreach($sexos as $sexo)
                                                     <option value="{{$sexo->id}}">{{$sexo->sexo}}</option>
                                                     @endforeach
@@ -110,20 +110,20 @@
                                     </div>
                                     <br><br><br>
                                     
-                                    <label for="codigo">Carrera <small style="color:#16D195;" >*</small></label>
+                                    <label for="carrera">Carrera <small style="color:#16D195;" >*</small></label>
                                     <div class="form-example-int mg-t-15">
                                         <div class="form-group">
                                         
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="codigo">
-                                                    <option value="">-Seleccione una opción-</option>
+                                            <select class="selectpicker" name="carrera">
+                                                    <option value="">-Seleccione una carrera-</option>
                                                     @foreach($carreras as $carrera)
                                                     <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option>
                                                     @endforeach
                                             </select>
-                                            @foreach ($errors->get('codigo') as $mensaje)
+                                            @foreach ($errors->get('carrera') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
                                         </div>
@@ -152,7 +152,7 @@
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
                                                     <select class="selectpicker" data-live-search="true" name="departamento" id="departamento" >
-                                                        <option value="">-Seleccione una opción-</option>
+                                                        <option value="">-Seleccione un departamento-</option>
                                                         @foreach ($departamentos as $departamento)
                                                             <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
                                                         @endforeach
@@ -167,7 +167,7 @@
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
                                                     <select class="selectpicker" data-live-search="true" name="municipio" id="municipio" >
-                                                        <option value="">-Seleccione una opción-</option>
+                                                        <option value="">-Seleccione un municipio-</option>
                                                         @foreach ($municipios as $municipio)
                                                             <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
                                                         @endforeach
