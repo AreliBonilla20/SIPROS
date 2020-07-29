@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
 use \DB;
-
 use Illuminate\Http\Request;
+use RealRashid\SweerAlert\Facades\Alert;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,11 +39,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $user = User::Create($request->all());
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
 
-        return back()->with('agregado', 'Usuario guardado correctamente.');
+        
+        return redirect('usuarios');
+        toast('Usuario agregado correctamente', 'success');
     }
 
     /**
@@ -95,7 +103,8 @@ class UserController extends Controller
             ]);            
         }
 
-        return back()->with('agregado', 'Rol asignado correctamente.');
+        toast('Usuario agregado correctamente', 'success');
+        return redirect('usuarios');
     }
 
     /**

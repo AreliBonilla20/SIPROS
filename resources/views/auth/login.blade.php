@@ -109,6 +109,7 @@
 	<script src="{{ asset('inicio/vendor/countdowntime/countdowntime.js') }}"></script>
 <!--===============================================================================================-->
 	<script src="{{ asset('inicio/js/main.js') }}"></script>
+	@include('sweetalert::alert')
 
 </body>
 </html>
