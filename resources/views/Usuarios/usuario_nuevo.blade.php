@@ -48,33 +48,57 @@
                                     <form action="{{route('guardar_usuario')}}" method="POST">
                                         @csrf
 
-                                        <div class="form-example-int">
-                                            <div class="form-group">
-                                                <label for="nombre"><strong>Nombre</strong> </label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" class="form-control input-sm" name="name" id="name" placeholder="Nombre del usuario" value="{{old('name')}}" required>
-                                                </div>
-                                            </div>
+                                        <label for="name">Nombres <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Nombre del usuario">
+                                            @foreach ($errors->get('name') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
                                         </div>
 
-                                        <div class="form-example-int">
-                                            <div class="form-group">
-                                                <label for="nombre"><strong>Correo electrónico</strong> </label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" class="form-control input-sm" name="email" id="email" placeholder="Correo electrónico del usuario" value="{{old('email')}}" required>
-                                                </div>
-                                            </div>
+                                        <label for="email">Correo electrónico <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Correo electrónico del usuario">
+                                            @foreach ($errors->get('email') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
                                         </div>
 
-                                        <div class="form-example-int">
-                                            <div class="form-group">
-                                                <label for="nombre"><strong>Contraseña</strong> </label>
-                                                <div class="nk-int-st">
-                                                    <input type="password" class="form-control input-sm" name="password" id="password" placeholder="Contraseña del usuario" value="{{old('password')}}" required>
-                                                </div>
-                                            </div>
+                                        <label for="password">Contraseña <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Contraseña">
+                                            @foreach ($errors->get('password') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
                                         </div>
 
+                                        <label for="email">Confirmar contraseña <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar contraseña">
+                                           
+                                        </div>
+                                        </div>
+
+                                    
                                         <div class="form-example-int mg-t-15">
                                             <button class="btn btn-success notika-btn-success">Guardar usuario</button>
                                             <a class="btn btn-danger notika-btn-danger" href="{{route('usuarios')}}">Cancelar</a>

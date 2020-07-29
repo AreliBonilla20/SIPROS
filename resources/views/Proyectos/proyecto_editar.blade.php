@@ -46,99 +46,130 @@
                                     <form action="{{route('actualizar_proyecto', $proyectoUpdate->id)}}" method="POST">
                                         @method('PUT')
                                         @csrf
-   
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Nombre</strong></label>
-                                                <div class="nk-int-st">
-                                                <input type="text" value="{{$proyectoUpdate->nombre}}" class="form-control input-sm" name="nombre" id="nombre" placeholder="Nombre del proyecto" value="{{old('nombre')}}" required>
-                                                </div>
+
+                                        <label for="nombre">Nombre <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" class="form-control" value="{{$proyectoUpdate->nombre}}" name="nombre" id="nombre" placeholder="Nombre del proyecto">
+                                                @foreach ($errors->get('nombre') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
-                                    
-                             
-                                        <div class="form-example-int">
-                                            <div class="form-group">
-                                                <label><strong>Área de conocimiento</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->area_de_conocimiento}}" class="form-control input-sm" name="area" id="area" placeholder="Área de conocimiento que requiere el proyecto" value="{{old('area')}}" required>
-                                                </div>
+   
+                                        <label for="area">Área de conocimiento <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" class="form-control" value="{{$proyectoUpdate->area_de_conocimiento}}" name="area" id="area" placeholder="Área de conocimiento que requiere el proyecto">
+                                                @foreach ($errors->get('area') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <label for="objetivos">Objetivos <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" class="form-control" value="{{$proyectoUpdate->objetivos}}" name="objetivos" id="objetivos" placeholder="Objetivos del proyecto">
+                                                @foreach ($errors->get('objetivos') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
                                   
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Objetivos</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->objetivos}}" class="form-control input-sm" name="objetivos" id="objetivo" placeholder="Objetivos del proyecto" value="{{old('objetivo')}}" required>
-                                                </div>
+                                        <label for="logro">Logros <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" class="form-control" value="{{$proyectoUpdate->logros}}" name="logro" id="logro" placeholder="Logros del proyecto">
+                                                @foreach ($errors->get('logro') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
 
+                                        <label for="institucion" >Tipo de institución <small style="color:#16D195;" >*</small></label>
                                         <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Logros</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->logros}}" class="form-control input-sm" name="logro" id="logro" placeholder="Logros del proyecto" value="{{old('logro')}}" required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                        
-                                                <label><strong>Institución</strong></label>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select type='integer' name="institucion" class="selectpicker" value="{{$proyectoUpdate->id_institucion}}" required>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker"  name="institucion" class="selectpicker" value="{{$proyectoUpdate->id_institucion}}">
                                                         <option value="">-Seleccione una opción-</option>
                                                         @foreach ($instituciones as $institucion)
                                                         <option value="{{$institucion->id}}" @if ($proyectoUpdate->id_institucion === $institucion->id) selected @endif>{{$institucion->nombre}}</option>
                                                         @endforeach
-                                                    </select>
-                                            </div>
-                                            </div>
-
+                                            </select>
+                                                    @foreach ($errors->get('institucion') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                        
                                         </div>
-                                        <br><br>
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Cantidad de estudiantes</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->cantidad_de_estudiantes}}" class="form-control input-sm" name="cantidad" id="cantidad" placeholder="Cantidad de estudiantes requeridos para el proyecto" value="{{old('cantidad')}}" required>
-                                                </div>
-                                            </div>
+                                        </div> 
                                         </div>
-
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Encargado</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->nombre_encargado}}" class="form-control input-sm" name="encargado" id="encargado" placeholder="Nombre del encargado del proyecto" value="{{old('encargado')}}" required>
-                                                </div>
+                                        <br><br><br>
+                                        
+                                        <label for="cantidad">Cantidad de estudiantes <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
                                             </div>
-                                        </div>
-
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Teléfono</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->telefono}}" class="form-control input-sm" name="telefono" id="telefono" placeholder="Teléfono del encargado del proyecto" value="{{old('encargado')}}" required>
-                                                </div>
+                                            <div class="nk-int-st">
+                                                <input type="number" value="{{$proyectoUpdate->cantidad_de_estudiantes}}" class="form-control" min="0" name="cantidad" id="cantidad" placeholder="Cantidad de estudiantes requeridos para el proyecto">
+                                                @foreach ($errors->get('cantidad') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
 
-                     
-                                        <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Correo electrónico</strong></label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" value="{{$proyectoUpdate->email}}" class="form-control input-sm" name="correo" id="correo" placeholder="Correo electrónico del encargado del proyecto" value="{{old('correo')}}" required>
-                                                </div>
+                                        <label for="encargado">Encargado <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" value="{{$proyectoUpdate->nombre_encargado}}" class="form-control" name="encargado" id="encargado" placeholder="Nombre del encargado del proyecto">
+                                                @foreach ($errors->get('encargado') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
-                                   
+
+                                        <label for="telefono">Teléfono <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" value="{{$proyectoUpdate->telefono}}" class="form-control" name="telefono" id="telefono" placeholder="Teléfono del encargado del proyecto">
+                                                @foreach ($errors->get('telefono') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <label for="correo">Correo electrónico <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" value="{{$proyectoUpdate->email}}" class="form-control" name="correo" id="correo" placeholder="Correo electrónico del encargado del proyecto">
+                                                @foreach ($errors->get('correo') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                         
                                         <br>
                              
                                         <div class="form-example-int mg-t-15">

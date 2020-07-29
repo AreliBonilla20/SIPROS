@@ -33,11 +33,6 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                    @if (session('agregada'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('agregada') }}
-                    </div>                   
-                    @endif
                         <div class="basic-tb-hd">
                             <h2>Institución</h2>
                             <p>Complete los campos del formulario</p>
@@ -47,95 +42,123 @@
                                 <div class="form-example-wrap">
                                     <form action="{{route('guardar_institucion')}}" method="POST">
                                         @csrf
-
-                                        <div class="form-example-int">
-                                            <div class="form-group">
-                                                <label for="nombre"><strong>Nombre</strong> </label>
-                                                <div class="nk-int-st">
-                                                    <input type="text" class="form-control input-sm" name="nombre" id="nombre" placeholder="Nombre de la institución" value="{{old('nombre')}}" required>
-                                                </div>
+                                        
+                                        <label for="nombre">Nombre <small style="color:#16D195;" >*</small></label>
+                                        <div class="form-group ic-cmp-int">
+                                            <div class="form-ic-cmp">
+                                                <i class="notika-icon notika-edit"></i>
+                                            </div>
+                                            <div class="nk-int-st">
+                                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la institución">
+                                                @foreach ($errors->get('nombre') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
                                         </div>
     
+                                        <label for="tipo_institucion_id" >Tipo de institución <small style="color:#16D195;" >*</small></label>
                                         <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Tipo de institución</strong></label>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="tipo_institucion_id" id="tipo_institucion_id" required>
-                                                        <option value="">-Seleccione una opción-</option>
-                                                        @foreach ($tipoInstituciones as $tipoInstitucion)
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker"  data-live-search="true" name="tipo_institucion_id" id="tipo_institucion_id">
+                                                    <option value="">-Seleccione una institución-</option>
+                                                    @foreach ($tipoInstituciones as $tipoInstitucion)
                                                             <option value="{{$tipoInstitucion->id}}">{{$tipoInstitucion->tipo_institucion}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
-                                            </div>
+                                                    @foreach ($errors->get('tipo_institucion_id') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                                            </select>   
                                         </div>
+                                        </div> 
+                                        </div>
+                                        <br><br><br>
 
-                                        <br><br>
-
+                                        <label for="sector_id" >Sector <small style="color:#16D195;" >*</small></label>
                                         <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label for="sector_id"><strong>Sector</strong></label>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="sector_id" id="sector_id" required>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" data-live-search="true" name="sector_id" id="sector_id" >
+                                            <option value="">-Seleccione un sector-</option>
                                                         @foreach ($sectores as $sector)
                                                             <option value="{{$sector->id}}">{{$sector->nombre_sector}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
-                                            </div>
+                                                    @foreach ($errors->get('sector_id') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                                            </select>   
                                         </div>
+                                        </div> 
+                                        </div>
+                                        <br><br><br>
 
-                                        <br><br>
-
+                                        <label>Direccion <small style="color:#16D195;" >*</small></label>
                                         <div class="form-example-int mg-t-15">
-                                            <div class="form-group">
-                                                <label><strong>Dirección</strong></label>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="id_region" id="id_region" required>
-                                                        <option value="">-Región-</option>
-                                                        @foreach ($regiones as $region)
-                                                            <option value="{{$region->id}}">{{$region->nombre_region}}</option>
+                                            
+                                            <div class="form-example-int mg-t-15">
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="bootstrap-select fm-cmp-mg">
+                                                <select class="selectpicker" data-live-search="true" name="id_region" id="id_region" >
+                                                <option value="">-Seleccione una región-</option>
+                                                            @foreach ($regiones as $region)
+                                                                <option value="{{$region->id}}">{{$region->nombre_region}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @foreach ($errors->get('id_region') as $mensaje)
+                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
                                                         @endforeach
-                                                    </select>
-                                                </div>
+                                                </select>   
                                             </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" required>
-                                                        <option value="">-Departamento-</option>
+                                            </div> 
+                                            </div>
+                                            
+                                            <div class="form-example-int mg-t-15">
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="bootstrap-select fm-cmp-mg">
+                                                <select class="selectpicker" data-live-search="true" name="id_departamento" id="id_departamento" >
+                                                <option value="">-Seleccione un departamento-</option>
                                                         @foreach ($departamentos as $departamento)
                                                             <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
+                                                    @foreach ($errors->get('id_departamento') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                                                </select>   
                                             </div>
+                                            </div> 
+                                            </div>
+
+
     
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <select class="selectpicker" data-live-search="true" name="id_municipio" id="id_municipio" required>
-                                                        <option value="">-Municipio-</option>
+                                                    <select class="selectpicker" data-live-search="true" name="id_municipio" id="id_municipio" >
+                                                    <option value="">-Seleccione un municipio-</option>
                                                         @foreach ($municipios as $municipio)
                                                             <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
                                                         @endforeach
                                                     </select>
+                                                    @foreach ($errors->get('id_municipio') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                            <br><br>
-                                            <div class="form-example-int mg-t-15">
-                                                <div class="form-group">
-                                                    <div class="nk-int-st">
-                                                        <input type="text" class="form-control input-sm" name="direccion" id="direccion" placeholder="Dirección de la institución" value="{{old('direccion')}}" required>
-                                                    </div>
+                                            <br><br><br>
+                                           
+                                             <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-house"></i>
                                                 </div>
+                                             <div class="nk-int-st">
+                                                <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección de la institución">
+                                                @foreach ($errors->get('direccion') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                @endforeach
                                             </div>
+                                        </div>
                                         </div>
 
                                         <br>

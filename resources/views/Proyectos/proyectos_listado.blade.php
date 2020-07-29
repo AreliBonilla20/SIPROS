@@ -60,7 +60,6 @@
                                         <th>Institución</th>
                                         <th>Cantidad de estudiantes</th>
                                         <th>Encargado</th>
-                                        <th>Teléfono</th>
                                         <th>Correo electrónico</th>
                                         <th>Acción</th>
                                     </tr>
@@ -76,11 +75,11 @@
                                             <td>{{$proyecto->institucion->nombre}}</td>
                                             <td>{{$proyecto->cantidad_de_estudiantes}}</td>
                                             <td>{{$proyecto->nombre_encargado}}</td>
-                                            <td>{{$proyecto->telefono}}</td>
                                             <td>{{$proyecto->email}}</td>
 
                                             <td>
-                                                <a href="{{route('editar_proyecto', $proyecto->id)}}" class="btn btn-warning notika-btn-warning">Editar</a>
+                                            <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
+                                            style="color:white;" href="{{route('editar_proyecto', $proyecto->id)}}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-pencil"></span></a>
                                             </td>
                                         </tr>
                                     @endforeach
