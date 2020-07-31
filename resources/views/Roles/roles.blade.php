@@ -22,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th width="10px">ID</th>
-                                <th>Nombre</th>
+                                <th>NombresASas</th>
                                 <th colspan="5">&nbsp;</th>
                             </tr>
                         </thead>
@@ -57,7 +57,7 @@
                                 </td>
                             </tr>
                                 
-                                    @endforeach
+                            @endforeach
                 </div>
             </div>
         </div>

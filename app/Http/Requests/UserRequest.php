@@ -44,7 +44,7 @@ class UserRequest extends FormRequest
         'password.required'=>'El campo contraseña es obligatorio.',
         'password.min'=>'Deben ser más de 6 caracteres como mínimo.',
         'password.confirmed'=>'Las contraseñas deben coincidir.',
-
+    
 
          ];
     }

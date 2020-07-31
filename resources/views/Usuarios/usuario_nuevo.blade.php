@@ -34,9 +34,10 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                     @if (session('agregado'))
-                        <div class="alert alert-success mt-3">
-                            {{ session('agregado') }}
-                        </div>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button>{{ session('agregado') }}
+
+                    </div>
                     @endif
                         <div class="basic-tb-hd">
                             <h2>Usuario</h2>
@@ -48,7 +49,7 @@
                                     <form action="{{route('guardar_usuario')}}" method="POST">
                                         @csrf
 
-                                        <label for="name">Nombres <small style="color:#16D195;" >*</small></label>
+                                        <label for="name">Nombre<small style="color:#16D195;" >*</small></label>
                                         <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">
                                             <i class="notika-icon notika-support"></i>

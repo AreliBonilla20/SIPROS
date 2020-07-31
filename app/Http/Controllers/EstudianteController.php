@@ -59,23 +59,19 @@ class EstudianteController extends Controller
         $dui_registrado = false;
         $estudiante = new Estudiante();
 
-        $estudiante->carne=$request->input('carne');
-        $estudiante->nombres=$request->input('nombres');
-        $estudiante->apellidos=$request->input('apellidos');
-        $estudiante->edad=$request->input('edad');
-        $estudiante->dui=$request->input('dui');
-        $sexo=sexo::find(request('sexo'));
-        $carrera=Carrera::find(request('carrera'));
-        $departamento=Departamento::find(request('departamento'));
-        $municipio=municipio::find(request('municipio'));
-        $estudiante->sexo()->associate($sexo);
-        $estudiante->carrera()->associate($carrera);
-        $estudiante->municipio()->associate($municipio);
-        $estudiante->departamento()->associate($departamento);
-        $estudiante->direccion=$request->input('direccion');
-        $estudiante->email=$request->input('email');
-        $estudiante->telefono=$request->input('telefono');
-        $estudiante->area=$request->input('area');
+        $estudiante->carne=$request->carne;
+        $estudiante->nombres=$request->nombres;
+        $estudiante->apellidos=$request->apellidos;
+        $estudiante->edad=$request->edad;
+        $estudiante->dui=$request->dui;
+        $estudiante->sexo_id=$request->sexo_id;
+        $estudiante->codigo=$request->codigo;
+        $estudiante->departamento_id=$request->departamento_id;
+        $estudiante->municipio_id=$request->municipio_id;
+        $estudiante->direccion=$request->direccion;
+        $estudiante->email=$request->email;
+        $estudiante->telefono=$request->telefono;
+        $estudiante->area=$request->area;
 
         $alumnos=Estudiante::all();
 
@@ -90,17 +86,16 @@ class EstudianteController extends Controller
         }
 
         if($carnet_registrado==true){
-            alert()->error('Error','Ya existe un registro con el carnet ingresado');
+            alert()->error('Error','Ya existe un registro con el Carnet ingresado.');
             return redirect('expedientes');
         }
         elseif($dui_registrado==true){
-            alert()->error('Error','Ya existe un registro con el DUI ingresado');
+            alert()->error('Error','Ya existe un registro con el DUI ingresado.');
             return redirect('expedientes');
         }
         else{
             $estudiante->save();
-            toast('Expediente agregado correctamente', 'success');
-            return redirect('expedientes');
+            return redirect('expedientes')->withSuccess('Expediente agregado correctamente!');
         };
         
     }
@@ -147,6 +142,8 @@ class EstudianteController extends Controller
     public function update(EstudianteRequest $request, $carne)
     {
         $estudianteActualizar = Estudiante::findOrFail($carne);
+        $carnet_registrado = false;
+        $dui_registrado = false;
 
         $estudianteActualizar->carne = $request->carne;
         $estudianteActualizar->nombres = $request->nombres;
@@ -157,10 +154,10 @@ class EstudianteController extends Controller
         $estudianteActualizar->email = $request->email;
         $estudianteActualizar->telefono = $request->telefono;
         $estudianteActualizar->area = $request->area;
-        $estudianteActualizar->codigo = $request->carrera;
-        $estudianteActualizar->sexo_id = $request->sexo;
-        $estudianteActualizar->municipio_id = $request->municipio;
-        $estudianteActualizar->departamento_id = $request->departamento;
+        $estudianteActualizar->codigo = $request->codigo;
+        $estudianteActualizar->sexo_id = $request->sexo_id;
+        $estudianteActualizar->municipio_id = $request->municipio_id;
+        $estudianteActualizar->departamento_id = $request->departamento_id;
         $estudianteActualizar->save();
 
         toast('Expediente actualizado correctamente', 'success');

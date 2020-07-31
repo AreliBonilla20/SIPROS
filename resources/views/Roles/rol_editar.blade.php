@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="breadcomb-area" >
 		<div class="container" >
 			<div class="row" >
@@ -14,8 +15,8 @@
 										<i class="notika-icon notika-form"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Registro de rol</h2>
-										<p>Ingrese los datos y permisos que contendrá el rol</p>
+										<h2>Edición de rol</h2>
+										<p>Ingrese los datos que desea modificar del rol</p>
 									</div>
 								</div>
 							</div>
@@ -33,21 +34,22 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                    @if (session('agregado'))
+                    @if (session('actualizado'))
                     <div class="alert alert-success alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button>{{ session('agregado') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="notika-icon notika-close"></i></span></button>{{ session('actualizado') }}
 
                     </div>
                     @endif
-                        <div class="basic-tb-hd">
-                            <h2>Rol</h2>
+                    <div class="basic-tb-hd">
+                            <h2>Editar rol {{$rolActualizar->name}}</h2>
                             <p>Complete los campos del formulario</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('guardar_rol')}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
+                                <form action="{{route('actualizar_rol', $rolActualizar->id)}}" method="POST">
+                                    @method('PUT')
+                                    @csrf
 
 
                                         <label for="name">Nombre del rol <small style="color:#16D195;" >*</small></label>
@@ -56,7 +58,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre del rol" >
+                                            <input type="text" class="form-control input-sm  @error('name') is-invalid @enderror" id="name" value="{{$rolActualizar->name}}" name="name" placeholder="Nombre del rol" >
                                                 @foreach ($errors->get('name') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -69,7 +71,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm  @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Identificador del rol" >
+                                            <input type="text" class="form-control" value="{{$rolActualizar->slug}}" id="slug" name="slug" placeholder="Identificador del rol" >
                                                 @foreach ($errors->get('slug') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -82,7 +84,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                            <input type="text"  class="form-control input-sm @error('description') is-invalid @enderror" id="description" name="description" placeholder="Ingrese la descripción" ></textarea>
+                                            <input type="text"  class="form-control" value="{{$rolActualizar->description}}" id="description" name="description" placeholder="Ingrese la descripción" ></textarea>
                                                 @foreach ($errors->get('description') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -94,31 +96,28 @@
                                             <p><strong>Permisos especiales</strong></p>
                                         </div>
                                         <div class="form-check-inline">
-                                            <input type="radio" class="i-checks" name="special" value="all-access">Acceso Total
+                                            <input type="radio" class="i-checks" name="special" value="all-access" {{  ($rolActualizar->special == 'all-access' ? ' checked' : '') }}>Acceso Total
                                         </div>
                                         <div class="form-check-inline">
-                                            <input type="radio" class="i-checks" name="special" value="no-access">Ningun Acceso
+                                            <input type="radio" class="i-checks" name="special" value="no-access" {{  ($rolActualizar->special == 'no-access' ? ' checked' : '') }}>Ningun Acceso
                                         </label>
                                     </div>
                                     <br>
                                     <hr>
                                     <h4>Lista de Permisos</h4>
-                                    
-                                    
-                                            @foreach ($permissions as $permission)
-                                            
+
+                                    @for($i=0; $i<count($permissions); $i++)
                                             <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="fm-checkbox">
-                                            <label><input type="checkbox" class="i-checks" name="permissions[]" value="{{ $permission->id }}"> <i></i>  <strong>{{ $permission->name }} : </strong> {{  $permission->description ?: 'N/A' }}</label>
+                                            <label><input type="checkbox" class="i-checks" name="permissions[]" value="{{ $permissions[$i]->id }}" {{  ($permissions[$i]->id == $permisos[$i] ? ' checked' : '') }}><strong>{{ $permissions[$i]->name }} : </strong> {{  $permissions[$i]->description ?: 'N/A' }}</label>
+                                            
                                             </div>
                                             </div>
                                             </div>
-                                            @endforeach
-                
-                                    
-
-                                    <button type="submit" class="btn btn-success notika-btn-success">Guardar</button>
+                                    @endfor
+                                    <br>
+                                    <button type="submit" class="btn btn-success notika-btn-success">Actualizar rol</button>
                                     <a class="btn btn-danger notika-btn-danger" href="{{route('roles')}}">Cancelar</a>
                                     </form>
                             </div>
@@ -136,3 +135,4 @@
         </div>
     </div>
 @endsection
+

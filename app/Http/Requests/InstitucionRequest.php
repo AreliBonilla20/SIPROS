@@ -37,21 +37,21 @@ class InstitucionRequest extends FormRequest
     public function messages()
     {
         return[
-            'nombre.required'=>'* El campo nombre es obligatorio.',
-            'nombre.max'=>'* La cantidad máxima de carácteres es 150.',
-            'nombre.regex'=>'* Los carácteres deben ser solo letras.',
+            'nombre.required'=>'El campo nombre es obligatorio.',
+            'nombre.max'=>'La cantidad máxima de carácteres es 150.',
+            'nombre.regex'=>'Los carácteres deben ser solo letras.',
             
-            'tipo_institucion_id.required'=>'* Debe seleccionar una institución.',
+            'tipo_institucion_id.required'=>'Debe seleccionar una institución.',
 
-            'sector_id.required'=>'* Debe seleccionar un sector.',
+            'sector_id.required'=>'Debe seleccionar un sector.',
 
-            'id_region.required'=>'* Debe seleccionar una región.',
+            'id_region.required'=>'Debe seleccionar una región.',
 
-            'id_departamento.required'=>'* Debe seleccionar un departamento.',
+            'id_departamento.required'=>'Debe seleccionar un departamento.',
 
-            'id_municipio.required'=>'* Debe seleccionar un municipio.',
+            'id_municipio.required'=>'Debe seleccionar un municipio.',
 
-            'direccion.required'=>'* El campo direccion es obligatorio.',
+            'direccion.required'=>'El campo direccion es obligatorio.',
             'direccion.max'=>'* La cantidad máxima de carácteres es 150.',
 
         ];

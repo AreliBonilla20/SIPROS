@@ -72,7 +72,11 @@
                                             <td>{{$usuario->id}}</td>
                                             <td>{{$usuario->name}}</td>
                                             <td>{{$usuario->email}}</td>
-                                            <td><a href="{{ route('users.edit', $usuario->id) }}" class="btn btn-warning notika-btn-warning">Asignar rol</a></td>
+                                            <td>
+                                            <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
+                                            style="color:white;" href="{{ route('users.edit', $usuario->id) }}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-list-alt"></span>  Asignar rol</a>
+                                            </td>
+                                            
                                         </tr>
                                 @endforeach
                                    
