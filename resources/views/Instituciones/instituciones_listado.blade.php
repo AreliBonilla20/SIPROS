@@ -78,7 +78,7 @@
                                             <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
                                             <td>
                                             <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
-                                            style="color:white;" href="{{route('editar_institucion', $institucion->id)}}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-pencil"></span></a>
+                                            style="color:white;" href="{{route('editar_institucion', $institucion->id)}}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-pencil"></span> Editar</a>
                                             </td>
                                         </tr>
                                     @endforeach

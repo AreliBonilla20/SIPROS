@@ -7,7 +7,9 @@ use \DB;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\AsignarRolRequest;
 use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -41,15 +43,16 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-
+  
         
-        return redirect('usuarios');
-        toast('Usuario agregado correctamente', 'success');
+        return back()->with('agregado', 'Usuario agregado correctamente');
+        
     }
 
     /**
@@ -84,7 +87,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AsignarRolRequest $request, $id)
     {   
        
         $user = User::find($id);
@@ -103,8 +106,7 @@ class UserController extends Controller
             ]);            
         }
 
-        toast('Usuario agregado correctamente', 'success');
-        return redirect('usuarios');
+        return back()->with('actualizado', 'Rol asignado a usuario correctamente');
     }
 
     /**

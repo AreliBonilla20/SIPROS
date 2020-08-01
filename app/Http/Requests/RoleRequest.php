@@ -13,7 +13,7 @@ class RoleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,24 @@ class RoleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
         ];
+    }
+
+    public function messages()
+    {   
+        return [
+            'name.required'=>'El campo nombre es obligatorio.',
+            'name.max'=>'La cantidad máxima de caracteres es 255.',
+
+            'slug.required'=>'El campo slug es obligatorio.',
+            'slug.max'=>'La cantidad máxima de caracteres es 255.',
+
+            'description.required'=>'El campo descripción es obligatorio.',
+            'description.max'=>'La cantidad máxima de caracteres es 255.',  
+
+         ];
     }
 }

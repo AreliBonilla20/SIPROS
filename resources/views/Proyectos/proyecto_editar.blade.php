@@ -173,7 +173,7 @@
                                         <br>
                              
                                         <div class="form-example-int mg-t-15">
-                                            <button type="submit" class="btn btn-success notika-btn-success">Actualizar</button>
+                                            <button type="submit" class="btn btn-success notika-btn-success">Actualizar proyecto</button>
                                             <a class="btn btn-danger notika-btn-danger" href="{{route('proyectos')}}">Cancelar</a>                                    
                                         </div>
                                     </form> 

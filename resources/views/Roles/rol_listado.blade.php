@@ -61,7 +61,8 @@
                                                 <th></th>
                                                 <th>ID</th>
                                                 <th>Nombre</th>                                      
-                                                <th>Editar</th>
+                                                <th>Descripción</th>
+                                                
                                                 
                                             </tr>
                                         </thead>
@@ -73,7 +74,12 @@
                                                     <td></td>
                                                     <td>{{$rol->id}}</td>
                                                     <td>{{$rol->name}}</td>                                           
-                                                    <td><a href=""><button class="btn btn-warning notika-btn-warning">Editar</button></a></td>
+                                                    <td>{{$rol->slug}}</td> 
+
+                                                    <td>
+                                                    <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
+                                                    style="color:white;" href="{{ route('editar_rol', $rol->id) }}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-list-alt"></span>  Editar rol</a>
+                                                    </td>
                             
                                                 </tr>
                                         @endforeach
@@ -89,6 +95,6 @@
 			</div>
 		</div>
     </div>
-<br><br><br><br>
+<br><br><br><br><br><br><br>
 
 @endsection
