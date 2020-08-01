@@ -56,8 +56,7 @@ class ProyectoController extends Controller
          $proyecto->email = $request->correo;
          $proyecto->save();
  
-         toast('Proyecto agregado correctamente', 'success');
-         return redirect('proyectos');
+         return redirect('proyectos')->withSuccess('Proyecto agregado correctamente!');
     }
 
     /**
@@ -107,8 +106,7 @@ class ProyectoController extends Controller
         $proyecto->email = $request->correo;
         $proyecto->save();
         
-        toast('Proyecto actualizado correctamente', 'success');
-         return redirect('proyectos');
+        return redirect('proyectos')->withSuccess('Proyecto actualizado correctamente!');
     }
 
     /**

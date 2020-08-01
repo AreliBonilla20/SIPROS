@@ -167,7 +167,7 @@
                              
                                         <div class="form-example-int mg-t-15">
                                             <div class="form-group">
-                                            <button type="submit" class="btn btn-success notika-btn-success">Guardar</button>
+                                            <button type="submit" class="btn btn-success notika-btn-success">Guardar proyecto</button>
                                             <a class="btn btn-danger notika-btn-danger" href="{{route('proyectos')}}">Cancelar</a>
                                             </div>
                                         </div>

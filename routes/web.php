@@ -32,11 +32,11 @@ Route::get('roles/crear', 'RoleController@create')->name('crear_rol')
 Route::post('roles/guardar', 'RoleController@store')->name('guardar_rol')
     ->middleware('permission:roles.store');
 
-Route::post('roles/editar/{id}', 'RoleController@edit')->name('editar_rol')
+Route::get('roles/editar/{id}', 'RoleController@edit')->name('editar_rol')
     ->middleware('permission:roles.edit');
 
-Route::post('roles/actualizar/{id}', 'RoleController@update')->name('actualizar_rol')
-    ->middleware('permission:roles.edit');
+Route::put('roles/actualizar/{id}', 'RoleController@update')->name('actualizar_rol')
+    ->middleware('permission:roles.update');
 
 Route::post('roles/eliminar/{id}', 'RoleController@destroy')->name('eliminar_rol')
     ->middleware('permission:roles.destroy');

@@ -24,7 +24,7 @@ class EstudianteRequest extends FormRequest
     public function rules()
     {
         return [
-            'carne'=>'required|max:7|regex:/[A-Z]{2}[0-9]{5}/',
+            'carne'=>'required|max:7|regex:/[A-Za-z]{2}[0-9]{5}/',
             'nombres'=>'required|max:100|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/',
             'apellidos'=>'required|max:100|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/',
             'edad'=>'required|numeric|min:15|max:70',
@@ -33,10 +33,10 @@ class EstudianteRequest extends FormRequest
             'email'=>'required|max:100|email',
             'telefono'=>'required|max:9|regex:/[0-9]{4}-[0-9]{4}/',
             'area'=>'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
-            'carrera'=>'required',
-            'sexo'=>'required',  
-            'municipio'=>'required',  
-            'departamento'=>'required',  
+            'codigo'=>'required',
+            'sexo_id'=>'required',  
+            'municipio_id'=>'required',  
+            'departamento_id'=>'required',  
         ];
     }
 
@@ -45,7 +45,6 @@ class EstudianteRequest extends FormRequest
         return [
             'carne.required'=>'El campo carnet es obligatorio.',
             'carne.max'=>'La cantidad máxima de carácteres es 7.',
-            'carne.unique'=>'El campo carnet debe ser único, ya existe un registro con ese dato.',
             'carne.regex'=>'El formato debe ser AA#####',
 
             'nombres.required'=>'El campo nombres es obligatorio.',
@@ -79,13 +78,13 @@ class EstudianteRequest extends FormRequest
             'area.max'=>'La cantidad máxima de carácteres es 150.',
             'area.regex'=>'Los carácteres deben ser solo letras.',
 
-            'carrera.required'=>'Debe seleccionar una carrera.',
+            'codigo.required'=>'Debe seleccionar una carrera.',
 
-            'sexo.required'=>'Debe seleccionar un género.',
+            'sexo_id.required'=>'Debe seleccionar un género.',
 
-            'municipio.required'=>'Debe seleccionar un municipio.',
+            'municipio_id.required'=>'Debe seleccionar un municipio.',
 
-            'departamento.required'=>'Debe seleccionar un departamento.',
+            'departamento_id.required'=>'Debe seleccionar un departamento.',
         ];
     }
 }

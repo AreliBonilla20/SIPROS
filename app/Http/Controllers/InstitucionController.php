@@ -52,7 +52,7 @@ class InstitucionController extends Controller
     public function store(InstitucionRequest $request)
     {
         $nuevaInstitucion = new Institucion;
-        $nuevaInstitucion->nombre = $request->input('nombre');
+        $nuevaInstitucion->nombre = $request->nombre;
         $nuevaInstitucion->tipo_institucion_id = $request->tipo_institucion_id;
         $nuevaInstitucion->direccion = $request->direccion;
         $nuevaInstitucion->id_region = $request->id_region;
@@ -61,8 +61,7 @@ class InstitucionController extends Controller
         $nuevaInstitucion->sector_id = $request->sector_id;
         $nuevaInstitucion->save();
 
-        toast('Institución agregada correctamente', 'success');
-        return redirect('instituciones');
+        return redirect('instituciones')->withSuccess('Institución agregada correctamente!');
     }
 
     /**
@@ -113,8 +112,7 @@ class InstitucionController extends Controller
         $institucionActualizar->sector_id = $request->sector_id;
         $institucionActualizar->save();
 
-        toast('Institución actualizada correctamente', 'success');
-        return redirect('instituciones');
+        return redirect('instituciones')->withSuccess('Institución actualizada correctamente!');
     }
 
     /**
