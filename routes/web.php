@@ -107,3 +107,9 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
     ->middleware('permission:proyecto.update');
 
 });
+
+
+////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
+Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
+
+Route::get('/municipios/{id}', 'DepartamentoController@getMunicipios');

@@ -102,7 +102,7 @@
                                             <select class="selectpicker" name="sexo_id">
                                                     <option value="">-Seleccione un género-</option>
                                                     @foreach($sexos as $sexo)
-                                                    <option value="{{$estudianteActualizar->sexo_id}}" {{ ($estudianteActualizar->sexo_id == $loop->iteration ? "selected":"") }}>{{$sexo->sexo}}</option>
+                                                    <option value="{{$sexo->id}}" {{ ($estudianteActualizar->sexo_id == $loop->iteration ? "selected":"") }}>{{$sexo->sexo}}</option>
                                                     @endforeach
                                             </select>
                                             @foreach ($errors->get('sexo_id') as $mensaje)
@@ -157,7 +157,7 @@
                                                     <select class="selectpicker" data-live-search="true" name="departamento_id" id="departamento_id" >
                                                         <option value="">-Seleccione un departamento-</option>
                                                         @foreach ($departamentos as $departamento)
-                                                        <option value="{{$estudianteActualizar->departamento_id}}"{{ ($estudianteActualizar->departamento_id == $loop->iteration ? "selected":"") }}>{{$departamento->nombre_departamento}}</option>
+                                                        <option value="{{$departamento->id}}"{{ ($estudianteActualizar->departamento_id == $loop->iteration ? "selected":"") }}>{{$departamento->nombre_departamento}}</option>
                                                         @endforeach
                                                     </select>
                                                     @foreach ($errors->get('departamento_id') as $mensaje)
@@ -172,7 +172,7 @@
                                                     <select class="selectpicker" data-live-search="true" name="municipio_id" id="municipio_id" >
                                                         <option value="">-Seleccione un municipio-</option>
                                                         @foreach ($municipios as $municipio)
-                                                        <option value="{{$estudianteActualizar->municipio_id}}"{{ ($estudianteActualizar->municipio_id == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
+                                                        <option value="{{$municipio->id}}"{{ ($estudianteActualizar->municipio_id == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
                                                         @endforeach
                                                     </select>
                                                     @foreach ($errors->get('municipio_id') as $mensaje)

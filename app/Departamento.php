@@ -16,6 +16,11 @@ class Departamento extends Model
     	return $this->belongsTo(Region::class, 'id_region','id');
     }
 
+    public static function departamentos($id){
+      return Departamento::where('id_region','=',$id)
+      ->get();
+   }
+
     public function estudiantes(){
       return $this->hasMany(Estudiante::class);
    }

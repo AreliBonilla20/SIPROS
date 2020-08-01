@@ -168,9 +168,9 @@
                                                 <div class="bootstrap-select fm-cmp-mg">
                                                     <select class="selectpicker" data-live-search="true" name="municipio_id" id="municipio_id" >
                                                         <option value="">-Seleccione un municipio-</option>
-                                                        @foreach ($municipios as $municipio)
+                                                        {{-- @foreach ($municipios as $municipio)
                                                             <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                     </select>
                                                     @foreach ($errors->get('municipio_id') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>

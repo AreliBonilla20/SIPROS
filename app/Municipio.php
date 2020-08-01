@@ -16,6 +16,11 @@ class Municipio extends Model
     	return $this->belongsTo(Departamento::class, 'id_departamento','id');
     }
 
+    public static function municipios($id){
+      return Municipio::where('id_departamento','=',$id)
+      ->get();
+   }
+
     public function estudiantes(){
       return $this->hasMany(Estudiante::class);
    }

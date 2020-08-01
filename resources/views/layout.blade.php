@@ -366,6 +366,10 @@
             ============================================ -->
         <script src="{{ asset('js/data-table/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/data-table/data-table-act.js') }}"></script>
+
+        <!-- dropdown JS (Select dinámicos para departamentos y municipios)
+            ============================================ -->
+            <script src="{{ asset('js/dropdown.js') }}"></script>
         @include('sweetalert::alert') 
 </body>
 </html>
