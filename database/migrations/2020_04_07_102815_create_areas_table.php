@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->increments('id');
             $table->string('nombre_area');
             $table->integer('institucion_id')->unsigned()->foreing()->references('id')->on('institucions')->onDelete('cascade');
+            $table->integer('codigo')->unsigned()->foreing()->references('codigo')->on('carreras')->onDelete('cascade');
         });
     }
 

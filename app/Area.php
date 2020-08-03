@@ -11,4 +11,8 @@ class Area extends Model
     public function inscripciones(){
    	return $this->hasMany(Inscripcion::class);
    }
+
+   public function carrera(){
+   	return $this->belongsTo(Carrera::class,'codigo');
+   }
 }
