@@ -9,7 +9,7 @@ class Estudiante extends Model
    public $incrementing = false;
    protected $primaryKey= 'carne';
    /*Colocamos tipo protegidos a todos los atributos*/
-   protected $fillabel=['carne','nombres','apellidos','edad','sexo_id','codigo','dui','direccion','municipio_id','departamento_id','email','telefono,area'];
+   protected $fillabel=['carne','nombres','apellidos','fecha_nacimiento','sexo_id','codigo','dui','direccion','municipio_id','departamento_id','email','telefono,area'];
 
    public function getRouteKeyName(){
    		return 'carne';

@@ -78,19 +78,20 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                
-                                    <label for="edad">Edad <small style="color:#16D195;" >*</small></label>
+
+                                    <label for="fecha_nacimiento">Fecha nacimiento <small style="color:#16D195;" >*</small></label>
                                     <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="number" class="form-control" min="15" max="90" name="edad" placeholder="Edad del estudiante">
-                                            @foreach ($errors->get('edad') as $mensaje)
+                                            <input type="date" class="form-control" name="fecha_nacimiento">
+                                            @foreach ($errors->get('fecha_nacimiento') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
                                         </div>
                                     </div>
+
 
                                     <label for="sexo_id" >Género <small style="color:#16D195;" >*</small></label>
                                     <div class="form-example-int mg-t-15">
@@ -231,7 +232,6 @@
                                                 @endforeach
                                             </div>
                                         </div>
-
                                         <br>
 
                                         <div class="form-example-int mg-t-15">

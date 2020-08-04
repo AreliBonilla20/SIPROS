@@ -79,21 +79,20 @@
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
                                         </div>
-                                    </div>
+                                    </div>             
 
-                                    <label for="edad">Edad <small style="color:#16D195;" >*</small></label>
+                                    <label>Fecha de nacimiento<small style="color:#16D195;" >*</small></label>
                                     <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="number" value="{{$estudianteActualizar->edad}}" class="form-control" min="15" max="90" name="edad" placeholder="Edad del estudiante">
-                                            @foreach ($errors->get('edad') as $mensaje)
+                                            <input type="date" value="{{$estudianteActualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento" readonly>
+                                            @foreach ($errors->get('fecha_nacimiento') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
                                         </div>
                                     </div>
-
 
                                     <label for="sexo_id" >Género <small style="color:#16D195;" >*</small></label>
                                     <div class="form-example-int mg-t-15">
@@ -235,7 +234,14 @@
                                             </div>
                                         </div>
 
+
+
+                                        <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-support"></i>
+                                        </div>
                                         <br>
+
                              
                                     <div class="form-example-int mg-t-15">
                                         <button class="btn btn-success notika-btn-success">Actualizar expediente</button>

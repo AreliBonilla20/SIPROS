@@ -27,7 +27,7 @@ class EstudianteRequest extends FormRequest
             'carne'=>'required|max:7|regex:/[A-Za-z]{2}[0-9]{5}/',
             'nombres'=>'required|max:100|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/',
             'apellidos'=>'required|max:100|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/',
-            'edad'=>'required|numeric|min:15|max:70',
+            'fecha_nacimiento'=>'required',
             'dui'=>'max:10|regex:/[0-9]{8}-[0-9]{1}/',
             'direccion'=>'required|max:150',
             'email'=>'required|max:100|email',

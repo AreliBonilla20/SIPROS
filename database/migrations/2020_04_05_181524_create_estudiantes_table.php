@@ -18,7 +18,8 @@ class CreateEstudiantesTable extends Migration
             $table->string('carne')->unique()->primary();
             $table->string('nombres');
             $table->string('apellidos');
-            $table->integer('edad');
+            #$table->integer('edad');
+            $table->date('fecha_nacimiento');
             $table->string('dui')->unique();
             $table->string('direccion');
             $table->string('email');
@@ -29,6 +30,7 @@ class CreateEstudiantesTable extends Migration
             $table->integer('municipio_id')->unsigned()->foreing()->references('id')->on('municipios')->onDelete('cascade');
             $table->integer('departamento_id')->unsigned()->foreing()->references('id')->on('departamentos')->onDelete('cascade');
             $table->timestamps();
+            
         });
     }
 

@@ -10,6 +10,7 @@ use App\Municipio;
 use App\Area;
 use App\Institucion;
 use App\Inscripcion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\EstudianteRequest;
@@ -62,7 +63,7 @@ class EstudianteController extends Controller
         $estudiante->carne=$request->carne;
         $estudiante->nombres=$request->nombres;
         $estudiante->apellidos=$request->apellidos;
-        $estudiante->edad=$request->edad;
+        $estudiante->fecha_nacimiento=$request->fecha_nacimiento;
         $estudiante->dui=$request->dui;
         $estudiante->sexo_id=$request->sexo_id;
         $estudiante->codigo=$request->codigo;
@@ -73,6 +74,16 @@ class EstudianteController extends Controller
         $estudiante->telefono=$request->telefono;
         $estudiante->area=$request->area;
 
+        /*Calculo de la edad*/
+        $now=Carbon::now();
+        //Calcula la fecha actual
+        $fecha_actual=$now->format('Y-m-d');
+        //Resta la fecha actual con la fecha de nacimiento
+        $diferencia_edad=strtotime($fecha_actual)-strtotime($estudiante->fecha_nacimiento);
+        /*Para que el resultado de la operacion anterior no sea grande se realiza lo siguiente */
+        $edad=intval($diferencia_edad/60/60/24/365.25);/*Se obtiene el resultado en la mas minima expresión en entero donde los valores divididos representan segundos,minutos,horas,días
+        y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
+        */
         $alumnos=Estudiante::all();
 
         foreach($alumnos as $a){
@@ -148,7 +159,7 @@ class EstudianteController extends Controller
         $estudianteActualizar->carne = $request->carne;
         $estudianteActualizar->nombres = $request->nombres;
         $estudianteActualizar->apellidos = $request->apellidos;
-        $estudianteActualizar->edad = $request->edad;
+        $estudianteActualizar->fecha_nacimiento = $request->fecha_nacimiento;
         $estudianteActualizar->dui = $request->dui;
         $estudianteActualizar->direccion = $request->direccion;
         $estudianteActualizar->email = $request->email;
@@ -158,7 +169,6 @@ class EstudianteController extends Controller
         $estudianteActualizar->sexo_id = $request->sexo_id;
         $estudianteActualizar->municipio_id = $request->municipio_id;
         $estudianteActualizar->departamento_id = $request->departamento_id;
-        $estudianteActualizar->save();
 
         toast('Expediente actualizado correctamente', 'success');
         return redirect('expedientes');
