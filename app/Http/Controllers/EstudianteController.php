@@ -76,11 +76,8 @@ class EstudianteController extends Controller
 
         /*Calculo de la edad*/
         $now=Carbon::now();
-        //Calcula la fecha actual
-        $fecha_actual=$now->format('Y-m-d');
-        //Resta la fecha actual con la fecha de nacimiento
-        $diferencia_edad=strtotime($fecha_actual)-strtotime($estudiante->fecha_nacimiento);
-        /*Para que el resultado de la operacion anterior no sea grande se realiza lo siguiente */
+        $fecha_actual=$now->format('Y-m-d');//Calcula la fecha actual
+        $diferencia_edad=strtotime($fecha_actual)-strtotime($estudiante->fecha_nacimiento);//Resta la fecha actual con la fecha de nacimiento
         $edad=intval($diferencia_edad/60/60/24/365.25);/*Se obtiene el resultado en la mas minima expresión en entero donde los valores divididos representan segundos,minutos,horas,días
         y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
         */
