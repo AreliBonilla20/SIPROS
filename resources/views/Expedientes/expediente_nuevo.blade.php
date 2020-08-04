@@ -46,7 +46,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="carne" placeholder="AA#####" pattern="^[A-Z]{2}[0-9]{5}$">
+                                            <input type="text" class="form-control" name="carne" placeholder="AA#####">
                                             @foreach ($errors->get('carne') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -59,7 +59,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="nombres" placeholder="Nombres del estudiante" pattern="[A-Za-záéíóúñÁÉÍÓÚ\'\s]{1,50}">
+                                            <input type="text" class="form-control" name="nombres" placeholder="Nombres del estudiante">
                                             @foreach ($errors->get('nombres') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -72,7 +72,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos del estudiante" pattern="[A-Za-záéíóúñÁÉÍÓÚ\'\s]{1,50}">
+                                            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos del estudiante">
                                             @foreach ($errors->get('apellidos') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -139,7 +139,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="dui" placeholder="00000000-0", pattern="^[0-9]{8}-[0-9]{1}">
+                                            <input type="text" class="form-control" name="dui" placeholder="00000000-0">
                                             @foreach ($errors->get('dui') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -184,8 +184,7 @@
                                                 <i class="notika-icon notika-house"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="direccion" placeholder="Dirección del estudiante"
-                                                pattern="[A-Za-záéíóúñÁÉÍÓÚ\'\s]{1,50}">
+                                                <input type="text" class="form-control" name="direccion" placeholder="Dirección del estudiante">
                                                 @foreach ($errors->get('direccion') as $mensaje)
                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -212,7 +211,7 @@
                                                 <i class="notika-icon notika-mail"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="email" placeholder="Correo electrónico del estudiante" pattern="/^(.+\@.+\..+)$/;">
+                                                <input type="text" class="form-control" name="email" placeholder="Correo electrónico del estudiante">
                                                 @foreach ($errors->get('email') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
