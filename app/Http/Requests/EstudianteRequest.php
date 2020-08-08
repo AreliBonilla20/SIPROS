@@ -55,9 +55,7 @@ class EstudianteRequest extends FormRequest
             'apellidos.max'=>'La cantidad máxima de carácteres es 100.',
             'apellidos.regex'=>'Los carácteres deben ser solo letras.',
 
-            'edad.required'=>'El campo edad es obligatorio.',
-            'edad.min'=>'La edad debe ser mayor a 15.',
-            'edad.max'=>'El dato ingresado excede el límite permitido.',
+            'fecha_nacimiento.required'=>'El campo fecha de nacimiento es obligatorio.',
 
             'dui.max'=>'La cantidad máxima de carácteres es 10.',
             'dui.unique'=>'El campo DUI debe ser único, ya existe un registro con ese dato.',

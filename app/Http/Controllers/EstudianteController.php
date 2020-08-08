@@ -11,9 +11,11 @@ use App\Area;
 use App\Institucion;
 use App\Inscripcion;
 use Carbon\Carbon;
+use App\Exports\EstudiantesExport;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\EstudianteRequest;
+use PDF;
 
 class EstudianteController extends Controller
 {
@@ -81,6 +83,10 @@ class EstudianteController extends Controller
         $edad=intval($diferencia_edad/60/60/24/365.25);/*Se obtiene el resultado en la mas minima expresión en entero donde los valores divididos representan segundos,minutos,horas,días
         y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
         */
+        if($edad<18){
+            alert()->error('Error','La edad debe ser mayor de edad.');
+            return redirect('expedientes');
+        }
         $alumnos=Estudiante::all();
 
         foreach($alumnos as $a){
@@ -118,7 +124,7 @@ class EstudianteController extends Controller
     {
        // return view('Expedientes.expedientes_listado',compact('estudiante'));
         
-    }
+    }   
 
     /**
      * Show the form for editing the specified resource.
@@ -181,6 +187,12 @@ class EstudianteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportarPDF(){
+        $estudiantes=Estudiante::all();
+        $pdf=PDF::loadView('Reportes/expedientes_listado',compact('estudiantes'));
+        return $pdf->download('expedientes.pdf');
     }
 }
    
