@@ -90,7 +90,7 @@ Route::get('/instituciones/editar/{id}', 'InstitucionController@edit')->name('ed
 Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizar_institucion')
     ->middleware('permission:institucion.update');   
 
-Route::get('/pdf','InstitucionController@exportarPDF')->name('reporte_instituciones');
+Route::get('/pdfInstituciones','InstitucionController@exportarPDF')->name('reporte_instituciones');
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')
     ->middleware('permission:proyecto.index');
@@ -108,7 +108,7 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
     ->middleware('permission:proyecto.update');
 
 });
-//Route::get('/pdf','ProyectosController@exportarPDF')->name('reporte_proyectos');
+Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proyectos');
 
 
 ////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////

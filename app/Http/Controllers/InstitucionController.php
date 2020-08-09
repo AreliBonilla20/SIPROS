@@ -132,6 +132,6 @@ class InstitucionController extends Controller
     public function exportarPDF(){
         $instituciones=Institucion::all();
         $pdf=PDF::loadView('Reportes/instituciones_listado',compact('instituciones'));
-        return $pdf->setPaper('a4','landscape')->stream('instituciones.pdf');
+        return $pdf->setPaper('a4','landscape')->download('instituciones.pdf');
     }
 }

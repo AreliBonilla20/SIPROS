@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
-                                    <a href="{{route('reporte_instituciones')}}" target="_blank">
+                                    <a href="{{route('reporte_instituciones')}}">
                                         <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i>Descargar PDF</button>
                                     </a>
                                 </div>

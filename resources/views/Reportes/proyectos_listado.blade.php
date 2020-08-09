@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TABLA DE INSTITUCIONES</title>
+    <title>TABLA DE PROYECTOS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <style>
         @page {
@@ -50,36 +50,37 @@
     </header>
     <main>
         <div class="container">
-            <h5 style="text-align: center"><strong>TABLA DE INSTITUCIONES</strong></h5>
+            <h5 style="text-align: center"><strong>TABLA DE PROYECTOS</strong></h5>
             <table class="table table-striped text-center" align="right">
                 <thead>
                     <tr>
-                         <th scope="col"c>#</th>
+                         <th scope="col"c>N°</th>
                          <th scope="col">Nombre</th>
-                         <th scope="col">Tipo</th>
-                         <th scope="col">Sector</th>
-                         <th scope="col">Dirección</th>
-                         <th scope="col">Región</th>
-                         <th scope="col">Departamento</th>
-                         <th scope="col">Municipio</th>
+                         <th scope="col">Área de conocimiento</th>
+                         <th scope="col">Objetivos</th>
+                         <th scope="col">Logros</th>
+                         <th scope="col">Institución</th>
+                         <th scope="col">Cantidad de estudiantes</th>
+                         <th scope="col">Encargado</th>
+                         <th scope="col">Correo</th>
 
                     </tr>
                 </thead>
-
                 <tbody>
-                    @foreach ($instituciones as $institucion)
+                    @foreach ($proyectos as $proyecto)
                     <tr>
-                        <td scope="row">{{$institucion->id}}</td>
-                        <td>{{$institucion->nombre}}</td>
-                        <td>{{ \App\TipoInstitucion::where(['id' => $institucion->tipo_institucion_id])->pluck('tipo_institucion')->first() }}</td>
-                        <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombre_sector')->first() }}</td>
-                        <td>{{$institucion->direccion}}</td>
-                        <td>{{ \App\Region::where(['id' => $institucion->id_region])->pluck('nombre_region')->first() }}</td>
-                        <td>{{ \App\Departamento::where(['id' => $institucion->id_departamento])->pluck('nombre_departamento')->first() }}</td>
-                        <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
+                     <td>{{$proyecto->id}}</td>
+                     <td>{{$proyecto->nombre}}</td>
+                     <td>{{$proyecto->area_de_conocimiento}}</td>
+                     <td>{{$proyecto->objetivos}}</td>
+                     <td>{{$proyecto->logros}}</td>
+                     <td>{{$proyecto->institucion->nombre}}</td>
+                     <td>{{$proyecto->cantidad_de_estudiantes}}</td>
+                     <td>{{$proyecto->nombre_encargado}}</td>
+                     <td>{{$proyecto->email}}</td>
+                 </tr>
+                @endforeach
+            </tbody>    
             </table>
         </div>
     </main>
