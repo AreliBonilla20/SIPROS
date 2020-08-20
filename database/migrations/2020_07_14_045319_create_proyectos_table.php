@@ -24,6 +24,9 @@ class CreateProyectosTable extends Migration
             $table->string('nombre_encargado');
             $table->string('telefono');
             $table->string('email');
+            $table->string('codigo_carrera')->foreing()->references('codigo')->on('carreras');
+            $table->string('estado_proyecto');
+            $table->integer('estudiantes_inscritos');
             $table->timestamps();
         });
     }
