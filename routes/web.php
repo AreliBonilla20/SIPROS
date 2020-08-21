@@ -73,6 +73,9 @@ Route::get('/expedientes/editar/{id}', 'EstudianteController@edit')->name('edita
 Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name('actualizar_expediente')
     ->middleware('permission:expediente.update');
 
+Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expediente')
+    ->middleware('permission:expediente.show');
+
 Route::get('/pdfExpedientes','EstudianteController@exportarPDF')->name('reporte_expedientes');
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
@@ -91,6 +94,7 @@ Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->na
     ->middleware('permission:institucion.update');   
 
 Route::get('/pdfInstituciones','InstitucionController@exportarPDF')->name('reporte_instituciones');
+
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')
     ->middleware('permission:proyecto.index');
@@ -110,6 +114,8 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
 });
 Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proyectos');
 
+///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
+Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion');
 
 ////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');

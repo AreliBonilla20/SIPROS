@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asignacion;
+use App\Http\Requests\AsignacionRequest;
 use Illuminate\Http\Request;
 
 class AsignacionController extends Controller
@@ -33,9 +34,17 @@ class AsignacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AsignacionRequest $request)
     {
-        //
+        $asignacion = new Asignacion();
+
+        $asignacion->carne=$request->carne;
+        $asignacion->id_proyecto=$request->id_proyecto;
+        $asignacion->horas_asignadas=$request->horas_asignadas;
+        $asignacion->estado_asignacion="Iniciado";
+        $asignacion->save();
+
+        return redirect()->to('expedientes/ver/'.$asignacion->carne)->withSuccess('Asignación creada correctamente!');
     }
 
     /**

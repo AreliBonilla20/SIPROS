@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Institucion;
 use App\Proyecto;
+use App\Carrera;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\ProyectoRequest;
@@ -33,7 +34,8 @@ class ProyectoController extends Controller
         //Crea un nuevo proyecto 
 
         $instituciones=Institucion::all();
-        return view('Proyectos/proyecto_nuevo', compact('instituciones'));
+        $carreras=Carrera::all();
+        return view('Proyectos/proyecto_nuevo', compact('instituciones', 'carreras'));
     }
 
     /**
@@ -46,6 +48,7 @@ class ProyectoController extends Controller
     {
         //Guarda un proyecto
          $proyecto = new Proyecto();
+         $proyecto->codigo_carrera = $request->codigo_carrera;
          $proyecto->nombre = $request->nombre;
          $proyecto->area_de_conocimiento = $request->area;
          $proyecto->objetivos = $request->objetivos;
@@ -55,6 +58,8 @@ class ProyectoController extends Controller
          $proyecto->nombre_encargado = $request->encargado;
          $proyecto->telefono = $request->telefono;
          $proyecto->email = $request->correo;
+         $proyecto->estado_proyecto = "Disponible";
+         $proyecto->estudiantes_inscritos = 0;
          $proyecto->save();
  
          return redirect('proyectos')->withSuccess('Proyecto agregado correctamente!');
@@ -82,7 +87,8 @@ class ProyectoController extends Controller
          //editar uno especifico
          $proyectoUpdate = Proyecto::findOrFail($id);
          $instituciones=Institucion::all();
-         return view('Proyectos/proyecto_editar', compact('proyectoUpdate','instituciones'));
+         $carreras=Carrera::all();
+         return view('Proyectos/proyecto_editar', compact('proyectoUpdate','instituciones', 'carreras'));
     }
 
     /**
@@ -96,6 +102,7 @@ class ProyectoController extends Controller
     {
         //Actualizar un proyecto
         $proyecto = Proyecto::findOrFail($id);
+        $proyecto->codigo_carrera = $request->codigo_carrera;
         $proyecto->nombre = $request->nombre;
         $proyecto->area_de_conocimiento = $request->area;
         $proyecto->objetivos = $request->objetivos;
@@ -105,6 +112,8 @@ class ProyectoController extends Controller
         $proyecto->nombre_encargado = $request->encargado;
         $proyecto->telefono = $request->telefono;
         $proyecto->email = $request->correo;
+        $proyecto->estado_proyecto = $request->estado_proyecto;
+        $proyecto->estudiantes_inscritos = 0;
         $proyecto->save();
         
         return redirect('proyectos')->withSuccess('Proyecto actualizado correctamente!');

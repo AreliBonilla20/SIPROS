@@ -1,0 +1,323 @@
+@extends('layout')
+
+@section('content')
+
+<div class="breadcomb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="breadcomb-list">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="notika-icon notika-windows"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Expediente</h2>
+                                    </div>
+                                </div>
+                            </div>
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-element-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-element-list" style="padding:4%;">
+                        <div class="basic-tb-hd flex">
+                            <h2>Datos del estudiante</h2>
+                            <a style="position:absolute; right:5%; top:8%;"class="btn btn-default notika-btn-default" href="{{route('editar_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Nombre</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->nombres}} {{$estudiante->apellidos}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Carné</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->carne}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Género</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->sexo->sexo}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Fecha de nacimiento [Año/Mes/Día]</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->fecha_nacimiento}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Edad</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="25 años" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Carrera</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->carrera->nombre_carrera}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>DUI</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->dui}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Dirección</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->direccion}}, {{$estudiante->departamento->nombre_departamento}}, {{$estudiante->municipio->nombre_municipio}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Teléfono</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->telefono}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Área de interés</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->area}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <strong>Correo electrónico</strong>
+                                <div class="form-group">
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control" value="{{$estudiante->email}}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <br>
+
+                        <div class="row" style="padding-left:43%;">
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                            <button type="button" style="color:white;" class="btn notika-btn-black btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#asignacion"><span class="glyphicon glyphicon-check"></span> Asignar poyecto</button>
+                            <div class="modal fade" id="asignacion" role="dialog" data-backdrop="static" data-keyboard="false">
+                                    <div class="modal-dialog modals-default">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <h3>Asignación de proyecto</h3>
+                                            <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                            <br>
+                                            <div class="modal-body">
+                                                <form action="{{route('guardar_asignacion')}}" method="POST">
+                                                @csrf
+                                                <label for="carne">Carné <small style="color:#16D195;" >*</small></label>
+                                                <div class="form-group ic-cmp-int">
+                                                    <div class="form-ic-cmp">
+                                                        <i class="notika-icon notika-edit"></i>
+                                                    </div>
+                                                    <div class="nk-int-st">
+                                                        <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                                                        @foreach ($errors->get('carne') as $mensaje)
+                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                        @endforeach  
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
+                                                <div class="form-example-int mg-t-15">
+                                                    <div class="bootstrap-select fm-cmp-mg">
+                                                        <select class="selectpicker" name="id_proyecto">
+                                                                <option value="">-Seleccione un proyecto-</option>
+                                                                @foreach($proyectos as $proyecto)
+                                                                <option value="{{$proyecto->id}}">{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
+                                                                @endforeach
+                                                        </select>
+                                                        @foreach ($errors->get('id_proyecto') as $mensaje)
+                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                        @endforeach  
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <label for="horas_asignadas"> Cantidad de horas asignadas <small style="color:#16D195;" >*</small></label>
+                                                <div class="form-group ic-cmp-int">
+                                                    <div class="form-ic-cmp">
+                                                        <i class="notika-icon notika-edit"></i>
+                                                    </div>
+                                                    <div class="nk-int-st">
+                                                        <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas">
+                                                        @foreach ($errors->get('horas_asignadas') as $mensaje)
+                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                        @endforeach  
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-example-int mg-t-15" style="position:absolute; right:0%;">
+                                                <button class="btn btn-success notika-btn-success">Guardar asignación</button>
+                                                 </div>
+                                                </form>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+<br>
+
+<div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wizard-wrap-int" style="padding:4%;">
+                    <div class="basic-tb-hd flex" >
+                            <h2>Avance en servicio social</h2>
+                    </div>
+                        <div class="email-statis-wrap" style="padding-left:45%;">
+                            <div class="email-round-nock">
+                                <input type="text" class="knob" value="0" data-rel="25" data-linecap="round" data-width="130" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true">
+                            </div>
+                            <div class="email-ctn-nock">
+                                <p>Porcentaje de avance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<br>
+<div class="wizard-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wizard-wrap-int" style="padding:4%;">
+                    <div class="basic-tb-hd flex">
+                            <h2>Procesos</h2>
+                    </div>
+                        <div id="rootwizard">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <div class="container-pro wizard-cts-st">
+                                        <ul>
+                                        <li><a href="#proyectos" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Proyectos</button></a></li>
+                                        <li><a href="#certificaciones" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Certificaciones</button></a></li>
+                                        <li><a href="#prorrogas" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Prórrogas</button></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane wizard-ctn" id="proyectos">
+                                <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                 
+                                    <div class="normal-table-list mg-t-30">
+                                        <div class="bsc-tbl-hvr">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre del proyecto</th>
+                                                        <th>Institución</th>
+                                                        <th>Horas asignadas</th>
+                                                        <th>Estado</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($asignaciones as $asignacion)
+                                                    <tr>
+                                                        <td>{{$asignacion->proyecto->nombre}}</td>
+                                                        <td>{{$asignacion->proyecto->institucion->nombre}}</td>
+                                                        <td>{{$asignacion->horas_asignadas}}</td>
+                                                        <td>{{$asignacion->estado_asignacion}}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                </div>
+                                <div class="tab-pane wizard-ctn" id="certificaciones">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus sapien, cursus et egestas at, volutpat sed dolor. Aliquam sollicitudin dui ac euismod hendrerit. Phasellus quis lobortis dolor. Sed massa massa, sagittis nec fermentum eu, volutpat non lectus. Nullam vitae tristique nunc. Aenean vel placerat augue. Aliquam pharetra mauris neque, sitan amet egestas risus semper non. Proin egestas egestas ex sed gravida. Suspendisse commodo nisl sit amet risus volutpat volutpat. Phasellus vitae turpis a elit tinciduntansan ornare. Praesent non libero quis libero scelerisque eleifend. Ut eleifend laoreet vulputate.</p>
+                                    <p class="wizard-mg-ctn">Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit,
+                                        vel ornare augue. Nullam eu est malesuada.</p>
+                                </div>
+                                <div class="tab-pane wizard-ctn" id="prorrogas">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus sapien, cursus et egestas at, volutpat sed dolor. Aliquam sollicitudin dui ac euismod hendrerit. Phasellus quis lobortis dolor. Sed massa massa, sagittis nec fermentum eu, volutpat non lectus. Nullam vitae tristique nunc. Aenean vel placerat augue. Aliquam pharetra mauris neque, sitan amet egestas risus semper non. Proin egestas egestas ex sed gravida. Suspendisse commodo nisl sit amet risus volutpat volutpat. Phasellus vitae turpis a elit tinciduntansan ornare. Praesent non libero quis libero scelerisque eleifend. Ut eleifend laoreet vulputate.</p>
+                                    <p class="wizard-mg-ctn">Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit,
+                                        vel ornare augue. Nullam eu est malesuada, vehicula ex in, maximus massa. Sed sit amet massa venenatis, tristique orci sed, eleifend arcu.</p>
+                                </div>
+                                <div class="wizard-action-pro">
+                                    <ul class="wizard-nav-ac">
+                                        <li><a class="button-first a-prevent" href="#"><i class="notika-icon notika-more-button"></i></a></li>
+                                        <li><a class="button-previous a-prevent" href="#"><i class="notika-icon notika-back"></i></a></li>
+                                        <li><a class="button-next a-prevent" href="#"><i class="notika-icon notika-next-pro"></i></a></li>
+                                        <li><a class="button-last a-prevent" href="#"><i class="notika-icon notika-more-button"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

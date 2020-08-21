@@ -123,7 +123,7 @@
                                             <select class="selectpicker" name="codigo">
                                                     <option value="">-Seleccione una carrera-</option>
                                                     @foreach($carreras as $carrera)
-                                                    <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option>
+                                                    <option value="{{$carrera->codigo}}" {{ ($carrera->codigo == $estudianteActualizar->codigo ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
                                                     @endforeach
                                             </select>
                                             @foreach ($errors->get('codigo') as $mensaje)
@@ -234,15 +234,6 @@
                                             </div>
                                         </div>
 
-
-
-                                        <div class="form-group ic-cmp-int">
-                                        <div class="form-ic-cmp">
-                                            <i class="notika-icon notika-support"></i>
-                                        </div>
-                                        <br>
-
-                             
                                     <div class="form-example-int mg-t-15">
                                         <button class="btn btn-success notika-btn-success">Actualizar expediente</button>
                                         <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
