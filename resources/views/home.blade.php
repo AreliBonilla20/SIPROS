@@ -106,6 +106,10 @@
                                             {{ __('Roles') }}
                                         </a>
                                     <br>
+
+                                    <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('sitio.index') }}">
+                                      {{ __('Sitio') }}
+                                    </a>
                                    
                                     @endcan
 

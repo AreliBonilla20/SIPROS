@@ -115,3 +115,9 @@ Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proy
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
 
 Route::get('/municipios/{id}', 'DepartamentoController@getMunicipios');
+
+ 
+///////////////////////////RUTAS DEL SITIO/////////
+
+Route::get('sitio/inicio', 'SitioController@index')->name('sitio.index');
+Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio.proyectos');
