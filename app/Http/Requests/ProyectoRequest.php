@@ -33,6 +33,7 @@ class ProyectoRequest extends FormRequest
             'encargado'=>'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'correo'=>'required|max:100|email',
             'telefono'=>'required|max:9|regex:/[0-9]{4}-[0-9]{4}/',
+            'codigo_carrera'=>'required',
         ];
     }
 
@@ -72,6 +73,8 @@ class ProyectoRequest extends FormRequest
             'telefono.required'=>'El campo teléfono es obligatorio.',
             'telefono.max'=>'El valor ingresado excede la cantidad máxima de caracteres permitidos    .',
             'telefono.regex'=>'El formato de teléfono es 0000-0000.',
+
+            'codigo_carrera.required'=>'El campo carrera es obligatorio.',
             
         ];
     }

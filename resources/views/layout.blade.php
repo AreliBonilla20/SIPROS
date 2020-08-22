@@ -252,7 +252,7 @@
     @yield('content')
 
     <!-- Form Element area End-->
-    <!-- Start Footer area-->
+    <!-- Start Footer area
     <div class="footer-copyright-area" style="background: #2d2e2e;">
         <div class="container">
             <div class="row">
@@ -264,7 +264,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
   <!-- jquery
 		============================================ -->
         <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -346,6 +346,10 @@
             ============================================ -->
         <script src="{{ asset('js/wave/waves.min.js') }}"></script>
         <script src="{{ asset('js/wave/wave-active.js') }}"></script>
+        <!--  wizard JS
+		============================================ -->
+        <script src="{{ asset('js/wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+        <script src="{{ asset('js/wizard/wizard-active.js') }}"></script>
         <!--  chosen JS
             ============================================ -->
         <script src="{{ asset('js/chosen/chosen.jquery.js') }}"></script>

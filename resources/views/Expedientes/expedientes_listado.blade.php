@@ -19,11 +19,11 @@
                                     </div>
                                 </div>
                             </div>
-                             <
+                            
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
                                     <a href="{{route('reporte_expedientes')}}">
-                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i>Descargar PDF</button>
+                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i> Descargar PDF</button>
                                     </a>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                 <h2>Nuevo expediente</h2>
                                 <p>Agregar un nuevo expediente</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('crear_expediente') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_expediente') }}"><button class="btn btn-success notika-btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -57,10 +57,10 @@
                                 <thead>
                                     <tr>
                                         <th>Carnet</th>
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
                                         <th>Carrera</th>
-                                        <th></th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,10 +69,12 @@
                                         <td>{{$estudiante->carne}}</td>
                                         <td>{{$estudiante->nombres}}</td>
                                         <td>{{$estudiante->apellidos}}</td>
-                                        <td>{{$estudiante->codigo}}</td>
+                                        <td>{{$estudiante->carrera->nombre_carrera}}</td>
                                         <td>
-                                        <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
-                                        style="color:white;" href="{{route('editar_expediente', $estudiante->carne)}}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                        <a class="btn btn-default notika-btn-default" href="{{route('editar_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                        </td>
+                                        <td>
+                                        <a class="btn btn-warning notika-btn-warning" href="{{route('ver_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-th-list"></span> Consultar</a>
                                         </td>
                                     </tr>
                                 @endforeach 

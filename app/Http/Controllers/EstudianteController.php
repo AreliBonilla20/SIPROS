@@ -9,7 +9,8 @@ use App\Departamento;
 use App\Municipio;
 use App\Area;
 use App\Institucion;
-use App\Inscripcion;
+use App\Proyecto;
+use App\Asignacion;
 use Carbon\Carbon;
 use App\Exports\EstudiantesExport;
 use Illuminate\Http\Request;
@@ -120,9 +121,13 @@ class EstudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Estudiante $estudiante)
+    public function show($id)
     {
-       // return view('Expedientes.expedientes_listado',compact('estudiante'));
+        $estudiante = Estudiante::findOrFail($id);
+        $proyectos = Proyecto::where('codigo_carrera',$estudiante->codigo)->get();
+        $asignaciones = Asignacion::where('carne',$estudiante->carne)->get();
+    
+        return view('Expedientes/expediente_ver',compact('estudiante', 'proyectos', 'asignaciones'));
         
     }   
 
@@ -142,6 +147,7 @@ class EstudianteController extends Controller
         $municipios=Municipio::all();
         $areas=Area::all();
         $instituciones=Institucion::all();
+      
 
         return view('Expedientes/expediente_editar', compact('estudianteActualizar','carreras','sexos','departamentos','municipios','areas','instituciones'));
     }
@@ -172,7 +178,7 @@ class EstudianteController extends Controller
         $estudianteActualizar->sexo_id = $request->sexo_id;
         $estudianteActualizar->municipio_id = $request->municipio_id;
         $estudianteActualizar->departamento_id = $request->departamento_id;
-
+        $estudianteActualizar->save();
         toast('Expediente actualizado correctamente', 'success');
         return redirect('expedientes');
        

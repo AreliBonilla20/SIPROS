@@ -22,7 +22,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
                                     <a href="{{route('reporte_instituciones')}}">
-                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i>Descargar PDF</button>
+                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i> Descargar PDF</button>
                                     </a>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 <h2>Nueva institución</h2>
                                 <p>Agregar una nueva institución</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('crear_institucion') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_institucion') }}"><button class="btn btn-success notika-btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -55,31 +55,26 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Nombre</th>
                                         <th>Tipo</th>
                                         <th>Sector</th>
-                                        <th>Dirección</th>
                                         <th>Región</th>
                                         <th>Departamento</th>
-                                        <th>Municipio</th>
-                                        <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($instituciones as $institucion)
                                         <tr>
-                                            <td>{{$institucion->id}}</td>
                                             <td>{{$institucion->nombre}}</td>
-                                            <td>{{ \App\TipoInstitucion::where(['id' => $institucion->tipo_institucion_id])->pluck('tipo_institucion')->first() }}</td>
-                                            <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombre_sector')->first() }}</td>
-                                            <td>{{$institucion->direccion}}</td>
-                                            <td>{{ \App\Region::where(['id' => $institucion->id_region])->pluck('nombre_region')->first() }}</td>
-                                            <td>{{ \App\Departamento::where(['id' => $institucion->id_departamento])->pluck('nombre_departamento')->first() }}</td>
-                                            <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
+                                            <td>{{$institucion->tipoInstitucion->tipo_institucion}}</td>
+                                            <td>{{$institucion->sector->nombre_sector}}</td>
+                                            <td>{{$institucion->region->nombre_region}}</td>
+                                            <td>{{$institucion->departamento->nombre_departamento}}</td>
                                             <td>
-                                            <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
-                                            style="color:white;" href="{{route('editar_institucion', $institucion->id)}}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                            <a class="btn btn-default notika-btn-default" href="{{route('editar_institucion', $institucion->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                            </td>
+                                            <td>
+                                            <a class="btn btn-warning notika-btn-warning" href=""><span class="glyphicon glyphicon-th-list"></span> Consultar</a>
                                             </td>
                                         </tr>
                                     @endforeach

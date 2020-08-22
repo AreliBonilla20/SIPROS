@@ -40,6 +40,25 @@
                                 <div class="form-example-wrap">
                                     <form action="{{route('guardar_proyecto')}}" method="POST">
                                         @csrf
+
+                                        <label for="codigo">Carrera <small style="color:#16D195;" >*</small></label>
+                                         <div class="form-example-int mg-t-15">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" name="codigo_carrera">
+                                                    <option value="">-Seleccione una carrera-</option>
+                                                    @foreach($carreras as $carrera)
+                                                    <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option>
+                                                    @endforeach
+                                            </select>
+                                            @foreach ($errors->get('codigo_carrera') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <br><br>
    
                                         <label for="nombre">Nombre <small style="color:#16D195;" >*</small></label>
                                         <div class="form-group ic-cmp-int">
@@ -163,7 +182,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
-
+                                        <br>
                              
                                         <div class="form-example-int mg-t-15">
                                             <div class="form-group">

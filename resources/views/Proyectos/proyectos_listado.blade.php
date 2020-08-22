@@ -21,7 +21,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
                                     <a href="{{route('reporte_proyectos')}}">
-                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i>Descargar PDF</button>
+                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i> Descargar PDF</button>
                                     </a>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 <h2>Nuevo proyecto</h2>
                                 <p>Agregar un nuevo proyecto</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('crear_proyecto') }}"><button class="btn btn-success notika-btn-success">Agregar</button></a>
+                                    <a href="{{ route('crear_proyecto') }}"><button class="btn btn-success notika-btn-success"> <span class="glyphicon glyphicon-plus"></span> Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -55,32 +55,25 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Área de conocimiento</th>
-                                        <th>Objetivos</th>
-                                        <th>Logros</th>
                                         <th>Institución</th>
-                                        <th>Cantidad de estudiantes</th>
+                                        <th>Área de conocimiento</th>
                                         <th>Encargado</th>
-                                        <th>Correo electrónico</th>
-                                        <th>Acción</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($proyectos as $proyecto)
                                         <tr>
-                                            {{-- <td>{{$institucion->id}}</td> --}}
                                             <td>{{$proyecto->nombre}}</td>
-                                            <td>{{$proyecto->area_de_conocimiento}}</td>
-                                            <td>{{$proyecto->objetivos}}</td>
-                                            <td>{{$proyecto->logros}}</td>
                                             <td>{{$proyecto->institucion->nombre}}</td>
-                                            <td>{{$proyecto->cantidad_de_estudiantes}}</td>
+                                            <td>{{$proyecto->area_de_conocimiento}}</td>
                                             <td>{{$proyecto->nombre_encargado}}</td>
-                                            <td>{{$proyecto->email}}</td>
-
                                             <td>
-                                            <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
-                                            style="color:white;" href="{{route('editar_proyecto', $proyecto->id)}}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                            <td>
+                                            <a class="btn btn-default notika-btn-default" href="{{route('editar_proyecto', $proyecto->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                            </td>
+                                            <td>
+                                            <a class="btn btn-warning notika-btn-warning" href=""><span class="glyphicon glyphicon-th-list"></span> Consultar</a>
                                             </td>
                                         </tr>
                                     @endforeach
