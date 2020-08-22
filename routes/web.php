@@ -117,6 +117,7 @@ Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proy
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion');
 
+Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga');
 ////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
 

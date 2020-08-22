@@ -11,6 +11,7 @@ use App\Area;
 use App\Institucion;
 use App\Proyecto;
 use App\Asignacion;
+use App\Prorroga;
 use Carbon\Carbon;
 use App\Exports\EstudiantesExport;
 use Illuminate\Http\Request;
@@ -126,8 +127,9 @@ class EstudianteController extends Controller
         $estudiante = Estudiante::findOrFail($id);
         $proyectos = Proyecto::where('codigo_carrera',$estudiante->codigo)->get();
         $asignaciones = Asignacion::where('carne',$estudiante->carne)->get();
+        $prorrogas= Prorroga::where('carne',$estudiante->carne)->get();
     
-        return view('Expedientes/expediente_ver',compact('estudiante', 'proyectos', 'asignaciones'));
+        return view('Expedientes/expediente_ver',compact('estudiante', 'proyectos', 'asignaciones','prorrogas'));
         
     }   
 

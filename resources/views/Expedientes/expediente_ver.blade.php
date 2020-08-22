@@ -214,6 +214,64 @@
                                 </div>
                             </div>    
                         </div>
+
+                        <div class="row" style="padding-left:43%;">
+                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                            <button type="button" style="color:white;" class="btn notika-btn-black btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#prorroga"><span class="glyphicon glyphicon-check"></span> Agregar prorroga</button>
+                            <div class="modal fade" id="prorroga" role="dialog" data-backdrop="static" data-keyboard="false">
+                                    <div class="modal-dialog modals-default">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <h3>Solicitud de prorroga</h3>
+                                            <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                            <br>
+                                            <div class="modal-body">
+                                                <form action="{{route('guardar_prorroga')}}" method="POST">
+                                                @csrf
+                                                <label for="carne">Carné <small style="color:#16D195;" >*</small></label>
+                                                <div class="form-group ic-cmp-int">
+                                                    <div class="form-ic-cmp">
+                                                        <i class="notika-icon notika-edit"></i>
+                                                    </div>
+                                                    <div class="nk-int-st">
+                                                        <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                                                        @foreach ($errors->get('carne') as $mensaje)
+                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                        @endforeach  
+                                                    </div>
+                                                </div>
+
+
+                                                <label for="fecha_solicitud">Fecha de solicitud<small style="color:#16D195;" >*</small></label>
+                                                <div class="form-group ic-cmp-int">
+                                                    <div class="form-ic-cmp">
+                                                        <i class="notika-icon notika-edit"></i>
+                                                    </div>
+                                                    <div class="nk-int-st">
+                                                        <input type="date" class="form-control" name="fecha_solicitud">
+                                                        @foreach ($errors->get('fecha_solicitud') as $mensaje)
+                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                        @endforeach  
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-example-int mg-t-15" style="position:absolute; right:0%;">
+                                                <button class="btn btn-success notika-btn-success">Guardar prorroga</button>
+                                                 </div>
+                                                </form>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+
                    </div>
                 </div>
             </div>
@@ -294,13 +352,38 @@
                                 </div>
                                 
                             </div>
-                                </div>
-                                <div class="tab-pane wizard-ctn" id="certificaciones">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus sapien, cursus et egestas at, volutpat sed dolor. Aliquam sollicitudin dui ac euismod hendrerit. Phasellus quis lobortis dolor. Sed massa massa, sagittis nec fermentum eu, volutpat non lectus. Nullam vitae tristique nunc. Aenean vel placerat augue. Aliquam pharetra mauris neque, sitan amet egestas risus semper non. Proin egestas egestas ex sed gravida. Suspendisse commodo nisl sit amet risus volutpat volutpat. Phasellus vitae turpis a elit tinciduntansan ornare. Praesent non libero quis libero scelerisque eleifend. Ut eleifend laoreet vulputate.</p>
-                                    <p class="wizard-mg-ctn">Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit,
-                                        vel ornare augue. Nullam eu est malesuada.</p>
-                                </div>
+
+                            <div class="tab-content">
                                 <div class="tab-pane wizard-ctn" id="prorrogas">
+                                <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                 
+                                    <div class="normal-table-list mg-t-30">
+                                        <div class="bsc-tbl-hvr">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha de solicitud</th>
+                                                        <th>Estado </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($prorrogas as $prorroga)
+                                                    <tr>
+                                                        <td>{{$prorroga->fecha_solicitud}}
+                                                        </td>
+                                                        <td>{{$prorroga->estado}}
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>    
+                                <div class="tab-pane wizard-ctn" id="certificaciones">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus sapien, cursus et egestas at, volutpat sed dolor. Aliquam sollicitudin dui ac euismod hendrerit. Phasellus quis lobortis dolor. Sed massa massa, sagittis nec fermentum eu, volutpat non lectus. Nullam vitae tristique nunc. Aenean vel placerat augue. Aliquam pharetra mauris neque, sitan amet egestas risus semper non. Proin egestas egestas ex sed gravida. Suspendisse commodo nisl sit amet risus volutpat volutpat. Phasellus vitae turpis a elit tinciduntansan ornare. Praesent non libero quis libero scelerisque eleifend. Ut eleifend laoreet vulputate.</p>
                                     <p class="wizard-mg-ctn">Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit,
                                         vel ornare augue. Nullam eu est malesuada, vehicula ex in, maximus massa. Sed sit amet massa venenatis, tristique orci sed, eleifend arcu.</p>
