@@ -236,7 +236,7 @@
                                                         <i class="notika-icon notika-edit"></i>
                                                     </div>
                                                     <div class="nk-int-st">
-                                                        <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                                                        <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" readonly>
                                                         @foreach ($errors->get('carne') as $mensaje)
                                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                                         @endforeach  
@@ -364,15 +364,99 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Fecha de solicitud</th>
-                                                        <th>Estado </th>
+                                                        <th>Estado</th>
+                                                        <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach($prorrogas as $prorroga)
                                                     <tr>
-                                                        <td>{{$prorroga->fecha_solicitud}}
+                                                        <td>
+                                                            {{$prorroga->fecha_solicitud}}
                                                         </td>
-                                                        <td>{{$prorroga->estado}}
+                                                        <td>
+                                                            {{$prorroga->estado}}
+                                                        </td>
+                                                        <td>
+                                                        <div class="row">
+                                                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                                                            <button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#actualizar_prorroga_{{$loop->iteration}}"><span class="glyphicon glyphicon-check"></span> Aprobar/Rechazar</button>
+                                                            <div class="modal fade" id="actualizar_prorroga_{{$loop->iteration}}" role="dialog" data-backdrop="static" data-keyboard="false">
+                                                                    <div class="modal-dialog modals-default">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                            </div>
+                                                                            <h3>Actualización de prórroga</h3>
+                                                                            <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                                                            <br>
+                                                                            <div class="modal-body">
+                                                                                <form action="{{route('actualizar_prorroga', $prorroga->id)}}" method="POST">
+                                                                                @method('PUT')
+                                                                                @csrf
+                                                                                <label for="carne">Carné <small style="color:#16D195;" >*</small></label>
+                                                                                <div class="form-group ic-cmp-int">
+                                                                                    <div class="form-ic-cmp">
+                                                                                        <i class="notika-icon notika-edit"></i>
+                                                                                    </div>
+                                                                                    <div class="nk-int-st">
+                                                                                        <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" readonly>
+                                                                                        @foreach ($errors->get('carne') as $mensaje)
+                                                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                        @endforeach  
+                                                                                    </div>
+                                                                                </div>
+                                
+                                
+                                                                                <label for="fecha_solicitud">Fecha de solicitud<small style="color:#16D195;" >*</small></label>
+                                                                                <div class="form-group ic-cmp-int">
+                                                                                    <div class="form-ic-cmp">
+                                                                                        <i class="notika-icon notika-edit"></i>
+                                                                                    </div>
+                                                                                    <div class="nk-int-st">
+                                                                                        <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus>
+                                                                                        @foreach ($errors->get('fecha_solicitud') as $mensaje)
+                                                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                        @endforeach  
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <br>
+                                                                                <label for="fecha_solicitud">Estado de prórroga: {{$prorroga->estado}}</label>
+                                                                                <div class="form-group ic-cmp-int">
+                                                                                    <div class="nk-int-st">
+                                                                                        <div class="row">
+                                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                            <div class="form-check-inline">
+                                                                                                <label><input type="radio" class="i-checks iradio_square-green" name="estado" value="Aprobada"> <i></i> Aprobada</label>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                            <div class="form-check-inline">
+                                                                                                <label><input type="radio" class="i-checks iradio_square-green" name="estado" value="Rechazada"> <i></i> Rechazada</label>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                </div>
+                                
+                                                                                <div class="form-example-int mg-t-15" style="position:absolute; right:10%;">
+                                                                                <button class="btn btn-success notika-btn-success">Guardar prorroga</button>
+                                                                                </div>
+                                                                                </form>
+                                                                                <br>
+                                                                            </div>
+                                                                            <br>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>    
+                                                        </div>
                                                         </td>
                                                     </tr>
                                                     @endforeach

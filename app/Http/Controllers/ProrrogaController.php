@@ -43,7 +43,7 @@ class ProrrogaController extends Controller
         $prorroga->estado="Pendiente";
         $prorroga->save();
 
-        return redirect()->to('expedientes/ver/'.$prorroga->carne)->withSuccess('Prorroga creada correctamente!');
+        return redirect()->to('expedientes/ver/'.$prorroga->carne)->withSuccess('¡Prórroga creada correctamente!');
     }
 
     /**
@@ -75,9 +75,15 @@ class ProrrogaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProrrogaRequest $request, $id)
     {
-        //
+        $prorrogaActualizar = Prorroga::findOrFail($id);;
+        $prorrogaActualizar->carne=$request->carne;
+        $prorrogaActualizar->fecha_solicitud=$request->fecha_solicitud;
+        $prorrogaActualizar->estado=$request->estado;
+        $prorrogaActualizar->save();
+
+        return redirect()->to('expedientes/ver/'.$prorrogaActualizar->carne)->withSuccess('¡Prórroga actualizada correctamente!');
     }
 
     /**
