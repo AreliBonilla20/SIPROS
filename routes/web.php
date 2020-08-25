@@ -117,9 +117,13 @@ Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proy
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion');
 
+///////////////////////////////////////Ruta de gestón de prórrogas/////////////////////////////////////////
+Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas');
+
 Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga');
 
 Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga');
+
 ////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
 

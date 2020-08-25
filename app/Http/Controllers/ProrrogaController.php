@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Prorroga;
+use App\Estudiante;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProrrogaRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProrrogaController extends Controller
 {
@@ -15,7 +17,10 @@ class ProrrogaController extends Controller
      */
     public function index()
     {
-        //
+        $prorrogas = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
+        $estudiantes= Estudiante::all();
+
+        return view('Prorrogas/prorrogas_listado', compact('prorrogas','estudiantes'));
     }
 
     /**
@@ -43,7 +48,7 @@ class ProrrogaController extends Controller
         $prorroga->estado="Pendiente";
         $prorroga->save();
 
-        return redirect()->to('expedientes/ver/'.$prorroga->carne)->withSuccess('¡Prórroga creada correctamente!');
+        return back()->withSuccess('¡Prórroga creada correctamente!');
     }
 
     /**
@@ -83,7 +88,7 @@ class ProrrogaController extends Controller
         $prorrogaActualizar->estado=$request->estado;
         $prorrogaActualizar->save();
 
-        return redirect()->to('expedientes/ver/'.$prorrogaActualizar->carne)->withSuccess('¡Prórroga actualizada correctamente!');
+        return back()->withSuccess('¡Prórroga actualizada correctamente!');
     }
 
     /**

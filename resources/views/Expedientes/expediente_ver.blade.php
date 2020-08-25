@@ -364,6 +364,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Fecha de solicitud</th>
+                                                        <th>Fecha de inscripción</th>
                                                         <th>Estado</th>
                                                         <th>Acción</th>
                                                     </tr>
@@ -373,6 +374,9 @@
                                                     <tr>
                                                         <td>
                                                             {{$prorroga->fecha_solicitud}}
+                                                        </td>
+                                                        <td>
+                                                            {{ \Carbon\Carbon::parse($prorroga->created_at)->format('Y-m-d')}}
                                                         </td>
                                                         <td>
                                                             {{$prorroga->estado}}
@@ -428,7 +432,7 @@
                                                                                         <div class="row">
                                                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                                             <div class="form-check-inline">
-                                                                                                <label><input type="radio" class="i-checks iradio_square-green" name="estado" value="Aprobada"> <i></i> Aprobada</label>
+                                                                                                <label><input type="radio" {{ ($prorroga->estado == "Aprobada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Aprobada"> <i></i> Aprobada</label>
                                                                                             </div>
                                                                                             </div>
                                                                                             </div>
@@ -436,7 +440,7 @@
                                                                                         <div class="row">
                                                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                                             <div class="form-check-inline">
-                                                                                                <label><input type="radio" class="i-checks iradio_square-green" name="estado" value="Rechazada"> <i></i> Rechazada</label>
+                                                                                                <label><input type="radio" {{ ($prorroga->estado == "Rechazada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Rechazada"> <i></i> Rechazada</label>
                                                                                             </div>
                                                                                             </div>
                                                                                             </div>

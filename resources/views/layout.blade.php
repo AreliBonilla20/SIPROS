@@ -199,7 +199,11 @@
                                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                                     </ul>
                                 </li>
-                              
+                                <li><a data-toggle="collapse" data-target="#Prorrogas" href="#">Prórrogas</a>
+                                    <ul  class="collapse dropdown-header-top">
+                                        <li><a href="{{ url('prorrogas') }}">Listado prórrogas</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -221,6 +225,8 @@
                         </li>
                         <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
                         </li>
+                        <li><a data-toggle="tab" href="#Prorrogas"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
+                        </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -241,7 +247,11 @@
                                 <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
                             </ul>
                         </div>
-                        
+                         <div id="Prorrogas" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('prorrogas') }}">Listado prórrogas</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
