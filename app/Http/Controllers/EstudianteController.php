@@ -43,11 +43,11 @@ class EstudianteController extends Controller
     public function create()
     {
         //Retorna la vista de creación del expediente
-        $carreras=Carrera::all();
-        $sexos=Sexo::all();
-        $departamentos=Departamento::all();
-        $municipios=Municipio::all();
-        $instituciones=Institucion::all();
+        $carreras = Carrera::all();
+        $sexos = Sexo::all();
+        $departamentos = Departamento::all();
+        $municipios = Municipio::all();
+        $instituciones = Institucion::all();
 
         return view('Expedientes/expediente_nuevo',compact('carreras','sexos','departamentos','municipios','instituciones'));
     }
@@ -76,7 +76,7 @@ class EstudianteController extends Controller
         $estudiante->direccion=$request->direccion;
         $estudiante->email=$request->email;
         $estudiante->telefono=$request->telefono;
-        $estudiante->area=$request->area;
+        $estudiante->area_id=$request->area_interes;
 
         /*Calculo de la edad*/
         $now=Carbon::now();
@@ -86,7 +86,7 @@ class EstudianteController extends Controller
         y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
         */
         if($edad<18){
-            alert()->error('Error','La edad debe ser mayor de edad.');
+            alert()->error('Error','El estudiante debe ser mayor de edad.');
             return redirect('expedientes');
         }
         $alumnos=Estudiante::all();

@@ -123,11 +123,22 @@ Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas');
 Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga');
 
 Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga');
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 ////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
+=======
+////////////////////////////////Rutas de obtención de datos//////////////////////////////////
+>>>>>>> Stashed changes
+=======
+////////////////////////////////Rutas de obtención de datos//////////////////////////////////
+>>>>>>> Stashed changes
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
 
 Route::get('/municipios/{id}', 'DepartamentoController@getMunicipios');
+
+Route::get('/areas/{id}', 'CarreraController@getAreas');
+
 
  
 ///////////////////////////RUTAS DEL SITIO/////////

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAreasTable extends Migration
+class CreateAreasCarrerasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
+        Schema::create('areas_carreras', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('area_interes');
+            $table->integer('area_id')->unsigned()->foreing()->references('id')->on('areas')->onDelete('cascade');
+            $table->string('codigo')->foreing()->references('codigo')->on('carreras')->onDelete('cascade');
             $table->timestamps();
-            
         });
     }
 
@@ -28,6 +28,6 @@ class CreateAreasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('areas_carreras');
     }
 }

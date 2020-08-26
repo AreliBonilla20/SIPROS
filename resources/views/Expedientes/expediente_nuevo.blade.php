@@ -118,8 +118,8 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="codigo">
-                                                    <option value="">-Seleccione una carrera-</option>
+                                            <select class="selectpicker" data-live-search="true" name="codigo" id="carrera">
+                                                    <option value=""  disabled selected>-Seleccione una carrera-</option>
                                                     @foreach($carreras as $carrera)
                                                     <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option>
                                                     @endforeach
@@ -221,7 +221,7 @@
 
                                     
                                         <label for="area">Área de interés <small style="color:#16D195;" >*</small></label>
-                                        <div class="form-group ic-cmp-int">
+                                        <!--div class="form-group ic-cmp-int">
                                             <div class="form-ic-cmp">
                                                 <i class="notika-icon notika-support"></i>
                                             </div>
@@ -231,8 +231,19 @@
                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
                                             </div>
-                                        </div>
+                                        </div-->
                                         <br>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" data-live-search="true" name="area_interes" id="area_interes">
+                                                        <option value="">-Seleccione una área-</option>
+                                                    </select>
+                                                    @foreach ($errors->get('area_id') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        
+                                            <br><br><br>
 
                                         <div class="form-example-int mg-t-15">
                                             <button class="btn btn-success notika-btn-success">Guardar expediente</button>
