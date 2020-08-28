@@ -47,12 +47,12 @@ $("#departamento_id").change(event => {
 
 //Actualizar las áreas de interés de acuerdo a la carrera seleccionada
 
-$("#carrera_id").change(event => {
+$("#carreras").change(event => {
     $.get(`/areas/${event.target.value}`, function(res, sta){
-        $("#area_id").empty();
-        $("#area_id").append(`<option value="" disabled selected hidden>-Seleccione un área-</option>`);
+        $("#areas").empty();
+        $("#areas").append(`<option value="" disabled selected hidden>-Seleccione un área-</option>`);
         res.forEach(element => {
-            $("#area_id").append(`<option value=${element.id}> ${element.area_interes} </option>`);
+            $("#areas").append(`<option value=${element.id}> ${element.area_interes} </option>`);
         });
         $('.selectpicker').selectpicker('refresh');
     });

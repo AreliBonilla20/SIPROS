@@ -9,7 +9,7 @@ class CarreraController extends Controller
 {
   public function getAreas(Request, $request, $id){
     if($request->ajax()){
-        $areas = Area::areas($id);
+        $areas = Area::obtenerAreas($id);
         return response()->json($areas);
     }
   }

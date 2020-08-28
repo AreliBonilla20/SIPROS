@@ -32,11 +32,11 @@ class EstudianteRequest extends FormRequest
             'direccion'=>'required|max:150',
             'email'=>'required|max:100|email',
             'telefono'=>'required|max:9|regex:/[0-9]{4}-[0-9]{4}/',
-            'area'=>'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'codigo'=>'required',
             'sexo_id'=>'required',  
             'municipio_id'=>'required',  
-            'departamento_id'=>'required',  
+            'departamento_id'=>'required',
+            'area_id'=>'required',  
         ];
     }
 
@@ -72,10 +72,6 @@ class EstudianteRequest extends FormRequest
             'telefono.max'=>'El valor ingresado excede la cantidad máxima de caracteres permitidos    .',
             'telefono.regex'=>'El formato de teléfono es 0000-0000.',
 
-            'area.required'=>'El campo área es obligatorio.',
-            'area.max'=>'La cantidad máxima de carácteres es 150.',
-            'area.regex'=>'Los carácteres deben ser solo letras.',
-
             'codigo.required'=>'Debe seleccionar una carrera.',
 
             'sexo_id.required'=>'Debe seleccionar un género.',
@@ -83,6 +79,8 @@ class EstudianteRequest extends FormRequest
             'municipio_id.required'=>'Debe seleccionar un municipio.',
 
             'departamento_id.required'=>'Debe seleccionar un departamento.',
+            
+            'area_id.required'=>'Debe seleccionar una área.',
         ];
     }
 }

@@ -127,10 +127,12 @@
                                 <strong>Área de interés</strong>
                                 <div class="form-group">
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$estudiante->area}}" readonly>
+                                        <input type="text" class="form-control" value="{{$estudiante->area->area_interes}}" readonly>
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <strong>Correo electrónico</strong>
                                 <div class="form-group">

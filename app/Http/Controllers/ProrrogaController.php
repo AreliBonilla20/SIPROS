@@ -17,18 +17,13 @@ class ProrrogaController extends Controller
      */
     public function index()
     {
-<<<<<<< Updated upstream
         $prorrogas = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
         $estudiantes= Estudiante::all();
 
         return view('Prorrogas/prorrogas_listado', compact('prorrogas','estudiantes'));
-=======
-        //
-        
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
+        // 
+
     }
 
     /**
