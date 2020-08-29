@@ -126,6 +126,9 @@ Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actu
 //<<<<<<< Updated upstream
 //<<<<<<< Updated upstream
 
+///////////////////////////////////////Ruta de gestón de memorias/////////////////////////////////////////
+Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria');
+
 ////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
 //=======
 ////////////////////////////////Rutas de obtención de datos//////////////////////////////////
