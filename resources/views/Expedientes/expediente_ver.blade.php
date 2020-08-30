@@ -123,14 +123,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
-                                <strong>Área de interés</strong>
-                                <div class="form-group">
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$estudiante->area}}" readonly>
-                                    </div>
-                                </div>
-                            </div>
+                            
+
+
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <strong>Correo electrónico</strong>
                                 <div class="form-group">
@@ -334,6 +329,7 @@
                                                         <th>Institución</th>
                                                         <th>Horas asignadas</th>
                                                         <th>Estado</th>
+                                                        <th>Memoria</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -343,10 +339,227 @@
                                                         <td>{{$asignacion->proyecto->institucion->nombre}}</td>
                                                         <td>{{$asignacion->horas_asignadas}}</td>
                                                         <td>{{$asignacion->estado_asignacion}}</td>
+                                                        <td><button type="button" style="color:white;" class="btn btn-success notika-btn-success" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-check"></span> Memoria</button></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="modal fade" id="memoria" role="dialog" data-backdrop="static" data-keyboard="false">
+                                                <div class="modal-dialog modals-default">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                        <h3>Registro de memorias</h3>
+                                                        <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                                        <p>Institución: {{$asignacion->proyecto->institucion->nombre}}</p>
+                                                        <p>Proyecto: {{$asignacion->proyecto->nombre}}</p>
+                                                        <br>
+                                                        <div class="modal-body">
+                                                            <form action="{{route('guardar_memoria')}}" method="POST">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-3">
+                                                                    
+                                                                    <label for="asignacion_id">Asignación <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                <input type="text" class="form-control" name="asignacion_id" value="{{$asignacion->id}}" readonly>
+                                                                    @foreach ($errors->get('asignacion_id') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="fecha_inicio">Fecha de inicio <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="date" class="form-control" name="fecha_inicio" >
+                                                                    @foreach ($errors->get('fecha_inicio') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="fecha_fin">Fecha de Finalización <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="date" class="form-control" name="fecha_fin" >
+                                                                    @foreach ($errors->get('fecha_fin') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="docente_benef_m">Docentes beneficiados masculinos <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="docente_benef_m" >
+                                                                    @foreach ($errors->get('docente_benef_m') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="docente_benef_f">Docentes beneficiados femeninos <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="docente_benef_f" >
+                                                                    @foreach ($errors->get('docente_benef_f') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="estudiante_benef_m">Estudiantes beneficiados masculinos <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="estudiante_benef_m" >
+                                                                    @foreach ($errors->get('estudiante_benef_m') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="estudiante_benef_f">Estudiantes beneficiados femeninos <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="estudiante_benef_f" >
+                                                                    @foreach ($errors->get('estudiante_benef_f') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="otros_benef_m">Otros beneficiados masculinos <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="otros_benef_m" >
+                                                                    @foreach ($errors->get('otros_benef_m') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="otros_benef_f">Otros beneficiados femeninos <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="otros_benef_f" >
+                                                                    @foreach ($errors->get('otros_benef_f') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="inversion_institucion">Inversión de institución($) <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="inversion_institucion" >
+                                                                    @foreach ($errors->get('inversion_institucion') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="inversion_estudiante">Inversión de estudiante($) <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="inversion_estudiante" >
+                                                                    @foreach ($errors->get('inversion_estudiante') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-3">
+                                                                    <label for="horas_completadas">Horas completadas <small style="color:#16D195;" >*</small></label>
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <div class="form-ic-cmp">
+                                                                        <i class="notika-icon notika-edit"></i>
+                                                                    </div>
+                                                                <div class="nk-int-st">
+                                                                    <input type="numeric" class="form-control" name="horas_completadas" >
+                                                                    @foreach ($errors->get('horas_completadas') as $mensaje)
+                                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                    @endforeach  
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            
+            
+                                                            
+                                                            
+                                                            
+            
+                                                            <div class="form-example-int mg-t-15" style="position:absolute; right:0%;">
+                                                            <button class="btn btn-success notika-btn-success">Guardar memoria</button>
+                                                             </div>
+                                                            </form>
+                                                            <br>
+                                                        </div>
+                                                        <br>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+
                                         </div>
                                     </div>
                                 </div>

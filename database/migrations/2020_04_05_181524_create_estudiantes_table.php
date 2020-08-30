@@ -14,17 +14,15 @@ class CreateEstudiantesTable extends Migration
     public function up()
     {
         Schema::create('estudiantes', function (Blueprint $table) {
-            #$table->increments('id');
             $table->string('carne')->unique()->primary();
             $table->string('nombres');
             $table->string('apellidos');
-            #$table->integer('edad');
             $table->date('fecha_nacimiento');
             $table->string('dui')->unique();
             $table->string('direccion');
             $table->string('email');
             $table->string('telefono');
-            $table->string('area');
+            $table->integer('area_id')->unsigned()->foreing()->references('id')->on('areas')->onDelete('cascade');            
             $table->string('codigo')->foreing()->references('codigo')->on('carreras')->onDelete('cascade');
             $table->integer('sexo_id')->unsigned()->foreing()->references('id')->on('sexo')->onDelete('cascade');
             $table->integer('municipio_id')->unsigned()->foreing()->references('id')->on('municipios')->onDelete('cascade');

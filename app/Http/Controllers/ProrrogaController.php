@@ -21,6 +21,9 @@ class ProrrogaController extends Controller
         $estudiantes= Estudiante::all();
 
         return view('Prorrogas/prorrogas_listado', compact('prorrogas','estudiantes'));
+
+        // 
+
     }
 
     /**

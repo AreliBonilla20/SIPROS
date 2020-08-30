@@ -21,4 +21,8 @@ class Carrera extends Model
    public function estudiantes(){
    	return $this->hasMany(Estudiante::class);
    }
+
+   public function areas(){
+      return $this->belongsToMany(Area::class,'areas_carreras')->withPivot('area_id');
+    }
 }

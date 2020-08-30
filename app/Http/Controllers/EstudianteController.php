@@ -12,6 +12,7 @@ use App\Institucion;
 use App\Proyecto;
 use App\Asignacion;
 use App\Prorroga;
+use App\AreasCarreras;
 use Carbon\Carbon;
 use App\Exports\EstudiantesExport;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class EstudianteController extends Controller
     public function index()
     {
         //Muestra el lstado de estudiantes
-        $estudiantes=Estudiante::all();
+        $estudiantes = Estudiante::all();
         return view('Expedientes.expedientes_listado', compact('estudiantes'));
         //all: Consulta todos las estudiantees
         //compact:Arrays de recursos
@@ -43,13 +44,14 @@ class EstudianteController extends Controller
     public function create()
     {
         //Retorna la vista de creación del expediente
-        $carreras=Carrera::all();
-        $sexos=Sexo::all();
-        $departamentos=Departamento::all();
-        $municipios=Municipio::all();
-        $instituciones=Institucion::all();
+        $carreras = Carrera::all();
+        $sexos = Sexo::all();
+        $departamentos = Departamento::all();
+        $municipios = Municipio::all();
+        $instituciones = Institucion::all();
+        $areas = Area::all();
 
-        return view('Expedientes/expediente_nuevo',compact('carreras','sexos','departamentos','municipios','instituciones'));
+        return view('Expedientes/expediente_nuevo',compact('carreras','sexos','departamentos','municipios','instituciones','areas'));
     }
 
     /**
@@ -76,7 +78,9 @@ class EstudianteController extends Controller
         $estudiante->direccion=$request->direccion;
         $estudiante->email=$request->email;
         $estudiante->telefono=$request->telefono;
-        $estudiante->area=$request->area;
+        $estudiante->area_id=$request->area_id;
+
+
 
         /*Calculo de la edad*/
         $now=Carbon::now();
@@ -86,7 +90,7 @@ class EstudianteController extends Controller
         y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
         */
         if($edad<18){
-            alert()->error('Error','La edad debe ser mayor de edad.');
+            alert()->error('Error','El estudiante debe ser mayor de edad.');
             return redirect('expedientes');
         }
         $alumnos=Estudiante::all();
@@ -110,7 +114,12 @@ class EstudianteController extends Controller
             return redirect('expedientes');
         }
         else{
+            $area = Area::findOrFail($estudiante->area_id);
+            $carrera = Carrera::findOrFail($estudiante->codigo);
+            #$area->carreras()->attach($carrera->codigo);
+            #$area->save();
             $estudiante->save();
+
             return redirect('expedientes')->withSuccess('Expediente agregado correctamente!');
         };
         
@@ -149,9 +158,10 @@ class EstudianteController extends Controller
         $municipios=Municipio::all();
         $areas=Area::all();
         $instituciones=Institucion::all();
+        $areas= Area::all();
       
 
-        return view('Expedientes/expediente_editar', compact('estudianteActualizar','carreras','sexos','departamentos','municipios','areas','instituciones'));
+        return view('Expedientes/expediente_editar', compact('estudianteActualizar','carreras','sexos','departamentos','municipios','areas','instituciones','areas'));
     }
 
     /**
@@ -175,11 +185,11 @@ class EstudianteController extends Controller
         $estudianteActualizar->direccion = $request->direccion;
         $estudianteActualizar->email = $request->email;
         $estudianteActualizar->telefono = $request->telefono;
-        $estudianteActualizar->area = $request->area;
         $estudianteActualizar->codigo = $request->codigo;
         $estudianteActualizar->sexo_id = $request->sexo_id;
         $estudianteActualizar->municipio_id = $request->municipio_id;
         $estudianteActualizar->departamento_id = $request->departamento_id;
+        $estudianteActualizar->area_id = $request->area_id;
         $estudianteActualizar->save();
         toast('Expediente actualizado correctamente', 'success');
         return redirect('expedientes');

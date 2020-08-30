@@ -220,20 +220,21 @@
                                             </div>
                                         </div>
 
-                                    
-                                        <label for="area">Área de interés <small style="color:#16D195;" >*</small></label>
-                                        <div class="form-group ic-cmp-int">
-                                            <div class="form-ic-cmp">
-                                                <i class="notika-icon notika-support"></i>
-                                            </div>
-                                            <div class="nk-int-st">
-                                                <input type="text" class="form-control" value="{{$estudianteActualizar->area}}" name="area" placeholder="Área de interés del estudiante">
-                                                @foreach ($errors->get('area') as $mensaje)
-                                                <small style="color:#B42020;">{{ $mensaje }}</small>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                       <label for="area">Área de interés <small style="color:#16D195;" >*</small></label>
+                                        <br>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><div class="bootstrap-select fm-cmp-mg">
+                                                    <select class="selectpicker" data-live-search="true" name="area_id">
+                                                        <option value="">-Seleccione una área-</option>
+                                                        @foreach ($areas as $area)
+                                                            <option value="{{$area->id}}"{{ ($estudianteActualizar->area_id == $loop->iteration ? "selected":"") }}>{{$area->area_interes}}</option>
+                                                        @endforeach 
 
+                                                    </select>
+                                                    @foreach ($errors->get('area_id') as $mensaje)
+                                                    <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                    @endforeach
+                                                </div>
+                                            </div>
                                     <div class="form-example-int mg-t-15">
                                         <button class="btn btn-success notika-btn-success">Actualizar expediente</button>
                                         <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
