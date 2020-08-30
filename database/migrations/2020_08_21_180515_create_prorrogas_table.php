@@ -17,7 +17,7 @@ class CreateProrrogasTable extends Migration
             $table->increments('id');
             $table->string('carne')->foreing()->references('carne')->on('estudiantes');
             $table->date('fecha_solicitud');
-             $table->string('estado');
+            $table->string('estado');
             $table->timestamps();
         });
     }
