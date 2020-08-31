@@ -10,38 +10,36 @@
 
         <div class="carousel-inner" role="listbox">
 
+
+          @foreach($avisos as $aviso)
+            @if($ultimo->id==$aviso->id)
+            <div class="carousel-item active" style="background-image: url('{{$aviso->url}}') ">
+              <div class="carousel-container">
+                <div class="carousel-content">
+                  <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
+                  <p class="animate__animated animate__fadeInUp">{{ $aviso->descripcion }}</p>
+                  
+                </div>
+              </div>
+            </div>
+            @else
+            <div class="carousel-item" style="background-image: url('{{$aviso->url}}') ">
+              <div class="carousel-container">
+                <div class="carousel-content">
+                  <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
+                  <p class="animate__animated animate__fadeInUp">{{ $aviso->descripcion }}</p>
+                  
+                </div>
+              </div>
+            </div>
+            @endif
+          
+          @endforeach
+
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url('{{ asset('assets/img/estudiantes.jpg') }}') ">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Unidad de<span> Proyección Social</span></h2>
-                <p class="animate__animated animate__fadeInUp"> Estamos comprometidos con la sociedad y nuestros estudiantes a brindar educación de calidad en todas las áreas profesionales.</p>
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Leer más</a>
-              </div>
-            </div>
-          </div>
+          
 
-          <!-- Slide 2 -->
-          <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated fanimate__adeInDown">Pizarrón <span>Informativo</span></h2>
-                <p class="animate__animated animate__fadeInUp">Avisos importantes sobre el departamento de proyección social.</p>
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Leer más</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background: url(assets/img/slide/slide-3.jpg)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Noticias <span>Universitarias</span></h2>
-                <p class="animate__animated animate__fadeInUp">Noticias relevantes dentro del campus con relevancia dentro de las autoridades.</p>
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">Leer más</a>
-              </div>
-            </div>
-          </div>
+          
 
         </div>
 
@@ -66,28 +64,24 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-lg-4">
-            <div class="icon-box">
-              <i class="icofont-computer"></i>
-              <h3><a href="">Proyectos</a></h3>
-              <p>Listado de proyectos disponibles</p>
+          
+            <div class="col-lg-6 text-center" onclick="location.href='{{ route('sitio.proyectos') }}'">
+              <div class="icon-box">
+                <i class="icofont-computer"></i>
+                <h1><a href="{{ route('sitio.proyectos') }}"><b>Proyectos</b></a></h1>
+                <p style = "font-size:20px">Listado de proyectos disponibles</p>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="icon-box">
-              <i class="icofont-image"></i>
-              <h3><a href="">Imágenes</a></h3>
-              <p>Galería de fotografías</p>
+          
+            <div class="col-lg-6 mt-4 mt-lg-0 text-center" onclick="location.href='{{ route('sitio.blog') }}'">
+              <div class="icon-box">
+                <i class="icofont-tasks-alt"></i>
+                <h1><a href="{{ route('sitio.blog') }}"><b>Noticias</b></a></h1>
+                <p style = "font-size:20px">Noticias universitarias relevantes</p>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="icon-box">
-              <i class="icofont-tasks-alt"></i>
-              <h3><a href="">Noticias</a></h3>
-              <p>Noticias universitarias relevantes</p>
-            </div>
-          </div>
         </div>
+        
 
       </div>
     </section><!-- End Featured Section -->
@@ -101,21 +95,18 @@
             <img src="{{asset('assets/img/estudiantes.jpg')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            <h3>Requisitos para realizar el servicio social.</h3>
+            <p class="font-italic text-justify">
+              Regulado por los articulos 33, 34 y 39 del Reglamento General de Proyección Social de la Universidad de El Salvador y por el Manual de Procedimientos del Servicio Social de la Facultad de Ciencias Económicas.
             </p>
             <ul>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="icofont-check-circled"></i> Contar con el porcentaje requerido </li>
+              <li><i class="icofont-check-circled"></i> Apertura tu expediente </li>
+              <li><i class="icofont-check-circled"></i> Selecciona e inscribete en un proyecto </li>
+              <li><i class="icofont-check-circled"></i> Retira tu carta de asignación </li>
+              <li><i class="icofont-check-circled"></i> Inicia tu servicio social </li>
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
+            
           </div>
         </div>
 
@@ -127,7 +118,7 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Our Services</h2>
+          <h2>Áreas de interes</h2>
         </div>
 
         <div class="row">
@@ -184,28 +175,7 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Clients</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="owl-carousel clients-carousel">
-          <img src="assets/img/clients/client-1.png" alt="">
-          <img src="assets/img/clients/client-2.png" alt="">
-          <img src="assets/img/clients/client-3.png" alt="">
-          <img src="assets/img/clients/client-4.png" alt="">
-          <img src="assets/img/clients/client-5.png" alt="">
-          <img src="assets/img/clients/client-6.png" alt="">
-          <img src="assets/img/clients/client-7.png" alt="">
-          <img src="assets/img/clients/client-8.png" alt="">
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
+  
 
   </main><!-- End #main -->
 

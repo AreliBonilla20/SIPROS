@@ -147,4 +147,7 @@ Route::get('/areas/{id}', 'CarreraController@getAreas');
 ///////////////////////////RUTAS DEL SITIO/////////
 
 Route::get('sitio/inicio', 'SitioController@index')->name('sitio.index');
+
 Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio.proyectos');
+
+Route::get('sitio/blog', 'SitioController@blog')->name('sitio.blog');

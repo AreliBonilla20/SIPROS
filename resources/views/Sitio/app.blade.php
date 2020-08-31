@@ -82,6 +82,7 @@
           </li!-->
 
           <li><a href="{{ route('sitio.proyectos') }}">Proyectos</a></li>
+          <li><a href="{{ route('sitio.blog') }}">Noticias</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -93,8 +94,6 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
-   
 
     <div class="footer-top">
       <div class="container">
@@ -128,16 +127,14 @@
 
           </div>
 
-         
-
         </div>
       </div>
+      
     </div>
-
     <div class="container">
-      
-      
-    </div>
+      <div class="copyright"> Derechos reservados &copy; 2020. <a href="{{ route('sitio.index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
+      </div>
+  </div>
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
