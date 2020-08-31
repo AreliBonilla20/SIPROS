@@ -12,7 +12,6 @@ use App\Institucion;
 use App\Proyecto;
 use App\Asignacion;
 use App\Prorroga;
-use App\AreasCarreras;
 use Carbon\Carbon;
 use App\Exports\EstudiantesExport;
 use Illuminate\Http\Request;
@@ -114,10 +113,6 @@ class EstudianteController extends Controller
             return redirect('expedientes');
         }
         else{
-            $area = Area::findOrFail($estudiante->area_id);
-            $carrera = Carrera::findOrFail($estudiante->codigo);
-            #$area->carreras()->attach($carrera->codigo);
-            #$area->save();
             $estudiante->save();
 
             return redirect('expedientes')->withSuccess('Expediente agregado correctamente!');
