@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 #header .logo img {
   padding: 0;
   margin: 0;
-  max-height: 40px;
+  max-height: 65px;
 }
 
 /*--------------------------------------------------------------
@@ -652,7 +652,7 @@ section {
   background: #e96b56;
 }
 
-.featured .icon-box:hover i, .featured .icon-box:hover h3 a, .featured .icon-box:hover p {
+.featured .icon-box:hover i, .featured .icon-box:hover h1 a, .featured .icon-box:hover p {
   color: #fff;
 }
 
@@ -1892,7 +1892,7 @@ section {
   margin-bottom: 30px;
 }
 
-.blog .sidebar .search-form form {
+.container .search-form form {
   background: #fff;
   border: 1px solid #ddd;
   padding: 3px 10px;
@@ -1900,13 +1900,12 @@ section {
   border-radius: 50px;
 }
 
-.blog .sidebar .search-form form input[type="text"] {
+.container .search-form form input[type="text"] {
   border: 0;
   padding: 4px;
   width: calc(100% - 40px);
 }
-
-.blog .sidebar .search-form form button {
+.container .search-form form button {
   position: absolute;
   top: 0;
   right: -2px;
@@ -1922,7 +1921,7 @@ section {
   border-radius: 50px;
 }
 
-.blog .sidebar .search-form form button:hover {
+.container .search-form form button:hover {
   background: #e96b56;
 }
 
