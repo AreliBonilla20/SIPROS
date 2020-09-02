@@ -333,7 +333,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($asignaciones as $asignacion)
+                                                @foreach($asignaciones as $asignacion)
                                                     <tr>
                                                         <td>{{$asignacion->proyecto->nombre}}</td>
                                                         <td>{{$asignacion->proyecto->institucion->nombre}}</td>
@@ -341,7 +341,7 @@
                                                         <td>{{$asignacion->estado_asignacion}}</td>
                                                         <td><button type="button" style="color:white;" class="btn btn-success notika-btn-success" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-check"></span> Memoria</button></td>
                                                     </tr>
-                                                    @endforeach
+                                               
                                                 </tbody>
                                             </table>
                                             <div class="modal fade" id="memoria" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -352,8 +352,9 @@
                                                         </div>
                                                         <h3>Registro de memorias</h3>
                                                         <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
-                                                        <p>Institución: {{$asignacion->proyecto->institucion->nombre}}</p>
                                                         <p>Proyecto: {{$asignacion->proyecto->nombre}}</p>
+                                                        <p>Institución: {{$asignacion->proyecto->institucion->nombre}}</p>
+                                                        
                                                         <br>
                                                         <div class="modal-body">
                                                             <form action="{{route('guardar_memoria')}}" method="POST">
@@ -540,16 +541,11 @@
                                                                 </div>
                                                                 </div>
                                                             </div>
-                                                            
-            
-                                                            
-                                                            
-                                                            
-            
                                                             <div class="form-example-int mg-t-15" style="position:absolute; right:0%;">
                                                             <button class="btn btn-success notika-btn-success">Guardar memoria</button>
                                                              </div>
                                                             </form>
+                                                            @endforeach
                                                             <br>
                                                         </div>
                                                         <br>
