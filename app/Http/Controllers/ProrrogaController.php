@@ -7,6 +7,7 @@ use App\Estudiante;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProrrogaRequest;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class ProrrogaController extends Controller
 {
@@ -103,5 +104,12 @@ class ProrrogaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportarPDF(){
+        $prorrogas = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
+        $estudiantes= Estudiante::all();
+        $pdf = PDF::loadView('Reportes/prorrogas_listado',compact('prorrogas'));
+        return $pdf->download('Prorrogas.pdf');
     }
 }

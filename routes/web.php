@@ -117,25 +117,19 @@ Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proy
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion');
 
-///////////////////////////////////////Ruta de gestón de prórrogas/////////////////////////////////////////
+///////////////////////////////////////Ruta de gestión de prórrogas/////////////////////////////////////////
 Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas');
 
 Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga');
 
 Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga');
-//<<<<<<< Updated upstream
-//<<<<<<< Updated upstream
 
-///////////////////////////////////////Ruta de gestón de memorias/////////////////////////////////////////
+Route::get('/pdfProrrogas','ProrrogaController@exportarPDF')->name('reporte_prorrogas');
+
+///////////////////////////////////////Ruta de gestión de memorias/////////////////////////////////////////
 Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria');
 
-////////////////////////////////Rutas de obtención departamentos y municipios//////////////////////////////////
-//=======
 ////////////////////////////////Rutas de obtención de datos//////////////////////////////////
-//>>>>>>> Stashed changes
-//=======
-////////////////////////////////Rutas de obtención de datos//////////////////////////////////
-//>>>>>>> Stashed changes
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
 
 Route::get('/municipios/{id}', 'DepartamentoController@getMunicipios');

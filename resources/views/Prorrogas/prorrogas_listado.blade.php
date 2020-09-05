@@ -19,13 +19,13 @@
 									</div>
 								</div>
                             </div>
-                            {{-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
-                                    <a href="{{route('reporte_instituciones')}}">
-                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i> Descargar PDF</button>
+                                    <a href="{{route('reporte_prorrogas')}}">
+                                        <button data-toggle="tooltip" data-placement="left" title="Descargar listado de prórrogas" class="btn"><i class="notika-icon notika-sent"></i> Descargar PDF</button>
                                     </a>
                                 </div>
-                            </div> --}}
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
                                                                     <i class="notika-icon notika-edit"></i>
                                                                 </div>
                                                                 <div class="nk-int-st">
-                                                                    <select class="selectpicker" data-live-search="true" name="carne" id="carne" >
+                                                                    <select class="selectpicker" data-live-search="true" name="carne" id="carne" required>
                                                                         <option value="" disabled selected>-Seleccione un estudiante-</option>
                                                                         @foreach ($estudiantes as $estudiantes)
                                                                             <option value="{{$estudiantes->carne}}">{{$estudiantes->carne}} - {{$estudiantes->nombres}} {{$estudiantes->apellidos}}</option>
@@ -87,7 +87,7 @@
                                                                     <i class="notika-icon notika-edit"></i>
                                                                 </div>
                                                                 <div class="nk-int-st">
-                                                                    <input type="date" class="form-control" name="fecha_solicitud">
+                                                                    <input type="date" class="form-control" name="fecha_solicitud" required>
                                                                     @foreach ($errors->get('fecha_solicitud') as $mensaje)
                                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                                     @endforeach  
@@ -117,6 +117,7 @@
                                     <tr>
                                         <th>Fecha de solicitud</th>
                                         <th>Fecha de inscripción</th>
+                                        <th>Carnet</th>
                                         <th>Estudiante</th>
                                         <th>Estado</th>
                                         <th>Acción</th>
@@ -127,7 +128,8 @@
                                         <tr>
                                             <td>{{$prorroga->fecha_solicitud}}</td>
                                             <td>{{ \Carbon\Carbon::parse($prorroga->created_at)->format('Y-m-d')}}</td>
-                                            <td>{{$prorroga->carne}} - {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('nombres')->first() }}
+                                            <td>{{ $prorroga->carne }}</td>
+                                            <td>{{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('nombres')->first() }}
                                                 {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('apellidos')->first() }}
                                             </td>
                                             <td>{{$prorroga->estado}}</td>
@@ -171,7 +173,7 @@
                                                                                 <i class="notika-icon notika-edit"></i>
                                                                             </div>
                                                                             <div class="nk-int-st">
-                                                                                <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus>
+                                                                                <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus required>
                                                                                 @foreach ($errors->get('fecha_solicitud') as $mensaje)
                                                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                                                 @endforeach  
@@ -185,7 +187,7 @@
                                                                                 <div class="row">
                                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                                     <div class="form-check-inline">
-                                                                                        <label><input type="radio" {{ ($prorroga->estado == "Aprobada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Aprobada"> <i></i> Aprobada</label>
+                                                                                        <label><input type="radio" {{ ($prorroga->estado == "Aprobada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Aprobada" required> <i></i> Aprobada</label>
                                                                                     </div>
                                                                                     </div>
                                                                                     </div>
@@ -193,7 +195,7 @@
                                                                                 <div class="row">
                                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                                     <div class="form-check-inline">
-                                                                                        <label><input type="radio" {{ ($prorroga->estado == "Rechazada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Rechazada"> <i></i> Rechazada</label>
+                                                                                        <label><input type="radio" {{ ($prorroga->estado == "Rechazada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Rechazada" required> <i></i> Rechazada</label>
                                                                                     </div>
                                                                                     </div>
                                                                                     </div>
