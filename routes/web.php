@@ -145,3 +145,15 @@ Route::get('sitio/inicio', 'SitioController@index')->name('sitio.index');
 Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio.proyectos');
 
 Route::get('sitio/blog', 'SitioController@blog')->name('sitio.blog');
+
+Route::get('sitio/aviso', 'SitioController@aviso')->name('sitio.aviso');
+
+Route::post('sitio/aviso_post', 'SitioController@aviso_post')->name('sitio.aviso_post');
+
+Route::get('sitio/avisos', 'SitioController@avisos')->name('sitio.avisos');
+
+Route::get('sitio/editar_aviso/{id} ', 'SitioController@editar_aviso')->name('sitio.editar_aviso');
+
+Route::put('sitio/editar_aviso_put/{id}', 'SitioController@editar_aviso_put')->name('sitio.editar_aviso_put');
+
+Route::delete('sitio/eliminar_aviso/{id}', 'SitioController@eliminar_aviso')->name('sitio.eliminar_aviso');

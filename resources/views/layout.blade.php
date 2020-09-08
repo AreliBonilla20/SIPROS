@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Google Fonts
 		============================================ -->
-    <ink href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
        
@@ -88,6 +88,8 @@
     <!-- modernizr JS
         ============================================ -->
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
    
 </head>
 
@@ -226,6 +228,8 @@
                         <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
                         </li>
                         <li><a data-toggle="tab" href="#Prorrogas"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
+                        </li>
+                        <li><a href="{{ route ('sitio.avisos')}}"><i class="far fa-newspaper"></i> Avisos</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">

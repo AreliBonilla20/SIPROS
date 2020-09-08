@@ -13,22 +13,25 @@
 
           @foreach($avisos as $aviso)
             @if($ultimo->id==$aviso->id)
-            <div class="carousel-item active" style="background-image: url('{{$aviso->url}}') ">
+            <div class="carousel-item active" style="background-image: url('{{Storage::url($aviso->url)}}') ">
               <div class="carousel-container">
                 <div class="carousel-content">
-                  <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
-                  <p class="animate__animated animate__fadeInUp">{{ $aviso->descripcion }}</p>
-                  
-                </div>
+                  <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
+                    <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
+                    <p class="animate__animated animate__fadeInUp" align="center">{{ $aviso->descripcion }}</p>
+                  </div>  
+                </div>       
               </div>
             </div>
+          
             @else
-            <div class="carousel-item" style="background-image: url('{{$aviso->url}}') ">
+            <div class="carousel-item" style="background-image: url('{{Storage::url($aviso->url)}}') ">
               <div class="carousel-container">
                 <div class="carousel-content">
-                  <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
-                  <p class="animate__animated animate__fadeInUp">{{ $aviso->descripcion }}</p>
-                  
+                  <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
+                    <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
+                    <p class="animate__animated animate__fadeInUp" align="center">{{ $aviso->descripcion }}</p>
+                  </div> 
                 </div>
               </div>
             </div>
@@ -92,7 +95,7 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <img src="{{asset('assets/img/estudiantes.jpg')}}" class="img-fluid" alt="">
+            <img src="{{asset('assets/img/equipo.jpg')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
             <h3>Requisitos para realizar el servicio social.</h3>
@@ -113,6 +116,27 @@
       </div>
     </section><!-- End About Section -->
 
+    <!--section id="counts" class="counts">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Tipos de instituciones</h2>
+        </div>
+        <div class="row no-gutters">
+         @foreach($instituciones as $institucion)
+          <div class="col-lg-2 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="icofont-simple-smile"></i>
+              <span data-toggle="counter-up">{{ $institucion->cantidad }}</span>
+              <p>{{ $institucion->tipo_institucion }}</p>
+            </div>
+          </div>
+          @endforeach
+
+        </div>
+
+      </div>
+    </section>< End Counts Section -->
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
@@ -121,54 +145,17 @@
           <h2>Áreas de interes</h2>
         </div>
 
+        
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div>
+          @foreach($areas as $area)
+          <div class="col-md-3">
+            <div class="icon-box text-left">
+              <div class="icon"><i class="far fa-chart-bar"></i></div>
+              <h4 align="center">{{ $area->area_interes }}</h4>  
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
+           </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-slideshow"></i></div>
-              <h4><a href="">Dele cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
+          @endforeach
 
         </div>
 

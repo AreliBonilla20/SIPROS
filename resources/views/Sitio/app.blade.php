@@ -24,6 +24,7 @@
   <link href="{{asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
   <link href="{{asset('assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
   <link href="{{asset('assets/vendor/venobox/venobox.css') }}" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/style.css') }}" rel="stylesheet">

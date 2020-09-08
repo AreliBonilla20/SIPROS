@@ -1,26 +1,36 @@
 @extends('Sitio.app')
 @section('content')
+<style>
+      .pagination > li > a,
+      .pagination > li > span {
+          color:#ea6a56; // use your own color here
+      }
 
+      .pagination > .active > a,
+      .pagination > .active > a:focus,
+      .pagination > .active > a:hover,
+      .pagination > .active > span,
+      .pagination > .active > span:focus,
+      .pagination > .active > span:hover {
+          background-color: #ea6a56;
+          border-color: #ea6a56;
+      }
+      .page-item.active .page-link {
+          z-index: 3;
+          color: #fff;
+          background-color: #ea6a56;
+          border-color: #ea6a56;
+      }
+</style>
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
+       
                 <ol>
-                    <li><a href="{{ route('sitio.index') }}">Home</a></li>
+                    <li><a href="{{ route('sitio.index') }}">Inicio</a></li>
                     <li>Noticias</li>
                   </ol>
                   <h2>Noticias</h2>
-            </div>
-            <div class="col-md-4">
-                
-                <div class="search-form">
-                    <form action="{{ route('sitio.blog')}}">
-                      <input type="text" name="search" placeholder="Buscar">
-                      <button type="submit"><i class="icofont-search"></i></button>
-                    </form>     
-                  </div>
-            </div>        
-        </div>
+            
     </div>
   </section>
 
@@ -35,7 +45,7 @@
             <article class="entry">
   
               <div class="entry-img">
-                <img src="{{ $aviso->url }}" alt="" class="img-fluid">
+                <img src="{{ Storage::url($aviso->url) }}" alt="" class="img-fluid">
               </div>
   
               <h2 class="entry-title">
@@ -45,7 +55,7 @@
               <div class="entry-meta">
                 <ul>
 
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="{{ $aviso->created_at }}">{{ date('d/m/Y h:i', strtotime( $aviso->created_at)) }}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> {{ date('d/m/Y h:i', strtotime( $aviso->created_at)) }}</li>
     
                 </ul>
               </div>
@@ -64,17 +74,8 @@
        
       </div>
        
-
-          <div class="blog-pagination">
-            <ul class="justify-content-center">
-              <li class="disabled"><i class="icofont-rounded-left"></i></li>
-              <li><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#"><i class="icofont-rounded-right"></i></a></li>
-            </ul>
-          </div>
-
+      {{ $lista->links() }}
+          
       </div>
 
     </div>

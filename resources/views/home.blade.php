@@ -251,9 +251,9 @@
                                 <br>
 								<h2>Sitio web</h2>
 							</div>
-                            <p>Administración del sitio web informativo</p>
+                            <a href="{{ route('sitio.avisos') }}"><p>Administración del sitio web informativo</p></a>
                         </div>
-                        <button class="btn btn-danger notika-btn-danger">Sitio web</button>
+                        <a type="button" href="{{ route('sitio.index') }}" class="btn btn-danger notika-btn-danger">Sitio web</a>
                     </div>
                 </div>
             </div>
