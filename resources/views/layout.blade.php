@@ -201,10 +201,11 @@
                                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#Prorrogas" href="#">Prórrogas</a>
-                                    <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('prorrogas') }}">Listado prórrogas</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="{{ route('prorrogas') }}">Prórrogas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('sitio.avisos') }}">Avisos</a>
                                 </li>
                             </ul>
                         </nav>
@@ -227,7 +228,7 @@
                         </li>
                         <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Prorrogas"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
+                        <li><a href="{{ route('prorrogas') }}"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
                         </li>
                         <li><a href="{{ route ('sitio.avisos')}}"><i class="far fa-newspaper"></i> Avisos</a>
                         </li>
@@ -249,11 +250,6 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
                                 <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
-                            </ul>
-                        </div>
-                         <div id="Prorrogas" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ route('prorrogas') }}">Listado prórrogas</a></li>
                             </ul>
                         </div>
                     </div>
