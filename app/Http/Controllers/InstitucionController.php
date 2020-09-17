@@ -12,7 +12,6 @@ use App\Municipio;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\InstitucionRequest;
-use PDF;
 
 class InstitucionController extends Controller
 {
@@ -127,11 +126,5 @@ class InstitucionController extends Controller
         $institucionEliminar = App\Institucion::findOrFail($id);
         $institucionEliminar->delete();
         return back()->with('eliminada', 'Institución eliminada correctamente');
-    }
-
-    public function exportarPDF(){
-        $instituciones=Institucion::all();
-        $pdf=PDF::loadView('Reportes/instituciones_listado',compact('instituciones'));
-        return $pdf->setPaper('a4','landscape')->download('instituciones.pdf');
     }
 }

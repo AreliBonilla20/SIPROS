@@ -8,7 +8,6 @@ use App\Carrera;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\ProyectoRequest;
-use PDF;
 
 class ProyectoController extends Controller
 {
@@ -130,9 +129,4 @@ class ProyectoController extends Controller
         //Elimina un proyecto
     }
 
-     public function exportarPDF(){
-        $proyectos=Proyecto::all();
-        $pdf=PDF::loadView('Reportes/proyectos_listado',compact('proyectos'));
-        return $pdf->setPaper('a4','landscape')->download('proyectos.pdf');
-    }
 }

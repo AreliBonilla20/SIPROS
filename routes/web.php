@@ -76,7 +76,9 @@ Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name(
 Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expediente')
     ->middleware('permission:expediente.show');
 
-Route::get('/pdfExpedientes','EstudianteController@exportarPDF')->name('reporte_expedientes');
+Route::get('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
+
+Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante');
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
     ->middleware('permission:institucion.index');
@@ -93,7 +95,7 @@ Route::get('/instituciones/editar/{id}', 'InstitucionController@edit')->name('ed
 Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizar_institucion')
     ->middleware('permission:institucion.update');   
 
-Route::get('/pdfInstituciones','InstitucionController@exportarPDF')->name('reporte_instituciones');
+Route::get('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones');
 
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')
@@ -112,7 +114,7 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
     ->middleware('permission:proyecto.update');
 
 });
-Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proyectos');
+Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
 
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion');
@@ -124,7 +126,7 @@ Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_pror
 
 Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga');
 
-Route::get('/pdfProrrogas','ProrrogaController@exportarPDF')->name('reporte_prorrogas');
+Route::get('/pdfProrrogas','ReporteController@pdfProrrogas')->name('reporte_prorrogas');
 
 ///////////////////////////////////////Ruta de gestión de memorias/////////////////////////////////////////
 Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria');

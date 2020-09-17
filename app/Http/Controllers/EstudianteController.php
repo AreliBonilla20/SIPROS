@@ -17,7 +17,6 @@ use App\Exports\EstudiantesExport;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\EstudianteRequest;
-use PDF;
 
 class EstudianteController extends Controller
 {
@@ -202,10 +201,5 @@ class EstudianteController extends Controller
         //
     }
 
-    public function exportarPDF(){
-        $estudiantes=Estudiante::all();
-        $pdf=PDF::loadView('Reportes/expedientes_listado',compact('estudiantes'));
-        return $pdf->download('expedientes.pdf');
-    }
 }
    
