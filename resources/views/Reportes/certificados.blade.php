@@ -27,45 +27,64 @@
 <body>
      <header>
         <br>
-        Universidad de El Salvador<br>
-        Facultad de Ciencias Económicas<br>
-        Unidad de Proyección Social<br>
+        UNIVERSIDAD DE EL SALVADOR<br>
+        FACULTAD DE CIENCIAS ECONÓMICAS<br>
+        UNIDAD DE PROYECCIÓN SOCIAL<br>
         Teléfono:2521-0100 y 2521-0220<br>
         ________________________________________________________________________
     </header>
     <br><br><br>
-    <h5>Certificación de sericio social</h5>
-    <p>Para efectos legales y administrativos, la insfrascrita jefatura de Unidad de Proyección Social certfica que:</p>
+    <h5>CERTIFICACIÓN DE SERVICIO SOCIAL</h5>
+    <p>PARA EFECTOS LEGALES Y ADMINISTRATIVOS, LA INFRASCRITA JEFATURA DE UNIDAD DE PROYECCIÓN SOCIAL CERTIFICA QUE:</p>
     <br>
     <div class="row">
         
         <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
             <div style="line-height:20px">
-               Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->nombres}} {{$estudiante->apellidos}}<br>
+                <font style="text-transform: uppercase;">
+                  NOMBRE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->nombres}} {{$estudiante->apellidos}}<br>
                
-               Carne:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->carne}}<br>
+                  CARNE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->carne}}<br>
                
-               Carrera:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->carrera->nombre_carrera}}<br>
+                 CARRERA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->carrera->nombre_carrera}}<br>
 
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->carrera->codigo}}<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$estudiante->carrera->codigo}}<br> 
+                </font>
             </div>
-            
+            <br>
 
-            <p>Ha cumplido({{$proyecto->horas_asignadas}}) horas sociales, legalmente establecidas en el Art.60 2° del Reglamento General de la Ley Organica de la Universidad de El Salvador, en el proyecto denominado:</p>
+            <p>HA CUMPLIDO({{$proyecto->horas_asignadas}}) HORAS SOCIALES, LEGALMENTE ESTABLECIDAS EN EL ART.60 2° DEL REGLAMENTO GENERAL DE LA LEY ORGANICA DE LA UNIVERSIDAD DE EL SALVADOR, EN EL PROYECTO DENOMINADO:</p>
 
             <div style="line-height:20px">
-              
-                {{$proyecto->nombre_proyecto}}<br>
+                <div style="width: 500;height: 500px; position: relative;">
+                   <div style="position: absolute; left: 150px;">
+                        <font style="text-transform: uppercase;">
+                            {{$proyecto->nombre_proyecto}}<br>
+                            {{$proyecto->area_de_conocimiento}}<br><br> 
+                        </font>
+                    </div> 
 
-                {{$proyecto->area_de_conocimiento}}<br><br>
+                    <div style="position: absolute;left: 200px;top: 60px;">
+                        <font style="text-transform: uppercase;">
+                            {{$proyecto->nombre_institucion}}<br>
+                            {{$proyecto->fecha_inicio}}<br>
+                            {{$proyecto->fecha_fin}}  
+                        </font>
+                    </div>
 
-                Lugar:
-                {{$proyecto->nombre_institucion}}<br>
-                
-                Fecha de inicio:{{$proyecto->fecha_inicio}}<br>
+                    <div>
+                        <br><br><br>
+                        LUGAR:<br>
+                        FECHA DE INICIO:<br>
+                        FECHA DE FINALIZACIÓN:<br>
+                    </div>
+                    <br>
+                    <p>SE EXTIENDE LA PRESENTE EN </p><br>
+                    <p>ES CONFORME.</p><br>
 
-                Fecha de finalización:
-                {{$proyecto->fecha_fin}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________<br>
+                    MARVIN WILFREDO CRESPIN ELIAS&nbsp;&nbsp;&nbsp;&nbsp;CARMEN ISABEL RIVAS VASQUEZ<br>
+                </div>        
             </div>
         </div>
     </div>

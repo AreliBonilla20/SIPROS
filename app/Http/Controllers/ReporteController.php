@@ -50,9 +50,9 @@ class ReporteController extends Controller
     public function pdfCertificado($carne){
         $estudiante = Estudiante::findOrFail($carne);//Devuelve el estudiante con el carne solicitado.
         $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
-        /*$now=Carbon::now();
-        $fecha_actual = $now->format('d/m/Y');*/
-        $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto','fecha_actual'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
+        $now=Carbon::now();
+        $fecha_actual = $now->format('d/m/Y');
+        $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
         return $pdf->stream('certificado.pdf');//Retorna el certificado de servicio social
     }
 
