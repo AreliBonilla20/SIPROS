@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App;
-use App\Departamento;
-use App\Http\Requests\InstitucionRequest;
 use App\Institucion;
-use App\Municipio;
-use App\Region;
 use App\Sector;
 use App\TipoInstitucion;
+use App\Region;
+use App\Departamento;
+use App\Municipio;
 use Illuminate\Http\Request;
-use PDF;
+use RealRashid\SweerAlert\Facades\Alert;
+use App\Http\Requests\InstitucionRequest;
+
 
 class InstitucionController extends Controller
 {
@@ -129,8 +130,14 @@ class InstitucionController extends Controller
 
     public function exportarPDF()
     {
+<<<<<<< HEAD
         $instituciones = Institucion::all();
         $pdf           = PDF::loadView('Reportes/instituciones_listado', compact('instituciones'));
         return $pdf->setPaper('a4', 'landscape')->download('instituciones.pdf');
+=======
+        $institucionEliminar = App\Institucion::findOrFail($id);
+        $institucionEliminar->delete();
+        return back()->with('eliminada', 'Institución eliminada correctamente');
+>>>>>>> 9e2b3a6d9b4f3be84a1ab1e3e79ee141dc18f31b
     }
 }
