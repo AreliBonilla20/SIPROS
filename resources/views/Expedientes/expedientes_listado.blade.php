@@ -72,8 +72,14 @@
                                     <td>{{$estudiante->carrera->nombre_carrera}}</td>
                                     <td>
                                         <a class="btn btn-default notika-btn-default" href="{{route('editar_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+<<<<<<< HEAD
                                     </td>
                                     <td>
+=======
+                                        <a class="btn btn-default notika-btn-default" href="{{route('certificado_estudiante', $estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> Generar certificado</a>
+                                        </td>
+                                        <td>
+>>>>>>> 9e2b3a6d9b4f3be84a1ab1e3e79ee141dc18f31b
                                         <a class="btn btn-warning notika-btn-warning" href="{{route('ver_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-th-list"></span> Consultar</a>
                                     </td>
                                 </tr>

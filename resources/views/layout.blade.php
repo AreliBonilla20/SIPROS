@@ -175,6 +175,7 @@
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
                                 <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
+<<<<<<< HEAD
                                 <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
                                     <li><a href="{{ url ('home') }}">Inicio</a></li>
                                 </ul>
@@ -184,6 +185,60 @@
                                 <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
                                 <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
                             </ul>
+=======
+                                  <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
+                                        <li><a href="{{ url ('home') }}">Inicio</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
+                                        <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
+                                        <li><a href="{{ route('crear_institucion') }}">Agregar institución</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
+                                    <ul  class="collapse dropdown-header-top">
+                                        <li><a href="{{ url('proyectos') }}">Listado proyectos</a></li>
+                                        <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ route('prorrogas') }}">Prórrogas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('sitio.avisos') }}">Avisos</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-area mg-tb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                        <li><a href="{{ url ('home')}}"><i class="notika-icon notika-house"></i> Inicio</a>
+                        </li>
+                         <li><a data-toggle="tab" href="#Expediente"><i class="notika-icon notika-form"></i> Expediente</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#Instituciones"><i class="notika-icon notika-edit"></i> Instituciones</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
+                        </li>
+                        <li><a href="{{ route('prorrogas') }}"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
+                        </li>
+                        <li><a href="{{ route ('sitio.avisos')}}"><i class="far fa-newspaper"></i> Avisos</a>
+>>>>>>> 9e2b3a6d9b4f3be84a1ab1e3e79ee141dc18f31b
                         </li>
                         <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
                         <ul class="collapse dropdown-header-top">
@@ -196,6 +251,7 @@
                         <li><a href="{{ url('proyectos') }}">Listado proyectos</a></li>
                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                     </ul>
+<<<<<<< HEAD
                 </li>
                 <li><a data-toggle="collapse" data-target="#Prorrogas" href="#">Prórrogas</a>
                 <ul  class="collapse dropdown-header-top">
@@ -256,6 +312,32 @@
 </div>
 </div>
 </div>
+=======
+                    <div class="tab-content custom-menu-content">
+                        <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
+                            <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
+                            </ul>
+                        </div>
+                        <div id="Instituciones" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
+                                <li><a href="{{ route('crear_institucion') }}">Agregar institución</a></li>
+                            </ul>
+                        </div>
+                         <div id="Proyectos" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
+                                <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 9e2b3a6d9b4f3be84a1ab1e3e79ee141dc18f31b
 
 @yield('content')
 <!-- Form Element area End-->

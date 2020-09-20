@@ -7,7 +7,8 @@ use App\Http\Requests\ProyectoRequest;
 use App\Institucion;
 use App\Proyecto;
 use Illuminate\Http\Request;
-use PDF;
+use RealRashid\SweerAlert\Facades\Alert;
+use App\Http\Requests\ProyectoRequest;
 
 class ProyectoController extends Controller
 {
@@ -128,10 +129,4 @@ class ProyectoController extends Controller
         }
     }
 
-    public function exportarPDF()
-    {
-        $proyectos = Proyecto::all();
-        $pdf       = PDF::loadView('Reportes/proyectos_listado', compact('proyectos'));
-        return $pdf->setPaper('a4', 'landscape')->download('proyectos.pdf');
-    }
 }

@@ -200,10 +200,17 @@
                                                                                     </div>
                                                                                     </div>
                                                                                 </div>
-                                                                        </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                    <div class="form-check-inline">
+                                                                                        <label><input type="radio" {{ ($prorroga->estado == "Pendiente" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Pendiente" required> <i></i> Pendiente</label>
+                                                                                    </div>
+                                                                                    </div>
+                                                                                    </div>
+                                                                                </div>
                         
                                                                         <div class="form-example-int mg-t-15" style="position:absolute; right:10%;">
-                                                                        <button class="btn btn-success notika-btn-success">Guardar prórroga</button>
+                                                                        <button class="btn btn-success notika-btn-success">Actualizar prórroga</button>
                                                                         </div>
                                                                         </form>
                                                                         <br>

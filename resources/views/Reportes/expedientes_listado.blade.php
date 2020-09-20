@@ -63,7 +63,7 @@
                         <th scope="row">{{ $estudiante->carne}}</th>
                         <td>{{ $estudiante->nombres }}</td>
                         <td>{{ $estudiante->apellidos }}</td>
-                        <td>{{ \App\Carrera::where(['codigo' => $estudiante->codigo])->pluck('nombre_carrera')->first() }}</td>
+                        <td>{{ $estudiante->carrera->nombre_carrera }}</td>
                     </tr>
                 @endforeach
                 </tbody>
