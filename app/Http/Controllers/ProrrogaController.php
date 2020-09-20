@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Prorroga;
 use App\Estudiante;
-use Illuminate\Http\Request;
 use App\Http\Requests\ProrrogaRequest;
+use App\Prorroga;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
@@ -18,12 +18,12 @@ class ProrrogaController extends Controller
      */
     public function index()
     {
-        $prorrogas = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
-        $estudiantes= Estudiante::all();
+        $prorrogas   = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
+        $estudiantes = Estudiante::all();
 
-        return view('Prorrogas/prorrogas_listado', compact('prorrogas','estudiantes'));
+        return view('Prorrogas/prorrogas_listado', compact('prorrogas', 'estudiantes'));
 
-        // 
+        //
 
     }
 
@@ -43,13 +43,14 @@ class ProrrogaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-    public function store(ProrrogaRequest $request){
-        
-        $prorroga = new Prorroga();
-        $prorroga->carne=$request->carne;
-        $prorroga->fecha_solicitud=$request->fecha_solicitud;
-        $prorroga->estado="Pendiente";
+
+    public function store(ProrrogaRequest $request)
+    {
+
+        $prorroga                  = new Prorroga();
+        $prorroga->carne           = $request->carne;
+        $prorroga->fecha_solicitud = $request->fecha_solicitud;
+        $prorroga->estado          = "Pendiente";
         $prorroga->save();
 
         return back()->withSuccess('¡Prórroga creada correctamente!');
@@ -86,10 +87,10 @@ class ProrrogaController extends Controller
      */
     public function update(ProrrogaRequest $request, $id)
     {
-        $prorrogaActualizar = Prorroga::findOrFail($id);;
-        $prorrogaActualizar->carne=$request->carne;
-        $prorrogaActualizar->fecha_solicitud=$request->fecha_solicitud;
-        $prorrogaActualizar->estado=$request->estado;
+        $prorrogaActualizar                  = Prorroga::findOrFail($id);
+        $prorrogaActualizar->carne           = $request->carne;
+        $prorrogaActualizar->fecha_solicitud = $request->fecha_solicitud;
+        $prorrogaActualizar->estado          = $request->estado;
         $prorrogaActualizar->save();
 
         return back()->withSuccess('¡Prórroga actualizada correctamente!');
@@ -106,10 +107,11 @@ class ProrrogaController extends Controller
         //
     }
 
-    public function exportarPDF(){
-        $prorrogas = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
-        $estudiantes= Estudiante::all();
-        $pdf = PDF::loadView('Reportes/prorrogas_listado',compact('prorrogas'));
+    public function exportarPDF()
+    {
+        $prorrogas   = DB::table('prorrogas')->orderBy('fecha_solicitud', 'asc')->get();
+        $estudiantes = Estudiante::all();
+        $pdf         = PDF::loadView('Reportes/prorrogas_listado', compact('prorrogas'));
         return $pdf->download('Prorrogas.pdf');
     }
 }

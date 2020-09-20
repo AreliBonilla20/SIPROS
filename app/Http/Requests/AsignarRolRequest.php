@@ -24,15 +24,15 @@ class AsignarRolRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_id'=>'required',
+            'role_id' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'role_id.required'=>'El campo rol de usuario es obligatorio',
+            'role_id.required' => 'El campo rol de usuario es obligatorio',
         ];
-        
+
     }
 }

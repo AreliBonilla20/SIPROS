@@ -24,14 +24,14 @@ class ProrrogaRequest extends FormRequest
     public function rules()
     {
         return [
-            'fecha_solicitud'=>'required', 
+            'fecha_solicitud' => 'required',
         ];
     }
 
-     public function messages()
+    public function messages()
     {
         return [
-            'fecha_solicitud.required'=>'El campo fecha es obligatorio.',
+            'fecha_solicitud.required' => 'El campo fecha es obligatorio.',
         ];
     }
 }

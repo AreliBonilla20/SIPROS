@@ -91,7 +91,10 @@ Route::get('/instituciones/editar/{id}', 'InstitucionController@edit')->name('ed
     ->middleware('permission:institucion.edit');
 
 Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizar_institucion')
-    ->middleware('permission:institucion.update');   
+    ->middleware('permission:institucion.update');  
+
+Route::get('/instituciones/ver/{id}', 'InstitucionController@show')->name('ver_institucion')
+    ->middleware('permission:expediente.show');
 
 Route::get('/pdfInstituciones','InstitucionController@exportarPDF')->name('reporte_instituciones');
 
@@ -110,6 +113,9 @@ Route::get('/proyectos/editar/{id}', 'ProyectoController@edit')->name('editar_pr
     
 Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('actualizar_proyecto')
     ->middleware('permission:proyecto.update');
+    
+Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto')
+->middleware('permission:proyecto.show');
 
 });
 Route::get('/pdfProyectos','ProyectoController@exportarPDF')->name('reporte_proyectos');
@@ -127,7 +133,15 @@ Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actu
 Route::get('/pdfProrrogas','ProrrogaController@exportarPDF')->name('reporte_prorrogas');
 
 ///////////////////////////////////////Ruta de gestión de memorias/////////////////////////////////////////
+Route::get('/memoria/crear/{id}', 'MemoriaController@create')->name('crear_memoria');
+
 Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria');
+
+Route::get('/memoria/editar/{id}', 'MemoriaController@edit')->name('editar_memoria');
+
+Route::put('/memoria/actualizar/{id}', 'MemoriaController@update')->name('actualizar_memoria');
+
+Route::get('/memoria/ver/{id}', 'MemoriaController@show')->name('ver_memoria');
 
 ////////////////////////////////Rutas de obtención de datos//////////////////////////////////
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use \DB;
-use Illuminate\Http\Request;
-use App\Http\Requests\RoleRequest;
-use Caffeinated\Shinobi\Models\Role;
-use Caffeinated\Shinobi\Models\Permission;
 
+use Caffeinated\Shinobi\Models\Permission;
+use Caffeinated\Shinobi\Models\Role;
+use Illuminate\Http\Request;
+use \DB;
 
 class RoleController extends Controller
 {
@@ -30,7 +29,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        
+
         return view('Roles/rol_nuevo', compact('permissions'));
     }
 
@@ -42,7 +41,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $role = Role::create($request->all());
 
         $role->permissions()->sync($request->get('permissions'));
@@ -69,43 +68,39 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {  
-       $encontrado = false;
-       $rolActualizar = Role::find($id);
-       $permissions = Permission::get();
-       $permisosRol = DB::select('SELECT permissions.id FROM `permissions` inner join permission_role on  permission_role.permission_id = permissions.id where permission_role.role_id = ' .$id );
-       $ultimo = count($permisosRol);
-       $arregloPermisos = [];
-       $permisos = [];
+    {
+        $encontrado      = false;
+        $rolActualizar   = Role::find($id);
+        $permissions     = Permission::get();
+        $permisosRol     = DB::select('SELECT permissions.id FROM `permissions` inner join permission_role on  permission_role.permission_id = permissions.id where permission_role.role_id = ' . $id);
+        $ultimo          = count($permisosRol);
+        $arregloPermisos = [];
+        $permisos        = [];
 
-       for($i=0; $i<count($permisosRol); $i++){
-        $arregloPermisos[] = $permisosRol[$i]->id;
-       }
+        for ($i = 0; $i < count($permisosRol); $i++) {
+            $arregloPermisos[] = $permisosRol[$i]->id;
+        }
 
-       for($i=0; $i<(count($permissions)-count($permisosRol)); $i++){
-        $arregloPermisos[$ultimo] = 0;
-        $ultimo++;
-       }
-       
-       for($i=0; $i<count($arregloPermisos);$i++)
-       {
-            for($j=0; $j<count($permissions);$j++)
-            {   
-                if($permissions[$i]->id==$arregloPermisos[$j])
-                {
+        for ($i = 0; $i < (count($permissions) - count($permisosRol)); $i++) {
+            $arregloPermisos[$ultimo] = 0;
+            $ultimo++;
+        }
+
+        for ($i = 0; $i < count($arregloPermisos); $i++) {
+            for ($j = 0; $j < count($permissions); $j++) {
+                if ($permissions[$i]->id == $arregloPermisos[$j]) {
                     $permisos[$i] = $permissions[$i]->id;
-                    $encontrado = true;
-                }  
+                    $encontrado   = true;
+                }
             }
 
-            if($encontrado==false)
-            {
+            if ($encontrado == false) {
                 $permisos[$i] = 0;
             }
             $encontrado = false;
-       }
-       
-       return view('Roles/rol_editar', compact('rolActualizar', 'permissions', 'permisos' ));
+        }
+
+        return view('Roles/rol_editar', compact('rolActualizar', 'permissions', 'permisos'));
     }
 
     /**
@@ -116,7 +111,7 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $role = Role::find($id);
         $role->update($request->all());
 

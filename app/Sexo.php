@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sexo extends Model
 {
-	protected $fillabel =['sexo'];
+    protected $fillabel = ['sexo'];
 
-	public function getRouteKeyName(){
-   		return 'id';
-   }
-    public function estudiante(){
-   	return $this->hasMany(Estudiante::class);
-   }//
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+    public function estudiante()
+    {
+        return $this->hasMany(Estudiante::class);
+    } //
 }

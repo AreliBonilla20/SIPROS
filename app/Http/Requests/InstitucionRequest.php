@@ -24,35 +24,35 @@ class InstitucionRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
-            'tipo_institucion_id'=>'required',
-            'sector_id'=>'required',
-            'id_region'=>'required',
-            'id_departamento'=>'required',
-            'id_municipio'=>'required',
-            'direccion'=>'required|max:150',
+            'nombre'              => 'required|max:150|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
+            'tipo_institucion_id' => 'required',
+            'sector_id'           => 'required',
+            'id_region'           => 'required',
+            'id_departamento'     => 'required',
+            'id_municipio'        => 'required',
+            'direccion'           => 'required|max:150',
         ];
     }
 
     public function messages()
     {
-        return[
-            'nombre.required'=>'El campo nombre es obligatorio.',
-            'nombre.max'=>'La cantidad máxima de carácteres es 150.',
-            'nombre.regex'=>'Los carácteres deben ser solo letras.',
-            
-            'tipo_institucion_id.required'=>'Debe seleccionar una institución.',
+        return [
+            'nombre.required'              => 'El campo nombre es obligatorio.',
+            'nombre.max'                   => 'La cantidad máxima de carácteres es 150.',
+            'nombre.regex'                 => 'Los carácteres deben ser solo letras.',
 
-            'sector_id.required'=>'Debe seleccionar un sector.',
+            'tipo_institucion_id.required' => 'Debe seleccionar una institución.',
 
-            'id_region.required'=>'Debe seleccionar una región.',
+            'sector_id.required'           => 'Debe seleccionar un sector.',
 
-            'id_departamento.required'=>'Debe seleccionar un departamento.',
+            'id_region.required'           => 'Debe seleccionar una región.',
 
-            'id_municipio.required'=>'Debe seleccionar un municipio.',
+            'id_departamento.required'     => 'Debe seleccionar un departamento.',
 
-            'direccion.required'=>'El campo direccion es obligatorio.',
-            'direccion.max'=>'* La cantidad máxima de carácteres es 150.',
+            'id_municipio.required'        => 'Debe seleccionar un municipio.',
+
+            'direccion.required'           => 'El campo direccion es obligatorio.',
+            'direccion.max'                => '* La cantidad máxima de carácteres es 150.',
 
         ];
     }

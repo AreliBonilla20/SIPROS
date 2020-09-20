@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CarreraSeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(ProyectoSeeder::class);
-        
+
     }
 }

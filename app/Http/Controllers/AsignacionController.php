@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Asignacion;
+use App\Estudiante;
 use App\Http\Requests\AsignacionRequest;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class AsignacionController extends Controller
@@ -38,13 +40,23 @@ class AsignacionController extends Controller
     {
         $asignacion = new Asignacion();
 
-        $asignacion->carne=$request->carne;
-        $asignacion->id_proyecto=$request->id_proyecto;
-        $asignacion->horas_asignadas=$request->horas_asignadas;
-        $asignacion->estado_asignacion="Iniciado";
+        $asignacion->carne             = $request->carne;
+        $asignacion->id_proyecto       = $request->id_proyecto;
+        $asignacion->horas_asignadas   = $request->horas_asignadas;
+        $asignacion->estado_asignacion = "Iniciado";
+
+        if ($asignacion->save()) {
+
+            $proyecto                    = Proyecto::findOrFail($asignacion->id_proyecto)->increment('estudiantes_inscritos');
+            $estudiante                  = Estudiante::findOrFail($asignacion->carne);
+            $estudiante->estado_servicio = "Iniciado";
+            $estudiante->save();
+            return redirect()->to('expedientes/ver/' . $asignacion->carne)->withSuccess('Asignación creada correctamente!');
+        } else {
+            return redirect()->to('expedientes/ver/' . $asignacion->carne)->withError('Ha ocurrido un error!');
+        }
         $asignacion->save();
 
-        return redirect()->to('expedientes/ver/'.$asignacion->carne)->withSuccess('Asignación creada correctamente!');
     }
 
     /**

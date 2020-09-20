@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\AsignarRolRequest;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
-use \DB;
 use Illuminate\Http\Request;
-use RealRashid\SweerAlert\Facades\Alert;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\AsignarRolRequest;
 use Illuminate\Support\Facades\Hash;
-
+use \DB;
 
 class UserController extends Controller
 {
@@ -45,14 +44,13 @@ class UserController extends Controller
     {
 
         User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
+            'name'     => $request['name'],
+            'email'    => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-  
-        
+
         return back()->with('agregado', 'Usuario agregado correctamente');
-        
+
     }
 
     /**
@@ -73,8 +71,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-        $user = User::find($id);
+    {
+        $user  = User::find($id);
         $roles = Role::get();
 
         return view('Usuarios/asignar_roles', compact('user', 'roles'));
@@ -88,8 +86,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(AsignarRolRequest $request, $id)
-    {   
-       
+    {
+
         $user = User::find($id);
 
         $user->update($request->all());
@@ -100,10 +98,10 @@ class UserController extends Controller
                 'role_id' => $request->role_id,
                 'user_id' => $user->id,
             ]);
-        }else{
+        } else {
             DB::table('role_user')->where('user_id', '=', $user->id)->update([
-                'role_id' => $request->role_id
-            ]);            
+                'role_id' => $request->role_id,
+            ]);
         }
 
         return back()->with('actualizado', 'Rol asignado a usuario correctamente');
