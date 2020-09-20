@@ -31,13 +31,13 @@
                 <div class="form-element-list">
 
                     <div class="basic-tb-hd">
-                        <h2>Editar el expediente {{$estudianteActualizar->carne}}</h2>
+                        <h2>Editar el expediente {{$estudiante_actualizar->carne}}</h2>
                         <p>Complete los campos del formulario</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-example-wrap">
-                                <form action="{{route('actualizar_expediente', $estudianteActualizar->carne)}}" method="POST">
+                                <form action="{{route('actualizar_expediente', $estudiante_actualizar->carne)}}" method="POST">
                                     @method('PUT')
                                     @csrf
 
@@ -47,7 +47,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$estudianteActualizar->carne}}" name="carne" placeholder="AA#####" readonly>
+                                            <input type="text" class="form-control" value="{{$estudiante_actualizar->carne}}" name="carne" placeholder="AA#####" readonly>
                                             @foreach ($errors->get('carne') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -59,7 +59,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$estudianteActualizar->nombres}}" name="nombres" placeholder="Nombres del estudiante">
+                                            <input type="text" class="form-control" value="{{$estudiante_actualizar->nombres}}" name="nombres" placeholder="Nombres del estudiante">
                                             @foreach ($errors->get('nombres') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -71,7 +71,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$estudianteActualizar->apellidos}}" name="apellidos" placeholder="Apellidos del estudiante" >
+                                            <input type="text" class="form-control" value="{{$estudiante_actualizar->apellidos}}" name="apellidos" placeholder="Apellidos del estudiante" >
                                             @foreach ($errors->get('apellidos') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -83,7 +83,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="date" value="{{$estudianteActualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento" readonly>
+                                            <input type="date" value="{{$estudiante_actualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento" readonly>
                                             @foreach ($errors->get('fecha_nacimiento') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -96,7 +96,7 @@
                                                 <select class="selectpicker" name="sexo_id">
                                                     <option value="">-Seleccione un género-</option>
                                                     @foreach($sexos as $sexo)
-                                                    <option value="{{$sexo->id}}" {{ ($estudianteActualizar->sexo_id == $loop->iteration ? "selected":"") }}>{{$sexo->sexo}}</option>
+                                                    <option value="{{$sexo->id}}" {{ ($estudiante_actualizar->sexo_id == $loop->iteration ? "selected":"") }}>{{$sexo->sexo}}</option>
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('sexo_id') as $mensaje)
@@ -117,7 +117,7 @@
                                                 <select class="selectpicker" name="codigo">
                                                     <option value="">-Seleccione una carrera-</option>
                                                     @foreach($carreras as $carrera)
-                                                    <option value="{{$carrera->codigo}}" {{ ($carrera->codigo == $estudianteActualizar->codigo ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
+                                                    <option value="{{$carrera->codigo}}" {{ ($carrera->codigo == $estudiante_actualizar->codigo ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('codigo') as $mensaje)
@@ -134,7 +134,7 @@
                                         <select class="selectpicker" data-live-search="true" name="area_id">
                                             <option value="">-Seleccione una área-</option>
                                             @foreach ($areas as $area)
-                                            <option value="{{$area->id}}"{{ ($estudianteActualizar->area_id == $loop->iteration ? "selected":"") }}>{{$area->area_interes}}</option>
+                                            <option value="{{$area->id}}"{{ ($estudiante_actualizar->area_id == $loop->iteration ? "selected":"") }}>{{$area->area_interes}}</option>
                                             @endforeach
                                         </select>
                                         @foreach ($errors->get('area_id') as $mensaje)
@@ -149,7 +149,7 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control"  value="{{$estudianteActualizar->dui}}" name="dui" placeholder="00000000-0" readonly>
+                                        <input type="text" class="form-control"  value="{{$estudiante_actualizar->dui}}" name="dui" placeholder="00000000-0" readonly>
                                         @foreach ($errors->get('dui') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                         @endforeach
@@ -162,7 +162,7 @@
                                             <select class="selectpicker" data-live-search="true" name="departamento_id" id="departamento_id" >
                                                 <option value="">-Seleccione un departamento-</option>
                                                 @foreach ($departamentos as $departamento)
-                                                <option value="{{$departamento->id}}"{{ ($estudianteActualizar->departamento_id == $loop->iteration ? "selected":"") }}>{{$departamento->nombre_departamento}}</option>
+                                                <option value="{{$departamento->id}}"{{ ($estudiante_actualizar->departamento_id == $loop->iteration ? "selected":"") }}>{{$departamento->nombre_departamento}}</option>
                                                 @endforeach
                                             </select>
                                             @foreach ($errors->get('departamento_id') as $mensaje)
@@ -177,7 +177,7 @@
                                             <select class="selectpicker" data-live-search="true" name="municipio_id" id="municipio_id" >
                                                 <option value="">-Seleccione un municipio-</option>
                                                 @foreach ($municipios as $municipio)
-                                                <option value="{{$municipio->id}}"{{ ($estudianteActualizar->municipio_id == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
+                                                <option value="{{$municipio->id}}"{{ ($estudiante_actualizar->municipio_id == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
                                                 @endforeach
                                             </select>
                                             @foreach ($errors->get('municipio_id') as $mensaje)
@@ -191,7 +191,7 @@
                                             <i class="notika-icon notika-house"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$estudianteActualizar->direccion}}" name="direccion" placeholder="Dirección del estudiante">
+                                            <input type="text" class="form-control" value="{{$estudiante_actualizar->direccion}}" name="direccion" placeholder="Dirección del estudiante">
                                             @foreach ($errors->get('direccion') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -204,7 +204,7 @@
                                         <i class="notika-icon notika-phone"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$estudianteActualizar->telefono}}" name="telefono" placeholder="0000-0000">
+                                        <input type="text" class="form-control" value="{{$estudiante_actualizar->telefono}}" name="telefono" placeholder="0000-0000">
                                         @foreach ($errors->get('telefono') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                         @endforeach
@@ -217,7 +217,7 @@
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" value="{{$estudianteActualizar->email}}" name="email" placeholder="Correo electrónico del estudiante">
+                                        <input type="text" class="form-control" value="{{$estudiante_actualizar->email}}" name="email" placeholder="Correo electrónico del estudiante">
                                         @foreach ($errors->get('email') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                         @endforeach

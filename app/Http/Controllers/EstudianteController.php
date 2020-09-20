@@ -147,7 +147,7 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
-        $estudianteActualizar = Estudiante::findOrFail($id);
+        $estudiante_actualizar = Estudiante::findOrFail($id);
 
         $carreras      = Carrera::all();
         $sexos         = Sexo::all();
@@ -157,7 +157,7 @@ class EstudianteController extends Controller
         $instituciones = Institucion::all();
         $areas         = Area::all();
 
-        return view('Expedientes/expediente_editar', compact('estudianteActualizar', 'carreras', 'sexos', 'departamentos', 'municipios', 'areas', 'instituciones', 'areas'));
+        return view('Expedientes/expediente_editar', compact('estudiante_actualizar', 'carreras', 'sexos', 'departamentos', 'municipios', 'areas', 'instituciones', 'areas'));
     }
 
     /**
@@ -169,27 +169,27 @@ class EstudianteController extends Controller
      */
     public function update(EstudianteRequest $request, $carne)
     {
-        $estudianteActualizar = Estudiante::findOrFail($carne);
+        $estudiante_actualizar = Estudiante::findOrFail($carne);
         $carnet_registrado    = false;
         $dui_registrado       = false;
 
-        $estudianteActualizar->carne             = $request->carne;
-        $estudianteActualizar->nombres           = $request->nombres;
-        $estudianteActualizar->apellidos         = $request->apellidos;
-        $estudianteActualizar->fecha_nacimiento  = $request->fecha_nacimiento;
-        $estudianteActualizar->dui               = $request->dui;
-        $estudianteActualizar->direccion         = $request->direccion;
-        $estudianteActualizar->email             = $request->email;
-        $estudianteActualizar->telefono          = $request->telefono;
-        $estudianteActualizar->codigo            = $request->codigo;
-        $estudianteActualizar->sexo_id           = $request->sexo_id;
-        $estudianteActualizar->municipio_id      = $request->municipio_id;
-        $estudianteActualizar->departamento_id   = $request->departamento_id;
-        $estudianteActualizar->area_id           = $request->area_id;
-        $estudianteActualizar->estado_servicio   = $estudianteActualizar->estado_servicio;
-        $estudianteActualizar->horas_registradas = 0;
+        $estudiante_actualizar->carne             = $request->carne;
+        $estudiante_actualizar->nombres           = $request->nombres;
+        $estudiante_actualizar->apellidos         = $request->apellidos;
+        $estudiante_actualizar->fecha_nacimiento  = $request->fecha_nacimiento;
+        $estudiante_actualizar->dui               = $request->dui;
+        $estudiante_actualizar->direccion         = $request->direccion;
+        $estudiante_actualizar->email             = $request->email;
+        $estudiante_actualizar->telefono          = $request->telefono;
+        $estudiante_actualizar->codigo            = $request->codigo;
+        $estudiante_actualizar->sexo_id           = $request->sexo_id;
+        $estudiante_actualizar->municipio_id      = $request->municipio_id;
+        $estudiante_actualizar->departamento_id   = $request->departamento_id;
+        $estudiante_actualizar->area_id           = $request->area_id;
+        $estudiante_actualizar->estado_servicio   = $estudiante_actualizar->estado_servicio;
+        $estudiante_actualizar->horas_registradas = 0;
 
-        if ($estudianteActualizar->save()) {
+        if ($estudiante_actualizar->save()) {
             toast('Expediente actualizado correctamente!', 'success');
             return redirect('expedientes');
         } else {
@@ -199,10 +199,4 @@ class EstudianteController extends Controller
 
     }
 
-    public function exportarPDF()
-    {
-        $estudiantes = Estudiante::all();
-        $pdf         = PDF::loadView('Reportes/expedientes_listado', compact('estudiantes'));
-        return $pdf->download('expedientes.pdf');
-    }
 }

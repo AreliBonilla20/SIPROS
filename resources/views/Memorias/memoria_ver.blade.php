@@ -34,8 +34,10 @@
                 <div class="form-element-list" style="padding:4%;">
                     <div class="basic-tb-hd flex">
                         <h4><i class="glyphicon glyphicon-list-alt"></i> Datos de la memoria</h4>
-                        <a style="position:absolute; right:5%; top:8%;"class="btn btn-default notika-btn-default" href="{{route('editar_memoria', $memoria->id)}}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-
+                        <a style="position:absolute; right:5%; top:8%;"class="btn btn-default notika-btn-default" href="{{route('editar_memoria', $memoria->id)}}"><span class="glyphicon glyphicon-pencil"></span> Editar</a><br>
+                    </div>
+                    <div class="basic-tb-hd flex">
+                        <a style="position:absolute; right:5%; top:8%;"class="btn btn-default notika-btn-default" href="{{route('certificado_estudiante', $memoria->asignacion->estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> Generar certificado</a><br>
                     </div>
                     <br>
                     <br>

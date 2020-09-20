@@ -87,11 +87,11 @@ class ProrrogaController extends Controller
      */
     public function update(ProrrogaRequest $request, $id)
     {
-        $prorrogaActualizar = Prorroga::findOrFail($id);;
-        $prorrogaActualizar->carne=$request->carne;
-        $prorrogaActualizar->fecha_solicitud=$request->fecha_solicitud;
-        $prorrogaActualizar->estado=$request->estado;
-        $prorrogaActualizar->save();
+        $ororroga_actualizar = Prorroga::findOrFail($id);;
+        $ororroga_actualizar->carne=$request->carne;
+        $ororroga_actualizar->fecha_solicitud=$request->fecha_solicitud;
+        $ororroga_actualizar->estado=$request->estado;
+        $ororroga_actualizar->save();
 
         return back()->withSuccess('¡Prórroga actualizada correctamente!');
     }
