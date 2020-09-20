@@ -60,6 +60,7 @@
                                     <th>Carrera</th>
                                     <th>Editar</th>
                                     <th>Consultar</th>
+                                    <th>Consultar</th>
 
                                 </tr>
                             </thead>

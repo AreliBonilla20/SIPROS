@@ -345,7 +345,11 @@
         <script src="{{ asset('js/dropzone/dropzone.js') }}"></script>
         <!--  wave JS
             ============================================ -->
-        <script src="{{ asset('js/wave/waves.min.js') }}"></script>
+        <script src="{{ asset('js/wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+        <script src="{{ asset('js/wizard/wizard-active.js') }}"></script>
+         <!--  wizard
+            ============================================ -->
+            <script src="{{ asset('js/wave/waves.min.js') }}"></script>
         <script src="{{ asset('js/wave/wave-active.js') }}"></script>
         <!--  chosen JS
             ============================================ -->
@@ -367,6 +371,7 @@
             ============================================ -->
         <script src="{{ asset('js/data-table/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/data-table/data-table-act.js') }}"></script>
-           
+        <script src="{{ asset('js/dropdown.js') }}"></script>
+         @include('sweetalert::alert') 
 
 </html>
