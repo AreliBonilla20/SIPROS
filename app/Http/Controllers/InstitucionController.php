@@ -130,14 +130,8 @@ class InstitucionController extends Controller
 
     public function exportarPDF()
     {
-<<<<<<< HEAD
-        $instituciones = Institucion::all();
-        $pdf           = PDF::loadView('Reportes/instituciones_listado', compact('instituciones'));
-        return $pdf->setPaper('a4', 'landscape')->download('instituciones.pdf');
-=======
         $institucionEliminar = App\Institucion::findOrFail($id);
         $institucionEliminar->delete();
         return back()->with('eliminada', 'Institución eliminada correctamente');
->>>>>>> 9e2b3a6d9b4f3be84a1ab1e3e79ee141dc18f31b
     }
 }

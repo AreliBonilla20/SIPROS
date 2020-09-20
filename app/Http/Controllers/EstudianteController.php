@@ -29,7 +29,7 @@ class EstudianteController extends Controller
     {
         //Muestra el lstado de estudiantes
         $estudiantes = Estudiante::all();
-        return view('Expedientes.expedientes_listado', compact('estudiantes'));
+        return view('Expedientes/expedientes_listado', compact('estudiantes'));
         //all: Consulta todos las estudiantees
         //compact:Arrays de recursos
     }

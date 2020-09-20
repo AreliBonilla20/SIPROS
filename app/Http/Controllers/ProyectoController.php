@@ -8,7 +8,7 @@ use App\Institucion;
 use App\Proyecto;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
-use App\Http\Requests\ProyectoRequest;
+
 
 class ProyectoController extends Controller
 {
