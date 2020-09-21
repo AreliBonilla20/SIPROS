@@ -11,7 +11,7 @@ class Institucion extends Model
 
     protected $fillable = ['nombre', 'tipo_institucion_id', 'direccion', 'id_region', 'id_departamento', 'id_municipio', 'sector_id'];
 
-    public function tipoInstitucion()
+    public function tipo_institucion()
     {
         return $this->belongsTo(TipoInstitucion::class, 'tipo_institucion_id', 'id');
     }

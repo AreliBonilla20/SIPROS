@@ -65,7 +65,7 @@
                                 @foreach ($instituciones as $institucion)
                                 <tr>
                                     <td>{{$institucion->nombre}}</td>
-                                    <td>{{$institucion->tipoInstitucion->tipo_institucion}}</td>
+                                    <td>{{$institucion->tipo_institucion->tipo_institucion}}</td>
                                     <td>{{$institucion->sector->nombre_sector}}</td>
                                     <td>{{$institucion->departamento->nombre_departamento}}</td>
                                     <td>

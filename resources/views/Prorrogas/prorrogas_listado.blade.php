@@ -144,8 +144,7 @@
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                     </div>
                                                                     <h3>Actualización de prórroga</h3>
-                                                                    <p>Carnet: {{$prorroga->carne}} <br>
-                                                                        Estudiante:     {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('nombres')->first() }}
+                                                                    <p>Estudiante:     {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('nombres')->first() }}
                                                                                         {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('apellidos')->first() }}
                                                                     </p>
                                                                     <br>
@@ -173,7 +172,7 @@
                                                                                 <i class="notika-icon notika-edit"></i>
                                                                             </div>
                                                                             <div class="nk-int-st">
-                                                                                <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus required readonly>
+                                                                                <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus required>
                                                                                 @foreach ($errors->get('fecha_solicitud') as $mensaje)
                                                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                                                 @endforeach  

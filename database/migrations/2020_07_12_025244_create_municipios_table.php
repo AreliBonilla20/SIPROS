@@ -16,7 +16,7 @@ class CreateMunicipiosTable extends Migration
         Schema::create('municipios', function (Blueprint $table) {
             $table->unsignedInteger('id');
             $table->string('nombre_municipio');
-            $table->unsignedInteger('id_departamento');
+            $table->unsignedInteger('id_departamento')->foreign()->references('id')->on('departamentos')->onDelete('cascade');
         });
     }
 

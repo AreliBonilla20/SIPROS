@@ -15,7 +15,7 @@ class CreateProrrogasTable extends Migration
     {
         Schema::create('prorrogas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('carne')->foreing()->references('carne')->on('estudiantes');
+            $table->string('carne')->foreign()->references('carne')->on('estudiantes')->onDelete('cascade');
             $table->date('fecha_solicitud');
             $table->string('estado');
             $table->timestamps();
