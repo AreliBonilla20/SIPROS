@@ -141,7 +141,7 @@
                                         <br>
 
                                         @endcan
-                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('sitio.index') }}">
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('sitio_index') }}">
                                             <i class="notika-icon notika-search"></i> {{ __('Sitio web') }}
                                         </a>
 
@@ -207,7 +207,7 @@
                                     <a href="{{ route('prorrogas') }}">Prórrogas</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('sitio.avisos') }}">Avisos</a>
+                                    <a href="{{ route('sitio_avisos') }}">Avisos</a>
                                 </li>
                             </ul>
                         </nav>
@@ -234,7 +234,7 @@
                         </li>
                         <li><a  href="{{route('prorrogas')}}"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
                         </li>
-                        <li><a href="{{route('sitio.avisos')}}"><i class="notika-icon notika-app"></i> Avisos</a>
+                        <li><a href="{{route('sitio_avisos')}}"><i class="notika-icon notika-app"></i> Avisos</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">

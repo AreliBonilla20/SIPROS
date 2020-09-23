@@ -100,7 +100,7 @@
                                             <i class="notika-icon notika-menus"></i> {{ __('Roles') }}
                                         </a>
                                         <br>
-                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('sitio.index') }}">
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('sitio_index') }}">
                                             <i class="notika-icon notika-search"></i> {{ __('Sitio web') }}
                                         </a>
 
@@ -239,9 +239,9 @@
                 <br>
                 <h2>Sitio web</h2>
             </div>
-            <a href="{{ route('sitio.avisos') }}"><p>Administración del sitio web informativo</p></a>
+            <a href="{{ route('sitio_avisos') }}"><p>Administración del sitio web informativo</p></a>
         </div>
-        <a type="button" href="{{ route('sitio.index') }}" class="btn btn-danger notika-btn-danger">Sitio web</a>
+        <a type="button" href="{{ route('sitio_index') }}" class="btn btn-danger notika-btn-danger">Sitio web</a>
     </div>
 </div>
 </div>

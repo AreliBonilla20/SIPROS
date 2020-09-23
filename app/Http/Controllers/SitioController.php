@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Area;
 use App\Aviso;
 use App\Carrera;
+use App\Proyecto;
 use DB;
 use Illuminate\Http\Request;
 
@@ -14,38 +15,20 @@ class SitioController extends Controller
     {
         $ultimo        = Aviso::latest('id')->first();
         $avisos        = Aviso::orderBy('id', 'desc')->take(5)->get();
-        $instituciones = DB::select(
-            "select count(i.id) as cantidad, ti.tipo_institucion
-            from institucions i join tipo_institucions ti
-            where i.tipo_institucion_id =ti.id
-            group by ti.tipo_institucion"
+        $proyectos = DB::select(
+            "select count(p.id) as cantidad, s.nombre_sector 
+            from proyectos p join institucions i on p.id_institucion = i.id 
+            join sectors s on i.sector_id =s.id group by s.nombre_sector"
         );
-        //$areas_carreras=DB::select(
-        //"select * from carreras c join areas_carreras ac where c.codigo = ac.codigo"
-        //);
-        //$carreras=Carrera::all();
         $areas = Area::all();
-        return view('Sitio/index', [
-            'avisos'        => $avisos,
-            'ultimo'        => $ultimo,
-            'instituciones' => $instituciones,
-            //'carreras'=>$carreras,
-            'areas'         => $areas,
-            //'areas_carreras'=>$areas_carreras,
-        ]);
+        return view('Sitio/index', compact('avisos', 'ultimo', 'proyectos', 'areas' ));
     }
 
     public function proyectos()
     {
         $carreras  = Carrera::all();
-        $proyectos = DB::select(
-            "select p.codigo_carrera, p.nombre, p.objetivos, p.area_de_conocimiento, p.logros, p.cantidad_de_estudiantes, i.nombre as nombre_institucion
-            from proyectos p join institucions i
-            where p.id_institucion = i.id");
-        return view('Sitio/proyectos', [
-            'carreras'  => $carreras,
-            'proyectos' => $proyectos,
-        ]);
+        $proyectos = Proyecto::all();
+        return view('Sitio/proyectos', compact('carreras', 'proyectos'));
     }
 
     public function blog()
@@ -53,9 +36,7 @@ class SitioController extends Controller
 
         $avisos = Aviso::orderBy('created_at', 'desc')->paginate(4);
 
-        return view('Sitio/blog', [
-            'lista' => $avisos,
-        ]);
+        return view('Sitio/blog', compact('avisos'));
     }
 
     public function aviso()
@@ -73,7 +54,7 @@ class SitioController extends Controller
         $aviso->url         = $request->file('imagen')->store('public');
         $aviso->save();
 
-        return redirect()->route('sitio.avisos');
+        return redirect()->route('sitio_avisos');
     }
 
     public function avisos()
@@ -81,9 +62,7 @@ class SitioController extends Controller
 
         $avisos = Aviso::orderBy('created_at', 'desc')->paginate(4);
 
-        return view('AdminSitio/avisos', [
-            'avisos' => $avisos,
-        ]);
+        return view('AdminSitio/avisos', compact('avisos'));
 
     }
 
@@ -92,9 +71,7 @@ class SitioController extends Controller
 
         $aviso = Aviso::findOrFail($id);
 
-        return view('AdminSitio/avisoeditar', [
-            'aviso' => $aviso,
-        ]);
+        return view('AdminSitio/avisoeditar', compact('aviso'));
     }
 
     public function editar_aviso_put(Request $request, $id)
@@ -106,7 +83,7 @@ class SitioController extends Controller
         $aviso->url         = $request->file('imagen')->store('public');
         $aviso->save();
 
-        return redirect()->route('sitio.avisos');
+        return redirect()->route('sitio_avisos');
     }
 
     public function eliminar_aviso($id)
@@ -114,7 +91,7 @@ class SitioController extends Controller
         $aviso = Aviso::findOrFail($id);
         $aviso->delete();
 
-        return redirect()->route('sitio.avisos');
+        return redirect()->route('sitio_avisos');
 
     }
 }

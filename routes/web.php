@@ -161,20 +161,20 @@ Route::get('/areas/{id}', 'CarreraController@getAreas');
  
 ///////////////////////////RUTAS DEL SITIO/////////
 
-Route::get('sitio/inicio', 'SitioController@index')->name('sitio.index');
+Route::get('sitio/inicio', 'SitioController@index')->name('sitio_index');
 
-Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio.proyectos');
+Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio_proyectos');
 
-Route::get('sitio/blog', 'SitioController@blog')->name('sitio.blog');
+Route::get('sitio/blog', 'SitioController@blog')->name('sitio_blog');
 
-Route::get('sitio/aviso', 'SitioController@aviso')->name('sitio.aviso');
+Route::get('sitio/aviso', 'SitioController@aviso')->name('sitio_aviso');
 
-Route::post('sitio/aviso_post', 'SitioController@aviso_post')->name('sitio.aviso_post');
+Route::post('sitio/aviso_post', 'SitioController@aviso_post')->name('sitio_aviso_post');
 
-Route::get('sitio/avisos', 'SitioController@avisos')->name('sitio.avisos');
+Route::get('sitio/avisos', 'SitioController@avisos')->name('sitio_avisos');
 
-Route::get('sitio/editar_aviso/{id} ', 'SitioController@editar_aviso')->name('sitio.editar_aviso');
+Route::get('sitio/editar_aviso/{id} ', 'SitioController@editar_aviso')->name('sitio_editar_aviso');
 
-Route::put('sitio/editar_aviso_put/{id}', 'SitioController@editar_aviso_put')->name('sitio.editar_aviso_put');
+Route::put('sitio/editar_aviso_put/{id}', 'SitioController@editar_aviso_put')->name('sitio_editar_aviso_put');
 
-Route::delete('sitio/eliminar_aviso/{id}', 'SitioController@eliminar_aviso')->name('sitio.eliminar_aviso');
+Route::delete('sitio/eliminar_aviso/{id}', 'SitioController@eliminar_aviso')->name('sitio_eliminar_aviso');

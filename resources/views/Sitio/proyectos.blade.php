@@ -7,7 +7,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{ route('sitio.index') }}">Inicio</a></li>
+          <li><a href="{{ route('sitio_index') }}">Inicio</a></li>
           <li>Proyectos</li>
         </ol>
         <h2>Proyectos</h2>
@@ -57,7 +57,7 @@
       </div>
     </section><!-- End Portfolio Section -->
 
-  
+    <p><b><i class="fas fa-university" style="color: #e96b56"></i> Institucion: </b> {{ $proyecto->Institucion->nombre }}</p>
 
   </main><!-- End #main -->
 @endsection

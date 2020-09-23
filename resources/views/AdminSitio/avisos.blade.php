@@ -41,7 +41,7 @@
                                 <h2>Nuevo aviso</h2>
                                 <p>Agregar un nuevo aviso</p>
                                 <div class="form-example-int mg-t-15">
-                                    <a href="{{ route('sitio.aviso') }}"><button class="btn btn-success notika-btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button></a>
+                                    <a href="{{ route('sitio_aviso') }}"><button class="btn btn-success notika-btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button></a>
                                 </div>
                             </div>
                         </div> <br><br><br>
@@ -56,12 +56,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach($avisos as $aviso)
-                                    <form method="POST" id="formulario{{$aviso->id}}" action="{{route('sitio.eliminar_aviso', $aviso->id)}}" >
+                                    <form method="POST" id="formulario{{$aviso->id}}" action="{{route('sitio_eliminar_aviso', $aviso->id)}}" >
                                         <tr>
                                             <td>{{$aviso->titulo}}</td>
                                             <td>{{date('d/m/Y h:i', strtotime( $aviso->created_at))}}</td>
                                             <td>
-                                            <a class="btn btn-default notika-btn-default" href="{{ route('sitio.editar_aviso', $aviso->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                            <a class="btn btn-default notika-btn-default" href="{{ route('sitio_editar_aviso', $aviso->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
                                             </td>
                                             <td>
                                                 @csrf

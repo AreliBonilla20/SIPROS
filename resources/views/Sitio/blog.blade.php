@@ -26,7 +26,7 @@
     <div class="container">
        
                 <ol>
-                    <li><a href="{{ route('sitio.index') }}">Inicio</a></li>
+                    <li><a href="{{ route('sitio_index') }}">Inicio</a></li>
                     <li>Noticias</li>
                   </ol>
                   <h2>Noticias</h2>
@@ -39,7 +39,7 @@
     <div class="container">
 
       <div class="row">
-        @foreach($lista as $aviso)
+        @foreach($avisos as $aviso)
         <div class="col-md-6">
 
             <article class="entry">
@@ -74,7 +74,7 @@
        
       </div>
        
-      {{ $lista->links() }}
+      {{ $avisos->links() }}
           
       </div>
 

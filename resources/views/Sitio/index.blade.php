@@ -68,18 +68,18 @@
 
         <div class="row">
           
-            <div class="col-lg-6 text-center" onclick="location.href='{{ route('sitio.proyectos') }}'">
+            <div class="col-lg-6 text-center" onclick="location.href='{{ route('sitio_proyectos') }}'">
               <div class="icon-box">
                 <i class="icofont-computer"></i>
-                <h1><a href="{{ route('sitio.proyectos') }}"><b>Proyectos</b></a></h1>
+                <h1><a href="{{ route('sitio_proyectos') }}"><b>Proyectos</b></a></h1>
                 <p style = "font-size:20px">Listado de proyectos disponibles</p>
               </div>
             </div>
           
-            <div class="col-lg-6 mt-4 mt-lg-0 text-center" onclick="location.href='{{ route('sitio.blog') }}'">
+            <div class="col-lg-6 mt-4 mt-lg-0 text-center" onclick="location.href='{{ route('sitio_blog') }}'">
               <div class="icon-box">
                 <i class="icofont-tasks-alt"></i>
-                <h1><a href="{{ route('sitio.blog') }}"><b>Noticias</b></a></h1>
+                <h1><a href="{{ route('sitio_blog') }}"><b>Noticias</b></a></h1>
                 <p style = "font-size:20px">Noticias universitarias relevantes</p>
               </div>
             </div>
@@ -116,18 +116,20 @@
       </div>
     </section><!-- End About Section -->
 
-    <!--section id="counts" class="counts">
+    <section id="counts" class="counts">
       <div class="container">
         <div class="section-title" data-aos="fade-up">
-          <h2>Tipos de instituciones</h2>
+          <h2>Proyectos por sector</h2>
         </div>
         <div class="row no-gutters">
-         @foreach($instituciones as $institucion)
-          <div class="col-lg-2 col-md-6 d-md-flex align-items-md-stretch">
+         @foreach($proyectos as $proyecto)
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <i class="icofont-simple-smile"></i>
-              <span data-toggle="counter-up">{{ $institucion->cantidad }}</span>
-              <p>{{ $institucion->tipo_institucion }}</p>
+              
+                <i class="icofont-live-support"></i>
+              <span data-toggle="counter-up">{{ $proyecto->cantidad }}</span><br>
+              <h3>{{ $proyecto->nombre_sector }}</h3>
+              
             </div>
           </div>
           @endforeach
@@ -135,7 +137,7 @@
         </div>
 
       </div>
-    </section>< End Counts Section -->
+    </section><!--End Counts Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
