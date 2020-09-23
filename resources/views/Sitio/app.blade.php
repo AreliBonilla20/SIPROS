@@ -51,10 +51,10 @@
 
         <div class="row"> 	
           <div class="col-md-2">
-            <a href="{{  route('sitio.index')  }}"><img src="{{asset('assets/img/logo-fce-v1-mixto.png') }}" alt="" class="img-fluid"></a> 	
+            <a href="{{  route('sitio_index')  }}"><img src="{{asset('assets/img/logo-fce-v1-mixto.png') }}" alt="" class="img-fluid"></a> 	
           </div> 	
           <div class="col-md-10"> 		
-                <h1 class="text-light"><a href="index.html"><span>Universidad de El Salvador</span></a></h1> 	
+                <h1 class="text-light"><a href="{{  route('sitio_index')  }}"><span>Universidad de El Salvador</span></a></h1> 	
           </div>
         </div>
     
@@ -63,7 +63,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{  route('sitio.index')  }}">Inicio</a></li>
+          <li class="active"><a href="{{  route('sitio_index')  }}">Inicio</a></li>
 
         <!--li class="drop-down"><a href="#">About</a>
             <ul>
@@ -82,8 +82,8 @@
             </ul>
           </li!-->
 
-          <li><a href="{{ route('sitio.proyectos') }}">Proyectos</a></li>
-          <li><a href="{{ route('sitio.blog') }}">Noticias</a></li>
+          <li><a href="{{ route('sitio_proyectos') }}">Proyectos</a></li>
+          <li><a href="{{ route('sitio_blog') }}">Noticias</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -133,7 +133,7 @@
       
     </div>
     <div class="container">
-      <div class="copyright"> Derechos reservados &copy; 2020. <a href="{{ route('sitio.index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
+      <div class="copyright"> Derechos reservados &copy; 2020. <a href="{{ route('sitio_index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
       </div>
   </div>
   </footer><!-- End Footer -->

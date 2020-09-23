@@ -37,7 +37,7 @@
                         <div class="row">
                             <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-example-wrap">
-                                    <form action="{{route('sitio.aviso_post')}}" method="POST" enctype="multipart/form-data" >
+                                    <form action="{{route('sitio_aviso_post')}}" method="POST" enctype="multipart/form-data" >
                                     @csrf
                                        
                                     <label for="titulo">Título <small style="color:#16D195;" >*</small></label>
@@ -83,8 +83,8 @@
 
                                    
                                         <div class="form-example-int mg-t-15">
-                                            <button class="btn btn-success notika-btn-success">Guardar aviso</button>
-                                            <a class="btn btn-danger notika-btn-danger" href="{{route('sitio.avisos')}}">Cancelar</a>
+                                            <button type="submit" class="btn btn-success notika-btn-success">Guardar aviso</button>
+                                            <a class="btn btn-danger notika-btn-danger" href="{{route('sitio_avisos')}}">Cancelar</a>
                                         </div>
  
                                     </div>

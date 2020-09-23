@@ -12,7 +12,8 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //users
+
+        ///////////////users
         Permission::create([
             'name'        => 'Navegar usuarios',
             'slug'        => 'users.index',
@@ -34,7 +35,9 @@ class PermissionsTableSeeder extends Seeder
 
         ]);
 
-        //Roles
+
+
+        ///////////////Roles
         Permission::create([
             'name'        => 'Navegar roles',
             'slug'        => 'roles.index',
@@ -70,7 +73,9 @@ class PermissionsTableSeeder extends Seeder
 
         ]);
 
-        //Expediente
+
+
+        /////////////////Expediente
         Permission::create([
             'name'        => 'Navegar expediente',
             'slug'        => 'expediente.index',
@@ -99,7 +104,9 @@ class PermissionsTableSeeder extends Seeder
 
         ]);
 
-        //proyecto
+
+
+        ////////////////proyecto
         Permission::create([
             'name'        => 'Navegar proyecto',
             'slug'        => 'proyecto.index',
@@ -128,7 +135,9 @@ class PermissionsTableSeeder extends Seeder
 
         ]);
 
-        //Institucines
+
+
+        ////////////////Instituciones
         Permission::create([
             'name'        => 'Navegar en instituciones',
             'slug'        => 'institucion.index',
@@ -156,6 +165,8 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Editar datos de las instituciones del sistema',
 
         ]);
+
+
 
     }
 }
