@@ -122,7 +122,7 @@
           <h2>Proyectos por sector</h2>
         </div>
         <div class="row no-gutters">
-         @foreach($proyectos as $proyecto)
+         @foreach($proyectos_sectores as $proyecto)
           <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               
@@ -144,7 +144,7 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Áreas de interes</h2>
+          <h2>Áreas de interés</h2>
         </div>
 
         

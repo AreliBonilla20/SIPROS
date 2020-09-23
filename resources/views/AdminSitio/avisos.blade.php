@@ -50,7 +50,10 @@
                                 <thead>
                                     <tr>
                                         <th>Titulo</th>
+                                        <th>Descripción</th>
                                         <th>Fecha</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
                                         
                                     </tr>
                                 </thead>
@@ -59,6 +62,7 @@
                                     <form method="POST" id="formulario{{$aviso->id}}" action="{{route('sitio_eliminar_aviso', $aviso->id)}}" >
                                         <tr>
                                             <td>{{$aviso->titulo}}</td>
+                                            <td>{{$aviso->descripcion}}</td>
                                             <td>{{date('d/m/Y h:i', strtotime( $aviso->created_at))}}</td>
                                             <td>
                                             <a class="btn btn-default notika-btn-default" href="{{ route('sitio_editar_aviso', $aviso->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
@@ -66,7 +70,7 @@
                                             <td>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" onClick="confirmar({{$aviso->id}})" class="btn btn-warning notika-btn-warning"><span class="glyphicon glyphicon-th-list"></span> Eliminar</button>
+                                                <button type="button" onClick="confirmar({{$aviso->id}})" class="btn btn-danger notika-btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
                                             </td>
                                         
                                         </tr>

@@ -56,13 +56,17 @@ class ReporteController extends Controller
         return $pdf->stream('Certificado.pdf');//Retorna el certificado de servicio social
     }
 
+    /*Función para generar la carta de asignación del servicio social*/
     public function pdfAsignacion($id){
         $asignacion = Asignacion::findOrFail($id);
         $estudiante = $asignacion->estudiante;
         $proyecto = $asignacion->proyecto;
-        Carbon::setLocale('es');
-        $fecha = Carbon::now();
-        $fecha = $fecha->format('l jS \\of M \\of Y');
+
+        //Formato de fecha en candena
+        $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        $fecha = $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
+
         $pdf = PDF::loadView('Reportes/asignaciones',compact('estudiante','proyecto', 'fecha'));
         return $pdf->stream('Asignación.pdf');
     }
