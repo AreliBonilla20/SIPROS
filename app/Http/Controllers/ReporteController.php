@@ -53,7 +53,18 @@ class ReporteController extends Controller
         $now=Carbon::now();
         $fecha_actual = $now->format('d/m/Y');
         $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
-        return $pdf->stream('certificado.pdf');//Retorna el certificado de servicio social
+        return $pdf->stream('Certificado.pdf');//Retorna el certificado de servicio social
+    }
+
+    public function pdfAsignacion($id){
+        $asignacion = Asignacion::findOrFail($id);
+        $estudiante = $asignacion->estudiante;
+        $proyecto = $asignacion->proyecto;
+        Carbon::setLocale('es');
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('l jS \\of M \\of Y');
+        $pdf = PDF::loadView('Reportes/asignaciones',compact('estudiante','proyecto', 'fecha'));
+        return $pdf->stream('Asignación.pdf');
     }
 
 

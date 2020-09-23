@@ -76,9 +76,14 @@ Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name(
 Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expediente')
     ->middleware('permission:expediente.show');
 
+///////////////////////////////////////Rutas de reportes///////////////////////////////////////
+
 Route::get('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
 
 Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante');
+
+Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->name('asignacion_estudiante');
+
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
     ->middleware('permission:institucion.index');

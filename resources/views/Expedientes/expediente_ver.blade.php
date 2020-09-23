@@ -339,6 +339,7 @@
                                                 <th>Horas asignadas</th>
                                                 <th>Estado</th>
                                                 <th>Memoria</th>
+                                                <th>Carta de asignación</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -349,6 +350,7 @@
                                                 <td>{{$asignacion->horas_asignadas}}</td>
                                                 <td>{{$asignacion->estado_asignacion}}</td>
                                                 <td><a href="{{route('ver_memoria', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Ver memoria</button></td></a>
+                                                <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary" ><span class="glyphicon glyphicon-th"></span> Carta de asignación</button></td></a>
                                             </tr>
                                             @endforeach
                                         </tbody>
