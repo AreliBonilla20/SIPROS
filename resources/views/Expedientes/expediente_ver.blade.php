@@ -195,7 +195,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <h3>Asignación de proyecto</h3>
-            <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+            <p>Estudiante: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
             <br>
             <div class="modal-body">
                 <form action="{{route('guardar_asignacion')}}" method="POST">
@@ -262,7 +262,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     <h3>Solicitud de prorroga</h3>
-    <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+    <p>Estudiante: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
     <br>
     <div class="modal-body">
         <form action="{{route('guardar_prorroga')}}" method="POST">
@@ -285,7 +285,7 @@
                     <i class="notika-icon notika-edit"></i>
                 </div>
                 <div class="nk-int-st">
-                    <input type="date" class="form-control" name="fecha_solicitud">
+                    <input type="date" class="form-control" name="fecha_solicitud" required>
                     @foreach ($errors->get('fecha_solicitud') as $mensaje)
                     <small style="color:#B42020;">{{ $mensaje }}</small>
                     @endforeach
@@ -403,7 +403,7 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <h3>Actualización de prórroga</h3>
-                                    <p>Alumno: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                    <p>Estudiante: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
                                     <br>
                                     <div class="modal-body">
                                         <form action="{{route('actualizar_prorroga', $prorroga->id)}}" method="POST">
@@ -429,7 +429,7 @@
                                                     <i class="notika-icon notika-edit"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus>
+                                                    <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus required>
                                                     @foreach ($errors->get('fecha_solicitud') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -442,7 +442,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="form-check-inline">
-                                                                <label><input type="radio" {{ ($prorroga->estado == "Aprobada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Aprobada"> <i></i> Aprobada</label>
+                                                                <label><input type="radio" {{ ($prorroga->estado == "Aprobada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Aprobada" required> <i></i> Aprobada</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -450,7 +450,15 @@
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="form-check-inline">
-                                                            <label><input type="radio" {{ ($prorroga->estado == "Rechazada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Rechazada"> <i></i> Rechazada</label>
+                                                            <label><input type="radio" {{ ($prorroga->estado == "Rechazada" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Rechazada" required> <i></i> Rechazada</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="form-check-inline">
+                                                            <label><input type="radio" {{ ($prorroga->estado == "Pendiente" ? "checked":"") }} class="i-checks iradio_square-green" name="estado" value="Pendiente" required> <i></i> Pendiente</label>
                                                         </div>
                                                     </div>
                                                 </div>

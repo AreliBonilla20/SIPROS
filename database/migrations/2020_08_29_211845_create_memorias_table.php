@@ -15,7 +15,7 @@ class CreateMemoriasTable extends Migration
     {
         Schema::create('memorias', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('asignacion_id')->foreing()->references('id')->on('asignacions');
+            $table->unsignedInteger('asignacion_id')->foreign()->references('id')->on('asignacions');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->unsignedInteger('docente_benef_m')->nullable()->default(0);

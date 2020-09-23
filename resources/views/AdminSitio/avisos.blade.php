@@ -81,30 +81,8 @@
         </div>
     </div>
 <br><br>
-@endsection
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script langiage="javascript" type="text/javascript">
-    require("sweetalert");
-    function confirmar(valor){
-        //ruta.concat(variable,")}}");
-        swal({
-          title: "¿Eliminar aviso?",
-          text: "Esta acción es irreversible.",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then((willDelete) => {
-          if (willDelete) {
-            swal("Aviso eliminado", {
-              icon: "success",
-            });
-            document.getElementById("formulario"+valor).submit();
-          } else {
-            swal("Eliminación cancelada");
-          }
-        });
-    }
 
-    
-</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('js/avisos.js') }}"></script>
+
+@endsection

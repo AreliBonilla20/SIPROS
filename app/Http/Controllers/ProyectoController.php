@@ -90,10 +90,10 @@ class ProyectoController extends Controller
     public function edit($id)
     {
         //editar uno especifico
-        $proyectoUpdate = Proyecto::findOrFail($id);
+        $proyecto_actualizar = Proyecto::findOrFail($id);
         $instituciones  = Institucion::all();
         $carreras       = Carrera::all();
-        return view('Proyectos/proyecto_editar', compact('proyectoUpdate', 'instituciones', 'carreras'));
+        return view('Proyectos/proyecto_editar', compact('proyecto_actualizar', 'instituciones', 'carreras'));
     }
 
     /**

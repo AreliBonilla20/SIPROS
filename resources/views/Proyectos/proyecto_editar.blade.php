@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-example-wrap">
-                                <form action="{{route('actualizar_proyecto', $proyectoUpdate->id)}}" method="POST">
+                                <form action="{{route('actualizar_proyecto', $proyecto_actualizar->id)}}" method="POST">
                                     @method('PUT')
                                     @csrf
 
@@ -52,7 +52,7 @@
                                                 <select class="selectpicker" name="codigo_carrera">
                                                     <option value="">-Seleccione una carrera-</option>
                                                     @foreach($carreras as $carrera)
-                                                    <option value="{{$carrera->codigo}}" {{ ($carrera->codigo == $proyectoUpdate->codigo_carrera ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
+                                                    <option value="{{$carrera->codigo}}" {{ ($carrera->codigo == $proyecto_actualizar->codigo_carrera ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('codigo_carrera') as $mensaje)
@@ -69,7 +69,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$proyectoUpdate->nombre}}" name="nombre" id="nombre" placeholder="Nombre del proyecto">
+                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->nombre}}" name="nombre" id="nombre" placeholder="Nombre del proyecto">
                                             @foreach ($errors->get('nombre') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -82,7 +82,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$proyectoUpdate->area_de_conocimiento}}" name="area" id="area" placeholder="Área de conocimiento que requiere el proyecto">
+                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->area_de_conocimiento}}" name="area" id="area" placeholder="Área de conocimiento que requiere el proyecto">
                                             @foreach ($errors->get('area') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -94,7 +94,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$proyectoUpdate->objetivos}}" name="objetivos" id="objetivos" placeholder="Objetivos del proyecto">
+                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->objetivos}}" name="objetivos" id="objetivos" placeholder="Objetivos del proyecto">
                                             @foreach ($errors->get('objetivos') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -107,7 +107,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$proyectoUpdate->logros}}" name="logro" id="logro" placeholder="Logros del proyecto">
+                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->logros}}" name="logro" id="logro" placeholder="Logros del proyecto">
                                             @foreach ($errors->get('logro') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -117,10 +117,10 @@
                                     <div class="form-example-int mg-t-15">
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker"  name="institucion" class="selectpicker" value="{{$proyectoUpdate->id_institucion}}">
+                                                <select class="selectpicker"  name="institucion" class="selectpicker" value="{{$proyecto_actualizar->id_institucion}}">
                                                     <option value="">-Seleccione una opción-</option>
                                                     @foreach ($instituciones as $institucion)
-                                                    <option value="{{$institucion->id}}" @if ($proyectoUpdate->id_institucion === $institucion->id) selected @endif>{{$institucion->nombre}}</option>
+                                                    <option value="{{$institucion->id}}" @if ($proyecto_actualizar->id_institucion === $institucion->id) selected @endif>{{$institucion->nombre}}</option>
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('institucion') as $mensaje)
@@ -138,7 +138,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="number" value="{{$proyectoUpdate->cantidad_de_estudiantes}}" class="form-control" min="0" name="cantidad" id="cantidad" placeholder="Cantidad de estudiantes requeridos para el proyecto">
+                                            <input type="number" value="{{$proyecto_actualizar->cantidad_de_estudiantes}}" class="form-control" min="0" name="cantidad" id="cantidad" placeholder="Cantidad de estudiantes requeridos para el proyecto">
                                             @foreach ($errors->get('cantidad') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -150,7 +150,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" value="{{$proyectoUpdate->nombre_encargado}}" class="form-control" name="encargado" id="encargado" placeholder="Nombre del encargado del proyecto">
+                                            <input type="text" value="{{$proyecto_actualizar->nombre_encargado}}" class="form-control" name="encargado" id="encargado" placeholder="Nombre del encargado del proyecto">
                                             @foreach ($errors->get('encargado') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -162,7 +162,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" value="{{$proyectoUpdate->telefono}}" class="form-control" name="telefono" id="telefono" placeholder="Teléfono del encargado del proyecto">
+                                            <input type="text" value="{{$proyecto_actualizar->telefono}}" class="form-control" name="telefono" id="telefono" placeholder="Teléfono del encargado del proyecto">
                                             @foreach ($errors->get('telefono') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -174,20 +174,20 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" value="{{$proyectoUpdate->email}}" class="form-control" name="correo" id="correo" placeholder="Correo electrónico del encargado del proyecto">
+                                            <input type="text" value="{{$proyecto_actualizar->email}}" class="form-control" name="correo" id="correo" placeholder="Correo electrónico del encargado del proyecto">
                                             @foreach ($errors->get('correo') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
                                         </div>
                                     </div>
                                     <label for="estado_proyecto"> Estado del proyecto:</label>
-                                    {{$proyectoUpdate->estado_proyecto}}
+                                    {{$proyecto_actualizar->estado_proyecto}}
                                     <div class="form-group ic-cmp-int">
                                         <div class="nk-int-st">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-check-inline">
-                                                        <label><input type="radio" {{ ($proyectoUpdate->estado_proyecto == "Disponible" ? "checked":"") }} class="i-checks iradio_square-green" name="estado_proyecto" value="Disponible"> <i></i> Disponible</label>
+                                                        <label><input type="radio" {{ ($proyecto_actualizar->estado_proyecto == "Disponible" ? "checked":"") }} class="i-checks iradio_square-green" name="estado_proyecto" value="Disponible"> <i></i> Disponible</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,7 +195,7 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-check-inline">
-                                                    <label><input type="radio" {{ ($proyectoUpdate->estado_proyecto == "No disponible" ? "checked":"") }} class="i-checks iradio_square-green" name="estado_proyecto" value="No disponible"> <i></i> No disponible</label>
+                                                    <label><input type="radio" {{ ($proyecto_actualizar->estado_proyecto == "No disponible" ? "checked":"") }} class="i-checks iradio_square-green" name="estado_proyecto" value="No disponible"> <i></i> No disponible</label>
                                                 </div>
                                             </div>
                                         </div>

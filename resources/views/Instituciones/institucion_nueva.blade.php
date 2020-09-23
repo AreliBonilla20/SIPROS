@@ -60,8 +60,8 @@
                                             <div class="bootstrap-select fm-cmp-mg">
                                                 <select class="selectpicker"  data-live-search="true" name="tipo_institucion_id" id="tipo_institucion_id">
                                                     <option value="">-Seleccione una institución-</option>
-                                                    @foreach ($tipoInstituciones as $tipoInstitucion)
-                                                    <option value="{{$tipoInstitucion->id}}">{{$tipoInstitucion->tipo_institucion}}</option>
+                                                    @foreach ($tipo_instituciones as $tipo_institucion)
+                                                    <option value="{{$tipo_institucion->id}}">{{$tipo_institucion->tipo_institucion}}</option>
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('tipo_institucion_id') as $mensaje)
