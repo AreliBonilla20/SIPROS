@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="nk-int-st">
                                             <div class="col-md-6">
-                                                <input type="file" class="form-control" name="imagen" accept="image/*" required>
+                                                <input type="file" class="form-control" name="imagen" accept="image/*">
                                             @foreach ($errors->get('imagen') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach

@@ -55,7 +55,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name'        => 'Creación de roles',
             'slug'        => 'roles.create',
-            'description' => 'Editar datos de los roles del sistema',
+            'description' => 'Crear roles en el sistema',
 
         ]);
 
@@ -93,7 +93,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name'        => 'Creación de expediente',
             'slug'        => 'expediente.create',
-            'description' => 'Editar datos de los expediente del sistema',
+            'description' => 'Crear expediente en el sistema',
 
         ]);
 
@@ -124,7 +124,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name'        => 'Creación de proyecto',
             'slug'        => 'proyecto.create',
-            'description' => 'Editar datos de los proyectos del sistema',
+            'description' => 'Crear proyectos en el sistema',
 
         ]);
 
@@ -155,7 +155,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name'        => 'Creación de institucion',
             'slug'        => 'institucion.create',
-            'description' => 'Editar datos de las instituciones del sistema',
+            'description' => 'Crear instituciones en el sistema',
 
         ]);
 
@@ -167,6 +167,55 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
 
+        /////////Asignacion de proyectos
+        Permission::create([
+            'name'        => 'Emisión de carta de asignación',
+            'slug'        => 'asignacion.store',
+            'description' => 'Emisión de las cartas de asignación de proyectos',
 
+        ]);
+
+        /////////Prórogas
+        Permission::create([
+            'name'        => 'Navegar entre prorrogas',
+            'slug'        => 'prorrogas.index',
+            'description' => 'Navega entre las prorrogas emitidas en el sistema',
+
+        ]);
+
+        Permission::create([
+            'name'        => 'Actualizar prórrogas',
+            'slug'        => 'prorrogas.update',
+            'description' => 'Actualizar prórrogas',
+
+        ]);
+
+        //////////Memorias
+        Permission::create([
+            'name'        => 'Crear memorias',
+            'slug'        => 'memoria.create',
+            'description' => 'Crea memorias en el sistema',
+
+        ]);
+        Permission::create([
+            'name'        => 'Edición de memorias',
+            'slug'        => 'memoria.edit',
+            'description' => 'Edición de memorias en el sistema',
+
+        ]);
+        Permission::create([
+            'name'        => 'Navegar entre memoria',
+            'slug'        => 'memoria.show',
+            'description' => 'Navega entre las memoria emitidas en el sistema',
+
+        ]);
+
+        //////////Sitio
+        Permission::create([
+            'name'        => 'Sitio',
+            'slug'        => 'aviso.avisos',
+            'description' => 'Gestionar sitio web',
+
+        ]);
     }
 }

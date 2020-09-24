@@ -17,7 +17,7 @@ class CreateAvisoMigration extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('descripcion', 500)->nullable();
-            $table->string('url', 1000);
+            $table->string('url', 1000)->nullable();
             $table->timestamps();
         });
     }

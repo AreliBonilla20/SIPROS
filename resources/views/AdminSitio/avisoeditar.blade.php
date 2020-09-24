@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="nk-int-st">
                                             <div class="col-md-6">
-                                                <input type="file" class="form-control" name="imagen" accept="image/*" required>
+                                                <input type="file" class="form-control" name="imagen" accept="image/*">
                                             @foreach ($errors->get('imagen') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -83,7 +83,7 @@
 
                                    
                                         <div class="form-example-int mg-t-15">
-                                            <button button type="submit" btn btn-success notika-btn-success">Actualizar aviso</button>
+                                            <button type="submit" class="btn btn-success notika-btn-success">Actualizar aviso</button>
                                             <a class="btn btn-danger notika-btn-danger" href="{{route('sitio_avisos')}}">Cancelar</a>
                                         </div>
  

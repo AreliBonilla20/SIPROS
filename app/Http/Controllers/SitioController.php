@@ -51,7 +51,9 @@ class SitioController extends Controller
         $aviso              = new Aviso();
         $aviso->titulo      = request('titulo');
         $aviso->descripcion = request('descripcion');
-        $aviso->url         = $request->file('imagen')->store('public');
+        if($request->file('imagen')!=null){
+            $aviso->url         = $request->file('imagen')->store('public');
+        }
         $aviso->save();
 
         return redirect()->route('sitio_avisos');
@@ -80,7 +82,9 @@ class SitioController extends Controller
         $aviso              = Aviso::findOrFail($id);
         $aviso->titulo      = request('titulo');
         $aviso->descripcion = request('descripcion');
-        $aviso->url         = $request->file('imagen')->store('public');
+        if($request->file('imagen')!=null){
+            $aviso->url         = $request->file('imagen')->store('public');
+        }
         $aviso->save();
 
         return redirect()->route('sitio_avisos');

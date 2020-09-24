@@ -117,33 +117,45 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
     ->middleware('permission:proyecto.update');
     
 Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto')
-->middleware('permission:proyecto.show');
+    ->middleware('permission:proyecto.show');
 
 });
 Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
 
+
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
-Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion');
+Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion')
+    ->middleware('permission:asignacion.store');
+
 
 ///////////////////////////////////////Ruta de gestión de prórrogas/////////////////////////////////////////
-Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas');
+Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas')
+    ->middleware('permission:prorrogas.index');
 
-Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga');
+Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga')
+    ->middleware('permission:prorrogas.store');
 
-Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga');
+Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga')
+    ->middleware('permission:prorrogas.update');
 
 Route::get('/pdfProrrogas','ReporteController@pdfProrrogas')->name('reporte_prorrogas');
 
+
 ///////////////////////////////////////Ruta de gestión de memorias/////////////////////////////////////////
-Route::get('/memoria/crear/{id}', 'MemoriaController@create')->name('crear_memoria');
+Route::get('/memoria/crear/{id}', 'MemoriaController@create')->name('crear_memoria')
+    ->middleware('permission:memoria.create');
 
-Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria');
+Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria')
+    ->middleware('permission:memoria.store');
 
-Route::get('/memoria/editar/{id}', 'MemoriaController@edit')->name('editar_memoria');
+Route::get('/memoria/editar/{id}', 'MemoriaController@edit')->name('editar_memoria')
+    ->middleware('permission:memoria.edit');
 
-Route::put('/memoria/actualizar/{id}', 'MemoriaController@update')->name('actualizar_memoria');
+Route::put('/memoria/actualizar/{id}', 'MemoriaController@update')->name('actualizar_memoria')
+    ->middleware('permission:memoria.update');
 
-Route::get('/memoria/ver/{id}', 'MemoriaController@show')->name('ver_memoria');
+Route::get('/memoria/ver/{id}', 'MemoriaController@show')->name('ver_memoria')
+    ->middleware('permission:memoria.show');
 
 ////////////////////////////////Rutas de obtención de datos//////////////////////////////////
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
@@ -166,7 +178,8 @@ Route::get('sitio/aviso', 'SitioController@aviso')->name('sitio_aviso');
 
 Route::post('sitio/aviso_post', 'SitioController@aviso_post')->name('sitio_aviso_post');
 
-Route::get('sitio/avisos', 'SitioController@avisos')->name('sitio_avisos');
+Route::get('sitio/avisos', 'SitioController@avisos')->name('sitio_avisos')
+    ->middleware('permission:aviso.avisos');
 
 Route::get('sitio/editar_aviso/{id} ', 'SitioController@editar_aviso')->name('sitio_editar_aviso');
 
