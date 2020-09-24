@@ -53,7 +53,22 @@ class ReporteController extends Controller
         $now=Carbon::now();
         $fecha_actual = $now->format('d/m/Y');
         $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
-        return $pdf->stream('certificado.pdf');//Retorna el certificado de servicio social
+        return $pdf->stream('Certificado.pdf');//Retorna el certificado de servicio social
+    }
+
+    /*Función para generar la carta de asignación del servicio social*/
+    public function pdfAsignacion($id){
+        $asignacion = Asignacion::findOrFail($id);
+        $estudiante = $asignacion->estudiante;
+        $proyecto = $asignacion->proyecto;
+
+        //Formato de fecha en candena
+        $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        $fecha = $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
+
+        $pdf = PDF::loadView('Reportes/asignaciones',compact('estudiante','proyecto', 'fecha'));
+        return $pdf->stream('Asignación.pdf');
     }
 
 

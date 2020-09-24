@@ -6,6 +6,7 @@ use App\Area;
 use App\Aviso;
 use App\Carrera;
 use App\Proyecto;
+use App\Institucion;
 use DB;
 use Illuminate\Http\Request;
 
@@ -13,15 +14,16 @@ class SitioController extends Controller
 {
     public function index()
     {
-        $ultimo        = Aviso::latest('id')->first();
-        $avisos        = Aviso::orderBy('id', 'desc')->take(5)->get();
-        $proyectos = DB::select(
-            "select count(p.id) as cantidad, s.nombre_sector 
-            from proyectos p join institucions i on p.id_institucion = i.id 
-            join sectors s on i.sector_id =s.id group by s.nombre_sector"
-        );
-        $areas = Area::all();
-        return view('Sitio/index', compact('avisos', 'ultimo', 'proyectos', 'areas' ));
+        $ultimo                 = Aviso::latest('id')->first();
+        $avisos                 = Aviso::orderBy('id', 'desc')->take(5)->get();
+        $areas                  = Area::all();
+        $proyectos_sectores     = DB::table('proyectos')->join('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                      ->join('sectors', 'institucions.sector_id', '=', 'sectors.id')
+                                      ->select(DB::raw('count(*) as cantidad, nombre_sector'))
+                                      ->groupBy('nombre_sector')->get();
+        
+
+        return view('Sitio/index', compact('avisos', 'ultimo', 'proyectos_sectores', 'areas' ));
     }
 
     public function proyectos()

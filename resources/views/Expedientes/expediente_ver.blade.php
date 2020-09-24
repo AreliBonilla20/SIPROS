@@ -157,7 +157,7 @@
                         <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
                             <button type="button" style="color:white;" class="btn btn-success notika-btn-success btn-button-mg" data-toggle="modal" data-target="#asignacion"><span class="glyphicon glyphicon-check"></span> Asignar poyecto</button>
                             <button type="button" style="color:white;" class="btn notika-btn-black btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#prorroga"><span class="glyphicon glyphicon-check"></span> Registrar prórroga</button>
-                            <a href="{{route('crear_memoria', $estudiante->carne)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-button-mg" data-toggle="modal" data-target="#prorroga"><span class="glyphicon glyphicon-check"></span> Registrar memoria</button></a>
+                            <a href="{{route('crear_memoria', $estudiante->carne)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-button-mg"><span class="glyphicon glyphicon-check"></span> Registrar memoria</button></a>
                         </div>
                     </div>
                 </div>
@@ -349,6 +349,7 @@
                                                 <td>{{$asignacion->horas_asignadas}}</td>
                                                 <td>{{$asignacion->estado_asignacion}}</td>
                                                 <td><a href="{{route('ver_memoria', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Ver memoria</button></td></a>
+                                                <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Carta de asignación</button></td></a>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -381,17 +382,7 @@
                                                 <td>{{$prorroga->estado}}</td>
                                                 <td>
                                                     <button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#actualizar_prorroga_{{$loop->iteration}}"><span class="glyphicon glyphicon-check"></span> Aprobar/Rechazar</button>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+                                                    <div class="row">
                     <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
 
                         <div class="modal fade" id="actualizar_prorroga_{{$loop->iteration}}" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -475,9 +466,21 @@
                         </div>
                     </div>
                 </div>
+                                                </td>
+                                            </tr>
+        
+@endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        @endforeach
+       
     </div>
 </div>
 </div>

@@ -227,6 +227,7 @@
                                     @endforeach
                                 </div>
                             </div>
+                            <br>
                             <div class="form-example-int mg-t-15">
                                 <button class="btn btn-success notika-btn-success">Guardar expediente</button>
                                 <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
