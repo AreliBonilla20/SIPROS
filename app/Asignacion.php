@@ -26,7 +26,7 @@ class Asignacion extends Model
         ->join('proyectos','proyectos.id','=','asignacions.id_proyecto')
         ->join('institucions','institucions.id','=','proyectos.id_institucion')
         ->join('memorias','asignacions.id','=','memorias.asignacion_id')
-        ->select('asignacions.horas_asignadas','proyectos.nombre as nombre_proyecto','proyectos.area_de_conocimiento','institucions.nombre as nombre_institucion','memorias.fecha_inicio','memorias.fecha_fin')
+        ->select('memorias.horas_completadas','proyectos.nombre as nombre_proyecto','proyectos.area_de_conocimiento','institucions.nombre as nombre_institucion','memorias.fecha_inicio','memorias.fecha_fin')
         ->where('asignacions.carne',$carne)
         ->get()->first();
         return $proyecto;
