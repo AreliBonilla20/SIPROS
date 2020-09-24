@@ -1,4 +1,3 @@
-require("sweetalert");
 function confirmar(valor){
     //ruta.concat(variable,")}}");
     swal({
