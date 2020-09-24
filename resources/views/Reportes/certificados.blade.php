@@ -67,8 +67,8 @@
                     <div style="position: absolute;left: 200px;top: 60px;">
                         <font style="text-transform: uppercase;">
                             {{$proyecto->nombre_institucion}}<br>
-                            {{$proyecto->fecha_inicio}}<br>
-                            {{$proyecto->fecha_fin}}  
+                            {{$fecha_inicio}}<br>
+                            {{$fecha_fin}}  
                         </font>
                     </div>
 
@@ -79,7 +79,7 @@
                         FECHA DE FINALIZACIÓN:<br>
                     </div>
                     <br>
-                    <p>SE EXTIENDE LA PRESENTE EN </p><br>
+                    <p style="text-transform: uppercase;">SE EXTIENDE LA PRESENTE EN {{$fecha_actual}}</p><br>
                     <p>ES CONFORME.</p><br>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________<br>

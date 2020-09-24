@@ -50,9 +50,14 @@ class ReporteController extends Controller
     public function pdfCertificado($carne){
         $estudiante = Estudiante::findOrFail($carne);//Devuelve el estudiante con el carne solicitado.
         $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
-        $now=Carbon::now();
+        $now=Carbon::now();//Obtiene la fecha actual
+        setlocale(LC_TIME, "Spanish");//Traducir la fecha a español
         $fecha_actual = $now->format('d/m/Y');
-        $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
+        $fecha_actual = Fecha::fechaTexto($fecha_actual);//Invocamos a la fucnion fechaTexto para convertir a texto
+        $fecha_inicio = Fecha::fechaTexto($proyecto->fecha_inicio);
+        $fecha_fin = Fecha::fechaTexto($proyecto->fecha_fin);
+
+        $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto','fecha_actual','fecha_inicio','fecha_fin'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
         return $pdf->stream('Certificado.pdf');//Retorna el certificado de servicio social
     }
 
@@ -62,7 +67,7 @@ class ReporteController extends Controller
         $estudiante = $asignacion->estudiante;
         $proyecto = $asignacion->proyecto;
 
-        //Formato de fecha en candena
+        //Formato de fecha en cadena
         $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
         $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
         $fecha = $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
