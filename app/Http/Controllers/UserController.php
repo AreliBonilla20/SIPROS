@@ -49,7 +49,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return back()->with('agregado', 'Usuario agregado correctamente');
+        return redirect()->route('usuarios')->with('agregado', 'Usuario agregado correctamente');
 
     }
 
@@ -88,23 +88,35 @@ class UserController extends Controller
     public function update(AsignarRolRequest $request, $id)
     {
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
-        $user->update($request->all());
+        //$user->update($request->all());
 
-        $resultado = DB::table('role_user')->where('user_id', '=', $user->id)->get();
-        if ($resultado->isEmpty()) {
+        $resultado = DB::table('role_user')->where('user_id', $id)->first();
+        if ($resultado==null) {
             DB::table('role_user')->insert([
-                'role_id' => $request->role_id,
-                'user_id' => $user->id,
+                'role_id' => request('role_id'),
+                'user_id' => $id,
             ]);
+            
         } else {
             DB::table('role_user')->where('user_id', '=', $user->id)->update([
-                'role_id' => $request->role_id,
+                'role_id' => request('role_id'),
             ]);
         }
+        $objetos = DB::select('SELECT * FROM permission_role WHERE role_id = ?', [request('role_id')]);
 
-        return back()->with('actualizado', 'Rol asignado a usuario correctamente');
+            //Borrado de permisos por cambio de rol
+            DB::table('permission_user')->where('user_id', $id)->delete();
+        
+            foreach ($objetos as $objeto) {
+                DB::table('permission_user')->insert([
+                    'permission_id' => $objeto->permission_id,
+                    'user_id' => $id,
+                ]);
+            }
+
+        return redirect()->route('usuarios')->with('actualizado', 'Rol asignado a usuario correctamente');
     }
 
     /**

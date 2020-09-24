@@ -212,9 +212,45 @@ class PermissionsTableSeeder extends Seeder
 
         //////////Sitio
         Permission::create([
-            'name'        => 'Sitio',
-            'slug'        => 'aviso.avisos',
+            'name'        => 'Sitio principal',
+            'slug'        => 'sitio.index',
             'description' => 'Gestionar sitio web',
+
+        ]);
+        Permission::create([
+            'name'        => 'Proyectos en el sitio',
+            'slug'        => 'sitio.proyectos',
+            'description' => 'Visualizar proyectos existentes',
+
+        ]);
+        Permission::create([
+            'name'        => 'Blog de noticias',
+            'slug'        => 'sitio.blog',
+            'description' => 'Visualizar noticias en el sitio web',
+
+        ]);
+        Permission::create([
+            'name'        => 'Crear aviso',
+            'slug'        => 'aviso.create',
+            'description' => 'Crear avisos para visualizar en el sitio web',
+
+        ]);
+        Permission::create([
+            'name'        => 'Visualizar avisos',
+            'slug'        => 'aviso.index',
+            'description' => 'Visualizar avisos en el sitio web',
+
+        ]);
+        Permission::create([
+            'name'        => 'Edición de avisos',
+            'slug'        => 'aviso.edit',
+            'description' => 'Edición de avisos en el sitio web',
+
+        ]);
+        Permission::create([
+            'name'        => 'Eliminar avisos',
+            'slug'        => 'aviso.destroy',
+            'description' => 'Eliminar avisos en el sitio web',
 
         ]);
     }

@@ -59,7 +59,7 @@ Route::put('users/{user}', 'UserController@update')->name('users.update')
 
 ///////////////////////////////////////Rutas de la gestión de expedientes/////////////////////////////////////////
 Route::get('/expedientes', 'EstudianteController@index')->name('expedientes')
-    ->middleware('permission:expedientes.index');
+    ->middleware('permission:expediente.index');
 
 Route::get('/expedientes/crear', 'EstudianteController@create')->name('crear_expediente')
     ->middleware('permission:expediente.create');
@@ -173,21 +173,29 @@ Route::get('/areas/{id}', 'CarreraController@getAreas');
  
 ///////////////////////////RUTAS DEL SITIO/////////
 
-Route::get('sitio/inicio', 'SitioController@index')->name('sitio_index');
+Route::get('sitio/inicio', 'SitioController@index')->name('sitio_index')
+    ->middleware('permission:sitio.index');
 
-Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio_proyectos');
+Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio_proyectos')
+    ->middleware('permission:sitio.proyectos');
 
-Route::get('sitio/blog', 'SitioController@blog')->name('sitio_blog');
+Route::get('sitio/blog', 'SitioController@blog')->name('sitio_blog')
+    ->middleware('permission:sitio.blog');
 
-Route::get('sitio/aviso', 'SitioController@aviso')->name('sitio_aviso');
+Route::get('sitio/aviso', 'AvisoController@create')->name('sitio_aviso')
+    ->middleware('permission:aviso.create');
 
-Route::post('sitio/aviso_post', 'SitioController@aviso_post')->name('sitio_aviso_post');
+Route::post('sitio/aviso_post', 'AvisoController@store')->name('sitio_aviso_post')
+    ->middleware('permission:aviso.create');
 
-Route::get('sitio/avisos', 'SitioController@avisos')->name('sitio_avisos')
-    ->middleware('permission:aviso.avisos');
+Route::get('sitio/avisos', 'AvisoController@index')->name('sitio_avisos')
+    ->middleware('permission:aviso.index');
 
-Route::get('sitio/editar_aviso/{id} ', 'SitioController@editar_aviso')->name('sitio_editar_aviso');
+Route::get('sitio/editar_aviso/{id} ', 'AvisoController@edit')->name('sitio_editar_aviso')
+    ->middleware('permission:aviso.edit');
 
-Route::put('sitio/editar_aviso_put/{id}', 'SitioController@editar_aviso_put')->name('sitio_editar_aviso_put');
+Route::put('sitio/editar_aviso_put/{id}', 'AvisoController@update')->name('sitio_editar_aviso_put')
+    ->middleware('permission:aviso.edit');
 
-Route::delete('sitio/eliminar_aviso/{id}', 'SitioController@eliminar_aviso')->name('sitio_eliminar_aviso');
+Route::delete('sitio/eliminar_aviso/{id}', 'AvisoController@destroy')->name('sitio_eliminar_aviso')
+    ->middleware('permission:aviso.destroy');
