@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\InstitucionRequest;
 
+
 class InstitucionController extends Controller
 {
     /**
@@ -34,13 +35,13 @@ class InstitucionController extends Controller
      */
     public function create()
     {
-        $sectores = App\Sector::all();
-        $tipoInstituciones = App\TipoInstitucion::all();
-        $regiones = App\Region::all();
-        $departamentos = App\Departamento::all();
-        $municipios = App\Municipio::all();
+        $sectores          = Sector::all();
+        $tipo_instituciones = TipoInstitucion::all();
+        $regiones          = Region::all();
+        $departamentos     = Departamento::all();
+        $municipios        = Municipio::all();
 
-        return view('Instituciones/institucion_nueva', compact('sectores', 'tipoInstituciones', 'regiones', 'departamentos', 'municipios'));
+        return view('Instituciones/institucion_nueva', compact('sectores', 'tipo_instituciones', 'regiones', 'departamentos', 'municipios'));
     }
 
     /**
@@ -51,17 +52,21 @@ class InstitucionController extends Controller
      */
     public function store(InstitucionRequest $request)
     {
-        $nuevaInstitucion = new Institucion;
-        $nuevaInstitucion->nombre = $request->nombre;
-        $nuevaInstitucion->tipo_institucion_id = $request->tipo_institucion_id;
-        $nuevaInstitucion->direccion = $request->direccion;
-        $nuevaInstitucion->id_region = $request->id_region;
-        $nuevaInstitucion->id_departamento = $request->id_departamento;
-        $nuevaInstitucion->id_municipio = $request->id_municipio;
-        $nuevaInstitucion->sector_id = $request->sector_id;
-        $nuevaInstitucion->save();
+        $nueva_institucion                      = new Institucion;
+        $nueva_institucion->nombre              = $request->nombre;
+        $nueva_institucion->tipo_institucion_id = $request->tipo_institucion_id;
+        $nueva_institucion->direccion           = $request->direccion;
+        $nueva_institucion->id_region           = $request->id_region;
+        $nueva_institucion->id_departamento     = $request->id_departamento;
+        $nueva_institucion->id_municipio        = $request->id_municipio;
+        $nueva_institucion->sector_id           = $request->sector_id;
 
-        return redirect('instituciones')->withSuccess('Institución agregada correctamente!');
+        if ($nueva_institucion->save()) {
+            return redirect('instituciones')->withSuccess('Institución agregada correctamente!');
+        } else {
+            return redirect('instituciones')->withWarning('Ha ocurrido un error!');
+        }
+
     }
 
     /**
@@ -70,9 +75,11 @@ class InstitucionController extends Controller
      * @param  \App\Institucion  $institucion
      * @return \Illuminate\Http\Response
      */
-    public function show(Institucion $institucion)
+    public function show($id)
     {
-        //
+        $institucion        = Institucion::findOrFail($id);
+        $cantidad_proyectos = count($institucion->proyectos);
+        return view('Instituciones/institucion_ver', compact('institucion', 'cantidad_proyectos'));
     }
 
     /**
@@ -83,14 +90,14 @@ class InstitucionController extends Controller
      */
     public function edit($id)
     {
-        $institucionActualizar = App\Institucion::findOrFail($id);
-        $sectores = App\Sector::all();
-        $tipoInstituciones = App\TipoInstitucion::all();
-        $regiones = App\Region::all();
-        $departamentos = App\Departamento::all();
-        $municipios = App\Municipio::all();
+        $institucion_actualizar = App\Institucion::findOrFail($id);
+        $sectores              = App\Sector::all();
+        $tipo_instituciones    = App\TipoInstitucion::all();
+        $regiones              = App\Region::all();
+        $departamentos         = App\Departamento::all();
+        $municipios            = App\Municipio::all();
 
-        return view('Instituciones/institucion_editar', compact('institucionActualizar', 'sectores', 'tipoInstituciones', 'regiones', 'departamentos', 'municipios'));
+        return view('Instituciones/institucion_editar', compact('institucion_actualizar', 'sectores', 'tipo_instituciones', 'regiones', 'departamentos', 'municipios'));
     }
 
     /**
@@ -102,29 +109,22 @@ class InstitucionController extends Controller
      */
     public function update(InstitucionRequest $request, $id)
     {
-        $institucionActualizar = App\Institucion::findOrFail($id);
-        $institucionActualizar->nombre = $request->nombre;
-        $institucionActualizar->tipo_institucion_id = $request->tipo_institucion_id;
-        $institucionActualizar->direccion = $request->direccion;
-        $institucionActualizar->id_region = $request->id_region;
-        $institucionActualizar->id_departamento = $request->id_departamento;
-        $institucionActualizar->id_municipio = $request->id_municipio;
-        $institucionActualizar->sector_id = $request->sector_id;
-        $institucionActualizar->save();
+        $institucion_actualizar                      = App\Institucion::findOrFail($id);
+        $institucion_actualizar->nombre              = $request->nombre;
+        $institucion_actualizar->tipo_institucion_id = $request->tipo_institucion_id;
+        $institucion_actualizar->direccion           = $request->direccion;
+        $institucion_actualizar->id_region           = $request->id_region;
+        $institucion_actualizar->id_departamento     = $request->id_departamento;
+        $institucion_actualizar->id_municipio        = $request->id_municipio;
+        $institucion_actualizar->sector_id           = $request->sector_id;
+        $institucion_actualizar->save();
 
-        return redirect('instituciones')->withSuccess('Institución actualizada correctamente!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Institucion  $institucion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $institucionEliminar = App\Institucion::findOrFail($id);
-        $institucionEliminar->delete();
-        return back()->with('eliminada', 'Institución eliminada correctamente');
+        if ($institucion_actualizar->save()) {
+            toast('Institución actualizada correctamente!', 'success');
+            return redirect('instituciones');
+        } else {
+            toast('Ha ocurrido un error!', 'error');
+            return redirect('instituciones');
+        }
     }
 }

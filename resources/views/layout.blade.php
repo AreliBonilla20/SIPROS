@@ -106,67 +106,65 @@
                 </div>
                 <br><br><br><br><br>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
-                    <div class="header-top-menu">
-                        <ul class="nav navbar-nav notika-top-nav">
-                           
-                            
+                        <div class="header-top-menu">
+                            <ul class="nav navbar-nav notika-top-nav">
+
+
                                 <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @else
-
-                            <li style="background: black," onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" class="nav-item dropdown">
-                                <a style="font-size: 15px;" onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    
-                                    @can('usuario')
-                                     
-                                        <a  style="font-size: 15px; color: #908C8C; class="dropdown-item" href = "{{ route('usuarios') }}">
-                                           Usuarios
-                                        </a>
-                                    <br>
-                                    @endcan
-
-                                    @can('roles')
-                                    
-                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('roles') }}">
-                                            {{ __('Roles') }}
-                                        </a>
-                                    <br>
-                                   
-                                    @endcan
-
-                                    <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                @guest
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                                @else
+                                <li style="background: black," onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" class="nav-item dropdown">
+                                    <a style="font-size: 15px;" onmouseover="this.style.background=' #2d2e2e';" onmouseout="this.style.background=' #2d2e2e';" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
-                                    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                                        @can('usuario')
+
+                                        <a  style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;"; class="dropdown-item" href = "{{ route('usuarios') }}">
+                                            <i class="notika-icon notika-support"></i> Usuarios
+                                        </a>
+                                        <br>
+                                        @endcan
+
+                                        @can('roles')
+
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('roles') }}">
+                                            <i class="notika-icon notika-menus"></i> {{ __('Roles') }}
+                                        </a>
+                                        <br>
+
+                                        @endcan
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('sitio_index') }}">
+                                            <i class="notika-icon notika-search"></i> {{ __('Sitio web') }}
+                                        </a>
+
+                                        <hr>
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            <i class="notika-icon notika-left-arrow"></i> Cerrar sesión
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                                @endguest
                             </li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
-    
     <!-- End Header Top Area -->
     <!-- Mobile Menu start -->
     <div class="mobile-menu-area">
@@ -177,8 +175,8 @@
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
                                 <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
-                                  <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
-                                        <li><a href="{{ url ('home') }}">Inicio</a></li>
+                                    <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
+                                        <li><a href="index.html">Inicio</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
@@ -199,7 +197,18 @@
                                         <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
                                     </ul>
                                 </li>
-                              
+                                <li><a data-toggle="collapse" data-target="#Usuarios" href="#">Usuarios</a>
+                                    <ul  class="collapse dropdown-header-top">
+                                        <li><a href="{{ url('usuarios_listado') }}">Listado usuarios</a></li>
+                                        <li><a href="{{ url('usuario_nuevo') }}">Agregar usuarios</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ route('prorrogas') }}">Prórrogas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('sitio_avisos') }}">Avisos</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -221,6 +230,12 @@
                         </li>
                         <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
                         </li>
+                        <li><a data-toggle="tab" href="#Usuarios"><i class="notika-icon notika-support"></i> Usuarios</a>
+                        </li>
+                        <li><a  href="{{route('prorrogas')}}"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
+                        </li>
+                        <li><a href="{{route('sitio_avisos')}}"><i class="notika-icon notika-app"></i> Avisos</a>
+                        </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Expediente" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -241,30 +256,33 @@
                                 <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
                             </ul>
                         </div>
-                        
+                        <div id="Usuarios" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-   
+   <br><br>
     @yield('content')
-
-    <!-- Form Element area End-->
-    <!-- Start Footer area-->
-    <div class="footer-copyright-area" style="background: #2d2e2e;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="footer-copy-right">
-                        <p>Derechos reservados © 2020 
-                        <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
-                    </div>
-                </div>
-            </div>
+    <br><br>
+<div class="footer-copyright-area" style="background: #2d2e2e;">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="footer-copy-right">
+        <p>Derechos reservados © 2020
+            <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
         </div>
     </div>
+</div>
+</div>
+</div>
+
   <!-- jquery
 		============================================ -->
         <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
@@ -344,7 +362,11 @@
         <script src="{{ asset('js/dropzone/dropzone.js') }}"></script>
         <!--  wave JS
             ============================================ -->
-        <script src="{{ asset('js/wave/waves.min.js') }}"></script>
+        <script src="{{ asset('js/wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+        <script src="{{ asset('js/wizard/wizard-active.js') }}"></script>
+         <!--  wizard
+            ============================================ -->
+            <script src="{{ asset('js/wave/waves.min.js') }}"></script>
         <script src="{{ asset('js/wave/wave-active.js') }}"></script>
         <!--  chosen JS
             ============================================ -->
@@ -366,6 +388,7 @@
             ============================================ -->
         <script src="{{ asset('js/data-table/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/data-table/data-table-act.js') }}"></script>
-        @include('sweetalert::alert') 
-</body>
+        <script src="{{ asset('js/dropdown.js') }}"></script>
+         @include('sweetalert::alert') 
+
 </html>

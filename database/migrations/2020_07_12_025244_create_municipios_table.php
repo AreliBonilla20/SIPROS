@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMunicipiosTable extends Migration
 {
@@ -16,7 +16,7 @@ class CreateMunicipiosTable extends Migration
         Schema::create('municipios', function (Blueprint $table) {
             $table->unsignedInteger('id');
             $table->string('nombre_municipio');
-            $table->unsignedInteger('id_departamento');
+            $table->unsignedInteger('id_departamento')->foreign()->references('id')->on('departamentos')->onDelete('cascade');
         });
     }
 

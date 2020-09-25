@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\AsignarRolRequest;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
-use \DB;
 use Illuminate\Http\Request;
-use RealRashid\SweerAlert\Facades\Alert;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\AsignarRolRequest;
 use Illuminate\Support\Facades\Hash;
-
+use \DB;
 
 class UserController extends Controller
 {
@@ -45,14 +44,13 @@ class UserController extends Controller
     {
 
         User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
+            'name'     => $request['name'],
+            'email'    => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-  
-        
-        return back()->with('agregado', 'Usuario agregado correctamente');
-        
+
+        return redirect()->route('usuarios')->with('agregado', 'Usuario agregado correctamente');
+
     }
 
     /**
@@ -73,8 +71,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-        $user = User::find($id);
+    {
+        $user  = User::find($id);
         $roles = Role::get();
 
         return view('Usuarios/asignar_roles', compact('user', 'roles'));
@@ -88,25 +86,37 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(AsignarRolRequest $request, $id)
-    {   
-       
-        $user = User::find($id);
+    {
 
-        $user->update($request->all());
+        $user = User::findOrFail($id);
 
-        $resultado = DB::table('role_user')->where('user_id', '=', $user->id)->get();
-        if ($resultado->isEmpty()) {
+        //$user->update($request->all());
+
+        $resultado = DB::table('role_user')->where('user_id', $id)->first();
+        if ($resultado==null) {
             DB::table('role_user')->insert([
-                'role_id' => $request->role_id,
-                'user_id' => $user->id,
+                'role_id' => request('role_id'),
+                'user_id' => $id,
             ]);
-        }else{
+            
+        } else {
             DB::table('role_user')->where('user_id', '=', $user->id)->update([
-                'role_id' => $request->role_id
-            ]);            
+                'role_id' => request('role_id'),
+            ]);
         }
+        $objetos = DB::select('SELECT * FROM permission_role WHERE role_id = ?', [request('role_id')]);
 
-        return back()->with('actualizado', 'Rol asignado a usuario correctamente');
+            //Borrado de permisos por cambio de rol
+            DB::table('permission_user')->where('user_id', $id)->delete();
+        
+            foreach ($objetos as $objeto) {
+                DB::table('permission_user')->insert([
+                    'permission_id' => $objeto->permission_id,
+                    'user_id' => $id,
+                ]);
+            }
+
+        return redirect()->route('usuarios')->with('actualizado', 'Rol asignado a usuario correctamente');
     }
 
     /**

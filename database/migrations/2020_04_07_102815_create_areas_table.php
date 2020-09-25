@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateAreasTable extends Migration
 {
@@ -15,8 +15,9 @@ class CreateAreasTable extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_area');
-            $table->integer('institucion_id')->unsigned()->foreing()->references('id')->on('institucions')->onDelete('cascade');
+            $table->string('area_interes');
+            $table->timestamps();
+
         });
     }
 
