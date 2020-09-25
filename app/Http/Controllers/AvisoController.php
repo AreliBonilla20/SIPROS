@@ -63,9 +63,14 @@ class AvisoController extends Controller
         if($request->file('imagen')!=null){
             $aviso->url         = $request->file('imagen')->store('public');
         }
-        $aviso->save();
-
-        return redirect()->route('sitio_avisos');
+        
+        if ($aviso->save()) {
+            toast('Aviso actualizado correctamente!', 'success');
+            return redirect()->route('sitio_avisos');
+        } else {
+            toast('Ha ocurrido un error!', 'error');
+            return redirect()->route('sitio_avisos');
+        }
     }
 
     public function destroy($id)
