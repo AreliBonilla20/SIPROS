@@ -58,8 +58,8 @@ class MemoriaController extends Controller
         $memoria->total_benef           = $memoria->total_benef_m + $memoria->total_benef_f;
 
         if ($memoria->save()) {
-            $estudiante                    = Estudiante::findOrFail($memoria->asignacion->estudiante->carne);
-            $estudiante->horas_registradas = $memoria->horas_completadas;
+            $estudiante                      = Estudiante::findOrFail($memoria->asignacion->estudiante->carne);
+            $estudiante->horas_registradas =  $estudiante->horas_registradas + $memoria->horas_completadas;
             $estudiante->save();
             return redirect('expedientes')->withSuccess('Memoria agregada correctamente!');
         } else {
