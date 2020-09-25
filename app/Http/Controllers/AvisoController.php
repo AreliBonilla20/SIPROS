@@ -21,6 +21,7 @@ class AvisoController extends Controller
 
     public function store(Request $request)
     {
+        /*Función que almacena un aviso*/
         $aviso              = new Aviso();
         $aviso->titulo      = request('titulo');
         $aviso->descripcion = request('descripcion');
@@ -29,7 +30,11 @@ class AvisoController extends Controller
         }
         $aviso->save();
 
-        return redirect()->route('sitio_avisos');
+        if ($aviso->save()) {
+            return redirect()->route('sitio_avisos')->withSuccess('Aviso agregado correctamente!');
+        } else {
+            return redirect()->route('sitio_avisos')->withWarning('Ha ocurrido un error!');
+        }
     }
 
     public function index()
@@ -51,7 +56,7 @@ class AvisoController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        /*Función que actualiza un aviso*/
         $aviso              = Aviso::findOrFail($id);
         $aviso->titulo      = request('titulo');
         $aviso->descripcion = request('descripcion');
