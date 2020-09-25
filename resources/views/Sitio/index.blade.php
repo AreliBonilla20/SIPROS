@@ -51,7 +51,7 @@
                 </div>
               </div>
               @else
-              <div class="carousel-item active" style="background-image: url('{{Storage::url($aviso->url)}}') ">
+              <div class="carousel-item" style="background-image: url('{{Storage::url($aviso->url)}}') ">
                 <div class="carousel-container">
                   <div class="carousel-content">
                     <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
