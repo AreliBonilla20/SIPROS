@@ -6,6 +6,7 @@ use App\Institucion;
 use App\Proyecto;
 use App\Prorroga;
 use App\Asignacion;
+use App\Memoria;
 use App\Fecha;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -50,12 +51,18 @@ class ReporteController extends Controller
     public function pdfCertificado($carne){
         $estudiante = Estudiante::findOrFail($carne);//Devuelve el estudiante con el carne solicitado.
         $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
+        $asignacion = Asignacion::where('carne', '=', $carne)->first();
         $now=Carbon::now();//Obtiene la fecha actual
         setlocale(LC_TIME, "Spanish");//Traducir la fecha a español
         $fecha_actual = $now->format('d/m/Y');
-        $fecha_actual = Fecha::fechaTexto($fecha_actual);//Invocamos a la fucnion fechaTexto para convertir a texto
+        $fecha_actual = Fecha::fechaTexto($fecha_actual);//Invocamos a la función fechaTexto para convertir a texto
         $fecha_inicio = Fecha::fechaTexto($proyecto->fecha_inicio);
         $fecha_fin = Fecha::fechaTexto($proyecto->fecha_fin);
+        
+        //Actualizar estado de constancia de certificación
+        $memoria_actualizar = Memoria::where('asignacion_id', '=', $asignacion->id)->first();
+        $memoria_actualizar->estado_constancia = "Emitida";
+        $memoria_actualizar->save();
 
         $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto','fecha_actual','fecha_inicio','fecha_fin'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
         return $pdf->stream('Certificado.pdf');//Retorna el certificado de servicio social
