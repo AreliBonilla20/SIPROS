@@ -11,11 +11,4 @@ class Aviso extends Model
     
         protected $fillable = ['titulo','descripcion','url'];
 
-        public function institucion(){
-                return $this->belongsTo(Institucion::class, 'id_institucion','id');
-        }
-    
-        public function carrera(){
-                return $this->belongsTo(Carrera::class, 'codigo_carrera','codigo');
-        }
 }
