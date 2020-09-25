@@ -15,7 +15,7 @@ class CreateAvisoMigration extends Migration
     {
         Schema::create('avisos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
+            $table->string('titulo',100)->nullable();
             $table->string('descripcion', 500)->nullable();
             $table->string('url', 1000)->nullable();
             $table->timestamps();

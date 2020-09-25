@@ -15,7 +15,7 @@ class CreateSexosTable extends Migration
     {
         Schema::create('sexos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sexo');
+            $table->string('sexo',25);
         });
     }
 
