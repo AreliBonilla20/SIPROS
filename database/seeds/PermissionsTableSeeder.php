@@ -210,25 +210,8 @@ class PermissionsTableSeeder extends Seeder
 
         ]);
 
-        //////////Sitio
-        Permission::create([
-            'name'        => 'Sitio principal',
-            'slug'        => 'sitio.index',
-            'description' => 'Gestionar sitio web',
+        //////////Avisos
 
-        ]);
-        Permission::create([
-            'name'        => 'Proyectos en el sitio',
-            'slug'        => 'sitio.proyectos',
-            'description' => 'Visualizar proyectos existentes',
-
-        ]);
-        Permission::create([
-            'name'        => 'Blog de noticias',
-            'slug'        => 'sitio.blog',
-            'description' => 'Visualizar noticias en el sitio web',
-
-        ]);
         Permission::create([
             'name'        => 'Crear aviso',
             'slug'        => 'aviso.create',

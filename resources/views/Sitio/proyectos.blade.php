@@ -39,7 +39,7 @@
                 {{ $proyecto->nombre }}
               </h2>
               <div class="entry-content">
-                <p><b><i class="fas fa-university" style="color: #e96b56"></i> Institucion: </b> {{ $proyecto->nombre_institucion }}</p>
+                <p><b><i class="fas fa-university" style="color: #e96b56"></i> Institucion: </b> {{ $proyecto->Institucion->nombre }}</p>
                 <p><b><i class="fas fa-bullseye" style="color: #e96b56"></i> Objetivo:</b> {{ $proyecto->objetivos }}</p>
                 <p><b><i class="bx bx-file" style="color: #e96b56"></i> Area de conocimiento:</b> {{ $proyecto->area_de_conocimiento }}</p>
                 <p><b><i class="fas fa-trophy" style="color: #e96b56"></i> Logros:</b> {{ $proyecto->logros }}</p>
@@ -56,8 +56,6 @@
 
       </div>
     </section><!-- End Portfolio Section -->
-
-    <p><b><i class="fas fa-university" style="color: #e96b56"></i> Institucion: </b> {{ $proyecto->Institucion->nombre }}</p>
 
   </main><!-- End #main -->
 @endsection
