@@ -112,7 +112,7 @@
                                             </div>
                                         </div>
 
-                                        <label for="institucion" >Tipo de institución <small style="color:#16D195;" >*</small></label>
+                                        <label for="institucion" >Institución <small style="color:#16D195;" >*</small></label>
                                         <div class="form-example-int mg-t-15">
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">

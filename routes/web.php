@@ -59,22 +59,22 @@ Route::put('users/{user}', 'UserController@update')->name('users.update')
 
 ///////////////////////////////////////Rutas de la gestión de expedientes/////////////////////////////////////////
 Route::get('/expedientes', 'EstudianteController@index')->name('expedientes')
-    ->middleware('permission:expediente.index');
+    ->middleware(['permission:expediente.index', 'auth']);
 
 Route::get('/expedientes/crear', 'EstudianteController@create')->name('crear_expediente')
-    ->middleware('permission:expediente.create');
+    ->middleware(['permission:expediente.create', 'auth']);
 
 Route::post('/expedientes/guardar', 'EstudianteController@store')->name('guardar_expediente')
-    ->middleware('permission:expediente.store');
+    ->middleware(['permission:expediente.store', 'auth']);
 
 Route::get('/expedientes/editar/{id}', 'EstudianteController@edit')->name('editar_expediente')
-    ->middleware('permission:expediente.edit');
+    ->middleware(['permission:expediente.edit', 'auth']);
 
 Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name('actualizar_expediente')
-    ->middleware('permission:expediente.update');
+    ->middleware(['permission:expediente.update', 'auth']);
 
 Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expediente')
-    ->middleware('permission:expediente.show');
+    ->middleware(['permission:expediente.show', 'auth']);
 
 ///////////////////////////////////////Rutas de reportes///////////////////////////////////////
 
@@ -86,43 +86,43 @@ Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->n
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
-    ->middleware('permission:institucion.index');
+    ->middleware(['permission:institucion.index', 'auth']);
 
 Route::get('/instituciones/crear', 'InstitucionController@create')->name('crear_institucion')
-    ->middleware('permission:institucion.create');
+    ->middleware(['permission:institucion.create', 'auth']);
 
 Route::post('/instituciones/guardar', 'InstitucionController@store')->name('guardar_institucion')
-    ->middleware('permission:institucion.store');
+    ->middleware(['permission:institucion.store', 'auth']);
 
 Route::get('/instituciones/editar/{id}', 'InstitucionController@edit')->name('editar_institucion')
-    ->middleware('permission:institucion.edit');
+    ->middleware(['permission:institucion.edit', 'auth']);
 
 Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->name('actualizar_institucion')
-    ->middleware('permission:institucion.update');  
+    ->middleware(['permission:institucion.update', 'auth']);  
 
 Route::get('/instituciones/ver/{id}', 'InstitucionController@show')->name('ver_institucion')
-    ->middleware('permission:expediente.show');
+    ->middleware(['permission:expediente.show', 'auth']);
 
 Route::get('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones');
 
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')
-    ->middleware('permission:proyecto.index');
+    ->middleware(['permission:proyecto.index', 'auth']);
 
 Route::get('/proyectos/crear', 'ProyectoController@create')->name('crear_proyecto')
-    ->middleware('permission:proyecto.create');
+    ->middleware(['permission:proyecto.create', 'auth']);
 
 Route::post('/proyectos/guardar', 'ProyectoController@store')->name('guardar_proyecto')
-    ->middleware('permission:proyecto.store');
+    ->middleware(['permission:proyecto.store', 'auth']);
 
 Route::get('/proyectos/editar/{id}', 'ProyectoController@edit')->name('editar_proyecto')
-    ->middleware('permission:proyecto.edit');
+    ->middleware(['permission:proyecto.edit', 'auth']);
     
 Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('actualizar_proyecto')
-    ->middleware('permission:proyecto.update');
+    ->middleware(['permission:proyecto.update', 'auth']);
     
 Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto')
-    ->middleware('permission:proyecto.show');
+    ->middleware(['permission:proyecto.show', 'auth']);
 
 });
 Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
@@ -130,37 +130,37 @@ Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proy
 
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion')
-    ->middleware('permission:asignacion.store');
+    ->middleware(['permission:asignacion.store', 'auth']);
 
 
 ///////////////////////////////////////Ruta de gestión de prórrogas/////////////////////////////////////////
 Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas')
-    ->middleware('permission:prorrogas.index');
+    ->middleware(['permission:prorrogas.index', 'auth']);
 
 Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga')
-    ->middleware('permission:prorrogas.store');
+    ->middleware(['permission:prorrogas.store', 'auth']);
 
 Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga')
-    ->middleware('permission:prorrogas.update');
+    ->middleware(['permission:prorrogas.update', 'auth']);
 
 Route::get('/pdfProrrogas','ReporteController@pdfProrrogas')->name('reporte_prorrogas');
 
 
 ///////////////////////////////////////Ruta de gestión de memorias/////////////////////////////////////////
 Route::get('/memoria/crear/{id}', 'MemoriaController@create')->name('crear_memoria')
-    ->middleware('permission:memoria.create');
+    ->middleware(['permission:memoria.create', 'auth']);
 
 Route::post('/memoria/guardar', 'MemoriaController@store')->name('guardar_memoria')
-    ->middleware('permission:memoria.store');
+    ->middleware(['permission:memoria.store', 'auth']);
 
 Route::get('/memoria/editar/{id}', 'MemoriaController@edit')->name('editar_memoria')
-    ->middleware('permission:memoria.edit');
+    ->middleware(['permission:memoria.edit', 'auth']);
 
 Route::put('/memoria/actualizar/{id}', 'MemoriaController@update')->name('actualizar_memoria')
-    ->middleware('permission:memoria.update');
+    ->middleware(['permission:memoria.update', 'auth']);
 
 Route::get('/memoria/ver/{id}', 'MemoriaController@show')->name('ver_memoria')
-    ->middleware('permission:memoria.show');
+    ->middleware(['permission:memoria.show', 'auth']);
 
 ////////////////////////////////Rutas de obtención de datos//////////////////////////////////
 Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
@@ -173,29 +173,28 @@ Route::get('/areas/{id}', 'CarreraController@getAreas');
  
 ///////////////////////////RUTAS DEL SITIO/////////
 
-Route::get('sitio/inicio', 'SitioController@index')->name('sitio_index')
-    ->middleware('permission:sitio.index');
+Route::get('sitio/inicio', 'SitioController@index')->name('sitio_index');
+ 
 
-Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio_proyectos')
-    ->middleware('permission:sitio.proyectos');
+Route::get('sitio/proyectos', 'SitioController@proyectos')->name('sitio_proyectos');
 
-Route::get('sitio/blog', 'SitioController@blog')->name('sitio_blog')
-    ->middleware('permission:sitio.blog');
 
+Route::get('sitio/blog', 'SitioController@blog')->name('sitio_blog');
+    
 Route::get('sitio/aviso', 'AvisoController@create')->name('sitio_aviso')
-    ->middleware('permission:aviso.create');
+    ->middleware(['permission:aviso.create', 'auth']);
 
 Route::post('sitio/aviso_post', 'AvisoController@store')->name('sitio_aviso_post')
-    ->middleware('permission:aviso.create');
+    ->middleware(['permission:aviso.create', 'auth']);
 
 Route::get('sitio/avisos', 'AvisoController@index')->name('sitio_avisos')
-    ->middleware('permission:aviso.index');
+    ->middleware(['permission:aviso.index', 'auth']);
 
 Route::get('sitio/editar_aviso/{id} ', 'AvisoController@edit')->name('sitio_editar_aviso')
-    ->middleware('permission:aviso.edit');
+    ->middleware(['permission:aviso.edit', 'auth']);
 
 Route::put('sitio/editar_aviso_put/{id}', 'AvisoController@update')->name('sitio_editar_aviso_put')
-    ->middleware('permission:aviso.edit');
+    ->middleware(['permission:aviso.edit', 'auth']);
 
 Route::delete('sitio/eliminar_aviso/{id}', 'AvisoController@destroy')->name('sitio_eliminar_aviso')
-    ->middleware('permission:aviso.destroy');
+    ->middleware(['permission:aviso.destroy', 'auth']);

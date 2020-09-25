@@ -49,7 +49,7 @@
                             <strong>Tipo de institución</strong>
                             <div class="form-group">
                                 <div class="nk-int-st">
-                                    <input type="text" class="form-control" value="{{$institucion->tipo_institucion->tipo_institucion}}" readonly>
+                                    <input type="text" class="form-control" value="{{$institucion->tipoInstitucion->tipo_institucion}}" readonly>
                                 </div>
                             </div>
                         </div>

@@ -183,7 +183,7 @@
                         <tbody>
                             <tr>
                                 <td>{{$proyecto->institucion->nombre}}</td>
-                                <td>{{$proyecto->institucion->tipo_institucion->nombre_institucion}}</td>
+                                <td>{{$proyecto->institucion->tipoInstitucion->tipo_institucion}}</td>
                                 <td>{{$proyecto->institucion->sector->nombre_sector}}</td>
                                 <td>{{$proyecto->institucion->departamento->nombre_departamento}}</td>
                                 <td>
