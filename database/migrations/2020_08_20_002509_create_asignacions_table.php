@@ -15,10 +15,10 @@ class CreateAsignacionsTable extends Migration
     {
         Schema::create('asignacions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('carne')->foreign()->references('carne')->on('estudiantes');
+            $table->string('carne',7)->foreign()->references('carne')->on('estudiantes');
             $table->unsignedInteger('id_proyecto')->foreign()->references('id')->on('proyectos');
             $table->integer('horas_asignadas');
-            $table->string('estado_asignacion');
+            $table->string('estado_asignacion',25);
             $table->timestamps();
         });
     }

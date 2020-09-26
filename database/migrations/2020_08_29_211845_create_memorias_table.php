@@ -32,7 +32,7 @@ class CreateMemoriasTable extends Migration
             $table->double('inversion_institucion');
             $table->double('inversion_estudiante');
             $table->unsignedInteger('horas_completadas');
-            $table->string('estado_constancia');
+            $table->string('estado_constancia',25);
             $table->timestamps();
         });
     }

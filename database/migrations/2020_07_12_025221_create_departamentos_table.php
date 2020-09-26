@@ -15,7 +15,7 @@ class CreateDepartamentosTable extends Migration
     {
         Schema::create('departamentos', function (Blueprint $table) {
             $table->unsignedInteger('id');
-            $table->string('nombre_departamento');
+            $table->string('nombre_departamento',150);
             $table->unsignedInteger('id_region')->foreign()->references('id')->on('regions')->onDelete('cascade');
         });
     }
