@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                   
-                                    <label for="imagen">Imágen <small style="color:#16D195;" >*</small></label>
+                                    <!--label for="imagen">Imágen <small style="color:#16D195;" >*</small></label>
                                     <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">
                                             <i class="far fa-image"></i>
@@ -79,7 +79,7 @@
                                             @endforeach
                                             </div>
                                         </div>
-                                    </div>
+                                    </div!-->
 
                                    
                                         <div class="form-example-int mg-t-15">
