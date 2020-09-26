@@ -13,8 +13,19 @@
 
           @foreach($avisos as $aviso)
             @if($ultimo->id==$aviso->id)
-              @if($aviso->url==null)
-              <div class="carousel-item active" style="background-image: url('{{asset('assets/img/equipo.jpg')}}') ">
+              
+              <div class="carousel-item active" style="background-image: url('{{asset('assets/img/6660.jpg')}}') ">
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <div style="background-color:rgba(255, 255, 255, 0.3); border-radius: 25px; padding: 25px" class="col-md-12">
+                      <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
+                      <p class="animate__animated animate__fadeInUp" align="center">{{ $aviso->descripcion }}</p>
+                    </div>  
+                  </div>       
+                </div>
+              </div>
+              
+              <!--div class="carousel-item active" style="background-image: url('{{Storage::url($aviso->url)}}') ">
                 <div class="carousel-container">
                   <div class="carousel-content">
                     <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
@@ -23,35 +34,24 @@
                     </div>  
                   </div>       
                 </div>
-              </div>
-              @else
-              <div class="carousel-item active" style="background-image: url('{{Storage::url($aviso->url)}}') ">
-                <div class="carousel-container">
-                  <div class="carousel-content">
-                    <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
-                      <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
-                      <p class="animate__animated animate__fadeInUp" align="center">{{ $aviso->descripcion }}</p>
-                    </div>  
-                  </div>       
-                </div>
-              </div>
-              @endif
+              </div!-->
+             
            
           
             @else
-              @if($aviso->url==null)
-              <div class="carousel-item" style="background-image: url('{{asset('assets/img/equipo.jpg')}}') ">
+             
+              <div class="carousel-item" style="background-image: url('{{asset('assets/img/6660.jpg')}}') ">
                 <div class="carousel-container">
                   <div class="carousel-content">
-                    <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
+                    <div style="background-color:rgba(255, 255, 255, 0.3); border-radius: 25px; padding: 25px" class="col-md-12">
                       <h2 class="animate__animated animate__fadeInDown">{{ $aviso->titulo }}</h2>
                       <p class="animate__animated animate__fadeInUp" align="center">{{ $aviso->descripcion }}</p>
                     </div> 
                   </div>
                 </div>
               </div>
-              @else
-              <div class="carousel-item" style="background-image: url('{{Storage::url($aviso->url)}}') ">
+             
+              <!--div class="carousel-item" style="background-image: url('{{Storage::url($aviso->url)}}') ">
                 <div class="carousel-container">
                   <div class="carousel-content">
                     <div style="background-color:rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 25px" class="col-md-12">
@@ -60,8 +60,8 @@
                     </div>  
                   </div>       
                 </div>
-              </div>
-              @endif
+              </div!-->
+             
               
             @endif
           
