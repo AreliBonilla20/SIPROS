@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sexo extends Model
 {
-    protected $fillabel = ['sexo'];
+    protected $fillable = ['sexo'];
 
     public function getRouteKeyName()
     {
