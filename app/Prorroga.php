@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prorroga extends Model
 {
-    protected $fillabel = ['fecha_solicitud', 'carne', 'estado'];
+    protected $fillable = ['fecha_solicitud', 'carne', 'estado'];
 
    public function getRouteKeyName(){
    		return 'id';

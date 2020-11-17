@@ -155,7 +155,7 @@
                     <br>
                     <div class="row" style="padding-left:25%;">
                         <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
-                            <button type="button" style="color:white;" class="btn btn-success notika-btn-success btn-button-mg" data-toggle="modal" data-target="#asignacion"><span class="glyphicon glyphicon-check"></span> Asignar poyecto</button>
+                            <button type="button" style="color:white;" class="btn btn-success notika-btn-success btn-button-mg" data-toggle="modal" data-target="#asignacion"><span class="glyphicon glyphicon-check"></span> Asignar proyecto</button>
                             <button type="button" style="color:white;" class="btn notika-btn-black btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#prorroga"><span class="glyphicon glyphicon-check"></span> Registrar prórroga</button>
                             <a href="{{route('crear_memoria', $estudiante->carne)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-button-mg"><span class="glyphicon glyphicon-check"></span> Registrar memoria</button></a>
                         </div>

@@ -1,55 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Listado de prórrogas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        @page {
-            margin: 0cm 0cm;
-            font-size: 1em;
-        }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Tabla de estudiantes inscritos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-        body {
-            margin: 3cm 2cm 2cm;
-        }
-
-        header {
-            position: fixed;
-            top: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-            background-color: #00BCD4;
-            color: white;
-            text-align: center;
-            line-height: 30px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-            background-color: #00BCD4;
-            color: white;
-            text-align: center;
-            line-height: 35px;
-        }
-    </style>
 </head>
 
 <body>
-    <header>
-        <br>
-        <p><strong>Departamento de Proyección Social. Facultad de Ciencias Económicas.</strong></p>
+    <header style="padding:5%; font-family:Arial, Helvetica, sans-serif; mrgin:5%; text-align:justify;" >
+        <div style="text-align:center; line-height: 0.1;">
+            <p>UNIVERSIDAD DE EL SALVADOR</p> 
+            <p>FACULTAD DE CIENCIAS ECONÓMICAS</p>
+            <p>UNIDAD DE PROYECCIÓN SOCIAL</p>
+            <p>Teléfono: 2521-0100 y 2521-0220</p>
+        </div>
+
+        <img style="position:absolute; top:1%; right:20%;"src="{{public_path('assets/img/logo-fce-v1-mixto.png') }}" height="100px">
+        <img style="position:absolute; top:1%; left:5%;"src="{{public_path('assets/img/minerva2.jpg') }}" height="100px">
+        <hr>
     </header>
     <main>
-        <div class="container">
+        <div>
             <h5 style="text-align: center;"><strong>TABLA DE PRÓRROGAS</strong></h5>
-            <table class="table table-striped text-center" align="left" style="font-size:90%">
-                <thead>
+            <table class="table table-striped" align="justify">
+                <thead class="table-dark">
                     <tr>
                         <th scope="col">Fecha de solicitud</th>
                         <th scope="col">Fecha de inscripción</th>
@@ -75,8 +51,5 @@
             </table>
         </div>
     </main>
-    <footer>
-        <p><strong>Universidad de El Salvador</strong></p>
-    </footer>
 </body>
 </html>
