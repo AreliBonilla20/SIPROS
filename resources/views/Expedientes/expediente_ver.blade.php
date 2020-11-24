@@ -350,9 +350,9 @@
                                                 <td>{{$asignacion->proyecto->institucion->nombre}}</td>
                                                 <td>{{$asignacion->horas_asignadas}}</td>
                                                 <td>{{$asignacion->estado_asignacion}}</td>
-                                                <td><a href="{{route('ver_memoria', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Memoria</button></td></a>
-                                                <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Asignación</button></td></a>
-                                                <td><a href="{{route('certificado_estudiante', $asignacion->estudiante->carne)}}"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Certificación</button></td></a>
+                                                <td><a href="{{route('ver_memoria', $asignacion->id)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Memoria</button></td></a>
+                                                <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Asignación</button></td></a>
+                                                <td><a href="{{route('certificado_estudiante', $asignacion->estudiante->carne)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Certificación</button></td></a>
                                                 </tr>
                                             @endforeach
                                         </tbody>

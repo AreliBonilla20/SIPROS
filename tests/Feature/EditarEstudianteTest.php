@@ -7,31 +7,27 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Estudiante;
 
-class EstudianteTest extends TestCase
+class EditarEstudianteTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testCreate()
+   public function testEditar()
     {
         //$this->artisan('db:seed');
         $login=$this->post('/login', [
             'email'=>'admin@gmail.com',
             'password'=>'secret',
         ]);
-        $response=$this->get('/expedientes/crear');
+        $response=$this->get('/expedientes/editar/MH11066');
         $response->assertStatus(200);
-        $response->assertViewIs('Expedientes.expediente_nuevo');
+        $response->assertViewIs('Expedientes.expediente_editar');
     }
-    public function testStore()
+
+   public function testUpdate()
     {
         $login=$this->post('/login', [
             'email'=>'admin@gmail.com',
             'password'=>'secret',
         ]);
-        $response=$this->post('/expedientes/guardar', [
+        $response=$this->post('/expedientes/actualizar/MH11066', [
             'carne'=>'MH11066',
             'nombres'=>'Elmer Alexander',
             'apellidos'=>'Mejía Huiza',
@@ -43,7 +39,7 @@ class EstudianteTest extends TestCase
             'municipio_id'=>'214',
             'departamento_id'=>'6',
             'email'=>'mh11066@ues.edu,sv',
-            'telefono'=>'3333-3333',
+            'telefono'=>'2222-2222',
             'area_id'=>'1',
         ]);
         $estudiante=Estudiante::orderBy('carne','nombres','apellidos','carrera')->first();
@@ -51,6 +47,6 @@ class EstudianteTest extends TestCase
         $this->assertEquals($estudiante->nombres, 'Elmer Alexander');
         $this->assertEquals($estudiante->apellidos, 'Mejía Huiza');
         $this->assertEquals($estudiante->carrera->nombre_carrera, 'Licenciatura en Admón. de Empresas');
-        $response->assertRedirect('/');
+        //$response->assertRedirect('/expedientes');
     }
 }

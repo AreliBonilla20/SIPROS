@@ -47,7 +47,7 @@
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la institución">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la institución" value="{{old('nombre')}}">
                                             @foreach ($errors->get('nombre') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -147,7 +147,7 @@
                                 <i class="notika-icon notika-house"></i>
                             </div>
                             <div class="nk-int-st">
-                                <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección de la institución">
+                                <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección de la institución" value="{{old('direccion')}}">
                                 @foreach ($errors->get('direccion') as $mensaje)
                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                 @endforeach

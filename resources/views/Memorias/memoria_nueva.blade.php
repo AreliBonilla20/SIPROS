@@ -61,7 +61,7 @@
                                             <label for="fecha_inicio">Fecha inicio <small style="color:#16D195;" >*</small></label>
                                             <div class="form-example-int mg-t-15">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <input type="date" class="form-control" name="fecha_inicio">
+                                                    <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio')}}">
                                                     @foreach ($errors->get('fecha_inicio') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -72,7 +72,7 @@
                                             <label for="fecha_fin">Fecha de finalización <small style="color:#16D195;" >*</small></label>
                                             <div class="form-example-int mg-t-15">
                                                 <div class="bootstrap-select fm-cmp-mg">
-                                                    <input type="date" class="form-control" name="fecha_fin">
+                                                    <input type="date" class="form-control" name="fecha_fin" value="{{old('fecha_fin')}}">
                                                     @foreach ($errors->get('fecha_fin') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -89,7 +89,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="docente_benef_m" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="docente_benef_m" placeholder="Cantidad de beneficiados" value="{{old('docente_benef_m')}}">
                                                     @foreach ($errors->get('docente_benef_m') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -103,7 +103,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="docente_benef_f" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="docente_benef_f" placeholder="Cantidad de beneficiados" value="{{old('docente_benef_f')}}">
                                                     @foreach ($errors->get('docente_benef_f') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -120,7 +120,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="personal_benef_m" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="personal_benef_m" placeholder="Cantidad de beneficiados" value="{{old('personal_benef_m')}}">
                                                     @foreach ($errors->get('personal_benef_m') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -134,7 +134,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="personal_benef_f" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="personal_benef_f" placeholder="Cantidad de beneficiados" value="{{old('personal_benef_f')}}">
                                                     @foreach ($errors->get('personal_benef_f') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -151,7 +151,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="estudiante_benef_m" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="estudiante_benef_m" placeholder="Cantidad de beneficiados" value="{{old('estudiante_benef_m')}}">
                                                     @foreach ($errors->get('estudiante_benef_m') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -165,7 +165,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="estudiante_benef_f" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="estudiante_benef_f" placeholder="Cantidad de beneficiados" value="{{old('estudiante_benef_f')}}">
                                                     @foreach ($errors->get('estudiante_benef_f') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -182,7 +182,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="otros_benef_m" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="otros_benef_m" placeholder="Cantidad de beneficiados" value="{{old('otros_benef_m')}}">
                                                     @foreach ($errors->get('otros_benef_m') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -196,7 +196,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="otros_benef_f" placeholder="Cantidad de beneficiados">
+                                                    <input type="number" class="form-control" name="otros_benef_f" placeholder="Cantidad de beneficiados" value="{{old('otros_benef_f')}}">
                                                     @foreach ($errors->get('otros_benef_f') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -213,7 +213,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="text" class="form-control" name="inversion_institucion" placeholder="Costo de la inversión de la institución">
+                                                    <input type="text" class="form-control" name="inversion_institucion" placeholder="Costo de la inversión de la institución" value="{{old('inversion_institucion')}}">
                                                     @foreach ($errors->get('inversion_institucion') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -227,7 +227,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="text" class="form-control" name="inversion_estudiante" placeholder="Costo de la inversión del estudiante">
+                                                    <input type="text" class="form-control" name="inversion_estudiante" placeholder="Costo de la inversión del estudiante" value="{{old('inversion_estudiante')}}">
                                                     @foreach ($errors->get('inversion_estudiante') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach
@@ -244,7 +244,7 @@
                                                     <i class="notika-icon notika-support"></i>
                                                 </div>
                                                 <div class="nk-int-st">
-                                                    <input type="number" class="form-control" name="horas_completadas" placeholder="Cantidad de horas completadas">
+                                                    <input type="number" class="form-control" name="horas_completadas" placeholder="Cantidad de horas completadas" value="{{old('horas_completadas')}}">
                                                     @foreach ($errors->get('horas_completadas') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                     @endforeach

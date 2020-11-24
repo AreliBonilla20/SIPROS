@@ -66,7 +66,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del proyecto">
+                                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del proyecto" value="{{old('nombre')}}">
                                                 @foreach ($errors->get('nombre') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -79,7 +79,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="area" id="area" placeholder="Área de conocimiento que requiere el proyecto">
+                                                <input type="text" class="form-control" name="area" id="area" placeholder="Área de conocimiento que requiere el proyecto" value="{{old('area')}}">
                                                 @foreach ($errors->get('area') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -92,7 +92,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="objetivos" id="objetivos" placeholder="Objetivos del proyecto">
+                                                <input type="text" class="form-control" name="objetivos" id="objetivos" placeholder="Objetivos del proyecto" value="{{old('objetivos')}}">
                                                 @foreach ($errors->get('objetivos') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -105,7 +105,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="logro" id="logro" placeholder="Logros del proyecto">
+                                                <input type="text" class="form-control" name="logro" id="logro" placeholder="Logros del proyecto" value="{{old('logro')}}">
                                                 @foreach ($errors->get('logro') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -137,7 +137,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="number" class="form-control" min="0" name="cantidad" id="cantidad" placeholder="Cantidad de estudiantes requeridos para el proyecto">
+                                                <input type="number" class="form-control" min="0" name="cantidad" id="cantidad" placeholder="Cantidad de estudiantes requeridos para el proyecto" value="{{old('cantidad')}}">
                                                 @foreach ($errors->get('cantidad') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -150,7 +150,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="encargado" id="encargado" placeholder="Nombre del encargado del proyecto">
+                                                <input type="text" class="form-control" name="encargado" id="encargado" placeholder="Nombre del encargado del proyecto" value="{{old('encargado')}}">
                                                 @foreach ($errors->get('encargado') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -163,7 +163,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono del encargado del proyecto">
+                                                <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono del encargado del proyecto" value="{{old('telefono')}}">
                                                 @foreach ($errors->get('telefono') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -176,7 +176,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                                <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo electrónico del encargado del proyecto">
+                                                <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo electrónico del encargado del proyecto" value="{{old('correo')}}">
                                                 @foreach ($errors->get('correo') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach

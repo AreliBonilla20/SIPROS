@@ -56,7 +56,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre del rol" >
+                                            <input type="text" class="form-control input-sm  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nombre del rol" value="{{old('name')}}">
                                                 @foreach ($errors->get('name') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -69,7 +69,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                            <input type="text" class="form-control input-sm  @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Identificador del rol" >
+                                            <input type="text" class="form-control input-sm  @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Identificador del rol" value="{{old('slug')}}">
                                                 @foreach ($errors->get('slug') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
@@ -82,7 +82,7 @@
                                                 <i class="notika-icon notika-edit"></i>
                                             </div>
                                             <div class="nk-int-st">
-                                            <input type="text"  class="form-control input-sm @error('description') is-invalid @enderror" id="description" name="description" placeholder="Ingrese la descripción" ></textarea>
+                                            <input type="text"  class="form-control input-sm @error('description') is-invalid @enderror" id="description" name="description" placeholder="Ingrese la descripción" value="{{old('description')}}"></textarea>
                                                 @foreach ($errors->get('description') as $mensaje)
                                                     <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
