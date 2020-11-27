@@ -12,6 +12,7 @@ use App\Municipio;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\InstitucionRequest;
+use App\Http\Requests\BusquedaRequest;
 
 
 class InstitucionController extends Controller
@@ -126,5 +127,14 @@ class InstitucionController extends Controller
             toast('Ha ocurrido un error!', 'error');
             return redirect('instituciones');
         }
+    }
+
+    public function buscar(BusquedaRequest $request)
+    {
+        $inicio = $request->get('fecha_inicio');
+        $final = $request->get('fecha_final');
+
+        $instituciones = Institucion::whereBetween('created_at', [$inicio, $final])->get();
+        return view('Instituciones/instituciones_listado', compact('instituciones'));
     }
 }

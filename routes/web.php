@@ -76,6 +76,8 @@ Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name(
 Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expediente')
     ->middleware(['permission:expediente.show', 'auth']);
 
+Route::get('/expedientes/buscar/', 'EstudianteController@buscar')->name('buscar_expedientes');
+
 ///////////////////////////////////////Rutas de reportes///////////////////////////////////////
 
 Route::get('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
@@ -103,7 +105,9 @@ Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->na
 Route::get('/instituciones/ver/{id}', 'InstitucionController@show')->name('ver_institucion')
     ->middleware(['permission:expediente.show', 'auth']);
 
-Route::get('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones');
+Route::get('/instituciones/buscar/', 'InstitucionController@buscar')->name('buscar_instituciones');
+
+Route::get('/pdfInstituciones','InstitucionController@pdfInstituciones')->name('reporte_instituciones');
 
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')
@@ -123,6 +127,8 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
     
 Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto')
     ->middleware(['permission:proyecto.show', 'auth']);
+
+Route::get('/proyectos/buscar/', 'ProyectoController@buscar')->name('buscar_proyectos');
 
 });
 Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
