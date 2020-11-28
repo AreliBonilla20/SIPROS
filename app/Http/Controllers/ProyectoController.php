@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Carrera;
 use App\Http\Requests\ProyectoRequest;
+use App\Http\Requests\BusquedaRequest;
 use App\Institucion;
 use App\Proyecto;
 use Illuminate\Http\Request;
@@ -127,6 +128,15 @@ class ProyectoController extends Controller
             toast('Ha ocurrido un error!', 'error');
             return redirect('proyectos');
         }
+    }
+
+    public function buscar(BusquedaRequest $request)
+    {
+        $inicio = $request->get('fecha_inicio');
+        $final = $request->get('fecha_final');
+
+        $proyectos = Proyecto::whereBetween('created_at', [$inicio, $final])->get();
+        return view('Proyectos/proyectos_listado', compact('proyectos'));
     }
 
 }

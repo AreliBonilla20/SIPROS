@@ -8,6 +8,7 @@ use App\Carrera;
 use App\Departamento;
 use App\Estudiante;
 use App\Http\Requests\EstudianteRequest;
+use App\Http\Requests\BusquedaRequest;
 use App\Institucion;
 use App\Municipio;
 use App\Prorroga;
@@ -198,6 +199,15 @@ class EstudianteController extends Controller
             return redirect('expedientes');
         }
 
+    }
+
+    public function buscar(BusquedaRequest $request)
+    {
+        $inicio = $request->get('fecha_inicio');
+        $final = $request->get('fecha_final');
+
+        $estudiantes = Estudiante::whereBetween('created_at', [$inicio, $final])->get();
+        return view('Expedientes/expedientes_listado', compact('estudiantes'));
     }
 
 }
