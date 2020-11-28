@@ -9,7 +9,7 @@ class Estudiante extends Model
     public $incrementing  = false;
     protected $primaryKey = 'carne';
     /*Colocamos tipo protegidos a todos los atributos*/
-    protected $fillable = ['carne', 'nombres', 'apellidos', 'fecha_nacimiento', 'sexo_id', 'codigo', 'dui', 'direccion', 'municipio_id', 'departamento_id', 'email', 'telefono,area_id'];
+    protected $fillable = ['carne', 'nombres', 'apellidos', 'fecha_nacimiento', 'sexo_id', 'codigo', 'dui', 'direccion', 'municipio_id', 'departamento_id', 'email', 'telefono', 'area_id'];
 
     public function getRouteKeyName()
     {

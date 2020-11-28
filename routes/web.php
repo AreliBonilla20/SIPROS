@@ -80,7 +80,7 @@ Route::get('/expedientes/buscar/', 'EstudianteController@buscar')->name('buscar_
 
 ///////////////////////////////////////Rutas de reportes///////////////////////////////////////
 
-Route::get('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
+Route::post('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
 
 Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante');
 
@@ -107,7 +107,7 @@ Route::get('/instituciones/ver/{id}', 'InstitucionController@show')->name('ver_i
 
 Route::get('/instituciones/buscar/', 'InstitucionController@buscar')->name('buscar_instituciones');
 
-Route::get('/pdfInstituciones','InstitucionController@pdfInstituciones')->name('reporte_instituciones');
+Route::post('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones');
 
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')

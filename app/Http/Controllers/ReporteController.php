@@ -12,17 +12,38 @@ use App\Fecha;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use PDF;
-
-
-
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ReporteController extends Controller
 {
     /*Función para generar el pdf de los estudiantes inscritos*/
-     public function pdfExpedientes(){
-        $estudiantes=Estudiante::all();//Devuelve un array de estudiantes
-        $pdf=PDF::loadView('Reportes/expedientes_listado',compact('estudiantes'));//Cargar la vista y recibe como parámetro el array de proyectos
+     public function pdfExpedientes(Request $request){
+        $estudiantes= [];
+        $codigo_carreras = $request->get('codigo');
+        $id_sexos = $request->get('sexo_id');
+        $estados_servicio = $request->get('estado_servicio');
+        $request=response()->json($request->all());
+
+        if($codigo_carreras[0]=='0'){
+            $codigo_carreras= \App\Carrera::select('codigo')->get();
+        }
+        if($id_sexos[0]=='0'){
+            $id_sexos= \App\Sexo::select('id')->get();
+        }
+        if($estados_servicio[0]=='0'){
+            $estados_servicio[0]='Iniciado';
+            $estados_servicio[1]='No iniciado';
+        }
+
+        $estudiantes=Estudiante::whereIn('codigo',$codigo_carreras)
+                                ->whereIn('sexo_id',$id_sexos)
+                                ->whereIn('estado_servicio',$estados_servicio)
+                                ->orderBy('carne')
+                                ->get();
+
+
+        $pdf=PDF::loadView('Reportes/expedientes_listado',compact('estudiantes', 'request'));//Cargar la vista y recibe como parámetro el array de proyectos
         return $pdf->stream('Expedientes.pdf');//Retorna el pdf de los estudiantes inscritos..
     }
     /*Función para generar el pdf de los proyectos disponibles que ofrecen las diferentes instituciones*/
@@ -34,10 +55,32 @@ class ReporteController extends Controller
     }
 
     /*Función para generar el pdf de las instituciones*/
-        public function pdfInstituciones(){
-        $instituciones=Institucion::all();//Devuelve un array de institcuiones
-        $pdf=PDF::loadView('Reportes/instituciones_listado',compact('instituciones'));//Cargar la vista y recibe como parámetro el array de instituciones
-        return $pdf->setPaper('a4','landscape')->stream('Instituciones.pdf');//Retorna en tamaño horizontal el pdf de las instituciones.
+        public function pdfInstituciones(Request $request){
+            $instituciones = [];
+            $id_tipo_instituciones = $request->get('tipo_institucion_id');
+            $id_sectores = $request->get('sector_id');
+            $id_departamentos = $request->get('id_departamento');
+
+            if($id_tipo_instituciones[0]=='0'){
+                $id_tipo_instituciones= \App\TipoInstitucion::select('id')->get();
+            }
+
+            if($id_sectores[0]=='0'){
+                $id_sectores= \App\Sector::select('id')->get();
+            }
+
+            if($id_departamentos[0]=='0'){
+                $id_departamentos= \App\Departamento::select('id')->get();
+            }
+
+            $instituciones=Institucion::whereIn('tipo_institucion_id',$id_tipo_instituciones)
+                                        ->whereIn('sector_id',$id_sectores)
+                                        ->whereIn('id_departamento',$id_departamentos)
+                                        ->orderBy('id')
+                                        ->get();
+
+            $pdf=PDF::loadView('Reportes/instituciones_listado',compact('instituciones'));//Cargar la vista y recibe como parámetro el array de instituciones
+            return $pdf->setPaper('a4','landscape')->stream('instituciones.pdf');//Retorna en tamaño horizontal el pdf de las instituciones.
     }
 
     /*Fuynción para generar el pdf de las prorrógas*/
