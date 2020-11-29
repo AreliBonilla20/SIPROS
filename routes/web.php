@@ -78,6 +78,8 @@ Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expe
 
 Route::get('/expedientes/buscar/', 'EstudianteController@buscar')->name('buscar_expedientes');
 
+Route::get('/expedientes/estadisticas/', 'EstudianteController@estadisticas')->name('estadisticas_expedientes');
+
 ///////////////////////////////////////Rutas de reportes///////////////////////////////////////
 
 Route::post('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
@@ -85,6 +87,8 @@ Route::post('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte
 Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante');
 
 Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->name('asignacion_estudiante');
+
+Route::get('/expedientes/reporte_estadisticas/', 'ReporteController@expediente_estadisticas')->name('reporte_estadisticas_expedientes');
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')

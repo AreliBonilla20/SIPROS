@@ -14,6 +14,7 @@ use App\Municipio;
 use App\Prorroga;
 use App\Proyecto;
 use App\Sexo;
+use DB;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -208,6 +209,24 @@ class EstudianteController extends Controller
 
         $estudiantes = Estudiante::whereBetween('created_at', [$inicio, $final])->get();
         return view('Expedientes/expedientes_listado', compact('estudiantes'));
+    }
+
+
+    public function estadisticas()
+    {
+        $estudiantes_inscritos = Estudiante::all()->count();
+        $estudiantes_servicio_iniciado = Estudiante::where('estado_servicio', 'Iniciado')->count();
+        $estudiantes_servicio_no_iniciado = Estudiante::where('estado_servicio', 'No iniciado')->count();
+        $estudiantes_servicio_terminado = Estudiante::where('estado_servicio', 'Terminado')->count();
+        $estudiantes_carrera = DB::table('carreras')->leftjoin('estudiantes', 'estudiantes.codigo', '=', 'carreras.codigo')
+                                  ->select(DB::raw('count(estudiantes.carne) as cantidad, nombre_carrera'))
+                                  ->groupBy('nombre_carrera')->get();
+
+        $estudiantes_genero = DB::table('sexos')->leftjoin('estudiantes', 'estudiantes.sexo_id', '=', 'sexos.id')
+                                  ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
+                                  ->groupBy('sexo')->get();
+
+        return view('Expedientes/estadisticas', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero'));
     }
 
 }

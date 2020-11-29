@@ -127,5 +127,27 @@ class ReporteController extends Controller
         return $pdf->stream('Asignación.pdf');
     }
 
+     /*Función para generar el reporte de las estadísticas de los expedientes*/ 
+
+     public function expediente_estadisticas()
+     {
+
+        $estudiantes_inscritos = Estudiante::all()->count();
+        $estudiantes_servicio_iniciado = Estudiante::where('estado_servicio', 'Iniciado')->count();
+        $estudiantes_servicio_no_iniciado = Estudiante::where('estado_servicio', 'No iniciado')->count();
+        $estudiantes_servicio_terminado = Estudiante::where('estado_servicio', 'Terminado')->count();
+        $estudiantes_carrera = DB::table('carreras')->leftjoin('estudiantes', 'estudiantes.codigo', '=', 'carreras.codigo')
+                                  ->select(DB::raw('count(estudiantes.carne) as cantidad, nombre_carrera'))
+                                  ->groupBy('nombre_carrera')->get();
+
+        $estudiantes_genero = DB::table('sexos')->leftjoin('estudiantes', 'estudiantes.sexo_id', '=', 'sexos.id')
+                                  ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
+                                  ->groupBy('sexo')->get();
+
+        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero'));
+        return $pdf->stream('Estadisticas_estudiantes.pdf');//Retorna el reporte de las estadísticas de los expedientes
+     }
+
+
 
 }

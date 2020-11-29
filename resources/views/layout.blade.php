@@ -183,6 +183,7 @@
                                     <ul class="collapse dropdown-header-top">
                                         <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
                                         <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
+                                        <li><a href="{{ route('estadisticas_expedientes') }}">Estadísticas</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
@@ -242,6 +243,7 @@
                             <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
                             <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
+                            <li><a href="{{ route('estadisticas_expedientes') }}">Estadísticas</a></li>
                             </ul>
                         </div>
                         <div id="Instituciones" class="tab-pane notika-tab-menu-bg animated flipInX">
