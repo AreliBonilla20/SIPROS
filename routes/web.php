@@ -131,7 +131,7 @@ Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto
 Route::get('/proyectos/buscar/', 'ProyectoController@buscar')->name('buscar_proyectos');
 
 });
-Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
+Route::post('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
 
 
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////

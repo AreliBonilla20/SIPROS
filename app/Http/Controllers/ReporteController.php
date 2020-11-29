@@ -23,7 +23,6 @@ class ReporteController extends Controller
         $codigo_carreras = $request->get('codigo');
         $id_sexos = $request->get('sexo_id');
         $estados_servicio = $request->get('estado_servicio');
-        $request=response()->json($request->all());
 
         if($codigo_carreras[0]=='0'){
             $codigo_carreras= \App\Carrera::select('codigo')->get();
@@ -43,13 +42,34 @@ class ReporteController extends Controller
                                 ->get();
 
 
-        $pdf=PDF::loadView('Reportes/expedientes_listado',compact('estudiantes', 'request'));//Cargar la vista y recibe como parámetro el array de proyectos
+        $pdf=PDF::loadView('Reportes/expedientes_listado',compact('estudiantes'));//Cargar la vista y recibe como parámetro el array de proyectos
         return $pdf->stream('Expedientes.pdf');//Retorna el pdf de los estudiantes inscritos..
     }
     /*Función para generar el pdf de los proyectos disponibles que ofrecen las diferentes instituciones*/
-     public function pdfProyectos(){
-        $proyectos=Proyecto::all();//Devuelve un array de proyectos
-        $pdf=PDF::loadView('Reportes/proyectos_listado',compact('proyectos'));//Cargar la vista y recibe como parámetro el array de proyectos
+     public function pdfProyectos(Request $request){
+        $proyectos=Proyecto::all();
+        $id_instituciones = $request->get('id_instituciones');
+        $codigo_carreras = $request->get('codigo');
+        $estado_proyecto = $request->get('estado_proyecto');
+
+        if($id_instituciones[0]=='0'){
+            $id_instituciones= \App\Institucion::select('id')->get();
+        }
+        if($codigo_carreras[0]=='0'){
+            $codigo_carreras= \App\Carrera::select('codigo')->get();
+        }
+        if($estado_proyecto[0]=='0'){
+            $estado_proyecto[0]='Disponible';
+            $estado_proyecto[1]='No disponible';
+        }
+
+        $proyectos=Proyecto::whereIn('id_institucion',$id_instituciones)
+                                ->whereIn('codigo_carrera',$codigo_carreras)
+                                ->whereIn('estado_proyecto',$estado_proyecto)
+                                ->orderBy('id')
+                                ->get();
+
+        $pdf=PDF::loadView('Reportes/proyectos_listado',compact('proyectos', 'request'));//Cargar la vista y recibe como parámetro el array de proyectos
         return $pdf->setPaper('a4','landscape')->stream('Proyectos.pdf');
         //Retorna en tamaño horizontal el pdf de las instituciones.
     }
