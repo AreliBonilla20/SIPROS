@@ -50,19 +50,6 @@
                                                         </div>
                                                 </div><br>
 
-                                                <label for="sector_id" >Sector <small style="color:#16D195;" >*</small></label>
-                                                <div class="form-example-int mg-t-15">
-                                                        <div class="bootstrap-select fm-cmp-mg">
-                                                            <label><input type="radio" onclick="alternar_select_sectores()" id="radio_sectores_1" name="sector_id[]" value="0" checked> Todos los sectores.</label> <br>
-                                                            <label><input type="radio" onclick="alternar_select_sectores()" id="radio_sectores_2" name="sector_id[]" value=""> Selección personalizada.</label>
-                                                            <select class="selectpicker" data-live-search="true" name="sector_id[]" id="sector_id" multiple required>
-                                                                {{$sectores = \App\Sector::all()}}
-                                                                @foreach ($sectores as $sector)
-                                                                <option value="{{$sector->id}}">{{$sector->nombre_sector}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                </div><br>
 
                                                 <label for="id_departamento">Departamento <small style="color:#16D195;" >*</small></label>
                                                 <div class="form-example-int mg-t-15">
@@ -76,7 +63,23 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                </div><br>
+
+                                                <label for="sector_id" >Sector <small style="color:#16D195;" >*</small></label>
+                                                <div class="form-example-int mg-t-15">
+                                                        <div class="bootstrap-select fm-cmp-mg">
+                                                            <label><input type="radio" onclick="alternar_select_sectores()" id="radio_sectores_1" name="sector_id[]" value="0" checked> Todos los sectores.</label> <br>
+                                                            <label><input type="radio" onclick="alternar_select_sectores()" id="radio_sectores_2" name="sector_id[]" value=""> Selección personalizada.</label>
+                                                            <select class="selectpicker" data-live-search="true" name="sector_id[]" id="sector_id" multiple required>
+                                                                {{$sectores = \App\Sector::all()}}
+                                                                @foreach ($sectores as $sector)
+                                                                <option value="{{$sector->id}}">{{$sector->nombre_sector}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                 </div>
+
+
                                         </div>
 
                                         <br><br>
