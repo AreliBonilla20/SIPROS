@@ -20,11 +20,11 @@
         <h4>Reportes estadístico de estudiantes</h4>   
     </div>
 
-    <div>    
-        <canvas id="estudiantes_genero" width="600" height="250"></canvas>
-        <img id="grafico_genero" alt="" src="" >
+    <div>
+        <img alt="" src="" >
         <br><br>
-        <canvas id="estudiantes_carreras" width="600" height="250"></canvas>
+        <img alt="" src="https://quickchart.io/chart?bkg=white&c={{$grafico_carreras}}" >
+        <a href="https://quickchart.io/chart?bkg=white&c={{$grafico_carreras}}">VER GRAFICO</a>
         <br><br>            
     </div>
 

@@ -164,7 +164,33 @@ class ReporteController extends Controller
                                   ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
                                   ->groupBy('sexo')->get();
 
-        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero'));
+        $carreras = [];
+        $cantidad_estudiantes = [];
+
+        foreach($estudiantes_carrera as $ec){
+            $carreras[]=$ec->nombre_carrera;
+            $cantidad_estudiantes[]=$ec->cantidad;
+        }
+
+        $carreras = json_encode($carreras);
+        $carreras = str_replace('"', "'", $carreras);
+        $cantidad_estudiantes = json_encode($cantidad_estudiantes);
+
+        $grafico_carreras = "{
+            type: 'horizontalBar',
+            data: {
+              labels: ".$carreras.",
+              datasets: [{
+                label: 'Estudiantes por carrera', 
+                backgroundColor: ['#85DBEA', '#F8B075','#C9E5AA','#E5AAE0','#F7F082','#3e95cd', '#8e5ea2','#3cba9f','#e8c3b9','#c45850'],
+                data: ".$cantidad_estudiantes."
+              }]
+            }
+          }";
+
+        //$grafico_carreras = urlencode($grafico_carreras);
+
+        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'grafico_carreras'));
         return $pdf->stream('Estadisticas_estudiantes.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 
