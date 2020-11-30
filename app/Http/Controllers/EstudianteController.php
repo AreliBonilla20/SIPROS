@@ -226,7 +226,9 @@ class EstudianteController extends Controller
                                   ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
                                   ->groupBy('sexo')->get();
 
-        return view('Expedientes/estadisticas', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero'));
+                                  
+        $colores = ['#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5','#B5EAD7', '#d1f0e5','#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5'];
+        return view('Expedientes/estadisticas', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'colores'));
     }
 
 }

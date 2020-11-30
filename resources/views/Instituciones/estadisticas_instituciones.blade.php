@@ -13,13 +13,13 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Estadísticas</h2>
-                                    <p>Estudiantes</p>
+                                    <p>Instituciones</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-                                    <form action="{{route('reporte_estadisticas_expedientes')}}" method="POST">
+                                    <form action="{{route('reporte_estadisticas_instituciones')}}" method="POST">
                                         @csrf
                                         <input id="url_grafico_generos" name="url_grafico_generos" type="text" hidden>
                                         <input id="url_grafico_carreras" name="url_grafico_carreras" type="text" hidden>
@@ -48,7 +48,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                             <div class="website-traffic-ctn">
-                                <h2><span class="counter">{{$estudiantes_inscritos}}</span></h2>
+                                <h2><span class="counter"></span></h2>
                                 <p>Inscritos</p>
                             </div>
                             <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
@@ -57,7 +57,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                             <div class="website-traffic-ctn">
-                                <h2><span class="counter">{{$estudiantes_servicio_iniciado}}</span></h2>
+                                <h2><span class="counter"></span></h2>
                                 <p>Servicio iniciado</p>
                             </div>
                             <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
@@ -66,7 +66,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                             <div class="website-traffic-ctn">
-                                <h2><span class="counter">{{$estudiantes_servicio_no_iniciado}}</span></h2>
+                                <h2><span class="counter"></span></h2>
                                 <p>Servicio no iniciado</p>
                             </div>
                             <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
@@ -76,7 +76,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                             <div class="website-traffic-ctn">
-                                <h2><span class="counter">{{$estudiantes_servicio_terminado}}</span></h2>
+                                <h2><span class="counter"></span></h2>
                                 <p>Servicio terminado</p>
                             </div>
                             <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
@@ -113,9 +113,8 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Sexo', 'Porcentaje'],
-        @foreach($estudiantes_genero as $eg)
-        ['{{$eg->sexo}}:{{$eg->porcentaje}}',{{$eg->porcentaje}}],
-        @endforeach
+        
+        
         ]);
 
         var options = {
@@ -143,9 +142,7 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Carrera', 'Estudiantes', { role: 'style' } ],
-        @for($i=0; $i<count($estudiantes_carrera); $i++)
-        ['{{$estudiantes_carrera[$i]->nombre_carrera}}',{{$estudiantes_carrera[$i]->cantidad}}, '{{$colores[$i]}}'],
-        @endfor
+        
      
         
       ]);

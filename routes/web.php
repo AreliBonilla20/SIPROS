@@ -90,6 +90,8 @@ Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->n
 
 Route::post('/expedientes/reporte_estadisticas/', 'ReporteController@expediente_estadisticas')->name('reporte_estadisticas_expedientes');
 
+Route::post('/instituciones/reporte_estadisticas/', 'ReporteController@instituciones_estadisticas')->name('reporte_estadisticas_instituciones');
+
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
     ->middleware(['permission:institucion.index', 'auth']);
@@ -110,6 +112,8 @@ Route::get('/instituciones/ver/{id}', 'InstitucionController@show')->name('ver_i
     ->middleware(['permission:expediente.show', 'auth']);
 
 Route::get('/instituciones/buscar/', 'InstitucionController@buscar')->name('buscar_instituciones');
+
+Route::get('/instituciones/estadisticas/', 'InstitucionController@estadisticas')->name('estadisticas_instituciones');
 
 Route::post('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones');
 

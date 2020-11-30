@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\InstitucionRequest;
 use App\Http\Requests\BusquedaRequest;
+use DB;
 
 
 class InstitucionController extends Controller
@@ -136,5 +137,20 @@ class InstitucionController extends Controller
 
         $instituciones = Institucion::whereBetween('created_at', [$inicio, $final])->get();
         return view('Instituciones/instituciones_listado', compact('instituciones'));
+    }
+
+
+    public function estadisticas()
+    {
+        $instituciones = Institucion::all()->count();
+        $instituciones_sector = DB::table('sectors')->leftjoin('institucions', 'institucions.sector_id', '=', 'sectors.id')
+                                  ->select(DB::raw('count(institucions.id) as cantidad, nombre_sector'))
+                                  ->groupBy('nombre_sector')->get();
+
+        $instituciones_tipo = DB::table('tipo_institucions')->leftjoin('institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
+                                ->select(DB::raw('count(institucions.id) as cantidad, tipo_institucion'))
+                                ->groupBy('tipo_institucion')->get();
+
+        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo'));
     }
 }
