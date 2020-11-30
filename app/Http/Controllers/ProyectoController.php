@@ -63,7 +63,7 @@ class ProyectoController extends Controller
         $proyecto->estudiantes_inscritos   = 0;
 
         if ($proyecto->save()) {
-            return redirect('proyectos')->withSuccess('Proyecto agregado correctamente!');
+            return redirect()->route('ver_proyecto', $proyecto)->withSuccess('Proyecto agregado correctamente!');
         } else {
             return redirect('proyectos')->withWarning('Ha ocurrido un error!');
         }
@@ -123,7 +123,7 @@ class ProyectoController extends Controller
 
         if ($proyecto->save()) {
             toast('Proyecto actualizado correctamente!', 'success');
-            return redirect('proyectos');
+            return redirect()->route('ver_proyecto', $proyecto);
         } else {
             toast('Ha ocurrido un error!', 'error');
             return redirect('proyectos');

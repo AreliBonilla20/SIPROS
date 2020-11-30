@@ -126,8 +126,8 @@
                                 <tbody>
                                     @foreach ($prorrogas as $prorroga)
                                         <tr>
-                                            <td>{{$prorroga->fecha_solicitud}}</td>
-                                            <td>{{ \Carbon\Carbon::parse($prorroga->created_at)->format('Y-m-d')}}</td>
+                                            <td>{{date('d/m/Y', strtotime($prorroga->fecha_solicitud))}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($prorroga->created_at)->format('d/m/Y')}}</td>
                                             <td>{{ $prorroga->carne }}</td>
                                             <td>{{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('nombres')->first() }}
                                                 {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('apellidos')->first() }}
@@ -172,7 +172,7 @@
                                                                                 <i class="notika-icon notika-edit"></i>
                                                                             </div>
                                                                             <div class="nk-int-st">
-                                                                                <input type="date" class="form-control" name="fecha_solicitud" value="{{$prorroga->fecha_solicitud}}" autofocus required>
+                                                                                <input type="date" class="form-control" name="fecha_solicitud" value="{{date('d/m/Y', strtotime($prorroga->fecha_solicitud))}}" autofocus required>
                                                                                 @foreach ($errors->get('fecha_solicitud') as $mensaje)
                                                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                                                 @endforeach  

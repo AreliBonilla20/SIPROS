@@ -64,7 +64,7 @@ class InstitucionController extends Controller
         $nueva_institucion->sector_id           = $request->sector_id;
 
         if ($nueva_institucion->save()) {
-            return redirect('instituciones')->withSuccess('Institución agregada correctamente!');
+            return redirect()->route('ver_institucion', $nueva_institucion)->withSuccess('Institución agregada correctamente!');
         } else {
             return redirect('instituciones')->withWarning('Ha ocurrido un error!');
         }
@@ -123,7 +123,7 @@ class InstitucionController extends Controller
 
         if ($institucion_actualizar->save()) {
             toast('Institución actualizada correctamente!', 'success');
-            return redirect('instituciones');
+            return redirect()->route('ver_institucion', $institucion_actualizar);
         } else {
             toast('Ha ocurrido un error!', 'error');
             return redirect('instituciones');

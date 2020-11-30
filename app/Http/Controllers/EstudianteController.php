@@ -85,14 +85,14 @@ class EstudianteController extends Controller
 
         /*Calculo de la edad*/
         $now             = Carbon::now();
-        $fecha_actual    = $now->format('Y-m-d'); //Calcula la fecha actual
+        $fecha_actual    = $now->format('d/m/Y'); //Calcula la fecha actual
         $diferencia_edad = strtotime($fecha_actual) - strtotime($estudiante->fecha_nacimiento); //Resta la fecha actual con la fecha de nacimiento
         $edad            = intval($diferencia_edad / 60 / 60 / 24 / 365.25); /*Se obtiene el resultado en la mas minima expresión en entero donde los valores divididos representan segundos,minutos,horas,días
         y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
          */
         if ($edad < 18) {
             alert()->error('Error', 'El estudiante debe ser mayor de edad.');
-            return redirect('expedientes');
+            return redirect()->route('expedientes');
         }
         $alumnos = Estudiante::all();
 
@@ -108,13 +108,13 @@ class EstudianteController extends Controller
 
         if ($carnet_registrado == true) {
             alert()->error('Error', 'Ya existe un registro con el Carnet ingresado.');
-            return redirect('expedientes');
+            return redirect()->route('expedientes');
         } elseif ($dui_registrado == true) {
             alert()->error('Error', 'Ya existe un registro con el DUI ingresado.');
-            return redirect('expedientes');
+            return redirect()->route('expedientes');
         } else {
             $estudiante->save();
-            return redirect('expedientes')->withSuccess('Expediente agregado correctamente!');
+            return redirect()->route('ver_expediente', $estudiante->carne)->withSuccess('Expediente agregado correctamente!');
         };
 
     }
@@ -134,7 +134,7 @@ class EstudianteController extends Controller
         $porcentaje_avance = (100 / 500) * $estudiante->horas_registradas;
 
         $now             = Carbon::now();
-        $fecha_actual    = $now->format('Y-m-d');
+        $fecha_actual    = $now->format('d/m/Y');
         $diferencia_edad = strtotime($fecha_actual) - strtotime($estudiante->fecha_nacimiento);
         $edad            = intval($diferencia_edad / 60 / 60 / 24 / 365.25);
 
@@ -194,10 +194,10 @@ class EstudianteController extends Controller
 
         if ($estudiante_actualizar->save()) {
             toast('Expediente actualizado correctamente!', 'success');
-            return redirect('expedientes');
+            return redirect()->route('ver_expediente', $estudiante_actualizar->carne);
         } else {
             toast('Ha ocurrido un error!', 'error');
-            return redirect('expedientes');
+            return redirect()->route('ver_expediente', $estudiante_actualizar->carne);
         }
 
     }
