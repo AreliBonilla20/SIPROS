@@ -21,8 +21,8 @@
 								<div class="breadcomb-report">
                                     <form action="{{route('reporte_estadisticas_instituciones')}}" method="POST">
                                         @csrf
-                                        <input id="url_grafico_generos" name="url_grafico_generos" type="text" hidden>
-                                        <input id="url_grafico_carreras" name="url_grafico_carreras" type="text" hidden>
+                                        <input id="url_grafico_sectores" name="url_grafico_sectores" type="text" hidden>
+                                        <input id="url_grafico_tipo_instituciones" name="url_grafico_tipo_instituciones" type="text" hidden>
                                     <button formtarget="_blank" data-toggle="tooltip" data-placement="left"
                                     class="btn btn-default"><i class="notika-icon notika-down-arrow"></i> Generar PDF</button>
                                     </form>
@@ -88,12 +88,12 @@
                 
                 <br><br>
                 <div style="flex-direction: column; align-items:center; text-align:center;">
-                <h5>ESTUDIANTES POR GÉNERO</h5>
-                    <div id="grafico_genero" style="width: 900px; height: 500px; padding-left:10%;" ></div>
-                    <div id="grafico_genero_imagen" style="width: 900px; height: 500px;" hidden></div>
-                <h5>ESTUDIANTES POR CARRERA</h5>
-                    <div id="grafico_carrera" style="width: 100%; height: 500px; padding-left:10%;"></div>
-                    <div id="grafico_carrera_imagen" style="width: 900px; height: 500px;" hidden></div>
+                <h5>INSTITUCIONES POR SECTOR</h5>
+                    <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:25%;" ></div>
+                    <div id="grafico_sector_imagen" style="width: 900px; height: 500px;" hidden></div>
+                <h5>INSTITUCIONES POR TIPO</h5>
+                    <div id="grafico_tipo_institucion" style="width: 100%; height: 500px; padding-left:10%;"></div>
+                    <div id="grafico_tipo_institucion_imagen" style="width: 900px; height: 500px;" hidden></div>
                     <br><br><br><br><br>
                 </div>
            
@@ -107,59 +107,79 @@
 </div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Sexo', 'Porcentaje'],
-        
-        
-        ]);
+<script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function randomColor(){
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+        return "#"+randomColor;
+    }
 
-        var options = {
-          pieHole: 0.4,
-          colors: ['#ffb3ba', '#C5EBFE']
-        };
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Sector", "Cantidad", { role: "style" }],
+        @foreach($instituciones_sector as $sector)
+        ["{{$sector->nombre_sector}}", {{$sector->cantidad}}, randomColor()],
+        @endforeach
+      ]);
 
-        var chart = new google.visualization.PieChart(document.getElementById('grafico_genero'));   //Div del grafico animado
-        var imagen_grafico_generos = document.getElementById('grafico_genero_imagen');                      //De la imagen generada a partir del grafico
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Cantidad de instituciones por sector",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("grafico_sector"));
+      var imagen_grafico_sectores = document.getElementById('grafico_sector_imagen');               //De la imagen generada a partir del grafico
 
         // Wait for the chart to finish drawing before calling the getImageURI() method.
         google.visualization.events.addListener(chart, 'ready', function () {
-        imagen_grafico_generos.innerHTML = '<img src="' + chart.getImageURI() + '">';
-        document.getElementById('url_grafico_generos').value = chart.getImageURI();
+        imagen_grafico_sectores.innerHTML = '<img src="' + chart.getImageURI() + '">';
+        document.getElementById('url_grafico_sectores').value = chart.getImageURI();
       });
-        chart.draw(data, options);
-      }
-      
-    </script>
+      chart.draw(view, options);
+  }
+  </script>
 
 <script type="text/javascript">
 
     google.charts.load("current", {packages:["bar"]});
     google.charts.setOnLoadCallback(drawChart);
+    function randomColor(){
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+        return "#"+randomColor;
+    }
+
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
-        ['Carrera', 'Estudiantes', { role: 'style' } ],
-        
-     
-        
+        ['Tipo de institución', 'Cantidad', { role: 'style' } ],
+        @foreach($instituciones_tipo as $tipo)
+        ["{{$tipo->tipo_institucion}}", {{$tipo->cantidad}}, randomColor()],
+        @endforeach
       ]);
       var view = new google.visualization.DataView(data);
       
       var options = {
-        title: "Cantidad de estudiantes por carrera",
+        title: "Cantidad de instituciones por tipo",
         width: 900,
         height: 600,
         bar: {groupWidth: "85%"},
         legend: { position: "none" },
       };
-      var chart = new google.visualization.BarChart(document.getElementById("grafico_carrera"));
-      var imagen_grafico_carreras = document.getElementById('grafico_carrera_imagen');
+      var chart = new google.visualization.BarChart(document.getElementById("grafico_tipo_institucion"));
+      var imagen_grafico_tipo_instituciones = document.getElementById('grafico_tipo_institucion_imagen');
       google.visualization.events.addListener(chart, 'ready', function () {
-        imagen_grafico_carreras.innerHTML = '<img src="' + chart.getImageURI() + '">';
-        document.getElementById('url_grafico_carreras').value = chart.getImageURI();
+        imagen_grafico_tipo_instituciones.innerHTML = '<img src="' + chart.getImageURI() + '">';
+        document.getElementById('url_grafico_tipo_instituciones').value = chart.getImageURI();
       });
       chart.draw(view, options);
   }

@@ -172,5 +172,26 @@ class ReporteController extends Controller
      }
 
 
+     public function instituciones_estadisticas(Request $request)
+     {
+
+        $estudiantes_inscritos = Estudiante::all()->count();
+        $estudiantes_servicio_iniciado = Estudiante::where('estado_servicio', 'Iniciado')->count();
+        $estudiantes_servicio_no_iniciado = Estudiante::where('estado_servicio', 'No iniciado')->count();
+        $estudiantes_servicio_terminado = Estudiante::where('estado_servicio', 'Terminado')->count();
+        $estudiantes_carrera = DB::table('carreras')->leftjoin('estudiantes', 'estudiantes.codigo', '=', 'carreras.codigo')
+                                  ->select(DB::raw('count(estudiantes.carne) as cantidad, nombre_carrera'))
+                                  ->groupBy('nombre_carrera')->get();
+
+        $estudiantes_genero = DB::table('sexos')->leftjoin('estudiantes', 'estudiantes.sexo_id', '=', 'sexos.id')
+                                  ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
+                                  ->groupBy('sexo')->get();
+
+        $url_grafico_sectores = $request->url_grafico_sectores;
+        $url_grafico_tipo_instituciones = $request->url_grafico_tipo_instituciones;
+
+        $pdf = PDF::loadView('Reportes/reporte_estadisticas_instituciones', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'url_grafico_sectores', 'url_grafico_tipo_instituciones'));
+        return $pdf->stream('Estadisticas_instituciones.pdf');//Retorna el reporte de las estadísticas de los expedientes
+     }
 
 }

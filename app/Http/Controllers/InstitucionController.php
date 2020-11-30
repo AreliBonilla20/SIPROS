@@ -151,6 +151,8 @@ class InstitucionController extends Controller
                                 ->select(DB::raw('count(institucions.id) as cantidad, tipo_institucion'))
                                 ->groupBy('tipo_institucion')->get();
 
+        $colores = ['#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5','#B5EAD7', '#d1f0e5','#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5'];
+
         return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo'));
     }
 }
