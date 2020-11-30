@@ -19,7 +19,13 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<a href="{{route('reporte_estadisticas_expedientes')}}"><button data-toggle="tooltip" data-placement="left" class="btn"><i class="notika-icon notika-sent"></i> Generar PDF</button></a>
+                                    <form action="{{route('reporte_estadisticas_expedientes')}}" method="POST">
+                                        @csrf
+                                        <input id="url_grafico_generos" name="url_grafico_generos" type="text" hidden>
+                                        <input id="url_grafico_carreras" name="url_grafico_carreras" type="text" hidden>
+                                    <button formtarget="_blank" data-toggle="tooltip" data-placement="left" title="Descargar reporte"
+                                    class="btn btn-default"><i class="notika-icon notika-down-arrow"></i> Descargar PDF</button>
+                                    </form>
 								</div>
 						</div>
                     </div>
@@ -77,18 +83,11 @@
                 </div>
                 <br><br>
                 <h3 style="text-align:center">Gráficos</h3>
-                <br>
-                <div >
-             
-                    <canvas id="estudiantes_genero" width="600" height="250"></canvas>
-                    <br><br>
-                    <canvas id="estudiantes_carreras" width="600" height="250"></canvas>
-                    <br><br>
-                    
-                    </div>
-                </div>
+                <div id="grafico_genero" style="width: 900px; height: 500px;" ></div>
+                <div id="grafico_genero_imagen" style="width: 900px; height: 500px;" hidden></div>
+                <div id="grafico_carrera" style="width: 900px; height: 500px;" ></div>
+                <div id="grafico_carrera_imagen" style="width: 900px; height: 500px;" hidden></div>
 
-                </div>
            
             </div>
         
@@ -97,65 +96,71 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Sexo', 'Porcentaje'],
+        @foreach($estudiantes_genero as $eg)
+        ['{{$eg->sexo}}',{{$eg->porcentaje}}],
+        @endforeach
+        ]);
 
-new Chart(document.getElementById("estudiantes_carreras"), {
-    type: 'horizontalBar',
-    data: {
-      labels: [
-          @foreach($estudiantes_carrera as $carrera)
-          '{{$carrera->nombre_carrera}}',
-          @endforeach
-      ],
-      datasets: [
-        {
-          label: "Estudiantes",
-          backgroundColor: ["#85DBEA", "#F8B075","#C9E5AA","#E5AAE0","#F7F082","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [
-          @foreach($estudiantes_carrera as $carrera)
-          {{$carrera->cantidad}},
-          @endforeach
-          ]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Estudiantes por carrera'
+        var options = {
+          title: 'ESTUDIANTES POR GÉNERO',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('grafico_genero'));   //Div del grafico animado
+        var imagen_grafico_generos = document.getElementById('grafico_genero_imagen');                      //De la imagen generada a partir del grafico
+
+        // Wait for the chart to finish drawing before calling the getImageURI() method.
+        google.visualization.events.addListener(chart, 'ready', function () {
+        imagen_grafico_generos.innerHTML = '<img src="' + chart.getImageURI() + '">';
+        document.getElementById('url_grafico_generos').value = chart.getImageURI();
+      });
+        chart.draw(data, options);
       }
-    }
-});
-</script>
+      
+    </script>
 
-<script>
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Carrera", "Estudiantes", { role: "style" } ],
+        @foreach($estudiantes_carrera as $ec)
+        ["{{$ec->nombre_carrera}}", {{$ec->cantidad}}, "#b87333"],
+        @endforeach
+      ]);
 
-var ctx = document.getElementById('estudiantes_genero').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-		data: [
-          @foreach($estudiantes_genero as $genero)
-          {{$genero->porcentaje}},
-          @endforeach
-        ],
-		backgroundColor: ['#EB97F1', '#42a5f5'],
-		label: 'Estudiantes inscritos por género'}],
-		labels: [
-         @foreach($estudiantes_genero as $genero)
-          '{{$genero->sexo}}',
-          @endforeach
-        ]},
-    options: {responsive: true,
-        title: {
-        display: true,
-        text: 'Estudiantes por género'
-      }
-    }
-});
-</script>
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Cantidad de estudiantes por carrera",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("grafico_carrera"));
+      var imagen_grafico_carreras = document.getElementById('grafico_carrera_imagen');
+
+      google.visualization.events.addListener(chart, 'ready', function () {
+        imagen_grafico_carreras.innerHTML = '<img src="' + chart.getImageURI() + '">';
+        document.getElementById('url_grafico_carreras').value = chart.getImageURI();
+      });
+      chart.draw(view, options);
+  }
+  </script>
 
 @endsection

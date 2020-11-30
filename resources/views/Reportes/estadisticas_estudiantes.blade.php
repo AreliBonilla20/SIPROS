@@ -19,79 +19,12 @@
     <div style="text-align:center;">
         <h4>Reportes estadístico de estudiantes</h4>   
     </div>
-    <p style="font-size: 8px">{{$grafico_carreras}}</p>
-    <a href="https://quickchart.io/sandbox/#{{$grafico_carreras}}">PROBAR CODIGO</a>
 
     <div>
-        <img alt="" src="" >
+      <img alt="" src="{{$url_grafico_generos}}" >
         <br><br>
-        <img alt="" src="https://quickchart.io/chart?width=500&height=300&c={{$grafico_carreras}}" >
-        <a href="https://quickchart.io/chart?width=500&height=300&c={{$grafico_carreras}}">VER GRAFICO</a>
-        <br><br>            
+      <img alt="" src="{{$url_grafico_carreras}}" >
+        <br><br>
     </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<script>
-
-var myChart = new Chart(document.getElementById('estudiantes_genero').getContext('2d'), {
-    type: 'horizontalBar',
-    data: {
-      labels: [
-          @foreach($estudiantes_carrera as $carrera)
-          '{{$carrera->nombre_carrera}}',
-          @endforeach
-      ],
-      datasets: [
-        {
-          label: "Estudiantes",
-          backgroundColor: ["#85DBEA", "#F8B075","#C9E5AA","#E5AAE0","#F7F082","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [
-          @foreach($estudiantes_carrera as $carrera)
-          {{$carrera->cantidad}},
-          @endforeach
-          ]
-        }
-      ]
-    },
-    options: {
-    animation: {
-      onComplete: function() {
-        document.getElementById('grafico_genero').src = myChart.toBase64Image();
-      }
-    }
-  }
-});
-
-</script>
-
-<script>
-
-var ctx = document.getElementById('estudiantes_genero').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-		data: [
-          @foreach($estudiantes_genero as $genero)
-          {{$genero->porcentaje}},
-          @endforeach
-        ],
-		backgroundColor: ['#EB97F1', '#42a5f5'],
-		label: 'Estudiantes inscritos por género'}],
-		labels: [
-         @foreach($estudiantes_genero as $genero)
-          '{{$genero->sexo}}',
-          @endforeach
-        ]},
-        options: {
-        animation: {
-        onComplete: function() {
-        document.getElementById('grafico_genero').src = chart;
-      }
-    }
-  }
-});
-
-</script>
 </body>
 </html>
