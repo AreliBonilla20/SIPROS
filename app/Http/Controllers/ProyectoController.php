@@ -9,6 +9,7 @@ use App\Institucion;
 use App\Proyecto;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
+use DB;
 
 
 class ProyectoController extends Controller
@@ -137,6 +138,22 @@ class ProyectoController extends Controller
 
         $proyectos = Proyecto::whereBetween('created_at', [$inicio, $final])->get();
         return view('Proyectos/proyectos_listado', compact('proyectos'));
+    }
+
+    public function estadisticas()
+    {
+        $proyectos = Proyecto::all()->count();
+        $proyectos_sectores     = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                      ->leftjoin('sectors', 'institucions.sector_id', '=', 'sectors.id')
+                                      ->select(DB::raw('count(proyectos.id) as cantidad, nombre_sector'))
+                                      ->groupBy('nombre_sector')->get();
+
+        $proyectos_institucion = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                    ->leftjoin('tipo_institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
+                                    ->select(DB::raw('count(proyectos.id) as cantidad, tipo_institucion'))
+                                    ->groupBy('tipo_institucion')->get();
+
+        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion'));
     }
 
 }

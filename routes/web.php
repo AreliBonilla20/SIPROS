@@ -92,6 +92,8 @@ Route::post('/expedientes/reporte_estadisticas/', 'ReporteController@expediente_
 
 Route::post('/instituciones/reporte_estadisticas/', 'ReporteController@instituciones_estadisticas')->name('reporte_estadisticas_instituciones');
 
+Route::get('/proyectos/reporte_estadisticas/', 'ProyectoController@proyectos_estadisticas')->name('reporte_estadisticas_proyectos');
+
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
     ->middleware(['permission:institucion.index', 'auth']);
@@ -137,6 +139,9 @@ Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto
     ->middleware(['permission:proyecto.show', 'auth']);
 
 Route::get('/proyectos/buscar/', 'ProyectoController@buscar')->name('buscar_proyectos');
+
+Route::get('/proyectos/estadisticas/', 'ProyectoController@estadisticas')->name('estadisticas_proyectos');
+
 
 });
 Route::post('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
