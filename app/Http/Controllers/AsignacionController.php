@@ -51,7 +51,7 @@ class AsignacionController extends Controller
             $estudiante                  = Estudiante::findOrFail($asignacion->carne);
             $estudiante->estado_servicio = "Iniciado";
             $estudiante->save();
-            return redirect('expedientes')->withSuccess('Asignación creada correctamente!');
+            return redirect()->route('ver_expediente', $asignacion->carne)->withSuccess('Asignación creada correctamente!');
         } else {
             return redirect('expedientes')->withError('Ha ocurrido un error!');
         }

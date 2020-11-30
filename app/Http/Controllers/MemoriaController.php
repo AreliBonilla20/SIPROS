@@ -67,9 +67,9 @@ class MemoriaController extends Controller
             }
             
             $estudiante->save();
-            return redirect('expedientes')->withSuccess('Memoria agregada correctamente!');
+            return redirect()->route('ver_expediente', $estudiante)->withSuccess('Memoria agregada correctamente!');
         } else {
-            return redirect('expedientes')->withWarning('Ha ocurrido un error!');
+            return redirect()->route('ver_expediente', $memoria->asignacion->carne)->withWarning('Ha ocurrido un error!');
         }
 
     }
@@ -128,7 +128,7 @@ class MemoriaController extends Controller
 
         if ($memoria_actualizar->save()) {
 
-            return redirect('expedientes')->withSuccess('Memoria actualizada correctamente!');
+            return redirect()->route('ver_expediente', $memoria_actualizar->asignacion->carne)->withSuccess('Memoria actualizada correctamente!');
         } else {
             return redirect('expedientes')->withWarning('Ha ocurrido un error!');
         }

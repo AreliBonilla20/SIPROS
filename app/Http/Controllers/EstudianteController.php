@@ -92,7 +92,7 @@ class EstudianteController extends Controller
          */
         if ($edad < 18) {
             alert()->error('Error', 'El estudiante debe ser mayor de edad.');
-            return redirect('expedientes');
+            return redirect()->route('expedientes');
         }
         $alumnos = Estudiante::all();
 
@@ -108,13 +108,13 @@ class EstudianteController extends Controller
 
         if ($carnet_registrado == true) {
             alert()->error('Error', 'Ya existe un registro con el Carnet ingresado.');
-            return redirect('expedientes');
+            return redirect()->route('expedientes');
         } elseif ($dui_registrado == true) {
             alert()->error('Error', 'Ya existe un registro con el DUI ingresado.');
-            return redirect('expedientes');
+            return redirect()->route('expedientes');
         } else {
             $estudiante->save();
-            return redirect('expedientes')->withSuccess('Expediente agregado correctamente!');
+            return redirect()->route('ver_expediente', $estudiante->carne)->withSuccess('Expediente agregado correctamente!');
         };
 
     }
@@ -194,10 +194,10 @@ class EstudianteController extends Controller
 
         if ($estudiante_actualizar->save()) {
             toast('Expediente actualizado correctamente!', 'success');
-            return redirect('expedientes');
+            return redirect()->route('ver_expediente', $estudiante_actualizar->carne);
         } else {
             toast('Ha ocurrido un error!', 'error');
-            return redirect('expedientes');
+            return redirect()->route('ver_expediente', $estudiante_actualizar->carne);
         }
 
     }
