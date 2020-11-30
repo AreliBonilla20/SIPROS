@@ -113,7 +113,8 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker" data-live-search="true" name="codigo"> <option value=""  disabled selected>-Seleccione una carrera-</option>
+                                                <select class="selectpicker" data-live-search="true" name="codigo"> 
+                                                <option value="{{old('codigo')}}"  disabled selected>-Seleccione una carrera-</option>
                                                 @foreach($carreras as $carrera)
                                             <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option-->
                                             @endforeach
