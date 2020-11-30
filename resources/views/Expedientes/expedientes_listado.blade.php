@@ -82,6 +82,7 @@
                                                     <select class="selectpicker" name="estado_servicio[]" id="select_estado_servicio" multiple required>
                                                         <option value="Iniciado">Iniciado</option>
                                                         <option value="No iniciado">No iniciado</option>
+                                                        <option value="Terminado">Terminado</option>
                                                     </select>
                                                 </div>
                                             </div><br>
