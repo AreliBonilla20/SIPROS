@@ -19,12 +19,14 @@
     <div style="text-align:center;">
         <h4>Reportes estadístico de estudiantes</h4>   
     </div>
+    <p style="font-size: 8px">{{$grafico_carreras}}</p>
+    <a href="https://quickchart.io/sandbox/#{{$grafico_carreras}}">PROBAR CODIGO</a>
 
     <div>
         <img alt="" src="" >
         <br><br>
-        <img alt="" src="https://quickchart.io/chart?bkg=white&c={{$grafico_carreras}}" >
-        <a href="https://quickchart.io/chart?bkg=white&c={{$grafico_carreras}}">VER GRAFICO</a>
+        <img alt="" src="https://quickchart.io/chart?width=500&height=300&c={{$grafico_carreras}}" >
+        <a href="https://quickchart.io/chart?width=500&height=300&c={{$grafico_carreras}}">VER GRAFICO</a>
         <br><br>            
     </div>
 

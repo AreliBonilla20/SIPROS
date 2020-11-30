@@ -174,6 +174,7 @@ class ReporteController extends Controller
 
         $carreras = json_encode($carreras);
         $carreras = str_replace('"', "'", $carreras);
+        $carreras = str_replace('%0A', "", $carreras);
         $cantidad_estudiantes = json_encode($cantidad_estudiantes);
 
         $grafico_carreras = "{
@@ -187,8 +188,6 @@ class ReporteController extends Controller
               }]
             }
           }";
-
-        //$grafico_carreras = urlencode($grafico_carreras);
 
         $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'grafico_carreras'));
         return $pdf->stream('Estadisticas_estudiantes.pdf');//Retorna el reporte de las estadísticas de los expedientes
