@@ -92,7 +92,7 @@
                             <strong>Fecha de inicio</strong>
                             <div class="form-group">
                                 <div class="nk-int-st">
-                                    <input type="text" class="form-control" value="{{$memoria->fecha_inicio}}" readonly>
+                                    <input type="text" class="form-control" value="{{date('d/m/Y', strtotime($memoria->fecha_inicio))}}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                             <strong>Fecha de finalización</strong>
                             <div class="form-group">
                                 <div class="nk-int-st">
-                                    <input type="text" class="form-control" value="{{$memoria->fecha_fin}}" readonly>
+                                    <input type="text" class="form-control" value="{{date('d/m/Y', strtotime($memoria->fecha_fin))}}" readonly>
                                 </div>
                             </div>
                         </div>

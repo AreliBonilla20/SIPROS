@@ -63,10 +63,10 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                            <strong>Fecha de nacimiento [Año/Mes/Día]</strong>
+                            <strong>Fecha de nacimiento</strong>
                             <div class="form-group">
                                 <div class="nk-int-st">
-                                    <input type="text" class="form-control" value="{{$estudiante->fecha_nacimiento}}" readonly>
+                                    <input type="text" class="form-control" value="{{date('d/m/Y', strtotime($estudiante->fecha_nacimiento))}}" readonly>
                                 </div>
                             </div>
                         </div>
