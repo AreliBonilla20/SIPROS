@@ -81,9 +81,10 @@ class MemoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $asignacion = Asignacion::findOrFail($id);
         $memoria = Memoria::where('asignacion_id', $id)->first();
-        return view('Memorias/memoria_ver', compact('memoria'));
+        return view('Memorias/memoria_ver', compact('memoria', 'asignacion'));
     }
 
     /**

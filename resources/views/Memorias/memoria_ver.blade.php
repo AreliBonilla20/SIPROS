@@ -12,7 +12,8 @@
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-
+                                <a style="position:absolute; right:5%; top:8%;"class="btn btn-default notika-btn-default" href="{{route('ver_expediente', $asignacion->carne)}}">Regresar</span></a>
+                                
                                     <h2>Memoria</h2>
                                     @if($memoria)
                                     <p>{{$memoria->asignacion->estudiante->nombres}} {{$memoria->asignacion->estudiante->apellidos}}</p>
