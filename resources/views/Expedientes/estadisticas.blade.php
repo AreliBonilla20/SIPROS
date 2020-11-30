@@ -89,7 +89,7 @@
                 <br><br>
                 <div style="flex-direction: column; align-items:center; text-align:center;">
                 <h5>ESTUDIANTES POR GÉNERO</h5>
-                    <div id="grafico_genero" style="width: 900px; height: 500px; padding-left:10%;" ></div>
+                    <div id="grafico_genero" style="width: 900px; height: 500px; padding-left:25%;" ></div>
                     <div id="grafico_genero_imagen" style="width: 900px; height: 500px;" hidden></div>
                 <h5>ESTUDIANTES POR CARRERA</h5>
                     <div id="grafico_carrera" style="width: 100%; height: 500px; padding-left:10%;"></div>
@@ -120,7 +120,7 @@
 
         var options = {
           pieHole: 0.4,
-          colors: ['#ffb3ba', '#C5EBFE']
+          colors: ['#ff5464', '#5ec9ff']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('grafico_genero'));   //Div del grafico animado
