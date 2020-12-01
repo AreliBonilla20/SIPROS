@@ -76,6 +76,19 @@
                                         </div>
                                     </div>
 
+                                    <label for="duracion">Duración del proyecto <small style="color:#16D195;" >*</small></label>
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                            <i class="notika-icon notika-edit"></i>
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->duracion}}" name="duracion" id="duracion" placeholder="Área de conocimiento que requiere el proyecto">
+                                            @foreach ($errors->get('duracion') as $mensaje)
+                                            <small style="color:#B42020;">{{ $mensaje }}</small>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
                                     <label for="area">Área de conocimiento <small style="color:#16D195;" >*</small></label>
                                     <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">

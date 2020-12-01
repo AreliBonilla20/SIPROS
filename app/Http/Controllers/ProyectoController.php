@@ -51,6 +51,7 @@ class ProyectoController extends Controller
         //Guarda un proyecto
         $proyecto                          = new Proyecto();
         $proyecto->codigo_carrera          = $request->codigo_carrera;
+        $proyecto->duracion                = $request->duracion;
         $proyecto->nombre                  = $request->nombre;
         $proyecto->area_de_conocimiento    = $request->area;
         $proyecto->objetivos               = $request->objetivos;
@@ -110,6 +111,7 @@ class ProyectoController extends Controller
         //Actualizar un proyecto
         $proyecto                          = Proyecto::findOrFail($id);
         $proyecto->codigo_carrera          = $request->codigo_carrera;
+        $proyecto->duracion                = $request->duracion;
         $proyecto->nombre                  = $request->nombre;
         $proyecto->area_de_conocimiento    = $request->area;
         $proyecto->objetivos               = $request->objetivos;

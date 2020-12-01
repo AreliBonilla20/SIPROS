@@ -10,7 +10,7 @@
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
                                     <i class="notika-icon notika-windows"></i>
-                                </div>
+                                </div>                                
                                 <div class="breadcomb-ctn">
                                     <h2>Estadísticas</h2>
                                     <p>Instituciones</p>

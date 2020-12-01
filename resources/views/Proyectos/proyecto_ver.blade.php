@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="{{route('proyectos')}}"><button type="button" style="color:black; position:absolute; right:5%; top:30%;" class="btn notika-btn-blue btn-icon-notika waves-effect"><span class="notika-icon notika-left-arrow"></span> Regresar</button></a>
                 <div class="breadcomb-list">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -64,6 +65,17 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <strong>Duración</strong>
+                            <div class="form-group">
+                                <div class="nk-int-st">
+                                    <input type="text" class="form-control" value="{{$proyecto->duracion}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <strong>Área de conocimiento</strong>
                             <div class="form-group">
                                 <div class="nk-int-st">
@@ -71,8 +83,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <strong>Objetivos</strong>
                             <div class="form-group">
@@ -89,6 +99,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <strong>Cantidad de estudiantes</strong>
                             <div class="form-group">
@@ -97,9 +110,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <strong>Encargado</strong>
                             <div class="form-group">
@@ -116,6 +126,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <strong>Teléfono de contacto</strong>
                             <div class="form-group">
@@ -124,9 +136,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <strong>Estado del proyecto</strong>
                             <div class="form-group">
