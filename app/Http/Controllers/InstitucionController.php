@@ -151,8 +151,16 @@ class InstitucionController extends Controller
                                 ->select(DB::raw('count(institucions.id) as cantidad, tipo_institucion'))
                                 ->groupBy('tipo_institucion')->get();
 
+        $instituciones_activas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                ->where('proyectos.estado_proyecto','Disponible')
+                                ->count();
+
+        $instituciones_inactivas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                ->where('proyectos.estado_proyecto','No disponible')
+                                ->count();
+
         $colores = ['#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5','#B5EAD7', '#d1f0e5','#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5'];
 
-        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo'));
+        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas'));
     }
 }
