@@ -143,17 +143,20 @@ class ProyectoController extends Controller
     public function estadisticas()
     {
         $proyectos = Proyecto::all()->count();
-        $proyectos_sectores     = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
-                                      ->leftjoin('sectors', 'institucions.sector_id', '=', 'sectors.id')
+        $proyectos_sectores     = DB::table('proyectos')->rightjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                      ->rightjoin('sectors', 'institucions.sector_id', '=', 'sectors.id')
                                       ->select(DB::raw('count(proyectos.id) as cantidad, nombre_sector'))
                                       ->groupBy('nombre_sector')->get();
 
-        $proyectos_institucion = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
-                                    ->leftjoin('tipo_institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
+        $proyectos_institucion = DB::table('proyectos')->rightjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                    ->rightjoin('tipo_institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
                                     ->select(DB::raw('count(proyectos.id) as cantidad, tipo_institucion'))
                                     ->groupBy('tipo_institucion')->get();
 
-        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion'));
+        $proyectos_disponibles = Proyecto::where('estado_proyecto','Disponible')->count();
+        $proyectos_no_disponibles = Proyecto::where('estado_proyecto','No disponible')->count();
+
+        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles'));
     }
 
 }

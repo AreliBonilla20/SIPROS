@@ -92,7 +92,7 @@ Route::post('/expedientes/reporte_estadisticas/', 'ReporteController@expediente_
 
 Route::post('/instituciones/reporte_estadisticas/', 'ReporteController@instituciones_estadisticas')->name('reporte_estadisticas_instituciones');
 
-Route::get('/proyectos/reporte_estadisticas/', 'ProyectoController@proyectos_estadisticas')->name('reporte_estadisticas_proyectos');
+Route::post('/proyectos/reporte_estadisticas/', 'ReporteController@proyectos_estadisticas')->name('reporte_estadisticas_proyectos');
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')

@@ -194,4 +194,25 @@ class ReporteController extends Controller
         return $pdf->stream('Estadisticas_instituciones.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 
+
+     public function proyectos_estadisticas(Request $request)
+     {
+        $proyectos = Proyecto::all()->count();
+        $proyectos_sectores     = DB::table('proyectos')->rightjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                      ->rightjoin('sectors', 'institucions.sector_id', '=', 'sectors.id')
+                                      ->select(DB::raw('count(proyectos.id) as cantidad, nombre_sector'))
+                                      ->groupBy('nombre_sector')->get();
+
+        $proyectos_institucion = DB::table('proyectos')->rightjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                    ->rightjoin('tipo_institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
+                                    ->select(DB::raw('count(proyectos.id) as cantidad, tipo_institucion'))
+                                    ->groupBy('tipo_institucion')->get();
+
+        $url_grafico_sectores = $request->url_grafico_sectores;
+        $url_grafico_tipo_instituciones = $request->url_grafico_tipo_instituciones;
+
+        $pdf = PDF::loadView('Reportes/reporte_estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'url_grafico_sectores', 'url_grafico_tipo_instituciones'));
+        return $pdf->stream('Estadisticas_proyectos.pdf');//Retorna el reporte de las estadísticas de los expedientes
+     }
+
 }

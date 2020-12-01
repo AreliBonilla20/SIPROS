@@ -17,13 +17,13 @@
     </div>
     <img style="position:absolute; top:6%; right:20%;"src="{{public_path('assets/img/logo-fce-v1-mixto.png') }}" height="100px">
     <div style="text-align:center;">
-        <h4>Reportes estadístico de estudiantes</h4>   
+        <h4>Reportes estadístico de proyectos</h4>   
     </div>
 
     <div>
-      <img alt="" src="" >
+      <img alt="" src="{{$url_grafico_sectores}}" >
         <br><br>
-      <img alt="" src="" >
+      <img alt="" src="{{$url_grafico_tipo_instituciones}}" >
         <br><br>
     </div>
 </body>
