@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Editar institución: {{$institucion_actualizar->nombre}}
+@endsection
 @section('content')
 <div class="breadcomb-area" >
     <div class="container" >

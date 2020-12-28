@@ -1,4 +1,7 @@
 @extends('Sitio.app')
+@section('title')
+    Noticias - Unidad de Proyección Social FCE
+@endsection
 @section('content')
 <style>
       .pagination > li > a,

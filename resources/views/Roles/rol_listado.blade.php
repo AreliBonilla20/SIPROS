@@ -1,7 +1,8 @@
 @extends('layout_usuarios')
-
+@section('title')
+    Listado de roles
+@endsection
 @section('content')
-
 <div class="data-table-area">
         <div class="container">
             <div class="row">

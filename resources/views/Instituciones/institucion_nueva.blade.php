@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Agregar institución
+@endsection
 @section('content')
 <div class="breadcomb-area" >
     <div class="container" >

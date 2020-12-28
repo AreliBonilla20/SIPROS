@@ -1,4 +1,7 @@
 @extends('layout_usuarios')
+@section('title')
+    Editar usuario: {{$usuario->name}}
+@endsection
 @section('content')
 <div class="form-element-area">
     <div class="container">

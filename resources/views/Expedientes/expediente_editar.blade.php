@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Editar expediente: {{$estudiante_actualizar->carne}} - {{$estudiante_actualizar->nombres}} {{$estudiante_actualizar->apellidos}}
+@endsection
 @section('content')
 <div class="breadcomb-area" >
     <div class="container" >

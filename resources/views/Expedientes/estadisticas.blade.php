@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Estadísticas de estudiantes
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">

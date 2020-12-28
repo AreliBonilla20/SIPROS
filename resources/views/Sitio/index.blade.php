@@ -1,4 +1,7 @@
 @extends('Sitio.app')
+@section('title')
+    Inicio - Unidad de Proyección Social FCE
+@endsection
 @section('content')
 
 <!-- ======= Hero Section ======= -->

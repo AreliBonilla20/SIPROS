@@ -1,4 +1,7 @@
 @extends('layout_usuarios')
+@section('title')
+    Listado de usuarios
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">

@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Institución: {{$institucion->nombre}}
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">

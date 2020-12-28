@@ -1,7 +1,8 @@
 @extends('layout_usuarios')
-
+@section('title')
+    Agregar rol
+@endsection
 @section('content')
-
 <div class="breadcomb-area" >
 		<div class="container" >
 			<div class="row" >

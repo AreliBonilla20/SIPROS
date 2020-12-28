@@ -1,7 +1,8 @@
 @extends('layout')
-
+@section('title')
+    Listado de prórrogas
+@endsection
 @section('content')
-
 <div class="breadcomb-area">
 		<div class="container">
 			<div class="row">

@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Memoria: {{$memoria->asignacion->estudiante->carne}} - {{$memoria->asignacion->estudiante->nombres}} {{$memoria->asignacion->estudiante->apellidos}}
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">

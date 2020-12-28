@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Expediente: {{$estudiante->carne}} - {{$estudiante->nombres}} {{$estudiante->apellidos}}
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">
@@ -14,7 +17,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Expediente</h2>
-                                    <p>{{$estudiante->carne}}</p>
+                                    <p>{{$estudiante->carne}} - {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
                                 </div>
                             </div>
                         </div>
