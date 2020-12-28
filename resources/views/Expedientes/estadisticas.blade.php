@@ -45,7 +45,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list" >
                 <br>
-                <h3 style="text-align:center">Estadísticas</h3>
+                <h2 style="text-align:center">Estadísticas</h2>
                 
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -90,15 +90,71 @@
          
                 
                 <br><br>
-                <div style="flex-direction: column; align-items:center; text-align:center;">
-                <h5>ESTUDIANTES POR GÉNERO</h5>
-                    <div id="grafico_genero" style="width: 900px; height: 500px; padding-left:25%;" ></div>
+                <div style="display:flex; flex-direction: column; align-items:center;">
+                <h4>ESTUDIANTES POR GÉNERO</h4>
+                    <div id="grafico_genero" style="width: 900px; height: 500px;"></div>
                     <div id="grafico_genero_imagen" style="width: 900px; height: 500px;" hidden></div>
-                <h5>ESTUDIANTES POR CARRERA</h5>
-                    <div id="grafico_carrera" style="width: 100%; height: 500px; padding-left:10%;"></div>
-                    <div id="grafico_carrera_imagen" style="width: 900px; height: 500px;" hidden></div>
-                    <br><br><br><br><br>
+                    <h4>Tabla de estudiantes por género</h4>
+                <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <p>Tables with borders on all possible sides of the Table and Cells</p>
+                        </div>
+                        <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">Género</th>
+                            <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($estudiantes_genero as $eg)
+                            <tr>
+                                <td>{{$eg->sexo}}</td>
+                                <td>{{$eg->porcentaje}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        </table>
+                    </div>
                 </div>
+                </div>
+                
+                <br><br><br>
+             
+                    <h4>ESTUDIANTES POR CARRERA</h4>
+                    <div id="grafico_carrera" style="width: 100%; height: 500px; padding-left:10%;"></div><br><br><br><br><br><br>
+                    <div id="grafico_carrera_imagen" style="width: 900px; height: 500px;" hidden></div>
+                    <h4>Tabla de estudiantes por carrera</h4>
+            
+                    <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="normal-table-list mg-t-30">
+                            <div class="basic-tb-hd">
+                    
+                                <p></p>
+                            </div>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">Género</th>
+                                <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($estudiantes_carrera as $ec)
+                                <tr>
+                                    <td>{{$ec->nombre_carrera}}</td>
+                                    <td>{{$ec->cantidad}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
            
             </div>
     
@@ -107,7 +163,9 @@
     </div>
 </div>
 </div>
-</div>
+
+
+
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">

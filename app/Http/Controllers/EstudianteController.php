@@ -14,6 +14,7 @@ use App\Municipio;
 use App\Prorroga;
 use App\Proyecto;
 use App\Sexo;
+use App\Fecha;
 use DB;
 
 use Carbon\Carbon;
@@ -32,7 +33,10 @@ class EstudianteController extends Controller
     {
         //Muestra el lstado de estudiantes
         $estudiantes = Estudiante::all();
-        return view('Expedientes/expedientes_listado', compact('estudiantes'));
+        $inicio = "";
+        $final = "";
+        return view('Expedientes/expedientes_listado', compact('estudiantes', 'inicio', 'final'));
+    
         //all: Consulta todos las estudiantees
         //compact:Arrays de recursos
     }
@@ -206,9 +210,11 @@ class EstudianteController extends Controller
     {
         $inicio = $request->get('fecha_inicio');
         $final = $request->get('fecha_final');
+        $inicio_formato = Fecha::fechaTexto($inicio);
+        $final_formato = Fecha::fechaTexto($final);
 
         $estudiantes = Estudiante::whereBetween('created_at', [$inicio, $final])->get();
-        return view('Expedientes/expedientes_listado', compact('estudiantes'));
+        return view('Expedientes/expedientes_listado', compact('estudiantes', 'inicio', 'final', 'inicio_formato', 'final_formato'));
     }
 
 

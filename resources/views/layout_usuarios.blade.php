@@ -203,11 +203,8 @@
             <ul class="notika-main-menu-dropdown">
                 <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
                 <li><a href="{{ route('crear_usuario') }}">Agregar usuarios</a></li>
-
             </ul>
         </div>
-    </div>
-    <div class="tab-content custom-menu-content">
         <div id="Roles" class="tab-pane notika-tab-menu-bg animated flipInX">
             <ul class="notika-main-menu-dropdown">
                 <li><a href="{{ route('roles') }}">Listado roles</a></li>
@@ -216,6 +213,8 @@
             </ul>
         </div>
     </div>
+
+    
 </div>
 </div>
 </div>

@@ -136,14 +136,14 @@
                         <form style="padding-left:10%;" method="GET" action="{{route('buscar_expedientes')}}">
                             <div class="form-example-int mg-t-15">
                                 <div class="col-lg-5 col-md-4 col-sm-6 col-xs-12">
-                                <input type="date" class="form-control" name="fecha_inicio" value="{{old('fecha_inicio')}}">
+                                <input type="date" class="form-control" name="fecha_inicio" value="{{$inicio}}">
                                 @foreach ($errors->get('fecha_inicio') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                 @endforeach
                                 </div>
 
                                 <div class="col-lg-5 col-md-4 col-sm-6 col-xs-12">
-                                <input type="date" class="form-control" name="fecha_final" value="{{old('fecha_final')}}">
+                                <input type="date" class="form-control" name="fecha_final" value="{{$final}}">
                                 @foreach ($errors->get('fecha_final') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                 @endforeach
@@ -154,13 +154,24 @@
                             </span>
                         </form>
                         <br>
-                        <div id="ver_todo" style="padding-left:84%;"><span><a style="text-decoration:underline;" href="{{route('expedientes')}}">Limpiar</a></span></div>
-                        
+                        @if($inicio || $final)
+                        <span class="input-group-btn" style="padding-left:74%;">
+                                <a href="{{ route('expedientes') }}"><button type="submit" class="btn btn-danger notika-btn-danger" > <span class="glyphicon glyphicon-remove"></span> Limpiar búsqueda</button> </a>
+                        </span>
+                        @endif
                     </div>
-                   
+
+                    <br>
+                    @if($inicio || $final)
+                    <div style="text-align:center;">
+                        <br>
+                        <h5>Estudiantes inscritos desde {{$inicio_formato}} al {{$final_formato}}</h5>
+                    </div>
+                    @endif
+
                     <br><br>    
 
-
+                   
 
                     <div class="table-responsive">
                         <table id="data-table-basic" class="table table-striped">
