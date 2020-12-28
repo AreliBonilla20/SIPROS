@@ -80,14 +80,69 @@
          
                 
                 <br><br>
-                <div style="flex-direction: column; align-items:center; text-align:center;">
-                <h5>INSTITUCIONES POR SECTOR</h5>
-                    <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:25%;" ></div>
+                <div style="display:flex; flex-direction: column; align-items:center;">
+                <h4>PROYECTOS POR SECTOR DE INSTITUCIONES</h4>
+                    <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:15%;" ></div>
                     <div id="grafico_sector_imagen" style="width: 900px; height: 500px;" hidden></div>
-                <h5>INSTITUCIONES POR TIPO DE INSTITUCIÓN</h5>
+                    <h4>Tabla de proyectos por sector</h4>
+                <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <p>Tables with borders on all possible sides of the Table and Cells</p>
+                        </div>
+                        <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">Sector</th>
+                            <th scope="col">Proyectos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($proyectos_sectores as $sector)
+                            <tr>
+                                <td>{{$sector->nombre_sector}}</td>
+                                <td>{{$sector->cantidad}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <br><br><br>
+
+                <h4>PROYECTOS POR TIPO DE INSTITUCIONES</h4>
                     <div id="grafico_tipo_institucion" style="width: 100%; height: 500px; padding-left:10%;"></div>
-                    <div id="grafico_tipo_institucion_imagen" style="width: 900px; height: 500px;" hidden></div>
-                    <br><br><br><br><br>
+                    <div id="grafico_tipo_institucion_imagen" style="width: 900px; height: 500px;" hidden></div><br><br><br><br><br>
+                    <h4>Tabla de instituciones por tipo</h4>
+            
+                    <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="normal-table-list mg-t-30">
+                            <div class="basic-tb-hd">
+                    
+                                <p></p>
+                            </div>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Proyectos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($proyectos_institucion as $pi)
+                                <tr>
+                                    <td>{{$pi->tipo_institucion}}</td>
+                                    <td>{{$pi->cantidad}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
                 </div>
            
             </div>
@@ -125,7 +180,6 @@
                        2]);
 
       var options = {
-        title: "Cantidad de proyectos por sector",
         width: 600,
         height: 400,
         bar: {groupWidth: "95%"},
@@ -162,7 +216,6 @@
       var view = new google.visualization.DataView(data);
       
       var options = {
-        title: "Cantidad de proyectos por tipo de institución",
         width: 900,
         height: 600,
         bar: {groupWidth: "85%"},

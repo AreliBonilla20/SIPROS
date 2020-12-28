@@ -82,14 +82,67 @@
          
                 
                 <br><br>
-                <div style="flex-direction: column; align-items:center; text-align:center;">
+                <div style="display:flex; flex-direction: column; align-items:center;">
                 <h5>INSTITUCIONES POR SECTOR</h5>
-                    <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:25%;" ></div>
+                    <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:15%;" ></div>
                     <div id="grafico_sector_imagen" style="width: 900px; height: 500px;" hidden></div>
+                    <h4>Tabla de instituciones por sector</h4>
+                    <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="normal-table-list mg-t-30">
+                            <div class="basic-tb-hd">
+                                <p>Tables with borders on all possible sides of the Table and Cells</p>
+                            </div>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">Sector</th>
+                                <th scope="col">Instituciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($instituciones_sector as $is)
+                                <tr>
+                                    <td>{{$is->nombre_sector}}</td>
+                                    <td>{{$is->cantidad}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                
+                <br><br><br>
                 <h5>INSTITUCIONES POR TIPO</h5>
                     <div id="grafico_tipo_institucion" style="width: 100%; height: 500px; padding-left:10%;"></div>
-                    <div id="grafico_tipo_institucion_imagen" style="width: 900px; height: 500px;" hidden></div>
-                    <br><br><br><br><br>
+                    <div id="grafico_tipo_institucion_imagen" style="width: 900px; height: 500px;" hidden></div><br><br><br><br><br>    
+                    <h4>Tabla de instituciones por tipo</h4>
+                    <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="normal-table-list mg-t-30">
+                            <div class="basic-tb-hd">
+                                <p>Tables with borders on all possible sides of the Table and Cells</p>
+                            </div>
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Instituciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($instituciones_tipo as $it)
+                                <tr>
+                                    <td>{{$it->tipo_institucion}}</td>
+                                    <td>{{$it->cantidad}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
                 </div>
            
             </div>
@@ -127,7 +180,6 @@
                        2]);
 
       var options = {
-        title: "Cantidad de instituciones por sector",
         width: 600,
         height: 400,
         bar: {groupWidth: "95%"},
@@ -164,7 +216,6 @@
       var view = new google.visualization.DataView(data);
       
       var options = {
-        title: "Cantidad de instituciones por tipo",
         width: 900,
         height: 600,
         bar: {groupWidth: "85%"},

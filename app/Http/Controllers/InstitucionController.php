@@ -9,6 +9,7 @@ use App\TipoInstitucion;
 use App\Region;
 use App\Departamento;
 use App\Municipio;
+use App\Fecha;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\InstitucionRequest;
@@ -26,8 +27,10 @@ class InstitucionController extends Controller
     public function index()
     {
         $instituciones = Institucion::all();
+        $inicio = "";
+        $final = "";
 
-        return view('Instituciones/instituciones_listado', compact('instituciones'));
+        return view('Instituciones/instituciones_listado', compact('instituciones', 'inicio', 'final'));
     }
 
     /**
@@ -134,9 +137,11 @@ class InstitucionController extends Controller
     {
         $inicio = $request->get('fecha_inicio');
         $final = $request->get('fecha_final');
+        $inicio_formato = Fecha::fechaTexto($inicio);
+        $final_formato = Fecha::fechaTexto($final);
 
         $instituciones = Institucion::whereBetween('created_at', [$inicio, $final])->get();
-        return view('Instituciones/instituciones_listado', compact('instituciones'));
+        return view('Instituciones/instituciones_listado', compact('instituciones', 'inicio', 'final', 'inicio_formato', 'final_formato'));
     }
 
 

@@ -7,6 +7,7 @@ use App\Http\Requests\ProyectoRequest;
 use App\Http\Requests\BusquedaRequest;
 use App\Institucion;
 use App\Proyecto;
+use App\Fecha;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use DB;
@@ -23,7 +24,9 @@ class ProyectoController extends Controller
     {
         //Lista los proyectos
         $proyectos = Proyecto::all();
-        return view('Proyectos/proyectos_listado', compact('proyectos'));
+        $inicio = "";
+        $final = "";
+        return view('Proyectos/proyectos_listado', compact('proyectos', 'inicio', 'final'));
     }
 
     /**
@@ -137,9 +140,11 @@ class ProyectoController extends Controller
     {
         $inicio = $request->get('fecha_inicio');
         $final = $request->get('fecha_final');
+        $inicio_formato = Fecha::fechaTexto($inicio);
+        $final_formato = Fecha::fechaTexto($final);
 
         $proyectos = Proyecto::whereBetween('created_at', [$inicio, $final])->get();
-        return view('Proyectos/proyectos_listado', compact('proyectos'));
+        return view('Proyectos/proyectos_listado', compact('proyectos', 'inicio', 'final', 'inicio_formato', 'final_formato'));
     }
 
     public function estadisticas()
