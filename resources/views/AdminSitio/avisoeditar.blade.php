@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('title')
+    Editar aviso: {{ $aviso->titulo }}
+@endsection
 @section('content')
 <div class="breadcomb-area" >
 		<div class="container" >

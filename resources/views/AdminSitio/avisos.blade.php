@@ -1,6 +1,7 @@
 @extends('layout')
-
-
+@section('title')
+    Listado de avisos
+@endsection
 @section('content')
 <div class="breadcomb-area">
         <div class="container">
