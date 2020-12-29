@@ -25,7 +25,6 @@ class ProyectoRequest extends FormRequest
     {
         return [
             'nombre'         => 'required|max:200|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
-            'duracion'       => 'nullable|max:50|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'area'           => 'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'objetivos'      => 'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'logro'          => 'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
