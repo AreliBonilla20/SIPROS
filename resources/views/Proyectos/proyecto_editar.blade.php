@@ -79,13 +79,13 @@
                                         </div>
                                     </div>
 
-                                    <label for="duracion">Duración del proyecto <small style="color:#16D195;" >*</small></label>
+                                    <label for="duracion">Duración del proyecto</label>
                                     <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">
                                             <i class="notika-icon notika-edit"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->duracion}}" name="duracion" id="duracion" placeholder="Área de conocimiento que requiere el proyecto">
+                                            <input type="text" class="form-control" value="{{$proyecto_actualizar->duracion}}" name="duracion" id="duracion" placeholder="Duración del proyecto">
                                             @foreach ($errors->get('duracion') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -134,15 +134,14 @@
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="bootstrap-select fm-cmp-mg">
                                                 <select class="selectpicker"  name="institucion" class="selectpicker" value="{{$proyecto_actualizar->id_institucion}}">
-                                                    <option value="">-Seleccione una opción-</option>
+                                                    <option value="">-Seleccione una opción-</option>                                                    
                                                     @foreach ($instituciones as $institucion)
-                                                    <option value="{{$institucion->id}}" @if ($proyecto_actualizar->id_institucion === $institucion->id) selected @endif>{{$institucion->nombre}}</option>
+                                                    <option value="{{$institucion->id}}" {{ ($institucion->id == $proyecto_actualizar->id_institucion ? "selected":"") }}>{{$institucion->nombre}}</option>                                                    
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('institucion') as $mensaje)
                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                 @endforeach
-
                                             </div>
                                         </div>
                                     </div>
