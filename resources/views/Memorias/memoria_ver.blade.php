@@ -1,6 +1,11 @@
 @extends('layout')
 @section('title')
+    @if ($memoria)
     Memoria: {{$memoria->asignacion->estudiante->carne}} - {{$memoria->asignacion->estudiante->nombres}} {{$memoria->asignacion->estudiante->apellidos}}
+    @else
+        No se ha registrado la memoria
+    @endif
+    
 @endsection
 @section('content')
 <div class="breadcomb-area">

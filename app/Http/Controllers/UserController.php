@@ -22,9 +22,7 @@ class UserController extends Controller
         $users = User::all();
         $roles = Role::get();
 
-        $roles_usuarios = DB::select('select * from role_user');
-
-        return view('Usuarios/usuarios_listado', compact('users', 'roles', 'roles_usuarios'));
+        return view('Usuarios/usuarios_listado', compact('users', 'roles'));
     }
 
     /**

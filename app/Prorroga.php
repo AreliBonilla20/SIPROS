@@ -11,8 +11,10 @@ class Prorroga extends Model
    public function getRouteKeyName(){
    		return 'id';
    }
+
    /*Relación de N estudiantes */
-   public function estudiantes(){
+   public function estudiantes()
+   {
    	return $this->hasMany(Estudiante::class);
    }
 }
