@@ -48,7 +48,7 @@
                                                     <select class="selectpicker" data-live-search="true" name="asignacion_id">
                                                         <option value="">-Seleccione el proyecto-</option>
                                                         @foreach ($asignaciones as $asignacion)
-                                                        <option value="{{$asignacion->id}}">{{$asignacion->proyecto->nombre}}, {{$asignacion->proyecto->institucion->nombre}}</option>
+                                                        <option value="{{$asignacion->id}}" {{ (old('asignacion_id') == $loop->iteration ? "selected":"") }}>{{$asignacion->proyecto->nombre}}, {{$asignacion->proyecto->institucion->nombre}}</option>
                                                         @endforeach
                                                     </select>
                                                     @foreach ($errors->get('asignacion_id') as $mensaje)

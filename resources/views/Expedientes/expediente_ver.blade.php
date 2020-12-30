@@ -219,10 +219,10 @@
                     <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
                     <div class="form-example-int mg-t-15">
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select class="selectpicker" name="id_proyecto">
+                            <select class="selectpicker" name="id_proyecto" data-live-search="true">
                                 <option value="">-Seleccione un proyecto-</option>
                                 @foreach($proyectos as $proyecto)
-                                <option value="{{$proyecto->id}}">{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
+                                <option value="{{$proyecto->id}}" {{ (old('id_proyecto') == $loop->iteration ? "selected":"") }}>{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
                                 @endforeach
                             </select>
                             @foreach ($errors->get('id_proyecto') as $mensaje)
@@ -237,7 +237,7 @@
                             <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                            <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas">
+                            <input type="number" class="form-control" name="horas_asignadas" value="{{old('horas_asignadas')}}" placeholder="Cantidad de horas">
                             @foreach ($errors->get('horas_asignadas') as $mensaje)
                             <small style="color:#B42020;">{{ $mensaje }}</small>
                             @endforeach

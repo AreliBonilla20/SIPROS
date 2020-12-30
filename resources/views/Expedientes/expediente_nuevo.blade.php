@@ -96,9 +96,9 @@
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="bootstrap-select fm-cmp-mg">
                                                 <select class="selectpicker" name="sexo_id">
-                                                    <option>-Seleccione un género-</option>
+                                                    <option value="">-Seleccione un género-</option>
                                                     @foreach($sexos as $sexo)
-                                                    <option value="{{$sexo->id}}" >{{$sexo->sexo}}</option>
+                                                    <option value="{{$sexo->id}}" {{ (old('sexo_id') == $loop->iteration ? "selected":"") }}>{{$sexo->sexo}}</option>
                                                     @endforeach
                                                 </select>
                                                 @foreach ($errors->get('sexo_id') as $mensaje)
@@ -115,18 +115,19 @@
 
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                            <div class="bootstrap-select fm-cmp-mg">
-                                                <select class="selectpicker" data-live-search="true" name="codigo"> 
-                                                <option value="{{old('codigo')}}"  disabled selected>-Seleccione una carrera-</option>
-                                                @foreach($carreras as $carrera)
-                                            <option value="{{$carrera->codigo}}">{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option-->
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                        <select class="selectpicker" data-live-search="true" name="codigo" id="codigo" >
+                                            <option value="">-Seleccione una carrera-</option>
+                                            @foreach ($carreras as $carrera)
+                                            <option value="{{$carrera->codigo}}"{{ (old('codigo') == $loop->iteration ? "selected":"") }}>{{$carrera->nombre_carrera}}</option>
                                             @endforeach
                                         </select>
                                         @foreach ($errors->get('codigo') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                         @endforeach
-                                    </div>
-                                </div>
+
+                                         </div>
+                                        </div>
 
                             </div>
                             <br><br><br>
@@ -140,7 +141,7 @@
                                         <select class="selectpicker" data-live-search="true" name="area_id">
                                             <option value="">-Seleccione un área de interés-</option>
                                             @foreach ($areas as $area)
-                                            <option value="{{$area->id}}">{{$area->area_interes}}</option>
+                                            <option value="{{$area->id}}" {{ (old('area_id') == $loop->iteration ? "selected":"") }}>{{$area->area_interes}}</option>
                                             @endforeach
                                         </select>
                                         @foreach ($errors->get('area_id') as $mensaje)
@@ -170,7 +171,7 @@
                                         <select class="selectpicker" data-live-search="true" name="departamento_id" id="departamento_id" >
                                             <option value="">-Seleccione un departamento-</option>
                                             @foreach ($departamentos as $departamento)
-                                            <option value="{{$departamento->id}}">{{$departamento->nombre_departamento}}</option>
+                                            <option value="{{$departamento->id}}"{{ (old('departamento_id') == $loop->iteration ? "selected":"") }}>{{$departamento->nombre_departamento}}</option>
                                             @endforeach
                                         </select>
                                         @foreach ($errors->get('departamento_id') as $mensaje)
@@ -184,13 +185,14 @@
                                     <div class="bootstrap-select fm-cmp-mg">
                                         <select class="selectpicker" data-live-search="true" name="municipio_id" id="municipio_id" >
                                             <option value="">-Seleccione un municipio-</option>
-                                            {{-- @foreach ($municipios as $municipio)
-                                            <option value="{{$municipio->id}}">{{$municipio->nombre_municipio}}</option>
-                                            @endforeach --}}
+                                            @foreach ($municipios as $municipio)
+                                            <option value="{{$municipio->id}}"{{ (old('municipio_id') == $loop->iteration ? "selected":"") }}>{{$municipio->nombre_municipio}}</option>
+                                            @endforeach
                                         </select>
                                         @foreach ($errors->get('municipio_id') as $mensaje)
                                         <small style="color:#B42020;">{{ $mensaje }}</small>
                                         @endforeach
+
                                     </div>
                                 </div>
                                 <br><br><br>
