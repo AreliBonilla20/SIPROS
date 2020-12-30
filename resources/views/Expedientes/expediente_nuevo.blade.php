@@ -119,7 +119,7 @@
                                         <select class="selectpicker" data-live-search="true" name="codigo" id="codigo" >
                                             <option value="">-Seleccione una carrera-</option>
                                             @foreach ($carreras as $carrera)
-                                            <option value="{{$carrera->codigo}}"{{ (old('codigo') == $loop->iteration ? "selected":"") }}>{{$carrera->nombre_carrera}}</option>
+                                            <option value="{{$carrera->codigo}}"{{ (old('codigo') == $carrera->codigo ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
                                             @endforeach
                                         </select>
                                         @foreach ($errors->get('codigo') as $mensaje)

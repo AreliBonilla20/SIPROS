@@ -86,7 +86,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="date" value="{{$estudiante_actualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento" readonly>
+                                            <input type="date" value="{{$estudiante_actualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento">
                                             @foreach ($errors->get('fecha_nacimiento') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach

@@ -50,7 +50,7 @@
                                         <select class="selectpicker"  name="codigo_carrera" class="selectpicker">
                                                     <option value="">-Seleccione una carrera-</option>
                                                     @foreach($carreras as $carrera)
-                                                    <option value="{{$carrera->codigo}}" {{ (old('codigo_carrera') == $loop->iteration ? "selected":"") }}>{{$carrera->codigo}}-{{$carrera->nombre_carrera}}</option>
+                                                    <option value="{{$carrera->codigo}}" {{ (old('codigo_carrera') == $carrera->codigo ? "selected":"") }}>{{$carrera->codigo}} - {{$carrera->nombre_carrera}}</option>
                                                     @endforeach
                                             </select>
                                             @foreach ($errors->get('codigo_carrera') as $mensaje)

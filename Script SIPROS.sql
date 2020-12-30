@@ -306,8 +306,8 @@ INSERT INTO `sectors` (`id`, `nombre_sector`) VALUES
 
 
 INSERT INTO `sexos` (`id`, `sexo`) VALUES
-('1', 'F'),
-('2', 'M');
+('1', 'Femenino'),
+('2', 'Masculino');
 
 
 -- DATOS DE PRUEBA

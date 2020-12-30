@@ -210,7 +210,7 @@
                             <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                            <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" readonly>
                             @foreach ($errors->get('carne') as $mensaje)
                             <small style="color:#B42020;">{{ $mensaje }}</small>
                             @endforeach
@@ -219,7 +219,7 @@
                     <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
                     <div class="form-example-int mg-t-15">
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select class="selectpicker" name="id_proyecto" data-live-search="true">
+                            <select class="selectpicker" name="id_proyecto" data-live-search="true" required>
                                 <option value="">-Seleccione un proyecto-</option>
                                 @foreach($proyectos as $proyecto)
                                 <option value="{{$proyecto->id}}" {{ (old('id_proyecto') == $loop->iteration ? "selected":"") }}>{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
@@ -237,7 +237,7 @@
                             <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                            <input type="number" class="form-control" name="horas_asignadas" value="{{old('horas_asignadas')}}" placeholder="Cantidad de horas">
+                            <input type="number" class="form-control" name="horas_asignadas" value="{{old('horas_asignadas')}}" placeholder="Cantidad de horas" required>
                             @foreach ($errors->get('horas_asignadas') as $mensaje)
                             <small style="color:#B42020;">{{ $mensaje }}</small>
                             @endforeach
@@ -378,7 +378,7 @@
                                                                                 <i class="notika-icon notika-edit"></i>
                                                                             </div>
                                                                             <div class="nk-int-st">
-                                                                                <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                                                                                <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" readonly>
                                                                                 @foreach ($errors->get('carne') as $mensaje)
                                                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                                                 @endforeach
@@ -387,7 +387,7 @@
                                                                         <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
                                                                         <div class="form-example-int mg-t-15">
                                                                             <div class="bootstrap-select fm-cmp-mg">
-                                                                                <select class="selectpicker" name="id_proyecto">
+                                                                                <select class="selectpicker" name="id_proyecto" required>
                                                                                     <option value="">-Seleccione un proyecto-</option>
                                                                                     @foreach($proyectos as $proyecto)
                                                                                     <option value="{{$proyecto->id}}" {{ $proyecto->id == $asignacion->id_proyecto ? "selected" : ""}}>{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
@@ -405,7 +405,7 @@
                                                                                 <i class="notika-icon notika-edit"></i>
                                                                             </div>
                                                                             <div class="nk-int-st">
-                                                                                <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas" value="{{$asignacion->horas_asignadas}}">
+                                                                                <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas" value="{{$asignacion->horas_asignadas}}" required>
                                                                                 @foreach ($errors->get('horas_asignadas') as $mensaje)
                                                                                 <small style="color:#B42020;">{{ $mensaje }}</small>
                                                                                 @endforeach
@@ -418,7 +418,7 @@
                                                                                 <i class="notika-icon notika-edit"></i>
                                                                             </div>
                                                                             <div class="nk-int-st">
-                                                                                <select class="selectpicker" name="estado_asignacion">
+                                                                                <select class="selectpicker" name="estado_asignacion" required>
                                                                                     <option value="Iniciado" {{$asignacion->estado_asignacion == "Iniciado" ? "selected" : ""}}>Iniciado</option>
                                                                                     <option value="No iniciado" {{$asignacion->estado_asignacion == "No iniciado" ? "selected" : ""}}>No iniciado</option>
                                                                                 </select>
@@ -475,8 +475,8 @@
                                         <tbody>
                                             @foreach($prorrogas as $prorroga)
                                             <tr>
-                                                <td>{{$prorroga->fecha_solicitud}}</td>
-                                                <td>{{\Carbon\Carbon::parse($prorroga->created_at)->format('Y-m-d')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($prorroga->fecha_solicitud)->format('d/m/Y ')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($prorroga->created_at)->format('d/m/Y ')}}</td>
                                                 <td>{{$prorroga->estado}}</td>
                                                 <td>
                                                     <button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#actualizar_prorroga_{{$loop->iteration}}"><span class="glyphicon glyphicon-check"></span> Aprobar/Rechazar</button>
