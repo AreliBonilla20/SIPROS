@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
 
-                                        <label for="duracion">Duración del proyecto <small style="color:#16D195;" >*</small></label>
+                                        <label for="duracion">Duración del proyecto</label>
                                         <div class="form-group ic-cmp-int">
                                             <div class="form-ic-cmp">
                                                 <i class="notika-icon notika-edit"></i>
