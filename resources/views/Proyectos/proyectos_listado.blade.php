@@ -32,7 +32,6 @@
                                     <div class="modal-content">
                                         <form action="{{route('reporte_proyectos')}}" method="post">
                                             @csrf
-                            
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>

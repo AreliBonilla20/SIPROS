@@ -186,7 +186,7 @@
         <div class="contact-ctn">
             <p>Gestión, consultas, reportes y estadísticas de expedientes.</p>
         </div>
-        <a href="{{ route('expedientes') }}" style="color:white;"><button class="btn notika-btn-teal">Expediente</button></a>
+        <a href="{{ route('expedientes') }}"><button style="color:white;" class="btn notika-btn-teal">Expedientes</button></a>
     </div>
 </div>
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -199,7 +199,7 @@
         <div class="contact-ctn">
             <p>Gestión, consultas, reportes y estadísticas de instituciones.</p>
         </div>
-        <a href="{{ route('instituciones') }}" style="color:white;"><button class="btn notika-btn-orange">Instituciones</button></a>
+        <a href="{{ route('instituciones') }}"><button style="color:white;" class="btn notika-btn-orange">Instituciones</button></a>
     </div>
 </div>
 
@@ -214,7 +214,7 @@
         <div class="contact-ctn">
         <p>Gestión, consultas, reportes y estadísticas de proyectos.</p>
         </div>
-        <a href="{{ route('proyectos') }}" style="color:white;"><button class="btn notika-btn-lightblue">Proyectos</button></a>
+        <a href="{{ route('proyectos') }}"><button style="color:white;" class="btn notika-btn-lightblue">Proyectos</button></a>
     </div>
 </div>
 
@@ -228,9 +228,9 @@
         </div>
         <div class="contact-ctn">
      
-            <p>Ingreso, aprobación y consultas de prórrogas</p>
+            <p>Ingreso, aprobación y consultas de prórrogas.</p>
         </div>
-        <a href="{{ route('prorrogas') }}" style="color:white;"><button class="btn notika-btn-red">Prórrogas</button></a>
+        <a href="{{ route('prorrogas') }}"><button style="color:white;" class="btn notika-btn-red">Prórrogas</button></a>
     </div>
 </div>
 
@@ -250,7 +250,7 @@
 
             <p>Ingreso, edición y eliminación de avisos del sitio web.</p>
         </div>
-        <a href="{{ route('sitio_avisos') }}" style="color:white;"><button class="btn notika-btn-indigo btn-reco-mg btn-button-mg">Avisos</button></a>
+        <a href="{{ route('sitio_avisos') }}"><button style="color:white;" class="btn notika-btn-indigo btn-reco-mg btn-button-mg">Avisos</button></a>
     </div>
 </div>
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -264,7 +264,7 @@
      
             <p>Enlace al sitio web oficial de proyección social.</p>
         </div>
-        <a href="{{ route('sitio_index') }}" style="color:white;"><button class="btn notika-btn-green btn-reco-mg btn-button-mg">Sitio web</button></a>
+        <a href="{{ route('sitio_index') }}"><button style="color:white;" class="btn notika-btn-green btn-reco-mg btn-button-mg">Sitio web</button></a>
     </div>
 </div>
 
@@ -280,7 +280,7 @@
   
             <p>Registro, configuración y consulta de usuarios. </p>
         </div>
-        <a href="{{ route('usuarios') }}" style="color:white;"><button class="btn notika-btn-deeporange">Usuarios</button></a>
+        <a href="{{ route('usuarios') }}"><button style="color:white;" class="btn notika-btn-deeporange">Usuarios</button></a>
     </div>
 </div>
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -293,9 +293,9 @@
         </div>
         <div class="contact-ctn">
      
-            <p>Registro, configuración y consulta de roles.. </p>
+            <p>Registro, configuración y consulta de roles. </p>
         </div>
-        <a href="{{ route('roles') }}" style="color:white;"><button class="btn notika-btn-cyan">Roles</button></a>
+        <a href="{{ route('roles') }}"><button style="color:white;" class="btn notika-btn-cyan">Roles</button></a>
     </div>
 </div>
 </div>

@@ -322,14 +322,14 @@
                 <div class="navbar-inner">
                     <div class="container-pro wizard-cts-st">
                         <ul>
-                            <li><a href="#proyectos" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Proyectos</button></a></li>
+                            <li><a href="#asignaciones" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Asignaciones</button></a></li>
                             <li><a href="#prorrogas" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Prórrogas</button></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-content">
-                <div class="tab-pane wizard-ctn" id="proyectos">
+                <div class="tab-pane wizard-ctn" id="asignaciones">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -342,6 +342,7 @@
                                                 <th>Institución</th>
                                                 <th>Horas asignadas</th>
                                                 <th>Estado</th>
+                                                <th>Editar</th>
                                                 <th>Memoria</th>
                                                 <th>Asignación</th>
                                                 <th>Certificación</th>
@@ -354,6 +355,96 @@
                                                 <td>{{$asignacion->proyecto->institucion->nombre}}</td>
                                                 <td>{{$asignacion->horas_asignadas}}</td>
                                                 <td>{{$asignacion->estado_asignacion}}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-default notika-btn-default" data-toggle="modal" data-target="#actualizar_asignacion_{{$asignacion->id}}"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+
+                                                    <!--Inicio de modal para modificar asignación de proyecto proyecto-->
+                                                    <div class="modal fade" id="actualizar_asignacion_{{$asignacion->id}}" role="dialog" data-backdrop="static" data-keyboard="false">
+                                                        <div class="modal-dialog modals-default">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <h3>Actualización de asignación de proyecto</h3>
+                                                                <p>Estudiante: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                                                <br>
+                                                                <div class="modal-body">
+                                                                    <form action="{{route('actualizar_asignacion', $asignacion->id)}}" method="POST">
+                                                                        @method('PUT')
+                                                                        @csrf
+                                                                        <label for="carne">Carné <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-group ic-cmp-int">
+                                                                            <div class="form-ic-cmp">
+                                                                                <i class="notika-icon notika-edit"></i>
+                                                                            </div>
+                                                                            <div class="nk-int-st">
+                                                                                <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                                                                                @foreach ($errors->get('carne') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                        <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-example-int mg-t-15">
+                                                                            <div class="bootstrap-select fm-cmp-mg">
+                                                                                <select class="selectpicker" name="id_proyecto">
+                                                                                    <option value="">-Seleccione un proyecto-</option>
+                                                                                    @foreach($proyectos as $proyecto)
+                                                                                    <option value="{{$proyecto->id}}" {{ $proyecto->id == $asignacion->id_proyecto ? "selected" : ""}}>{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                                @foreach ($errors->get('id_proyecto') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <label for="horas_asignadas"> Cantidad de horas asignadas <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-group ic-cmp-int">
+                                                                            <div class="form-ic-cmp">
+                                                                                <i class="notika-icon notika-edit"></i>
+                                                                            </div>
+                                                                            <div class="nk-int-st">
+                                                                                <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas" value="{{$asignacion->horas_asignadas}}">
+                                                                                @foreach ($errors->get('horas_asignadas') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <label for="horas_asignadas"> Estado de servicio social <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-group ic-cmp-int">
+                                                                            <div class="form-ic-cmp">
+                                                                                <i class="notika-icon notika-edit"></i>
+                                                                            </div>
+                                                                            <div class="nk-int-st">
+                                                                                <select class="selectpicker" name="estado_asignacion">
+                                                                                    <option value="Iniciado" {{$asignacion->estado_asignacion == "Iniciado" ? "selected" : ""}}>Iniciado</option>
+                                                                                    <option value="No iniciado" {{$asignacion->estado_asignacion == "No iniciado" ? "selected" : ""}}>No iniciado</option>
+                                                                                </select>
+                                                                                @foreach ($errors->get('estado_asignacion') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-example-int mg-t-15" style="position:absolute; right:0%;">
+                                                                            <button class="btn btn-success notika-btn-success">Actualizar asignación</button>
+                                                                        </div>
+                                                                    </form>
+                                                                    <br>
+                                                                </div>
+                                                                <br>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <!--Fin de modal para modificar asignación de proyecto-->
+
+
+                                                </td>
                                                 <td><a href="{{route('ver_memoria', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Memoria</button></td></a>
                                                 <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Asignación</button></td></a>
                                                 <td><a href="{{route('certificado_estudiante', $asignacion->estudiante->carne)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Certificación</button></td></a>

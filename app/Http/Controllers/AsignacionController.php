@@ -88,9 +88,16 @@ class AsignacionController extends Controller
      * @param  \App\Asignacion  $asignacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asignacion $asignacion)
+    public function update(Request $request, $id)
     {
-        //
+        $asignacion_actualizar = Asignacion::findOrFail($id);
+        $asignacion_actualizar->carne             = $request->carne;
+        $asignacion_actualizar->id_proyecto       = $request->id_proyecto;
+        $asignacion_actualizar->horas_asignadas   = $request->horas_asignadas;
+        $asignacion_actualizar->estado_asignacion = $request->estado_asignacion;
+        $asignacion_actualizar->save();
+
+        return redirect()->route('ver_expediente', $asignacion_actualizar->carne)->withSuccess('¡Asignación actualizada correctamente!');
     }
 
     /**

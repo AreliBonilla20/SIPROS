@@ -20,12 +20,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                                <div class="breadcomb-report">
-                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                </div>
-                        </div>-->
                     </div>
                 </div>
             </div>
@@ -61,6 +55,7 @@
                                     <th>Nombre</th>
                                     <th>Correo electrónico</th>
                                     <th>Rol</th>
+                                    <th>Asignar rol</th>
 
                                 </tr>
                             </thead>
@@ -72,6 +67,12 @@
                                     <td>{{$usuario->id}}</td>
                                     <td>{{$usuario->name}}</td>
                                     <td>{{$usuario->email}}</td>
+                                    <td>@if ($usuario->nombre_rol())
+                                            {{$usuario->nombre_rol()}}
+                                        @else
+                                            <strong>Rol no asignado</strong>
+                                        @endif
+                                    </td>
                                     <td>
                                         <button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#actualizar_prorroga_{{$loop->iteration}}"><span class="glyphicon glyphicon-check"></span> Asignar rol</button>
 
@@ -105,14 +106,8 @@
                                                                     <div class="bootstrap-select fm-cmp-mg">
                                                                         <select class="selectpicker" data-live-search="true" name="role_id" id="role_id" >
                                                                             <option value="">--Seleccione un rol-</option>
-                                                                            @foreach ($roles_usuarios as $rol_usuario)
-                                                                                {{ $rol_actual = null }}
-                                                                                @if ($rol_usuario->user_id == $usuario->id)
-                                                                                    {{$rol_actual = $rol_usuario->role_id}}
-                                                                                @endif
-                                                                            @endforeach
                                                                             @foreach ($roles as $rol)
-                                                                            <option value="{{$rol->id}}" {{ ($rol->id == $rol_actual ? "selected":"") }}>{{$rol->name}}</option>
+                                                                            <option value="{{$rol->id}}" {{ $rol->id == $usuario->id_rol() ? "selected" : "" }}>{{$rol->name}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                         @foreach ($errors->get('role_id') as $mensaje)
@@ -126,7 +121,7 @@
 
                                                         <br><br>
                                                         <div class="modal-footer">
-                                                            <button data-toggle="tooltip" data-placement="left" title="Descargar reporte"
+                                                            <button data-toggle="tooltip" data-placement="left"
                                                                 class="btn btn-default"><i class="notika-icon notika-form"></i> Guardar asignación</button>
                                                         </div>
                                         

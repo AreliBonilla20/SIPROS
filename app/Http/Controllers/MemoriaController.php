@@ -60,6 +60,10 @@ class MemoriaController extends Controller
         if ($memoria->save()) {
             $estudiante                      = Estudiante::findOrFail($memoria->asignacion->estudiante->carne);
             $estudiante->horas_registradas =  $estudiante->horas_registradas + $memoria->horas_completadas;
+            $asignacion = Asignacion::findOrFail($memoria->asignacion->id);
+            if($memoria->horas_completadas == $asignacion->horas_asignadas){
+                $asignacion->estado_asignacion = 'Terminado';
+            }
 
             if($estudiante->horas_registradas == 500)
             {

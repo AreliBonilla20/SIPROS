@@ -151,6 +151,8 @@ Route::post('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_pro
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion')
     ->middleware(['permission:asignacion.store', 'auth']);
 
+Route::put('/asignacion_proyecto/actualizar/{id}', 'AsignacionController@update')->name('actualizar_asignacion');
+
 
 ///////////////////////////////////////Ruta de gestión de prórrogas/////////////////////////////////////////
 Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas')
