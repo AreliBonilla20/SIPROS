@@ -235,8 +235,6 @@
                         </li>
                         <li><a data-toggle="tab" href="#Proyectos"><i class="notika-icon notika-windows"></i> Proyectos</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Usuarios"><i class="notika-icon notika-support"></i> Usuarios</a>
-                        </li>
                         <li><a  href="{{route('prorrogas')}}"><i class="notika-icon notika-refresh"></i> Prórrogas</a>
                         </li>
                         <li><a href="{{route('sitio_avisos')}}"><i class="notika-icon notika-app"></i> Avisos</a>
@@ -262,11 +260,6 @@
                                 <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
                                 <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
                                 <li><a href="{{ route('estadisticas_proyectos') }}">Estadísticas</a></li>
-                            </ul>
-                        </div>
-                        <div id="Usuarios" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
                             </ul>
                         </div>
                     </div>

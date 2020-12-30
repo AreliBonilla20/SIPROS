@@ -163,7 +163,14 @@ class ProyectoController extends Controller
         $proyectos_disponibles = Proyecto::where('estado_proyecto','Disponible')->count();
         $proyectos_no_disponibles = Proyecto::where('estado_proyecto','No disponible')->count();
 
-        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles'));
+        setlocale(LC_TIME, "Spanish");
+        $primer_proyecto = Proyecto::orderBy('created_at', 'ASC')->first();
+        $fecha_inicio = Fecha::fechaTexto($primer_proyecto->created_at);
+
+        $ultimo_proyecto = Proyecto::orderBy('created_at', 'DESC')->first();
+        $fecha_final = Fecha::fechaTexto($ultimo_proyecto->created_at);    
+
+        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles', 'fecha_inicio', 'fecha_final'));
     }
 
 }

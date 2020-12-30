@@ -164,10 +164,17 @@ class ReporteController extends Controller
                                   ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
                                   ->groupBy('sexo')->get();
 
+        setlocale(LC_TIME, "Spanish");
+        $primer_estudiante = Estudiante::orderBy('created_at', 'ASC')->first();
+        $fecha_inicio = Fecha::fechaTexto($primer_estudiante->created_at);
+
+        $ultimo_estudiante = Estudiante::orderBy('created_at', 'DESC')->first();
+        $fecha_final = Fecha::fechaTexto($ultimo_estudiante->created_at);
+
         $url_grafico_generos = $request->url_grafico_generos;
         $url_grafico_carreras = $request->url_grafico_carreras;
 
-        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'url_grafico_generos', 'url_grafico_carreras'));
+        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'url_grafico_generos', 'url_grafico_carreras', 'fecha_inicio', 'fecha_final'));
         return $pdf->stream('Estadisticas_estudiantes.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 
@@ -175,22 +182,39 @@ class ReporteController extends Controller
      public function instituciones_estadisticas(Request $request)
      {
 
-        $estudiantes_inscritos = Estudiante::all()->count();
-        $estudiantes_servicio_iniciado = Estudiante::where('estado_servicio', 'Iniciado')->count();
-        $estudiantes_servicio_no_iniciado = Estudiante::where('estado_servicio', 'No iniciado')->count();
-        $estudiantes_servicio_terminado = Estudiante::where('estado_servicio', 'Terminado')->count();
-        $estudiantes_carrera = DB::table('carreras')->leftjoin('estudiantes', 'estudiantes.codigo', '=', 'carreras.codigo')
-                                  ->select(DB::raw('count(estudiantes.carne) as cantidad, nombre_carrera'))
-                                  ->groupBy('nombre_carrera')->get();
+        $instituciones = Institucion::all()->count();
+        $instituciones_sector = DB::table('sectors')->leftjoin('institucions', 'institucions.sector_id', '=', 'sectors.id')
+                                  ->select(DB::raw('count(institucions.id) as cantidad, nombre_sector'))
+                                  ->groupBy('nombre_sector')->get();
 
-        $estudiantes_genero = DB::table('sexos')->leftjoin('estudiantes', 'estudiantes.sexo_id', '=', 'sexos.id')
-                                  ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
-                                  ->groupBy('sexo')->get();
+        $instituciones_tipo = DB::table('tipo_institucions')->leftjoin('institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
+                                ->select(DB::raw('count(institucions.id) as cantidad, tipo_institucion'))
+                                ->groupBy('tipo_institucion')->get();
+
+        $instituciones_activas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                ->where('proyectos.estado_proyecto','Disponible')
+                                ->groupBy('proyectos.id_institucion')
+                                ->count();
+
+        $instituciones_inactivas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                ->where('proyectos.estado_proyecto','No disponible')
+                                ->count();
+
+        $instituciones_sin_proyecto = $instituciones - $instituciones_activas - $instituciones_inactivas;
 
         $url_grafico_sectores = $request->url_grafico_sectores;
         $url_grafico_tipo_instituciones = $request->url_grafico_tipo_instituciones;
 
-        $pdf = PDF::loadView('Reportes/reporte_estadisticas_instituciones', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'url_grafico_sectores', 'url_grafico_tipo_instituciones'));
+        setlocale(LC_TIME, "Spanish");
+        $primera_institucion = Institucion::orderBy('created_at', 'ASC')->first();
+        $fecha_inicio = Fecha::fechaTexto($primera_institucion->created_at);
+
+        $ultima_institucion = Institucion::orderBy('created_at', 'DESC')->first();
+        $fecha_final = Fecha::fechaTexto($ultima_institucion->created_at);
+
+        
+
+        $pdf = PDF::loadView('Reportes/reporte_estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'url_grafico_tipo_instituciones', 'url_grafico_sectores', 'fecha_inicio', 'fecha_final', 'instituciones_sin_proyecto'));
         return $pdf->stream('Estadisticas_instituciones.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 
@@ -207,11 +231,23 @@ class ReporteController extends Controller
                                     ->rightjoin('tipo_institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
                                     ->select(DB::raw('count(proyectos.id) as cantidad, tipo_institucion'))
                                     ->groupBy('tipo_institucion')->get();
+        $proyectos_disponibles = Proyecto::where('estado_proyecto','Disponible')->count();
+        $proyectos_no_disponibles = Proyecto::where('estado_proyecto','No disponible')->count();
 
         $url_grafico_sectores = $request->url_grafico_sectores;
         $url_grafico_tipo_instituciones = $request->url_grafico_tipo_instituciones;
 
-        $pdf = PDF::loadView('Reportes/reporte_estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'url_grafico_sectores', 'url_grafico_tipo_instituciones'));
+        setlocale(LC_TIME, "Spanish");
+        $primer_proyecto = Proyecto::orderBy('created_at', 'ASC')->first();
+        $fecha_inicio = Fecha::fechaTexto($primer_proyecto->created_at);
+
+        $ultimo_proyecto = Proyecto::orderBy('created_at', 'DESC')->first();
+        $fecha_final = Fecha::fechaTexto($ultimo_proyecto->created_at);    
+
+        $url_grafico_generos = $request->url_grafico_generos;
+        $url_grafico_carreras = $request->url_grafico_carreras;
+
+        $pdf = PDF::loadView('Reportes/reporte_estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles', 'url_grafico_sectores', 'url_grafico_tipo_instituciones', 'fecha_inicio', 'fecha_final'));
         return $pdf->stream('Estadisticas_proyectos.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 

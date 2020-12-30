@@ -146,7 +146,8 @@ class InstitucionController extends Controller
 
 
     public function estadisticas()
-    {
+    {   
+       
         $instituciones = Institucion::all()->count();
         $instituciones_sector = DB::table('sectors')->leftjoin('institucions', 'institucions.sector_id', '=', 'sectors.id')
                                   ->select(DB::raw('count(institucions.id) as cantidad, nombre_sector'))
@@ -163,9 +164,14 @@ class InstitucionController extends Controller
         $instituciones_inactivas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
                                 ->where('proyectos.estado_proyecto','No disponible')
                                 ->count();
+        
+        setlocale(LC_TIME, "Spanish");
+        $primera_institucion = Institucion::orderBy('created_at', 'ASC')->first();
+        $fecha_inicio = Fecha::fechaTexto($primera_institucion->created_at);
 
-        $colores = ['#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5','#B5EAD7', '#d1f0e5','#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5'];
+        $ultima_institucion = Institucion::orderBy('created_at', 'DESC')->first();
+        $fecha_final = Fecha::fechaTexto($ultima_institucion->created_at);                       
 
-        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas'));
+        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'fecha_inicio', 'fecha_final'));
     }
 }

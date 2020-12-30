@@ -45,7 +45,10 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list" >
                 <br>
-                <h2 style="text-align:center">Estadísticas</h2>
+                <div style="text-align:center">
+                    <h2 >Estadísticas</h2>
+                    <p>Del {{$fecha_inicio}} al {{$fecha_final}}</p>
+                </div>
                 
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -98,10 +101,8 @@
                 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="normal-table-list mg-t-30">
-                        <div class="basic-tb-hd">
-                            <p>Tables with borders on all possible sides of the Table and Cells</p>
-                        </div>
-                        <table class="table table-striped">
+                        
+                        <table class="table table-striped" style="text-align:center;">
                         <thead>
                             <tr>
                             <th scope="col">Género</th>
@@ -201,11 +202,20 @@
 
     google.charts.load("current", {packages:["bar"]});
     google.charts.setOnLoadCallback(drawChart);
+
+    var cont = 0
+    function colores_grafico_carreras(){
+        var aux = cont
+        var colores = ['#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5','#B5EAD7', '#d1f0e5','#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5'];
+        cont++
+        return colores[aux]
+    }
+
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Carrera', 'Estudiantes', { role: 'style' } ],
         @for($i=0; $i<count($estudiantes_carrera); $i++)
-        ['{{$estudiantes_carrera[$i]->nombre_carrera}}',{{$estudiantes_carrera[$i]->cantidad}}, '{{$colores[$i]}}'],
+        ['{{$estudiantes_carrera[$i]->nombre_carrera}}',{{$estudiantes_carrera[$i]->cantidad}}, colores_grafico_carreras()],
         @endfor
      
         

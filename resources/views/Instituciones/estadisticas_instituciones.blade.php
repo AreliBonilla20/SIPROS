@@ -31,6 +31,8 @@
                                     </form>
 								</div>
 						</div>
+                        <br><br>
+                        
                     </div>
                 </div>
             </div>
@@ -45,8 +47,10 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list" >
                 <br>
-                <h3 style="text-align:center">Estadísticas</h3>
-                
+                <div style="text-align:center">
+                    <h2 >Estadísticas</h2>
+                    <p>Del {{$fecha_inicio}} al {{$fecha_final}}</p>
+                </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
@@ -90,10 +94,7 @@
                     <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="normal-table-list mg-t-30">
-                            <div class="basic-tb-hd">
-                                <p>Tables with borders on all possible sides of the Table and Cells</p>
-                            </div>
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="text-align:center;">
                             <thead>
                                 <tr>
                                 <th scope="col">Sector</th>
@@ -121,10 +122,7 @@
                     <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="normal-table-list mg-t-30">
-                            <div class="basic-tb-hd">
-                                <p>Tables with borders on all possible sides of the Table and Cells</p>
-                            </div>
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="text-align:center;">
                             <thead>
                                 <tr>
                                 <th scope="col">Tipo</th>
@@ -158,16 +156,20 @@
 <script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    function randomColor(){
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-        return "#"+randomColor;
-    }
 
+    var cont = 0
+    function colores_grafico_sector(){
+        var aux = cont
+        var colores_sector = ['#ffb3ba', '#baffc9', '#bae1ff'];
+        cont++
+        return colores_sector[aux]
+    }
+    
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ["Sector", "Cantidad", { role: "style" }],
         @foreach($instituciones_sector as $sector)
-        ["{{$sector->nombre_sector}}", {{$sector->cantidad}}, randomColor()],
+        ["{{$sector->nombre_sector}}", {{$sector->cantidad}}, colores_grafico_sector()],
         @endforeach
       ]);
 
@@ -201,16 +203,19 @@
 
     google.charts.load("current", {packages:["bar"]});
     google.charts.setOnLoadCallback(drawChart);
-    function randomColor(){
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-        return "#"+randomColor;
+    var cont2 = 0
+    function colores_grafico_instituciones(){
+        var aux = cont2
+        var colores_instituciones = ['#FFCBA5', '#ffede0', '#FFCBA5', '#ffede0', '#FFCBA5', '#ffede0', '#FFCBA5', '#ffede0', '#FFCBA5'];
+        cont2++
+        return colores_instituciones[aux]
     }
 
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Tipo de institución', 'Cantidad', { role: 'style' } ],
         @foreach($instituciones_tipo as $tipo)
-        ["{{$tipo->tipo_institucion}}", {{$tipo->cantidad}}, randomColor()],
+        ["{{$tipo->tipo_institucion}}", {{$tipo->cantidad}}, colores_grafico_instituciones()],
         @endforeach
       ]);
       var view = new google.visualization.DataView(data);

@@ -122,7 +122,7 @@
                         </div>
                     </div> <br><br><br>
                     <div class="col-10">
-                    <label style="padding-left:2%;">Buscar instituciones por fecha de creación <small style="color:#16D195;" ></small></label>
+                        <label style="padding-left:2%;">Buscar instituciones por fecha de creación <small style="color:#16D195;" ></small></label>
                         <form style="padding-left:10%;" method="GET" action="{{route('buscar_instituciones')}}">
                             <div class="form-example-int mg-t-15">
                                 <div class="col-lg-5 col-md-4 col-sm-6 col-xs-12">

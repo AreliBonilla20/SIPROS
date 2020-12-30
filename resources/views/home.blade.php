@@ -302,7 +302,7 @@
 
 </div>
 </div>
-<br><br><br><br><br><br><br>
+
 <!-- End Sale Statistic area-->
 <!-- Start Email Statistic area-->
 

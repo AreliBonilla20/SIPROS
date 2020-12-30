@@ -231,10 +231,15 @@ class EstudianteController extends Controller
         $estudiantes_genero = DB::table('sexos')->leftjoin('estudiantes', 'estudiantes.sexo_id', '=', 'sexos.id')
                                   ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
                                   ->groupBy('sexo')->get();
+                                  setlocale(LC_TIME, "Spanish");
 
-                                  
-        $colores = ['#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5','#B5EAD7', '#d1f0e5','#B5EAD7','#d1f0e5', '#B5EAD7', '#d1f0e5'];
-        return view('Expedientes/estadisticas', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'colores'));
+        $primer_estudiante = Estudiante::orderBy('created_at', 'ASC')->first();
+        $fecha_inicio = Fecha::fechaTexto($primer_estudiante->created_at);
+
+        $ultimo_estudiante = Estudiante::orderBy('created_at', 'DESC')->first();
+        $fecha_final = Fecha::fechaTexto($ultimo_estudiante->created_at);
+
+        return view('Expedientes/estadisticas', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'fecha_inicio', 'fecha_final'));
     }
 
 }

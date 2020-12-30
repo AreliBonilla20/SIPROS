@@ -45,8 +45,10 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list" >
                 <br>
-                <h3 style="text-align:center">Estadísticas</h3>
-                
+                <div style="text-align:center">
+                    <h2 >Estadísticas</h2>
+                    <p>Del {{$fecha_inicio}} al {{$fecha_final}}</p>
+                </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
@@ -81,35 +83,32 @@
                 
                 <br><br>
                 <div style="display:flex; flex-direction: column; align-items:center;">
-                <h4>PROYECTOS POR SECTOR DE INSTITUCIONES</h4>
-                    <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:15%;" ></div>
-                    <div id="grafico_sector_imagen" style="width: 900px; height: 500px;" hidden></div>
-                    <h4>Tabla de proyectos por sector</h4>
-                <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="normal-table-list mg-t-30">
-                        <div class="basic-tb-hd">
-                            <p>Tables with borders on all possible sides of the Table and Cells</p>
+                    <h4>PROYECTOS POR SECTOR DE INSTITUCIONES</h4>
+                        <div id="grafico_sector" style="width: 900px; height: 500px; padding-left:15%;" ></div>
+                        <div id="grafico_sector_imagen" style="width: 900px; height: 500px;" hidden></div>
+                        <h4>Tabla de proyectos por sector</h4>
+                    <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="normal-table-list mg-t-30">
+                            <table class="table table-striped" style="text-align:center;">
+                            <thead>
+                                <tr>
+                                <th scope="col">Sector</th>
+                                <th scope="col">Proyectos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($proyectos_sectores as $sector)
+                                <tr>
+                                    <td>{{$sector->nombre_sector}}</td>
+                                    <td>{{$sector->cantidad}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            </table>
                         </div>
-                        <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col">Sector</th>
-                            <th scope="col">Proyectos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($proyectos_sectores as $sector)
-                            <tr>
-                                <td>{{$sector->nombre_sector}}</td>
-                                <td>{{$sector->cantidad}}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                        </table>
                     </div>
-                </div>
-                </div>
+                    </div>
                 <br><br><br>
 
                 <h4>PROYECTOS POR TIPO DE INSTITUCIONES</h4>
@@ -124,7 +123,7 @@
                     
                                 <p></p>
                             </div>
-                            <table class="table table-striped">
+                            <table class="table table-striped" style="text-align:center;">
                             <thead>
                                 <tr>
                                 <th scope="col">Tipo</th>
@@ -158,16 +157,19 @@
 <script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    function randomColor(){
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-        return "#"+randomColor;
+    var cont = 0
+    function colores_grafico_sector(){
+        var aux = cont
+        var colores_sector = ['#fcf6bd', '#a9def9', '#fec3a6'];
+        cont++
+        return colores_sector[aux]
     }
 
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ["Sector", "Cantidad de proyectos", { role: "style" }],
         @foreach($proyectos_sectores as $sector)
-        ["{{$sector->nombre_sector}}", {{$sector->cantidad}}, randomColor()],
+        ["{{$sector->nombre_sector}}", {{$sector->cantidad}}, colores_grafico_sector()],
         @endforeach
       ]);
 
@@ -201,16 +203,19 @@
 
     google.charts.load("current", {packages:["bar"]});
     google.charts.setOnLoadCallback(drawChart);
-    function randomColor(){
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-        return "#"+randomColor;
+    var cont2 = 0
+    function colores_grafico_instituciones(){
+        var aux = cont2
+        var colores_instituciones = ['#ff97b7', '#ffe0ea', '#ff97b7', '#ffe0ea', '#ff97b7', '#ffe0ea', '#ff97b7', '#ffe0ea', '#ff97b7'];
+        cont2++
+        return colores_instituciones[aux]
     }
 
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Tipo de institución', 'Cantidad de proyectos', { role: 'style' } ],
         @foreach($proyectos_institucion as $tipo)
-        ["{{$tipo->tipo_institucion}}", {{$tipo->cantidad}}, randomColor()],
+        ["{{$tipo->tipo_institucion}}", {{$tipo->cantidad}}, colores_grafico_instituciones()],
         @endforeach
       ]);
       var view = new google.visualization.DataView(data);
