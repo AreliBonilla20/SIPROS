@@ -193,7 +193,7 @@
                                     <td>{{$estudiante->apellidos}}</td>
                                     <td>{{$estudiante->carrera->nombre_carrera}}</td>
                                     <td>
-                                        <a class="btn btn-default notika-btn-default" href="{{route('editar_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                        <a class="btn btn-default notika-btn-default" href="{{route('editar_expediente', $estudiante->carne)}}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                 
                                     <td>

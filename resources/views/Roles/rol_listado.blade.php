@@ -78,8 +78,7 @@
                                                     <td>{{$rol->slug}}</td> 
 
                                                     <td>
-                                                    <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';" 
-                                                    style="color:white;" href="{{ route('editar_rol', $rol->id) }}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-list-alt"></span>  Editar rol</a>
+                                                    <a class="btn btn-default notika-btn-default" href="{{ route('editar_rol', $rol->id) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                                     </td>
                             
                                                 </tr>

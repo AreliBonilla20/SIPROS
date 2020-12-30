@@ -193,7 +193,7 @@
                                     <td>{{$proyecto->nombre_encargado}}</td>
                                     <td>{{$proyecto->estado_proyecto}}</td>
                                     <td>
-                                        <a class="btn btn-default notika-btn-default" href="{{route('editar_proyecto', $proyecto->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                        <a class="btn btn-default notika-btn-default" href="{{route('editar_proyecto', $proyecto->id)}}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     </td>
                                     <td>
                                         <a class="btn btn-warning notika-btn-warning" href="{{route('ver_proyecto', $proyecto->id)}}"><span class="glyphicon glyphicon-th-list"></span> Consultar</a>

@@ -20,8 +20,11 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $roles = Role::get();
 
-        return view('Usuarios/usuarios_listado', compact('users'));
+        $roles_usuarios = DB::select('select * from role_user');
+
+        return view('Usuarios/usuarios_listado', compact('users', 'roles', 'roles_usuarios'));
     }
 
     /**
@@ -116,7 +119,7 @@ class UserController extends Controller
                 ]);
             }
 
-        return redirect()->route('usuarios')->with('actualizado', 'Rol asignado a usuario correctamente');
+        return redirect()->route('usuarios')->withSuccess('Rol asignado a usuario correctamente');
     }
 
     /**

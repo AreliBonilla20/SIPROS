@@ -341,6 +341,6 @@
 ============================================ -->
 <script src="{{ asset('js/data-table/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/data-table/data-table-act.js') }}"></script>
-@include('sweetalert::alert') 
+@include('sweetalert::alert')
 
 </html>
