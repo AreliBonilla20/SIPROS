@@ -6,6 +6,7 @@ use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use DB;
+use Crypt;
 
 class User extends Authenticatable
 {
@@ -48,5 +49,9 @@ class User extends Authenticatable
                         ->get();
 
         return $nombre_rol->pluck('nombre')->first();
+    }
+
+    public function password_decrypt(){
+        return Crypt::decrypt($this->password);
     }
 }

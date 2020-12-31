@@ -27,7 +27,9 @@ class MemoriaController extends Controller
      */
     public function create($id)
     {
-        $asignaciones = Asignacion::where('carne', $id)->get();
+        $asignaciones = Asignacion::where('carne', $id)
+                        ->where('estado_asignacion','Iniciado')
+                        ->get();
         return view('Memorias/memoria_nueva', compact('asignaciones'));
     }
 

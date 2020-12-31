@@ -47,7 +47,7 @@ class UserController extends Controller
         User::create([
             'name'     => $request['name'],
             'email'    => $request['email'],
-            'password' => Hash::make($request['password']),
+            'password' => bcrypt($request['password']),
         ]);
 
         return redirect()->route('usuarios')->with('agregado', 'Usuario agregado correctamente');
@@ -90,8 +90,24 @@ class UserController extends Controller
     {
 
         $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $users = User::all();
+        foreach ($users as $user) {
+            if ($user->email == $request->email) {
+                alert()->error('Error', 'Ya existe un usuario con el email ingresado.');
+                return redirect()->route('users.edit', $id);
+            }
+        }
+        $user->email = $request->email;
 
-        //$user->update($request->all());
+        if($request->password){
+            $user->password = Hash::make($request['password']);
+        }
+        else{
+            $user->password = $user->password;
+        }
+        $user->save();
+
 
         $resultado = DB::table('role_user')->where('user_id', $id)->first();
         if ($resultado==null) {
@@ -117,7 +133,7 @@ class UserController extends Controller
                 ]);
             }
 
-        return redirect()->route('usuarios')->withSuccess('Rol asignado a usuario correctamente');
+        return redirect()->route('usuarios')->withSuccess('Información de usuario actualizada correctamente');
     }
 
     /**

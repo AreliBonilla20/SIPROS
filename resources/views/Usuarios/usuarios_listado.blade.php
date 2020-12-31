@@ -55,7 +55,7 @@
                                     <th>Nombre</th>
                                     <th>Correo electrónico</th>
                                     <th>Rol</th>
-                                    <th>Asignar rol</th>
+                                    <th>Acción</th>
 
                                 </tr>
                             </thead>
@@ -74,62 +74,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#actualizar_prorroga_{{$loop->iteration}}"><span class="glyphicon glyphicon-check"></span> Asignar rol</button>
-
-                                        <div class="modal fade" id="actualizar_prorroga_{{$loop->iteration}}" role="dialog">
-                                            <div class="modal-dialog modals-default">
-                                                <div class="modal-content">
-                                                    <form action="{{route('users.update', $usuario->id)}}" method="POST">
-                                                        @method('PUT')
-                                                        @csrf
-                                        
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-                                                        <h4 class="text-center">Asignación de rol.</h4>
-                                                        <p>Asigne el rol que tendrá el usuario.</p>
-
-
-                                                        <div class="modal-body">
-                                                            <label for="name">Usuario <small style="color:#16D195;" >*</small></label>
-                                                            <div class="form-group ic-cmp-int">
-                                                                <div class="form-ic-cmp">
-                                                                    <i class="notika-icon notika-support"></i>
-                                                                </div>
-                                                                <div class="nk-int-st">
-                                                                    <input type="text" value="{{$usuario->name}}" class="form-control input-sm" name="name" id="name" placeholder="Nombre del usuario"  readonly>
-                                                                </div>
-                                                            </div>
-                                                            <label for="role_id" >Rol de usuario <small style="color:#16D195;" >*</small></label>
-                                                            <div class="form-example-int mg-t-15">
-                                                                <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">
-                                                                    <div class="bootstrap-select fm-cmp-mg">
-                                                                        <select class="selectpicker" data-live-search="true" name="role_id" id="role_id" >
-                                                                            <option value="">--Seleccione un rol-</option>
-                                                                            @foreach ($roles as $rol)
-                                                                            <option value="{{$rol->id}}" {{ $rol->id == $usuario->id_rol() ? "selected" : "" }}>{{$rol->name}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                        @foreach ($errors->get('role_id') as $mensaje)
-                                                                        <small style="color:#B42020;">{{ $mensaje }}</small>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <br><br><br>
-                                                        </div>
-
-                                                        <br><br>
-                                                        <div class="modal-footer">
-                                                            <button data-toggle="tooltip" data-placement="left"
-                                                                class="btn btn-default"><i class="notika-icon notika-form"></i> Guardar asignación</button>
-                                                        </div>
-                                        
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        <a href="{{ route('users.edit', $usuario->id) }}"><button type="button" class="btn btn-default notika-btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar / Asignar rol</button></a>
                                     </td>
 
                                 </tr>
