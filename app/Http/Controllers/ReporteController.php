@@ -113,15 +113,24 @@ class ReporteController extends Controller
 
     /*Función para generar el certificado de servicio social*/
     public function pdfCertificado($carne){
+
         $estudiante = Estudiante::findOrFail($carne);//Devuelve el estudiante con el carne solicitado.
-        $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
         $asignacion = Asignacion::where('carne', '=', $carne)->first();
+        $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
+        $memoria = Memoria::where('asignacion_id', $asignacion->id)->first();
+
+        if(true){
+            return redirect()->route('ver_expediente', $carne)->withWarning('No se ha registrado memoria para este proyecto!');
+        }
+        
         $now=Carbon::now();//Obtiene la fecha actual
         setlocale(LC_TIME, "Spanish");//Traducir la fecha a español
         $fecha_actual = $now->format('d/m/Y');
         $fecha_actual = Fecha::fechaTexto($fecha_actual);//Invocamos a la función fechaTexto para convertir a texto
         $fecha_inicio = Fecha::fechaTexto($proyecto->fecha_inicio);
         $fecha_fin = Fecha::fechaTexto($proyecto->fecha_fin);
+
+        
         
         //Actualizar estado de constancia de certificación
         $memoria_actualizar = Memoria::where('asignacion_id', '=', $asignacion->id)->first();
@@ -164,17 +173,13 @@ class ReporteController extends Controller
                                   ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
                                   ->groupBy('sexo')->get();
 
-        setlocale(LC_TIME, "Spanish");
-        $primer_estudiante = Estudiante::orderBy('created_at', 'ASC')->first();
-        $fecha_inicio = Fecha::fechaTexto($primer_estudiante->created_at);
-
-        $ultimo_estudiante = Estudiante::orderBy('created_at', 'DESC')->first();
-        $fecha_final = Fecha::fechaTexto($ultimo_estudiante->created_at);
+        //Llama a la función fecha_hoy, que devulve la fecha actual con formato cadena
+        $fecha_actual = Fecha::fecha_hoy();
 
         $url_grafico_generos = $request->url_grafico_generos;
         $url_grafico_carreras = $request->url_grafico_carreras;
 
-        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'url_grafico_generos', 'url_grafico_carreras', 'fecha_inicio', 'fecha_final'));
+        $pdf = PDF::loadView('Reportes/estadisticas_estudiantes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'url_grafico_generos', 'url_grafico_carreras', 'fecha_actual'));
         return $pdf->stream('Estadisticas_estudiantes.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 
@@ -205,16 +210,11 @@ class ReporteController extends Controller
         $url_grafico_sectores = $request->url_grafico_sectores;
         $url_grafico_tipo_instituciones = $request->url_grafico_tipo_instituciones;
 
-        setlocale(LC_TIME, "Spanish");
-        $primera_institucion = Institucion::orderBy('created_at', 'ASC')->first();
-        $fecha_inicio = Fecha::fechaTexto($primera_institucion->created_at);
-
-        $ultima_institucion = Institucion::orderBy('created_at', 'DESC')->first();
-        $fecha_final = Fecha::fechaTexto($ultima_institucion->created_at);
-
+        //Llama a la función fecha_hoy, que devulve la fecha actual con formato cadena
+        $fecha_actual = Fecha::fecha_hoy();
         
 
-        $pdf = PDF::loadView('Reportes/reporte_estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'url_grafico_tipo_instituciones', 'url_grafico_sectores', 'fecha_inicio', 'fecha_final', 'instituciones_sin_proyecto'));
+        $pdf = PDF::loadView('Reportes/reporte_estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'url_grafico_tipo_instituciones', 'url_grafico_sectores', 'fecha_actual', 'instituciones_sin_proyecto'));
         return $pdf->stream('Estadisticas_instituciones.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 
@@ -237,17 +237,10 @@ class ReporteController extends Controller
         $url_grafico_sectores = $request->url_grafico_sectores;
         $url_grafico_tipo_instituciones = $request->url_grafico_tipo_instituciones;
 
-        setlocale(LC_TIME, "Spanish");
-        $primer_proyecto = Proyecto::orderBy('created_at', 'ASC')->first();
-        $fecha_inicio = Fecha::fechaTexto($primer_proyecto->created_at);
+       //Llama a la función fecha_hoy, que devulve la fecha actual con formato cadena
+        $fecha_actual = Fecha::fecha_hoy();
 
-        $ultimo_proyecto = Proyecto::orderBy('created_at', 'DESC')->first();
-        $fecha_final = Fecha::fechaTexto($ultimo_proyecto->created_at);    
-
-        $url_grafico_generos = $request->url_grafico_generos;
-        $url_grafico_carreras = $request->url_grafico_carreras;
-
-        $pdf = PDF::loadView('Reportes/reporte_estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles', 'url_grafico_sectores', 'url_grafico_tipo_instituciones', 'fecha_inicio', 'fecha_final'));
+        $pdf = PDF::loadView('Reportes/reporte_estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles', 'url_grafico_sectores', 'url_grafico_tipo_instituciones', 'fecha_actual'));
         return $pdf->stream('Estadisticas_proyectos.pdf');//Retorna el reporte de las estadísticas de los expedientes
      }
 

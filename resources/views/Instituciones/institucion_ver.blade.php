@@ -84,6 +84,18 @@
                             </div>
                         </div>
                     </div>
+
+                        <div class="row">
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                            <strong>Dirección</strong>
+                            <div class="form-group">
+                                <div class="nk-int-st">
+                                    <input type="text" class="form-control" value="{{$institucion->direccion}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

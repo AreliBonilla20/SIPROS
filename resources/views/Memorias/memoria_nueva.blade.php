@@ -7,6 +7,7 @@
     <div class="container" >
         <div class="row" >
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="{{route('ver_expediente', $id)}}"><button type="button" style="color:white; position:absolute; right:5%; top:30%;" class="btn notika-btn-blue btn-icon-notika waves-effect"><span class="notika-icon notika-left-arrow"></span> Regresar</button></a>                
                 <div class="breadcomb-list">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -16,6 +17,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Registro de memoria</h2>
+                                    @if(count($asignaciones) > 0)
                                     <p>Ingrese los datos de la memoria</p>
                                 </div>
                             </div>
@@ -261,11 +263,17 @@
                                     </div>
                                 </form>
                             </div>
+                            @else
+                            <p>No hay proyectos asignados, no se pueden registrar memorias!</p>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 @endsection

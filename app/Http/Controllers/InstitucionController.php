@@ -95,12 +95,12 @@ class InstitucionController extends Controller
      */
     public function edit($id)
     {
-        $institucion_actualizar = App\Institucion::findOrFail($id);
-        $sectores              = App\Sector::all();
-        $tipo_instituciones    = App\TipoInstitucion::all();
-        $regiones              = App\Region::all();
-        $departamentos         = App\Departamento::all();
-        $municipios            = App\Municipio::all();
+        $institucion_actualizar = Institucion::findOrFail($id);
+        $sectores              = Sector::all();
+        $tipo_instituciones    = TipoInstitucion::all();
+        $regiones              = Region::all();
+        $departamentos         = Departamento::all();
+        $municipios            = Municipio::all();
 
         return view('Instituciones/institucion_editar', compact('institucion_actualizar', 'sectores', 'tipo_instituciones', 'regiones', 'departamentos', 'municipios'));
     }
@@ -114,7 +114,7 @@ class InstitucionController extends Controller
      */
     public function update(InstitucionRequest $request, $id)
     {
-        $institucion_actualizar                      = App\Institucion::findOrFail($id);
+        $institucion_actualizar                      = Institucion::findOrFail($id);
         $institucion_actualizar->nombre              = $request->nombre;
         $institucion_actualizar->tipo_institucion_id = $request->tipo_institucion_id;
         $institucion_actualizar->direccion           = $request->direccion;
@@ -122,17 +122,15 @@ class InstitucionController extends Controller
         $institucion_actualizar->id_departamento     = $request->id_departamento;
         $institucion_actualizar->id_municipio        = $request->id_municipio;
         $institucion_actualizar->sector_id           = $request->sector_id;
-        $institucion_actualizar->save();
 
         if ($institucion_actualizar->save()) {
-            toast('Institución actualizada correctamente!', 'success');
-            return redirect()->route('ver_institucion', $institucion_actualizar);
+            return redirect()->route('ver_institucion', $institucion_actualizar)->withSuccess('Institución actualizada correctamente!');
         } else {
-            toast('Ha ocurrido un error!', 'error');
-            return redirect('instituciones');
+            return redirect('editar_institucion', $institucion_actualizar)->withWarning('Ha ocurrido un error!');
         }
     }
 
+    //Función que permite buscar instituciones por fechas de creación, recibe como parámetro una fecha inicio y una fecha final de la búsqueda
     public function buscar(BusquedaRequest $request)
     {
         $inicio = $request->get('fecha_inicio');
@@ -145,6 +143,7 @@ class InstitucionController extends Controller
     }
 
 
+    //Se calculan las estadísticas correspondientes a los estudiantes hasta la fecha actual
     public function estadisticas()
     {   
        
@@ -164,14 +163,10 @@ class InstitucionController extends Controller
         $instituciones_inactivas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
                                 ->where('proyectos.estado_proyecto','No disponible')
                                 ->count();
-        
-        setlocale(LC_TIME, "Spanish");
-        $primera_institucion = Institucion::orderBy('created_at', 'ASC')->first();
-        $fecha_inicio = Fecha::fechaTexto($primera_institucion->created_at);
 
-        $ultima_institucion = Institucion::orderBy('created_at', 'DESC')->first();
-        $fecha_final = Fecha::fechaTexto($ultima_institucion->created_at);                       
+        //Llama a la función fecha_hoy, que devulve la fecha actual con formato cadena
+        $fecha_actual = Fecha::fecha_hoy();       
 
-        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'fecha_inicio', 'fecha_final'));
+        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'fecha_actual'));
     }
 }

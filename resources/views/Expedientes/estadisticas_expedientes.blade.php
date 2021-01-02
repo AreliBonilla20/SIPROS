@@ -47,7 +47,7 @@
                 <br>
                 <div style="text-align:center">
                     <h2 >Estadísticas</h2>
-                    <p>Del {{$fecha_inicio}} al {{$fecha_final}}</p>
+                    <p>Datos calculados hasta el {{$fecha_actual}}</p>
                 </div>
                 
                 <div class="row">

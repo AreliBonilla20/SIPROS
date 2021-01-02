@@ -51,9 +51,13 @@ class ProrrogaController extends Controller
         $prorroga->carne=$request->carne;
         $prorroga->fecha_solicitud=$request->fecha_solicitud;
         $prorroga->estado="Pendiente";
-        $prorroga->save();
 
-        return back()->withSuccess('¡Prórroga creada correctamente!');
+        if ($prorroga->save()) {
+            return back()->withSuccess('¡Prórroga creada correctamente!');
+        } else {
+            return back()->withSuccess('¡Ha ocurrido un error!');
+        }
+
     }
 
     /**
@@ -93,7 +97,11 @@ class ProrrogaController extends Controller
         $prorroga_actualizar->estado=$request->estado;
         $prorroga_actualizar->save();
 
-        return back()->withSuccess('¡Prórroga actualizada correctamente!');
+        if ($prorroga_actualizar->save()) {
+            return back()->withSuccess('¡Prórroga actualizada correctamente!');
+        } else {
+            return back()->withSuccess('¡Ha ocurrido un error!');
+        }
     }
 
     /**

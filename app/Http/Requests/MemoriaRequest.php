@@ -26,7 +26,7 @@ class MemoriaRequest extends FormRequest
         return [
             'asignacion_id'         => 'required',
             'fecha_inicio'          => 'required',
-            'fecha_fin'             => 'required',
+            'fecha_fin'             => 'required|after:fecha_inicio',
             'inversion_institucion' => 'required|numeric',
             'inversion_estudiante'  => 'required|numeric',
             'horas_completadas'     => 'required|numeric',
@@ -39,6 +39,7 @@ class MemoriaRequest extends FormRequest
             'asignacion_id.required'         => 'El campo proyecto es obligatorio.',
             'fecha_inicio.required'          => 'El campo fecha inicio es obligatorio.',
             'fecha_fin.required'             => 'El campo fecha final es obligatorio.',
+            'fecha_fin.after'                => 'La fecha final debe ser posterior a la fecha de inicio.',
             'inversion_institucion.required' => 'El campo inversión institución es obligatorio.',
             'inversion_institucion.numeric'  => 'El campo inversión institución debe se una cantidad.',
             'inversion_estudiante.required'  => 'El campo inversión estudiante es obligatorio.',

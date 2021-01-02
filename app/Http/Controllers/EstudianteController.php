@@ -8,6 +8,7 @@ use App\Carrera;
 use App\Departamento;
 use App\Estudiante;
 use App\Http\Requests\EstudianteRequest;
+use App\Http\Requests\EstudianteEditarRequest;
 use App\Http\Requests\BusquedaRequest;
 use App\Institucion;
 use App\Municipio;
@@ -87,39 +88,20 @@ class EstudianteController extends Controller
         $estudiante->estado_servicio   = "No iniciado";
         $estudiante->horas_registradas = 0;
 
-        /*Calculo de la edad*/
-        $now             = Carbon::now();
-        $fecha_actual    = $now->format('d-m-Y'); //Calcula la fecha actual
-        $diferencia_edad = strtotime($fecha_actual) - strtotime($estudiante->fecha_nacimiento); //Resta la fecha actual con la fecha de nacimiento
-        $edad            = intval($diferencia_edad / 60 / 60 / 24 / 365.25); /*Se obtiene el resultado en la mas minima expresión en entero donde los valores divididos representan segundos,minutos,horas,días
-        y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
-         */
+        //Se llama a la función calcular_edad
+        $edad = $this->calcular_edad($estudiante->fecha_nacimiento);
+
+        //Se valida que el estudiante sea mayor de edad
         if ($edad < 18) {
             alert()->error('Error', 'El estudiante debe ser mayor de edad.');
-            return redirect()->route('expedientes');
+            return redirect()->route('crear_expediente');
         }
-        $alumnos = Estudiante::all();
-
-        foreach ($alumnos as $a) {
-            if ($a->carne == $estudiante->carne) {
-                $carnet_registrado = true;
-            }
-
-            if ($a->dui == $estudiante->dui) {
-                $dui_registrado = true;
-            }
-        }
-
-        if ($carnet_registrado == true) {
-            alert()->error('Error', 'Ya existe un registro con el Carnet ingresado.');
-            return redirect()->route('expedientes');
-        } elseif ($dui_registrado == true) {
-            alert()->error('Error', 'Ya existe un registro con el DUI ingresado.');
-            return redirect()->route('expedientes');
-        } else {
-            $estudiante->save();
+ 
+        //Si ya hay un registro con el mismo carne o DUI se mostrará un mensaje de error, de lo contrario se almacena el registro
+        if($estudiante->save()){
+            
             return redirect()->route('ver_expediente', $estudiante->carne)->withSuccess('Expediente agregado correctamente!');
-        };
+        }
 
     }
 
@@ -137,10 +119,8 @@ class EstudianteController extends Controller
         $prorrogas         = Prorroga::where('carne', $estudiante->carne)->get();
         $porcentaje_avance = (100 / 500) * $estudiante->horas_registradas;
 
-        $now             = Carbon::now();
-        $fecha_actual    = $now->format('d-m-Y');
-        $diferencia_edad = strtotime($fecha_actual) - strtotime($estudiante->fecha_nacimiento);
-        $edad            = intval($diferencia_edad / 60 / 60 / 24 / 365.25);
+        //Se llama a la función calcular_edad
+        $edad = $this->calcular_edad($estudiante->fecha_nacimiento);
 
         return view('Expedientes/expediente_ver', compact('estudiante', 'proyectos', 'asignaciones', 'prorrogas', 'porcentaje_avance', 'edad'));
 
@@ -174,17 +154,15 @@ class EstudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EstudianteRequest $request, $carne)
+    public function update(EstudianteEditarRequest $request, $carne)
     {
         $estudiante_actualizar = Estudiante::findOrFail($carne);
-        $carnet_registrado    = false;
-        $dui_registrado       = false;
 
-        $estudiante_actualizar->carne             = $request->carne;
+        $estudiante_actualizar->carne             = $estudiante_actualizar->carne;
         $estudiante_actualizar->nombres           = $request->nombres;
         $estudiante_actualizar->apellidos         = $request->apellidos;
         $estudiante_actualizar->fecha_nacimiento  = $request->fecha_nacimiento;
-        $estudiante_actualizar->dui               = $request->dui;
+        $estudiante_actualizar->dui               = $estudiante_actualizar->dui;
         $estudiante_actualizar->direccion         = $request->direccion;
         $estudiante_actualizar->email             = $request->email;
         $estudiante_actualizar->telefono          = $request->telefono;
@@ -196,16 +174,28 @@ class EstudianteController extends Controller
         $estudiante_actualizar->estado_servicio   = $estudiante_actualizar->estado_servicio;
         $estudiante_actualizar->horas_registradas = 0;
 
-        if ($estudiante_actualizar->save()) {
-            toast('Expediente actualizado correctamente!', 'success');
-            return redirect()->route('ver_expediente', $estudiante_actualizar->carne);
+        if ($estudiante_actualizar->update()) {
+            return redirect()->route('ver_expediente', $carne)->withSuccess('Expediente actualizado correctamente!');
         } else {
-            toast('Ha ocurrido un error!', 'error');
-            return redirect()->route('ver_expediente', $estudiante_actualizar->carne);
+            return redirect()->route('editar_expediente', $carne)->withWarning('Ha ocurrido un error!');
         }
 
     }
 
+    //Función que calcula la edad, el parámetro que recibe es la fecha de nacimiento
+
+    public function calcular_edad($fecha_nacimiento){
+        /*Calculo de la edad*/
+        $now             = Carbon::now();
+        $fecha_actual    = $now->format('d-m-Y'); //Calcula la fecha actual
+        $diferencia_edad = strtotime($fecha_actual) - strtotime($fecha_nacimiento); //Resta la fecha actual con la fecha de nacimiento
+        $edad            = intval($diferencia_edad / 60 / 60 / 24 / 365.25); /*Se obtiene el resultado en la mas minima expresión en entero donde los valores divididos representan segundos,minutos,horas,días
+        y el 365.25 es por que cada 4 años hay un año bisisesto si no se coloca  la fracción entonces la edad sería en decimales
+         */
+        return $edad;
+    }
+
+    //Función que permite buscar expedientes por fechas de creación, recibe como parámetro una fecha inicio y una fecha final de la búsqueda
     public function buscar(BusquedaRequest $request)
     {
         $inicio = $request->get('fecha_inicio');
@@ -218,6 +208,7 @@ class EstudianteController extends Controller
     }
 
 
+    //Se calculan las estadísticas correspondientes a los estudiantes hasta la fecha actual
     public function estadisticas()
     {
         $estudiantes_inscritos = Estudiante::all()->count();
@@ -231,15 +222,11 @@ class EstudianteController extends Controller
         $estudiantes_genero = DB::table('sexos')->leftjoin('estudiantes', 'estudiantes.sexo_id', '=', 'sexos.id')
                                   ->select(DB::raw('count(estudiantes.carne) as porcentaje, sexo'))
                                   ->groupBy('sexo')->get();
-                                  setlocale(LC_TIME, "Spanish");
+        
+        //Llama a la función fecha_hoy, que devulve la fecha actual con formato cadena
+        $fecha_actual = Fecha::fecha_hoy();
 
-        $primer_estudiante = Estudiante::orderBy('created_at', 'ASC')->first();
-        $fecha_inicio = Fecha::fechaTexto($primer_estudiante->created_at);
-
-        $ultimo_estudiante = Estudiante::orderBy('created_at', 'DESC')->first();
-        $fecha_final = Fecha::fechaTexto($ultimo_estudiante->created_at);
-
-        return view('Expedientes/estadisticas', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'fecha_inicio', 'fecha_final'));
+        return view('Expedientes/estadisticas_expedientes', compact('estudiantes_inscritos', 'estudiantes_servicio_iniciado', 'estudiantes_servicio_no_iniciado', 'estudiantes_servicio_terminado', 'estudiantes_carrera', 'estudiantes_genero', 'fecha_actual'));
     }
 
 }

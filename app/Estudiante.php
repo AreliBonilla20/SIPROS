@@ -40,4 +40,10 @@ class Estudiante extends Model
     {
         return $this->belongsTo(Area::class, 'area_id', 'id');
     }
+
+    public function asignaciones()
+    {
+        return $this->hasMany(Asignacion::class, 'carne', 'carne');
+    }
+
 }

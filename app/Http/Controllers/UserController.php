@@ -47,7 +47,7 @@ class UserController extends Controller
         User::create([
             'name'     => $request['name'],
             'email'    => $request['email'],
-            'password' => bcrypt($request['password']),
+            'password' => Hash::make($request['password']),
         ]);
 
         return redirect()->route('usuarios')->with('agregado', 'Usuario agregado correctamente');

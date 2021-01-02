@@ -50,10 +50,8 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" value="{{$estudiante_actualizar->carne}}" name="carne" placeholder="AA#####" readonly>
-                                            @foreach ($errors->get('carne') as $mensaje)
-                                            <small style="color:#B42020;">{{ $mensaje }}</small>
-                                            @endforeach
+                                            <input type="text" class="form-control" value="{{$estudiante_actualizar->carne}}" placeholder="AA#####" readonly>
+            
                                         </div>
                                     </div>
                                     <label for="nombres">Nombres <small style="color:#16D195;" >*</small></label>
@@ -86,10 +84,7 @@
                                             <i class="notika-icon notika-support"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="date" value="{{$estudiante_actualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento">
-                                            @foreach ($errors->get('fecha_nacimiento') as $mensaje)
-                                            <small style="color:#B42020;">{{ $mensaje }}</small>
-                                            @endforeach
+                                            <input type="date" value="{{$estudiante_actualizar->fecha_nacimiento}}" class="form-control" name="fecha_nacimiento" readonly>
                                         </div>
                                     </div>
                                     <label for="sexo_id" >Género <small style="color:#16D195;" >*</small></label>
@@ -152,10 +147,8 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control"  value="{{$estudiante_actualizar->dui}}" name="dui" placeholder="00000000-0" readonly>
-                                        @foreach ($errors->get('dui') as $mensaje)
-                                        <small style="color:#B42020;">{{ $mensaje }}</small>
-                                        @endforeach
+                                        <input type="text" class="form-control"  value="{{$estudiante_actualizar->dui}}" placeholder="00000000-0" readonly>
+                                    
                                     </div>
                                 </div>
                                 <label>Dirección <small style="color:#16D195;" >*</small></label>

@@ -31,9 +31,11 @@ class AvisoController extends Controller
         $aviso->save();
 
         if ($aviso->save()) {
-            return redirect()->route('sitio_avisos')->withSuccess('Aviso agregado correctamente!');
+            alert()->success('Aviso creado correctamente!');
+            return redirect()->route('sitio_avisos');
         } else {
-            return redirect()->route('sitio_avisos')->withWarning('Ha ocurrido un error!');
+            alert()->warning('Ha ocurrido un error!');
+            return redirect()->route('sitio_avisos');
         }
     }
 
@@ -48,9 +50,7 @@ class AvisoController extends Controller
 
     public function edit($id)
     {
-
         $aviso = Aviso::findOrFail($id);
-
         return view('AdminSitio/avisoeditar', compact('aviso'));
     }
 
@@ -65,10 +65,10 @@ class AvisoController extends Controller
         }
         
         if ($aviso->save()) {
-            toast('Aviso actualizado correctamente!', 'success');
+            alert()->success('Aviso actualizado correctamente!');
             return redirect()->route('sitio_avisos');
         } else {
-            toast('Ha ocurrido un error!', 'error');
+            alert()->warning('Ha ocurrido un error!');
             return redirect()->route('sitio_avisos');
         }
     }

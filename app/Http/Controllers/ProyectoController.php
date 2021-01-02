@@ -128,14 +128,13 @@ class ProyectoController extends Controller
         $proyecto->estudiantes_inscritos   = 0;
 
         if ($proyecto->save()) {
-            toast('Proyecto actualizado correctamente!', 'success');
-            return redirect()->route('ver_proyecto', $proyecto);
+            return redirect()->route('ver_proyecto', $proyecto)->withSuccess('Proyecto actualizado correctamente!');
         } else {
-            toast('Ha ocurrido un error!', 'error');
-            return redirect('proyectos');
+            return redirect('editar_proyecto', $proyecto)->withWarning('Ha ocurrido un error!');
         }
     }
 
+    //Función que permite buscar proyectos por fechas de creación, recibe como parámetro una fecha inicio y una fecha final de la búsqueda
     public function buscar(BusquedaRequest $request)
     {
         $inicio = $request->get('fecha_inicio');
@@ -147,6 +146,7 @@ class ProyectoController extends Controller
         return view('Proyectos/proyectos_listado', compact('proyectos', 'inicio', 'final', 'inicio_formato', 'final_formato'));
     }
 
+    //Se calculan las estadísticas correspondientes a los proyectos hasta la fecha actual
     public function estadisticas()
     {
         $proyectos = Proyecto::all()->count();
@@ -163,14 +163,9 @@ class ProyectoController extends Controller
         $proyectos_disponibles = Proyecto::where('estado_proyecto','Disponible')->count();
         $proyectos_no_disponibles = Proyecto::where('estado_proyecto','No disponible')->count();
 
-        setlocale(LC_TIME, "Spanish");
-        $primer_proyecto = Proyecto::orderBy('created_at', 'ASC')->first();
-        $fecha_inicio = Fecha::fechaTexto($primer_proyecto->created_at);
+        $fecha_actual = Fecha::fecha_hoy();
 
-        $ultimo_proyecto = Proyecto::orderBy('created_at', 'DESC')->first();
-        $fecha_final = Fecha::fechaTexto($ultimo_proyecto->created_at);    
-
-        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles', 'fecha_inicio', 'fecha_final'));
+        return view('Proyectos/estadisticas_proyectos', compact('proyectos', 'proyectos_sectores', 'proyectos_institucion', 'proyectos_disponibles', 'proyectos_no_disponibles', 'fecha_actual'));
     }
 
 }

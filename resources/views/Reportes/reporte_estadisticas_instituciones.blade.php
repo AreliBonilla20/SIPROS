@@ -34,7 +34,7 @@
                 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h5><strong>REPORTE ESTADÍSTICO DE INSTITUCIONES</strong></h5>
-                <p>Del {{$fecha_inicio}} al {{$fecha_final}}</p>
+                <p>Datos calculados hasta el {{$fecha_actual}}</p>
                 <br>
                 <h5><strong>Datos generales</strong></h5>
                 <div class="normal-table-list mg-t-30">
