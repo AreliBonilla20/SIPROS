@@ -92,8 +92,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $users = User::all();
-        foreach ($users as $user) {
-            if ($user->email == $request->email) {
+        foreach ($users as $user1) {
+            if ($user1->email == $request->email && $request->email != $user->email) {
                 alert()->error('Error', 'Ya existe un usuario con el email ingresado.');
                 return redirect()->route('users.edit', $id);
             }

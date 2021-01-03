@@ -271,6 +271,7 @@
     </div>
 </div>
 
+@can('users.index')
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <div class="contact-list sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
         <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
@@ -286,6 +287,8 @@
         <a href="{{ route('usuarios') }}"><button style="color:white;" class="btn notika-btn-deeporange">Usuarios</button></a>
     </div>
 </div>
+@endcan
+@can('roles.index')
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <div class="contact-list sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
         <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
@@ -301,6 +304,7 @@
         <a href="{{ route('roles') }}"><button style="color:white;" class="btn notika-btn-cyan">Roles</button></a>
     </div>
 </div>
+@endcan
 </div>
 
 </div>

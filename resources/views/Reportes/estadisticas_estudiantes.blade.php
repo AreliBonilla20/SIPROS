@@ -87,7 +87,6 @@
                 </div>
                 </div>
             <div>
-            
             <div style="display:flex; flex-direction: column; align-items:center; text-align:center;" >
                 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
