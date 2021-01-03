@@ -270,19 +270,21 @@
 
    <br><br>
     @yield('content')
-    <br><br>
-<div class="footer-copyright-area" style="background: #2d2e2e;">
+    <br><br><br><br>
+
+<div class="footer-copyright-area" style="background: #2d2e2e; position:fixed; bottom:0; width:100%;">
 <div class="container">
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="footer-copy-right">
         <p>Derechos reservados © 2020
             <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
-        </div>
     </div>
 </div>
 </div>
 </div>
+</div>
+
 
   <!-- jquery
 		============================================ -->

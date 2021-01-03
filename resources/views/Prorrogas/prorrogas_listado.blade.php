@@ -237,5 +237,4 @@
             </div>
         </div>
     </div>
-    </div> <br><br><br>
-@endsection
+    </div> 

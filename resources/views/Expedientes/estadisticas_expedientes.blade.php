@@ -139,7 +139,7 @@
                             <table class="table table-striped">
                             <thead>
                                 <tr>
-                                <th scope="col">Género</th>
+                                <th scope="col">Carrera</th>
                                 <th scope="col">Cantidad</th>
                                 </tr>
                             </thead>

@@ -209,7 +209,6 @@
         </div>
     </div>
 </div>
-<br><br>
 
 <script>
     function deshabilitar_selects(){
