@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Asignacion;
 
 class MemoriaRequest extends FormRequest
 {
@@ -23,13 +24,19 @@ class MemoriaRequest extends FormRequest
      */
     public function rules()
     {
+        $horas = Asignacion::select('horas_asignadas as horas')
+                            ->where('id',$this->request->get('asignacion_id'))
+                            ->get()
+                            ->pluck('horas')
+                            ->first();
+
         return [
             'asignacion_id'         => 'required',
             'fecha_inicio'          => 'required',
             'fecha_fin'             => 'required|after:fecha_inicio',
             'inversion_institucion' => 'required|numeric',
             'inversion_estudiante'  => 'required|numeric',
-            'horas_completadas'     => 'required|numeric',
+            'horas_completadas'     => 'required|numeric|max:'.$horas,
         ];
     }
 
@@ -46,6 +53,7 @@ class MemoriaRequest extends FormRequest
             'inversion_estudiante.numeric'   => 'El campo inversión estudiante debe se una cantidad.',
             'horas_completadas.required'     => 'El campo horas completadas es obligatorio.',
             'horas_completadas.numeric'      => 'El campo debe ser numérico.',
+            'horas_completadas.max'          => 'La cantidad de horas registradas no debe ser mayor a las horas asignadas.',
         ];
     }
 }

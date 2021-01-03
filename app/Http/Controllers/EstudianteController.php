@@ -87,15 +87,6 @@ class EstudianteController extends Controller
         $estudiante->area_id           = $request->area_id;
         $estudiante->estado_servicio   = "No iniciado";
         $estudiante->horas_registradas = 0;
-
-        //Se llama a la función calcular_edad
-        $edad = $this->calcular_edad($estudiante->fecha_nacimiento);
-
-        //Se valida que el estudiante sea mayor de edad
-        if ($edad < 18) {
-            alert()->error('Error', 'El estudiante debe ser mayor de edad.');
-            return redirect()->route('crear_expediente');
-        }
  
         //Si ya hay un registro con el mismo carne o DUI se mostrará un mensaje de error, de lo contrario se almacena el registro
         if($estudiante->save()){

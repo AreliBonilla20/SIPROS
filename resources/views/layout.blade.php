@@ -9,6 +9,12 @@
     </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
     <!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -176,10 +182,7 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
-                                    <ul id="{{ url ('home') }}"class="collapse dropdown-header-top">
-                                        <li><a href="index.html">Inicio</a></li>
-                                    </ul>
+                                <li><a href="{{url('home')}}">Inicio</a>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
                                     <ul class="collapse dropdown-header-top">
@@ -197,15 +200,9 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
                                     <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('proyectos') }}">Listado proyectos</a></li>
-                                        <li><a href="{{ url('proyecto_nuevo') }}">Agregar Proyecto</a></li>
+                                        <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
+                                        <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
                                         <li><a href="{{ route('estadisticas_proyectos') }}">Estadísticas</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#Usuarios" href="#">Usuarios</a>
-                                    <ul  class="collapse dropdown-header-top">
-                                        <li><a href="{{ url('usuarios_listado') }}">Listado usuarios</a></li>
-                                        <li><a href="{{ url('usuario_nuevo') }}">Agregar usuarios</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -277,7 +274,7 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="footer-copy-right">
-        <p>Derechos reservados © 2020
+        <p>Derechos reservados © {{date("Y")}}
             <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
     </div>
 </div>

@@ -133,34 +133,37 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
-                                <ul id="Inicio" class="collapse dropdown-header-top">
-                                    <li><a href="{{ route('home') }}">Inicio</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
-                            <ul id="Expedientes" class="collapse dropdown-header-top">
-                                <li><a href="{{ route('expedientes') }}">Expedientes</a></li>
-                                <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
-                            </ul>
-                        </li>
-                        <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
-                        <ul id="Instituciones" class="collapse dropdown-header-top">
-                            <li><a href="{{ route('instituciones') }}">Proyectos</a></li>
-                            <li><a href="{{ route('crear_institucion') }}">Agregar proyectos</a></li>
-                        </ul>
-                    </li>
-                    <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
-                    <ul id="Proyectos" class="collapse dropdown-header-top">
-                        <li><a href="{{ route('proyectos') }}">Proyectos</a></li>
-                        <li><a href="{{ route('crear_proyecto') }}">Agregar proyectos</a></li>
-                    </ul>
-                </li>
-
-
-            </ul>
-        </nav>
+                                <li><a href="{{url('home')}}">Inicio</a>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
+                                        <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
+                                        <li><a href="{{ route('estadisticas_expedientes') }}">Estadísticas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
+                                        <li><a href="{{ route('crear_institucion') }}">Agregar institución</a></li>
+                                        <li><a href="{{ route('estadisticas_instituciones') }}">Estadísticas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
+                                    <ul  class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
+                                        <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
+                                        <li><a href="{{ route('estadisticas_proyectos') }}">Estadísticas</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ route('prorrogas') }}">Prórrogas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('sitio_avisos') }}">Avisos</a>
+                                </li>
+                            </ul>    
+                        </nav>
     </div>
 </div>
 </div>

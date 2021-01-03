@@ -115,7 +115,7 @@ class MemoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MemoriaRequest $request, $id)
     {
         $memoria_actualizar                        = Memoria::findOrFail($id);
         $memoria_actualizar->asignacion_id         = $request->asignacion_id;
@@ -136,7 +136,7 @@ class MemoriaController extends Controller
         $memoria_actualizar->total_benef           = $memoria_actualizar->total_benef_m + $memoria_actualizar->total_benef_f;
 
         if($memoria_actualizar->horas_completadas > $memoria_actualizar->asignacion->horas_asignadas){
-            return redirect()->route('crear_memoria',$memoria_actualizar->asignacion->carne)->withWarning('Las horas registradas, no deben ser mayor a las horas asignadas');
+            return redirect()->route('editar_memoria',$memoria_actualizar->id)->withWarning('Las horas registradas, no deben ser mayor a las horas asignadas');
         }
 
         if ($memoria_actualizar->save()) {

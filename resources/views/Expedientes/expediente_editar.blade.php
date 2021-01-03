@@ -222,7 +222,7 @@
 
                                 <div class="form-example-int mg-t-15">
                                     <button class="btn btn-success notika-btn-success">Actualizar expediente</button>
-                                    <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
+                                    <a class="btn btn-danger notika-btn-danger" href="{{route('ver_expediente', $estudiante_actualizar->carne)}}">Cancelar</a>
                                 </div>
                             </form>
                             <br>

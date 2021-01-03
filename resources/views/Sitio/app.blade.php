@@ -11,6 +11,11 @@
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+
   <!-- Favicons -->
 
   <link href="{{asset('assets/img/favicon.png') }}" rel="icon">
@@ -135,7 +140,7 @@
       
     </div>
     <div class="container">
-      <div class="copyright"> Derechos reservados &copy; 2020. <a href="{{ route('sitio_index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
+      <div class="copyright"> Derechos reservados &copy; {{date("Y")}}. <a href="{{ route('sitio_index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
       </div>
   </div>
   </footer><!-- End Footer -->

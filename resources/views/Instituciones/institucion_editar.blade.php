@@ -162,7 +162,7 @@
 
                     <div class="form-example-int mg-t-15">
                         <button class="btn btn-success notika-btn-success">Actualizar institución</button>
-                        <a class="btn btn-danger notika-btn-danger" href="{{route('instituciones')}}">Cancelar</a>
+                        <a class="btn btn-danger notika-btn-danger" href="{{route('ver_institucion', $institucion_actualizar->id)}}">Cancelar</a>
                     </div>
                 </form>
                 <br>
