@@ -119,7 +119,7 @@ class ReporteController extends Controller
         $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
         $memoria = Memoria::where('asignacion_id', $asignacion->id)->first();
 
-        if(true){
+        if(!$memoria){
             return redirect()->route('ver_expediente', $carne)->withWarning('No se ha registrado memoria para este proyecto!');
         }
         
