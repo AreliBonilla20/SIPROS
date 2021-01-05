@@ -125,7 +125,6 @@ class ReporteController extends Controller
         
         $now=Carbon::now();//Obtiene la fecha actual
         setlocale(LC_TIME, "Spanish");//Traducir la fecha a español
-        $fecha_actual = Fecha::fecha_hoy();
         $fecha_inicio = Fecha::fechaTexto($proyecto->fecha_inicio);
         $fecha_fin = Fecha::fechaTexto($proyecto->fecha_fin);
 
@@ -147,7 +146,9 @@ class ReporteController extends Controller
         $proyecto = $asignacion->proyecto;
 
         //Formato de fecha en cadena
-        $fecha = Fecha::fecha_hoy();
+        $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        $fecha = $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
 
         $pdf = PDF::loadView('Reportes/asignaciones',compact('estudiante','proyecto', 'fecha'));
         return $pdf->stream('Asignación.pdf');
