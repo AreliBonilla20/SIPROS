@@ -96,11 +96,6 @@ class AsignacionController extends Controller
         $asignaciones = Asignacion::all();
         $asignacion_actualizar = Asignacion::findOrFail($id);
 
-        foreach($asignaciones as $asg){
-            if($asg->carne == $request->carne && $asg->id_proyecto == $request->id_proyecto && $asg->estado_asignacion == "Iniciado"){
-                return redirect()->route('ver_expediente', $asg->carne)->withWarning('El estudiante tiene ya tiene asignado el proyecto y se encuentra en curso');
-            }
-        }
         $asignacion_actualizar->carne             = $request->carne;
         $asignacion_actualizar->id_proyecto       = $request->id_proyecto;
         $asignacion_actualizar->horas_asignadas   = $request->horas_asignadas;
