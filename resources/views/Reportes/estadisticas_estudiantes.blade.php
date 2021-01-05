@@ -60,9 +60,8 @@
                             </tbody>
                         </table>
    
-                <br><br>
                 <h5><strong>Estudiantes inscritos por género</strong></h5><br><br>
-      
+              
                 <img alt="" src="{{$url_grafico_generos}}" width="90%;" >
                 <h5><strong>Tabla de estudiantes inscritos por género</strong></h5>
                     <div class="normal-table-list mg-t-20">
@@ -87,11 +86,13 @@
                 </div>
                 </div>
             <div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
             <div style="display:flex; flex-direction: column; align-items:center; text-align:center;" >
                 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <br>
-                <h5><strong>Estudiantes inscritos por carrera</strong></h5><br><br>
+            
+                <h5><strong>Estudiantes inscritos por carrera</strong></h5><br><br><br>
                 <img alt="" src="{{$url_grafico_carreras}}" width="90%;">
                 <h5><strong>Tabla de estudiantes inscritos por carrera</strong></h5>
                     <div class="normal-table-list mg-t-30">
