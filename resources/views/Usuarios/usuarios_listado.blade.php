@@ -1,4 +1,7 @@
 @extends('layout_usuarios')
+@section('title')
+    Listado de usuarios
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">
@@ -17,12 +20,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                                <div class="breadcomb-report">
-                                        <button data-toggle="tooltip" data-placement="left" title="Descargar reporte" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                </div>
-                        </div>-->
                     </div>
                 </div>
             </div>
@@ -58,6 +55,7 @@
                                     <th>Nombre</th>
                                     <th>Correo electrónico</th>
                                     <th>Rol</th>
+                                    <th>Acción</th>
 
                                 </tr>
                             </thead>
@@ -69,12 +67,17 @@
                                     <td>{{$usuario->id}}</td>
                                     <td>{{$usuario->name}}</td>
                                     <td>{{$usuario->email}}</td>
+                                    <td>@if ($usuario->nombre_rol())
+                                            {{$usuario->nombre_rol()}}
+                                        @else
+                                            <strong>Rol no asignado</strong>
+                                        @endif
+                                    </td>
                                     <td>
-                                        <a onmouseover="this.style.background=' #73D6E3';" onmouseout="this.style.background=' #0FB5CC';"
-                                            style="color:white;" href="{{ route('users.edit', $usuario->id) }}" class="btn notika-btn-cyan"><span style="color:white;" class="glyphicon glyphicon-list-alt"></span>  Asignar rol</a>
-                                        </td>
+                                        <a href="{{ route('users.edit', $usuario->id) }}"><button type="button" class="btn btn-default notika-btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar / Asignar rol</button></a>
+                                    </td>
 
-                                    </tr>
+                                </tr>
                                     @endforeach
 
                                 </tbody>

@@ -1,9 +1,13 @@
 @extends('layout')
+@section('title')
+    Expediente: {{$estudiante->carne}} - {{$estudiante->nombres}} {{$estudiante->apellidos}}
+@endsection
 @section('content')
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a href="{{route('expedientes')}}"><button type="button" style="color:white; position:absolute; right:5%; top:30%;" class="btn notika-btn-blue btn-icon-notika waves-effect"><span class="notika-icon notika-left-arrow"></span> Regresar</button></a>
                 <div class="breadcomb-list">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -13,7 +17,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Expediente</h2>
-                                    <p>{{$estudiante->carne}}</p>
+                                    <p>{{$estudiante->carne}} - {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
                                 </div>
                             </div>
                         </div>
@@ -63,10 +67,10 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                            <strong>Fecha de nacimiento [Año/Mes/Día]</strong>
+                            <strong>Fecha de nacimiento</strong>
                             <div class="form-group">
                                 <div class="nk-int-st">
-                                    <input type="text" class="form-control" value="{{$estudiante->fecha_nacimiento}}" readonly>
+                                    <input type="text" class="form-control" value="{{date('d/m/Y', strtotime($estudiante->fecha_nacimiento))}}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +210,7 @@
                             <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" >
+                            <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" readonly>
                             @foreach ($errors->get('carne') as $mensaje)
                             <small style="color:#B42020;">{{ $mensaje }}</small>
                             @endforeach
@@ -215,10 +219,10 @@
                     <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
                     <div class="form-example-int mg-t-15">
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select class="selectpicker" name="id_proyecto">
+                            <select class="selectpicker" name="id_proyecto" data-live-search="true" required>
                                 <option value="">-Seleccione un proyecto-</option>
                                 @foreach($proyectos as $proyecto)
-                                <option value="{{$proyecto->id}}">{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
+                                <option value="{{$proyecto->id}}" {{ (old('id_proyecto') == $loop->iteration ? "selected":"") }}>{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
                                 @endforeach
                             </select>
                             @foreach ($errors->get('id_proyecto') as $mensaje)
@@ -233,7 +237,7 @@
                             <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                            <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas">
+                            <input type="number" class="form-control" name="horas_asignadas" value="{{old('horas_asignadas')}}" placeholder="Cantidad de horas" required>
                             @foreach ($errors->get('horas_asignadas') as $mensaje)
                             <small style="color:#B42020;">{{ $mensaje }}</small>
                             @endforeach
@@ -318,14 +322,14 @@
                 <div class="navbar-inner">
                     <div class="container-pro wizard-cts-st">
                         <ul>
-                            <li><a href="#proyectos" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Proyectos</button></a></li>
+                            <li><a href="#asignaciones" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Asignaciones</button></a></li>
                             <li><a href="#prorrogas" data-toggle="tab"><button class="btn btn-lg btn-warning notika-btn-warning" style="color:white; font-size:17px;">Prórrogas</button></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-content">
-                <div class="tab-pane wizard-ctn" id="proyectos">
+                <div class="tab-pane wizard-ctn" id="asignaciones">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -338,6 +342,7 @@
                                                 <th>Institución</th>
                                                 <th>Horas asignadas</th>
                                                 <th>Estado</th>
+                                                <th>Editar</th>
                                                 <th>Memoria</th>
                                                 <th>Asignación</th>
                                                 <th>Certificación</th>
@@ -350,9 +355,99 @@
                                                 <td>{{$asignacion->proyecto->institucion->nombre}}</td>
                                                 <td>{{$asignacion->horas_asignadas}}</td>
                                                 <td>{{$asignacion->estado_asignacion}}</td>
-                                                <td><a href="{{route('ver_memoria', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Memoria</button></td></a>
-                                                <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Asignación</button></td></a>
-                                                <td><a href="{{route('certificado_estudiante', $asignacion->estudiante->carne)}}"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Certificación</button></td></a>
+                                                <td>
+                                                    <button type="button" class="btn btn-default notika-btn-default" data-toggle="modal" data-target="#actualizar_asignacion_{{$asignacion->id}}"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+
+                                                    <!--Inicio de modal para modificar asignación de proyecto proyecto-->
+                                                    <div class="modal fade" id="actualizar_asignacion_{{$asignacion->id}}" role="dialog" data-backdrop="static" data-keyboard="false">
+                                                        <div class="modal-dialog modals-default">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <h3>Actualización de asignación de proyecto</h3>
+                                                                <p>Estudiante: {{$estudiante->nombres}} {{$estudiante->apellidos}}</p>
+                                                                <br>
+                                                                <div class="modal-body">
+                                                                    <form action="{{route('actualizar_asignacion', $asignacion->id)}}" method="POST">
+                                                                        @method('PUT')
+                                                                        @csrf
+                                                                        <label for="carne">Carné <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-group ic-cmp-int">
+                                                                            <div class="form-ic-cmp">
+                                                                                <i class="notika-icon notika-edit"></i>
+                                                                            </div>
+                                                                            <div class="nk-int-st">
+                                                                                <input type="text" class="form-control" name="carne" value="{{$estudiante->carne}}" readonly>
+                                                                                @foreach ($errors->get('carne') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                        <label for="id_proyecto" >Proyecto <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-example-int mg-t-15">
+                                                                            <div class="bootstrap-select fm-cmp-mg">
+                                                                                <select class="selectpicker" name="id_proyecto" required>
+                                                                                    <option value="">-Seleccione un proyecto-</option>
+                                                                                    @foreach($proyectos as $proyecto)
+                                                                                    <option value="{{$proyecto->id}}" {{ $proyecto->id == $asignacion->id_proyecto ? "selected" : ""}}>{{$proyecto->nombre}}, {{$proyecto->institucion->nombre}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                                @foreach ($errors->get('id_proyecto') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <label for="horas_asignadas"> Cantidad de horas asignadas <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-group ic-cmp-int">
+                                                                            <div class="form-ic-cmp">
+                                                                                <i class="notika-icon notika-edit"></i>
+                                                                            </div>
+                                                                            <div class="nk-int-st">
+                                                                                <input type="number" class="form-control" name="horas_asignadas" placeholder="Cantidad de horas" value="{{$asignacion->horas_asignadas}}" required>
+                                                                                @foreach ($errors->get('horas_asignadas') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                        <br>
+                                                                        <label for="horas_asignadas"> Estado de servicio social <small style="color:#16D195;" >*</small></label>
+                                                                        <div class="form-group ic-cmp-int">
+                                                                            <div class="form-ic-cmp">
+                                                                                <i class="notika-icon notika-edit"></i>
+                                                                            </div>
+                                                                            <div class="nk-int-st">
+                                                                                <select class="selectpicker" name="estado_asignacion" required>
+                                                                                    <option value="Iniciado" {{$asignacion->estado_asignacion == "Iniciado" ? "selected" : ""}}>Iniciado</option>
+                                                                                    <option value="No iniciado" {{$asignacion->estado_asignacion == "No iniciado" ? "selected" : ""}}>No iniciado</option>
+                                                                                </select>
+                                                                                @foreach ($errors->get('estado_asignacion') as $mensaje)
+                                                                                <small style="color:#B42020;">{{ $mensaje }}</small>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-example-int mg-t-15" style="position:absolute; right:0%;">
+                                                                            <button class="btn btn-success notika-btn-success">Actualizar asignación</button>
+                                                                        </div>
+                                                                    </form>
+                                                                    <br>
+                                                                </div>
+                                                                <br>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <!--Fin de modal para modificar asignación de proyecto-->
+
+
+                                                </td>
+                                                <td><a href="{{route('ver_memoria', $asignacion->id)}}"><button type="button" style="color:white;" class="btn btn-info notika-btn-info" data-toggle="modal" data-target="#memoria"><span class="glyphicon glyphicon-th"></span> Consultar memoria</button></td></a>
+                                                <td><a href="{{route('asignacion_estudiante', $asignacion->id)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Asignación</button></td></a>
+                                                <td><a href="{{route('certificado_estudiante', $asignacion->estudiante->carne)}}" target="_blank"><button type="button" style="color:white;" class="btn btn-primary notika-btn-primary"><span class="glyphicon glyphicon-envelope"></span> Certificación</button></td></a>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -380,8 +475,8 @@
                                         <tbody>
                                             @foreach($prorrogas as $prorroga)
                                             <tr>
-                                                <td>{{$prorroga->fecha_solicitud}}</td>
-                                                <td>{{\Carbon\Carbon::parse($prorroga->created_at)->format('Y-m-d')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($prorroga->fecha_solicitud)->format('d/m/Y ')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($prorroga->created_at)->format('d/m/Y ')}}</td>
                                                 <td>{{$prorroga->estado}}</td>
                                                 <td>
                                                     <button type="button" style="color:white;" class="btn btn-info notika-btn-info btn-reco-mg btn-button-mg" data-toggle="modal" data-target="#actualizar_prorroga_{{$loop->iteration}}"><span class="glyphicon glyphicon-check"></span> Aprobar/Rechazar</button>

@@ -45,12 +45,12 @@
                     <tr>
                         <td scope="row">{{$institucion->id}}</td>
                         <td>{{$institucion->nombre}}</td>
-                        <td>{{ \App\TipoInstitucion::where(['id' => $institucion->tipo_institucion_id])->pluck('tipo_institucion')->first() }}</td>
-                        <td>{{ \App\Sector::where(['id' => $institucion->sector_id])->pluck('nombre_sector')->first() }}</td>
+                        <td>{{$institucion->tipoInstitucion->tipo_institucion}}</td>
+                        <td>{{$institucion->sector->nombre_sector}}</td>
                         <td>{{$institucion->direccion}}</td>
-                        <td>{{ \App\Region::where(['id' => $institucion->id_region])->pluck('nombre_region')->first() }}</td>
-                        <td>{{ \App\Departamento::where(['id' => $institucion->id_departamento])->pluck('nombre_departamento')->first() }}</td>
-                        <td>{{ \App\Municipio::where(['id' => $institucion->id_municipio])->pluck('nombre_municipio')->first() }}</td>
+                        <td>{{$institucion->region->nombre_region}}</td>
+                        <td>{{$institucion->departamento->nombre_departamento}}</td>
+                        <td>{{$institucion->municipio->nombre_municipio}}</td>
                     </tr>
                     @endforeach
                 </tbody>

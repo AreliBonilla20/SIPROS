@@ -24,11 +24,11 @@ class EstudianteRequest extends FormRequest
     public function rules()
     {
         return [
-            'carne'            => 'required|max:7|regex:/[A-Za-z]{2}[0-9]{5}/',
+            'carne'            => 'required|unique:estudiantes|max:7|regex:/[A-Za-z]{2}[0-9]{5}/',
             'nombres'          => 'required|max:100|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/',
             'apellidos'        => 'required|max:100|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/',
-            'fecha_nacimiento' => 'required',
-            'dui'              => 'max:10|regex:/[0-9]{8}-[0-9]{1}/',
+            'fecha_nacimiento' => 'required|before:-18years',
+            'dui'              => 'max:10|unique:estudiantes|regex:/[0-9]{8}-[0-9]{1}/',
             'direccion'        => 'required|max:150',
             'email'            => 'required|max:100|email',
             'telefono'         => 'required|max:9|regex:/[0-9]{4}-[0-9]{4}/',
@@ -46,6 +46,7 @@ class EstudianteRequest extends FormRequest
             'carne.required'            => 'El campo carnet es obligatorio.',
             'carne.max'                 => 'La cantidad máxima de carácteres es 7.',
             'carne.regex'               => 'El formato debe ser AA#####',
+            'carne.unique'              => 'El campo Carné debe ser único, ya existe un registro con ese dato.',
 
             'nombres.required'          => 'El campo nombres es obligatorio.',
             'nombres.max'               => 'La cantidad máxima de carácteres es 100.',
@@ -56,6 +57,7 @@ class EstudianteRequest extends FormRequest
             'apellidos.regex'           => 'Los carácteres deben ser solo letras.',
 
             'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio.',
+            'fecha_nacimiento.before'   => 'El estudiante debe ser mayor de edad.',
 
             'dui.max'                   => 'La cantidad máxima de carácteres es 10.',
             'dui.unique'                => 'El campo DUI debe ser único, ya existe un registro con ese dato.',

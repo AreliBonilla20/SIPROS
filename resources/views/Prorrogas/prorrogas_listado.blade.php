@@ -1,7 +1,8 @@
 @extends('layout')
-
+@section('title')
+    Listado de prórrogas
+@endsection
 @section('content')
-
 <div class="breadcomb-area">
 		<div class="container">
 			<div class="row">
@@ -21,7 +22,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                                 <div class="breadcomb-report">
-                                    <a href="{{route('reporte_prorrogas')}}">
+                                    <a href="{{route('reporte_prorrogas')}}" target="_blank">
                                         <button data-toggle="tooltip" data-placement="left" title="Descargar listado de prórrogas" class="btn"><i class="notika-icon notika-sent"></i> Descargar PDF</button>
                                     </a>
                                 </div>
@@ -126,8 +127,8 @@
                                 <tbody>
                                     @foreach ($prorrogas as $prorroga)
                                         <tr>
-                                            <td>{{$prorroga->fecha_solicitud}}</td>
-                                            <td>{{ \Carbon\Carbon::parse($prorroga->created_at)->format('Y-m-d')}}</td>
+                                            <td>{{date('d/m/Y', strtotime($prorroga->fecha_solicitud))}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($prorroga->created_at)->format('d/m/Y')}}</td>
                                             <td>{{ $prorroga->carne }}</td>
                                             <td>{{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('nombres')->first() }}
                                                 {{ \App\Estudiante::where(['carne' => $prorroga->carne])->pluck('apellidos')->first() }}
@@ -236,5 +237,5 @@
             </div>
         </div>
     </div>
-    </div> <br><br><br>
+    </div>
 @endsection

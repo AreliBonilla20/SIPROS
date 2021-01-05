@@ -31,4 +31,10 @@ class Asignacion extends Model
         ->get()->first();
         return $proyecto;
     }
+
+    public function memorias()
+    {
+        return $this->hasOne(Memoria::class, 'asignacion_id', 'id');
+    }
+
 }

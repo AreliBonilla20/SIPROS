@@ -133,34 +133,37 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Inicio" href="#">Inicio</a>
-                                <ul id="Inicio" class="collapse dropdown-header-top">
-                                    <li><a href="{{ route('home') }}">Inicio</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
-                            <ul id="Expedientes" class="collapse dropdown-header-top">
-                                <li><a href="{{ route('expedientes') }}">Expedientes</a></li>
-                                <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
-                            </ul>
-                        </li>
-                        <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
-                        <ul id="Instituciones" class="collapse dropdown-header-top">
-                            <li><a href="{{ route('instituciones') }}">Proyectos</a></li>
-                            <li><a href="{{ route('crear_institucion') }}">Agregar proyectos</a></li>
-                        </ul>
-                    </li>
-                    <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
-                    <ul id="Proyectos" class="collapse dropdown-header-top">
-                        <li><a href="{{ route('proyectos') }}">Proyectos</a></li>
-                        <li><a href="{{ route('crear_proyecto') }}">Agregar proyectos</a></li>
-                    </ul>
-                </li>
-
-
-            </ul>
-        </nav>
+                                <li><a href="{{url('home')}}">Inicio</a>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Expedientes" href="#">Expedientes</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('expedientes') }}">Listado expedientes</a></li>
+                                        <li><a href="{{ route('crear_expediente') }}">Agregar expediente</a></li>
+                                        <li><a href="{{ route('estadisticas_expedientes') }}">Estadísticas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Instituciones" href="#">Instituciones</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('instituciones') }}">Listado instituciones</a></li>
+                                        <li><a href="{{ route('crear_institucion') }}">Agregar institución</a></li>
+                                        <li><a href="{{ route('estadisticas_instituciones') }}">Estadísticas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#Proyectos" href="#">Proyectos</a>
+                                    <ul  class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('proyectos') }}">Listado proyectos</a></li>
+                                        <li><a href="{{ route('crear_proyecto') }}">Agregar Proyecto</a></li>
+                                        <li><a href="{{ route('estadisticas_proyectos') }}">Estadísticas</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ route('prorrogas') }}">Prórrogas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('sitio_avisos') }}">Avisos</a>
+                                </li>
+                            </ul>    
+                        </nav>
     </div>
 </div>
 </div>
@@ -168,87 +171,145 @@
 </div>
 <!-- Contenido principal -->
 <div class="invoice-img" style="background: #ffffff;" >
-<img src="img/post/banner.png" width="70%" alt="" />
+<img src="img/post/banner.png" width="45%" alt="" />
 </div>
 <br><br>
 <div class="contact-area" style="text-align: center;">
 <div class="container">
+
 <div class="row">
+
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <div class="contact-list">
-        <div class="contact-win">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
             <div class="contact-img">
-                <img src="img/post/expediente.jpg" alt="" width="80px"/>
+                <img src="img/post/expediente.jpg" alt="" width="70px"/>
             </div>
         </div>
         <div class="contact-ctn">
-
-            <div class="contact-ad-hd">
-                <h2>Expediente</h2>
-            </div>
-            <p>Creación de un expediente nuevo, edición y consultas.</p>
+            <p>Gestión, consultas, reportes y estadísticas de expedientes.</p>
         </div>
-        <a href="{{ route('expedientes') }}"><button class="btn btn-success notika-btn-success">Expediente</button></a>
+        <a href="{{ route('expedientes') }}"><button style="color:white;" class="btn notika-btn-teal">Expedientes</button></a>
     </div>
 </div>
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <div class="contact-list sm-res-mg-t-30">
-        <div class="contact-win">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
             <div class="contact-img">
-                <img src="{{ asset('img/post/proyecto.jpg') }}" alt="" width="80px"/>
+                <img src="{{ asset('img/post/institucion.jpg') }}" alt="" width="70px"/>
             </div>
         </div>
         <div class="contact-ctn">
-            <div class="contact-ad-hd">
-                <h2>Proyectos</h2>
-            </div>
-            <p>Ingreso, edición, consultas y reportes de proyectos.</p>
+            <p>Gestión, consultas, reportes y estadísticas de instituciones.</p>
         </div>
-        <a href="{{ route('proyectos') }}"><button class="btn btn-warning notika-btn-warning">Proyectos</button></a>
+        <a href="{{ route('instituciones') }}"><button style="color:white;" class="btn notika-btn-orange">Instituciones</button></a>
     </div>
 </div>
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <div class="contact-list sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-        <div class="contact-win">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
             <div class="contact-img">
-                <img src="{{ asset('img/post/estadisticas.png') }}" alt="" width="80px" />
+                <img src="{{ asset('img/post/proyecto.jpg') }}" alt="" width="70px"/>
             </div>
 
         </div>
         <div class="contact-ctn">
-            <div class="contact-ad-hd">
-
-                <h2>Estadísticas</h2>
-            </div>
-            <p>Consulta y generación de reportes estadísticos. </p>
+        <p>Gestión, consultas, reportes y estadísticas de proyectos.</p>
         </div>
-        <a href><button class="btn btn-info notika-btn-info">Estadísticas</button></a>
+        <a href="{{ route('proyectos') }}"><button style="color:white;" class="btn notika-btn-lightblue">Proyectos</button></a>
     </div>
 </div>
+
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
     <div class="contact-list sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-        <div class="contact-win">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
             <div class="contact-img">
-                <img src="{{ asset('img/post/web.jpg') }}" alt="" width="80px" />
+            <img src="{{ asset('img/post/prorroga.jpg') }}" alt="" width="70px"/>
             </div>
 
         </div>
         <div class="contact-ctn">
-            <div class="contact-ad-hd">
-                <br>
-                <h2>Sitio web</h2>
-            </div>
-            <a href="{{ route('sitio_avisos') }}"><p>Administración del sitio web informativo</p></a>
+     
+            <p>Ingreso, aprobación y consultas de prórrogas.</p>
         </div>
-        <a type="button" href="{{ route('sitio_index') }}" class="btn btn-danger notika-btn-danger">Sitio web</a>
+        <a href="{{ route('prorrogas') }}"><button style="color:white;" class="btn notika-btn-red">Prórrogas</button></a>
     </div>
 </div>
-</div>
 
-</div>
 </div>
 <br>
+
+
+<div class="row">
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+    <div class="contact-list">
+    <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
+            <div class="contact-img">
+                <img src="img/post/avisos.jpg" alt="" width="70px"/>
+            </div>
+        </div>
+        <div class="contact-ctn">
+
+            <p>Ingreso, edición y eliminación de avisos del sitio web.</p>
+        </div>
+        <a href="{{ route('sitio_avisos') }}"><button style="color:white;" class="btn notika-btn-indigo btn-reco-mg btn-button-mg">Avisos</button></a>
+    </div>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+    <div class="contact-list sm-res-mg-t-30">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
+            <div class="contact-img">
+            <img src="{{ asset('img/post/sitio.png') }}" alt="" width="70px"/>
+            </div>
+        </div>
+        <div class="contact-ctn">
+     
+            <p>Enlace al sitio web oficial de proyección social.</p>
+        </div>
+        <a href="{{ route('sitio_index') }}"><button style="color:white;" class="btn notika-btn-green btn-reco-mg btn-button-mg">Sitio web</button></a>
+    </div>
+</div>
+
+@can('users.index')
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+    <div class="contact-list sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
+            <div class="contact-img">
+                <img src="{{ asset('img/post/usuarios.jpg') }}" alt="" width="75px"/>
+            </div>
+
+        </div>
+        <div class="contact-ctn">
+  
+            <p>Registro, configuración y consulta de usuarios. </p>
+        </div>
+        <a href="{{ route('usuarios') }}"><button style="color:white;" class="btn notika-btn-deeporange">Usuarios</button></a>
+    </div>
+</div>
+@endcan
+@can('roles.index')
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+    <div class="contact-list sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+        <div class="contact-win" style="display:flex; flex-direction: row; justify-content:center;">
+            <div class="contact-img">
+            <img src="{{ asset('img/post/roles.jpg') }}" alt="" width="80px"/>
+            </div>
+
+        </div>
+        <div class="contact-ctn">
+     
+            <p>Registro, configuración y consulta de roles. </p>
+        </div>
+        <a href="{{ route('roles') }}"><button style="color:white;" class="btn notika-btn-cyan">Roles</button></a>
+    </div>
+</div>
+@endcan
+</div>
+
+</div>
+</div>
+
 <!-- End Sale Statistic area-->
 <!-- Start Email Statistic area-->
 

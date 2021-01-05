@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Unidad de Proyección Social</title>
+  <title>
+    @yield('title')
+  </title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
+
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
 
   <!-- Favicons -->
 
@@ -133,7 +140,7 @@
       
     </div>
     <div class="container">
-      <div class="copyright"> Derechos reservados &copy; 2020. <a href="{{ route('sitio_index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
+      <div class="copyright"> Derechos reservados &copy; {{date("Y")}}. <a href="{{ route('sitio_index') }}"> Proyeccción social FCE Universidad de El Salvador.</a>
       </div>
   </div>
   </footer><!-- End Footer -->

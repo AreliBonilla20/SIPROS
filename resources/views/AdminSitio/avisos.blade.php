@@ -1,6 +1,7 @@
 @extends('layout')
-
-
+@section('title')
+    Listado de avisos
+@endsection
 @section('content')
 <div class="breadcomb-area">
         <div class="container">
@@ -65,7 +66,7 @@
                                             <td>{{$aviso->descripcion}}</td>
                                             <td>{{date('d/m/Y h:i', strtotime( $aviso->created_at))}}</td>
                                             <td>
-                                            <a class="btn btn-default notika-btn-default" href="{{ route('sitio_editar_aviso', $aviso->id)}}"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                            <a class="btn btn-default notika-btn-default" href="{{ route('sitio_editar_aviso', $aviso->id)}}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                             </td>
                                             <td>
                                                 <form method="POST" id="formulario{{$aviso->id}}" action="{{route('sitio_eliminar_aviso', $aviso->id)}}" >

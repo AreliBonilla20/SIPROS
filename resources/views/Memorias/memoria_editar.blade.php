@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Editar memoria
+@endsection
 @section('content')
 <div class="breadcomb-area" >
     <div class="container" >
@@ -266,7 +269,7 @@
                                         </div>
                                         <div class="form-example-int mg-t-15">
                                             <button class="btn btn-success notika-btn-success">Actualizar memoria</button>
-                                            <a class="btn btn-danger notika-btn-danger" href="{{route('expedientes')}}">Cancelar</a>
+                                            <a class="btn btn-danger notika-btn-danger" href="{{route('ver_memoria', $memoria_actualizar->asignacion->id)}}">Cancelar</a>
                                         </div>
 
                                     </form>

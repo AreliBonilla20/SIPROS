@@ -20,8 +20,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $roles = Role::get();
 
-        return view('Usuarios/usuarios_listado', compact('users'));
+        return view('Usuarios/usuarios_listado', compact('users', 'roles'));
     }
 
     /**
@@ -89,8 +90,24 @@ class UserController extends Controller
     {
 
         $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $users = User::all();
+        foreach ($users as $user1) {
+            if ($user1->email == $request->email && $request->email != $user->email) {
+                alert()->error('Error', 'Ya existe un usuario con el email ingresado.');
+                return redirect()->route('users.edit', $id);
+            }
+        }
+        $user->email = $request->email;
 
-        //$user->update($request->all());
+        if($request->password){
+            $user->password = Hash::make($request['password']);
+        }
+        else{
+            $user->password = $user->password;
+        }
+        $user->save();
+
 
         $resultado = DB::table('role_user')->where('user_id', $id)->first();
         if ($resultado==null) {
@@ -116,7 +133,7 @@ class UserController extends Controller
                 ]);
             }
 
-        return redirect()->route('usuarios')->with('actualizado', 'Rol asignado a usuario correctamente');
+        return redirect()->route('usuarios')->withSuccess('Información de usuario actualizada correctamente');
     }
 
     /**

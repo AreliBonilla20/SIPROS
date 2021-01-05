@@ -1,4 +1,7 @@
 @extends('Sitio.app')
+@section('title')
+    Proyectos - Unidad de Proyección Social FCE
+@endsection
 @section('content')
   <main id="main">
 

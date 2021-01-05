@@ -1,8 +1,8 @@
 @extends('layout_usuarios')
-
+@section('title')
+    Editar rol: {{$rolActualizar->name}}
+@endsection
 @section('content')
-
-
 <div class="breadcomb-area" >
 		<div class="container" >
 			<div class="row" >

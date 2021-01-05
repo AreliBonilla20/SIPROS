@@ -76,13 +76,31 @@ Route::put('/expedientes/actualizar/{id}', 'EstudianteController@update')->name(
 Route::get('/expedientes/ver/{id}', 'EstudianteController@show')->name('ver_expediente')
     ->middleware(['permission:expediente.show', 'auth']);
 
+Route::get('/expedientes/buscar/', 'EstudianteController@buscar')->name('buscar_expedientes')
+    ->middleware(['permission:expediente.show', 'auth']);
+
+Route::get('/expedientes/estadisticas/', 'EstudianteController@estadisticas')->name('estadisticas_expedientes')
+    ->middleware(['permission:expediente.index', 'auth']);
+
 ///////////////////////////////////////Rutas de reportes///////////////////////////////////////
 
-Route::get('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes');
+Route::post('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes')
+    ->middleware(['permission:expediente.index', 'auth']);
 
-Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante');
+Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante')
+    ->middleware(['permission:expediente.show' , 'auth']);
 
-Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->name('asignacion_estudiante');
+Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->name('asignacion_estudiante')
+    ->middleware(['permission:expediente.show', 'auth']);
+
+Route::post('/expedientes/reporte_estadisticas/', 'ReporteController@expediente_estadisticas')->name('reporte_estadisticas_expedientes')
+    ->middleware(['auth']);
+
+Route::post('/instituciones/reporte_estadisticas/', 'ReporteController@instituciones_estadisticas')->name('reporte_estadisticas_instituciones')
+    ->middleware(['permission:instituciones.index', 'auth']);
+
+Route::post('/proyectos/reporte_estadisticas/', 'ReporteController@proyectos_estadisticas')->name('reporte_estadisticas_proyectos')
+    ->middleware(['permission:proyecto.index', 'auth']);
 
 ///////////////////////////////////////Rutas de la gestión de instituciones///////////////////////////////////////
 Route::get('/instituciones', 'InstitucionController@index')->name('instituciones')
@@ -103,7 +121,14 @@ Route::put('/instituciones/actualizar/{id}', 'InstitucionController@update')->na
 Route::get('/instituciones/ver/{id}', 'InstitucionController@show')->name('ver_institucion')
     ->middleware(['permission:expediente.show', 'auth']);
 
-Route::get('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones');
+Route::get('/instituciones/buscar/', 'InstitucionController@buscar')->name('buscar_instituciones')
+    ->middleware(['permission:instituciones.index', 'auth']);
+
+Route::get('/instituciones/estadisticas/', 'InstitucionController@estadisticas')->name('estadisticas_instituciones')
+    ->middleware(['permission:instituciones.index', 'auth']);
+
+Route::post('/pdfInstituciones','ReporteController@pdfInstituciones')->name('reporte_instituciones')
+    ->middleware(['permission:instituciones.index', 'auth']);
 
 ///////////////////////////////////////Rutas de la gestión de proyectos/////////////////////////////////////////
 Route::get('/proyectos', 'ProyectoController@index')->name('proyectos')
@@ -124,13 +149,24 @@ Route::put('/proyectos/actualizar/{id}', 'ProyectoController@update')->name('act
 Route::get('/proyectos/ver/{id}', 'ProyectoController@show')->name('ver_proyecto')
     ->middleware(['permission:proyecto.show', 'auth']);
 
+Route::get('/proyectos/buscar/', 'ProyectoController@buscar')->name('buscar_proyectos')
+    ->middleware(['permission:proyecto.index', 'auth']);
+
+Route::get('/proyectos/estadisticas/', 'ProyectoController@estadisticas')->name('estadisticas_proyectos')
+    ->middleware(['permission:proyecto.index', 'auth']);
+
+
 });
-Route::get('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos');
+Route::post('/pdfProyectos','ReporteController@pdfProyectos')->name('reporte_proyectos')
+    ->middleware(['permission:proyecto.index', 'auth']);
 
 
 ///////////////////////////////////////Ruta asignación de proyectos/////////////////////////////////////////
 Route::post('/asignacion_proyecto/guardar', 'AsignacionController@store')->name('guardar_asignacion')
     ->middleware(['permission:asignacion.store', 'auth']);
+
+Route::put('/asignacion_proyecto/actualizar/{id}', 'AsignacionController@update')->name('actualizar_asignacion')
+    ->middleware(['permission:asigancion.update', 'auth']);
 
 
 ///////////////////////////////////////Ruta de gestión de prórrogas/////////////////////////////////////////
@@ -138,12 +174,13 @@ Route::get('/prorrogas', 'ProrrogaController@index')->name('prorrogas')
     ->middleware(['permission:prorrogas.index', 'auth']);
 
 Route::post('/prorroga/guardar', 'ProrrogaController@store')->name('guardar_prorroga')
-    ->middleware(['permission:prorrogas.store', 'auth']);
+    ->middleware(['permission:prorrogas.update', 'auth']);
 
 Route::put('/prorroga/actualizar/{id}', 'ProrrogaController@update')->name('actualizar_prorroga')
     ->middleware(['permission:prorrogas.update', 'auth']);
 
-Route::get('/pdfProrrogas','ReporteController@pdfProrrogas')->name('reporte_prorrogas');
+Route::get('/pdfProrrogas','ReporteController@pdfProrrogas')->name('reporte_prorrogas')
+    ->middleware(['permission:prorrogas.index', 'auth']);
 
 
 ///////////////////////////////////////Ruta de gestión de memorias/////////////////////////////////////////
@@ -163,11 +200,14 @@ Route::get('/memoria/ver/{id}', 'MemoriaController@show')->name('ver_memoria')
     ->middleware(['permission:memoria.show', 'auth']);
 
 ////////////////////////////////Rutas de obtención de datos//////////////////////////////////
-Route::get('/departamentos/{id}', 'RegionController@getDepartamentos');
+Route::get('/departamentos/{id}', 'RegionController@getDepartamentos')
+    ->middleware(['auth']);
 
-Route::get('/municipios/{id}', 'DepartamentoController@getMunicipios');
+Route::get('/municipios/{id}', 'DepartamentoController@getMunicipios')
+    ->middleware(['auth']);
 
-Route::get('/areas/{id}', 'CarreraController@getAreas');
+Route::get('/areas/{id}', 'CarreraController@getAreas')
+    ->middleware(['auth']);
 
 
  

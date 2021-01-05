@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('title')
+    Agregar aviso
+@endsection
 @section('content')
 <div class="breadcomb-area" >
 		<div class="container" >
@@ -46,7 +48,7 @@
                                             <i class="far fa-newspaper"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="titulo" placeholder="Titulo del aviso" required>
+                                            <input type="text" class="form-control" name="titulo" placeholder="Titulo del aviso" required value="{{old('titulo')}}">
                                             @foreach ($errors->get('titulo') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach
@@ -59,7 +61,7 @@
                                             <i class="far fa-file-alt"></i>
                                         </div>
                                         <div class="nk-int-st">
-                                            <input type="text" class="form-control" name="descripcion" placeholder="Descripción del aviso">
+                                            <input type="text" class="form-control" name="descripcion" placeholder="Descripción del aviso" value="{{old('descripcion')}}">
                                             @foreach ($errors->get('descripcion') as $mensaje)
                                             <small style="color:#B42020;">{{ $mensaje }}</small>
                                             @endforeach

@@ -13,6 +13,7 @@ class ProyectoSeeder extends Seeder
     {
         DB::table('proyectos')->insert([
             'id'                      => 1,
+            'duracion'                => '10 de enero - 30 de mayo de 2020',
             'nombre'                  => 'Asistente Contable',
             'area_de_conocimiento'    => 'Asesoría y asistencia técnica',
             'objetivos'               => 'Apoyar a la institución de manera objetiva',
@@ -28,6 +29,7 @@ class ProyectoSeeder extends Seeder
         ]);
         DB::table('proyectos')->insert([
             'id'                      => 2,
+            'duracion'                => '30 de junio - 8 de agosto de 2020',
             'nombre'                  => 'Auxiliar Contable',
             'area_de_conocimiento'    => 'Asistencia técnica',
             'objetivos'               => 'Apoyar a la empresa de manera objetiva',

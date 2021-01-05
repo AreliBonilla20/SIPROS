@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('title')
+    Roles
+@endsection
 @section('content')
 
 <div class="container">

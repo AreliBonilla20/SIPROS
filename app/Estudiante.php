@@ -9,7 +9,7 @@ class Estudiante extends Model
     public $incrementing  = false;
     protected $primaryKey = 'carne';
     /*Colocamos tipo protegidos a todos los atributos*/
-    protected $fillable = ['carne', 'nombres', 'apellidos', 'fecha_nacimiento', 'sexo_id', 'codigo', 'dui', 'direccion', 'municipio_id', 'departamento_id', 'email', 'telefono,area_id'];
+    protected $fillable = ['carne', 'nombres', 'apellidos', 'fecha_nacimiento', 'sexo_id', 'codigo', 'dui', 'direccion', 'municipio_id', 'departamento_id', 'email', 'telefono', 'area_id'];
 
     public function getRouteKeyName()
     {
@@ -40,4 +40,10 @@ class Estudiante extends Model
     {
         return $this->belongsTo(Area::class, 'area_id', 'id');
     }
+
+    public function asignaciones()
+    {
+        return $this->hasMany(Asignacion::class, 'carne', 'carne');
+    }
+
 }

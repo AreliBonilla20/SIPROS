@@ -51,9 +51,13 @@ class ProrrogaController extends Controller
         $prorroga->carne=$request->carne;
         $prorroga->fecha_solicitud=$request->fecha_solicitud;
         $prorroga->estado="Pendiente";
-        $prorroga->save();
 
-        return back()->withSuccess('¡Prórroga creada correctamente!');
+        if ($prorroga->save()) {
+            return back()->withSuccess('¡Prórroga creada correctamente!');
+        } else {
+            return back()->withSuccess('¡Ha ocurrido un error!');
+        }
+
     }
 
     /**
@@ -87,13 +91,17 @@ class ProrrogaController extends Controller
      */
     public function update(ProrrogaRequest $request, $id)
     {
-        $ororroga_actualizar = Prorroga::findOrFail($id);;
-        $ororroga_actualizar->carne=$request->carne;
-        $ororroga_actualizar->fecha_solicitud=$request->fecha_solicitud;
-        $ororroga_actualizar->estado=$request->estado;
-        $ororroga_actualizar->save();
+        $prorroga_actualizar = Prorroga::findOrFail($id);;
+        $prorroga_actualizar->carne=$request->carne;
+        $prorroga_actualizar->fecha_solicitud=$request->fecha_solicitud;
+        $prorroga_actualizar->estado=$request->estado;
+        $prorroga_actualizar->save();
 
-        return back()->withSuccess('¡Prórroga actualizada correctamente!');
+        if ($prorroga_actualizar->save()) {
+            return back()->withSuccess('¡Prórroga actualizada correctamente!');
+        } else {
+            return back()->withSuccess('¡Ha ocurrido un error!');
+        }
     }
 
     /**

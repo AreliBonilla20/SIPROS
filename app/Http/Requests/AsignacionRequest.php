@@ -27,6 +27,7 @@ class AsignacionRequest extends FormRequest
             'carne'           => 'required|max:7|regex:/[A-Za-z]{2}[0-9]{5}/',
             'id_proyecto'     => 'required',
             'horas_asignadas' => 'required|numeric|min:1',
+            'estado_asignacion'          => 'max:200|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
         ];
     }
 
@@ -42,6 +43,7 @@ class AsignacionRequest extends FormRequest
             'horas_asignadas.required' => 'El campo horas asignadas es obligatorio.',
             'horas_asignadas.numeric'  => 'El campo horas asignadas debe ser numérico.',
             'horas_asignadas.required' => 'El campo horas asignadas debe ser mayor que 0.',
+            'estado_asignacion.regex'  => 'Los carácteres deben ser solo letras.',
 
         ];
     }

@@ -9,9 +9,12 @@ use App\TipoInstitucion;
 use App\Region;
 use App\Departamento;
 use App\Municipio;
+use App\Fecha;
 use Illuminate\Http\Request;
 use RealRashid\SweerAlert\Facades\Alert;
 use App\Http\Requests\InstitucionRequest;
+use App\Http\Requests\BusquedaRequest;
+use DB;
 
 
 class InstitucionController extends Controller
@@ -24,8 +27,10 @@ class InstitucionController extends Controller
     public function index()
     {
         $instituciones = Institucion::all();
+        $inicio = "";
+        $final = "";
 
-        return view('Instituciones/instituciones_listado', compact('instituciones'));
+        return view('Instituciones/instituciones_listado', compact('instituciones', 'inicio', 'final'));
     }
 
     /**
@@ -62,7 +67,7 @@ class InstitucionController extends Controller
         $nueva_institucion->sector_id           = $request->sector_id;
 
         if ($nueva_institucion->save()) {
-            return redirect('instituciones')->withSuccess('Institución agregada correctamente!');
+            return redirect()->route('ver_institucion', $nueva_institucion)->withSuccess('Institución agregada correctamente!');
         } else {
             return redirect('instituciones')->withWarning('Ha ocurrido un error!');
         }
@@ -90,12 +95,12 @@ class InstitucionController extends Controller
      */
     public function edit($id)
     {
-        $institucion_actualizar = App\Institucion::findOrFail($id);
-        $sectores              = App\Sector::all();
-        $tipo_instituciones    = App\TipoInstitucion::all();
-        $regiones              = App\Region::all();
-        $departamentos         = App\Departamento::all();
-        $municipios            = App\Municipio::all();
+        $institucion_actualizar = Institucion::findOrFail($id);
+        $sectores              = Sector::all();
+        $tipo_instituciones    = TipoInstitucion::all();
+        $regiones              = Region::all();
+        $departamentos         = Departamento::all();
+        $municipios            = Municipio::all();
 
         return view('Instituciones/institucion_editar', compact('institucion_actualizar', 'sectores', 'tipo_instituciones', 'regiones', 'departamentos', 'municipios'));
     }
@@ -109,7 +114,7 @@ class InstitucionController extends Controller
      */
     public function update(InstitucionRequest $request, $id)
     {
-        $institucion_actualizar                      = App\Institucion::findOrFail($id);
+        $institucion_actualizar                      = Institucion::findOrFail($id);
         $institucion_actualizar->nombre              = $request->nombre;
         $institucion_actualizar->tipo_institucion_id = $request->tipo_institucion_id;
         $institucion_actualizar->direccion           = $request->direccion;
@@ -117,14 +122,51 @@ class InstitucionController extends Controller
         $institucion_actualizar->id_departamento     = $request->id_departamento;
         $institucion_actualizar->id_municipio        = $request->id_municipio;
         $institucion_actualizar->sector_id           = $request->sector_id;
-        $institucion_actualizar->save();
 
         if ($institucion_actualizar->save()) {
-            toast('Institución actualizada correctamente!', 'success');
-            return redirect('instituciones');
+            return redirect()->route('ver_institucion', $institucion_actualizar)->withSuccess('Institución actualizada correctamente!');
         } else {
-            toast('Ha ocurrido un error!', 'error');
-            return redirect('instituciones');
+            return redirect('editar_institucion', $institucion_actualizar)->withWarning('Ha ocurrido un error!');
         }
+    }
+
+    //Función que permite buscar instituciones por fechas de creación, recibe como parámetro una fecha inicio y una fecha final de la búsqueda
+    public function buscar(BusquedaRequest $request)
+    {
+        $inicio = $request->get('fecha_inicio');
+        $final = $request->get('fecha_final');
+        $inicio_formato = Fecha::fechaTexto($inicio);
+        $final_formato = Fecha::fechaTexto($final);
+
+        $instituciones = Institucion::whereBetween('created_at', [$inicio, $final])->get();
+        return view('Instituciones/instituciones_listado', compact('instituciones', 'inicio', 'final', 'inicio_formato', 'final_formato'));
+    }
+
+
+    //Se calculan las estadísticas correspondientes a los estudiantes hasta la fecha actual
+    public function estadisticas()
+    {   
+       
+        $instituciones = Institucion::all()->count();
+        $instituciones_sector = DB::table('sectors')->leftjoin('institucions', 'institucions.sector_id', '=', 'sectors.id')
+                                  ->select(DB::raw('count(institucions.id) as cantidad, nombre_sector'))
+                                  ->groupBy('nombre_sector')->get();
+
+        $instituciones_tipo = DB::table('tipo_institucions')->leftjoin('institucions', 'institucions.tipo_institucion_id', '=', 'tipo_institucions.id')
+                                ->select(DB::raw('count(institucions.id) as cantidad, tipo_institucion'))
+                                ->groupBy('tipo_institucion')->get();
+
+        $instituciones_activas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                ->where('proyectos.estado_proyecto','Disponible')
+                                ->count();
+
+        $instituciones_inactivas = DB::table('proyectos')->leftjoin('institucions', 'proyectos.id_institucion', '=', 'institucions.id')
+                                ->where('proyectos.estado_proyecto','No disponible')
+                                ->count();
+
+        //Llama a la función fecha_hoy, que devulve la fecha actual con formato cadena
+        $fecha_actual = Fecha::fecha_hoy();       
+
+        return view('Instituciones/estadisticas_instituciones', compact('instituciones', 'instituciones_sector', 'instituciones_tipo', 'instituciones_activas', 'instituciones_inactivas', 'fecha_actual'));
     }
 }

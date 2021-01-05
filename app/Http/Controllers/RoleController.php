@@ -46,7 +46,7 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return back()->with('agregado', 'Rol agregado correctamente');
+        return redirect()->route('roles')->withSuccess('Rol creado correctamente!');
 
     }
 
@@ -117,8 +117,7 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return back()->with('actualizado', 'Rol actualizado correctamente');
-
+        return redirect()->route('roles')->withSuccess('Expediente actualizado correctamente!');
     }
 
     /**
@@ -129,8 +128,5 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $product->delete();
-
-        return back()->with('info', 'Eliminado correctamente');
     }
 }

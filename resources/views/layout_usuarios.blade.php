@@ -3,9 +3,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Proyección social FCE</title>
+        <title>
+            @yield('title')
+        </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+
         <!-- favicon
         ============================================ -->
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -95,15 +103,15 @@
         <![endif]-->
         <!-- Start Header Top Area -->
         <div class="header-top-area" style="background: #2d2e2e;">
-            <div class="container" >
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="logo-area">
-                            <a href="{{ url ('home') }}"><img src="{{ asset('img/logo/logo.png') }}" width="350px"/></a>
-                        </div>
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="logo-area">
+                        <a href="{{ url ('home') }}"><img src="{{ asset('img/logo/logo.png') }}" width="350px"/></a>
                     </div>
-                    <br><br><br><br><br>
-                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+                </div>
+                <br><br><br><br><br>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
                         <div class="header-top-menu">
                             <ul class="nav navbar-nav notika-top-nav">
 
@@ -125,23 +133,29 @@
 
                                         @can('usuario')
 
-                                        <a  style="font-size: 15px; color: #908C8C; class="dropdown-item" href = "{{ route('usuarios') }}">
-                                            Usuarios
+                                        <a  style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;"; class="dropdown-item" href = "{{ route('usuarios') }}">
+                                            <i class="notika-icon notika-support"></i> Usuarios
                                         </a>
                                         <br>
                                         @endcan
+
                                         @can('roles')
 
-                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('roles') }}">
-                                            {{ __('Roles') }}
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('roles') }}">
+                                            <i class="notika-icon notika-menus"></i> {{ __('Roles') }}
                                         </a>
                                         <br>
 
                                         @endcan
-                                        <a style="font-size: 15px; color: #908C8C;" class="dropdown-item" href="{{ route('logout') }}"
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('sitio_index') }}">
+                                            <i class="notika-icon notika-search"></i> {{ __('Sitio web') }}
+                                        </a>
+
+                                        <hr>
+                                        <a style="font-size: 15px; color: #908C8C; padding:5%; padding-left:5%;" class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            <i class="notika-icon notika-left-arrow"></i> Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -201,11 +215,8 @@
             <ul class="notika-main-menu-dropdown">
                 <li><a href="{{ route('usuarios') }}">Listado usuarios</a></li>
                 <li><a href="{{ route('crear_usuario') }}">Agregar usuarios</a></li>
-
             </ul>
         </div>
-    </div>
-    <div class="tab-content custom-menu-content">
         <div id="Roles" class="tab-pane notika-tab-menu-bg animated flipInX">
             <ul class="notika-main-menu-dropdown">
                 <li><a href="{{ route('roles') }}">Listado roles</a></li>
@@ -214,6 +225,8 @@
             </ul>
         </div>
     </div>
+
+    
 </div>
 </div>
 </div>
@@ -227,7 +240,7 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="footer-copy-right">
-        <p>Derechos reservados © 2020
+        <p>Derechos reservados © {{date("Y")}}
             <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
         </div>
     </div>
@@ -334,5 +347,6 @@
 ============================================ -->
 <script src="{{ asset('js/data-table/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/data-table/data-table-act.js') }}"></script>
+@include('sweetalert::alert')
 
 </html>

@@ -26,6 +26,7 @@ class ProyectoRequest extends FormRequest
         return [
             'nombre'         => 'required|max:200|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'area'           => 'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
+            'duracion'       => 'max:50',
             'objetivos'      => 'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'logro'          => 'required|max:250|regex:/[a-zA-ZñÑáéíóúÁÉÍÓÚ,.]/',
             'institucion'    => 'required',
@@ -47,6 +48,8 @@ class ProyectoRequest extends FormRequest
             'area.required'           => 'El campo área es obligatorio.',
             'area.max'                => 'La cantidad máxima de carácteres es 250.',
             'area.regex'              => 'Los carácteres deben ser solo letras.',
+
+            'duracion.max'            => 'La cantidad máxima de carácteres es 50.',
 
             'objetivos.required'      => 'El campo objetivos es obligatorio.',
             'objetivos.max'           => 'La cantidad máxima de carácteres es 250.',
