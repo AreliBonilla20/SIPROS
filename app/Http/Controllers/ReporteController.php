@@ -123,13 +123,11 @@ class ReporteController extends Controller
             return redirect()->route('ver_expediente', $carne)->withWarning('No se ha registrado memoria para este proyecto!');
         }
         
-        $now=Carbon::now();//Obtiene la fecha actual
         setlocale(LC_TIME, "Spanish");//Traducir la fecha a español
         $fecha_inicio = Fecha::fechaTexto($proyecto->fecha_inicio);
         $fecha_fin = Fecha::fechaTexto($proyecto->fecha_fin);
+        $fecha_actual = Fecha::fecha_hoy();
 
-        
-        
         //Actualizar estado de constancia de certificación
         $memoria_actualizar = Memoria::where('asignacion_id', '=', $asignacion->id)->first();
         $memoria_actualizar->estado_constancia = "Emitida";
@@ -146,10 +144,8 @@ class ReporteController extends Controller
         $proyecto = $asignacion->proyecto;
 
         //Formato de fecha en cadena
-        $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
-        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-        $fecha = $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
-
+        $fecha = Fecha::fecha_hoy();
+        
         $pdf = PDF::loadView('Reportes/asignaciones',compact('estudiante','proyecto', 'fecha'));
         return $pdf->stream('Asignación.pdf');
     }
