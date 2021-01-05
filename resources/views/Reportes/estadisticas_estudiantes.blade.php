@@ -60,17 +60,17 @@
                             </tbody>
                         </table>
    
-                <h5><strong>Estudiantes inscritos por género</strong></h5><br><br>
+                <h5><strong>Estudiantes por género</strong></h5><br><br>
               
                 <img alt="" src="{{$url_grafico_generos}}" width="90%;" >
-                <h5><strong>Tabla de estudiantes inscritos por género</strong></h5>
+                <h5><strong>Tabla de estudiantes por género</strong></h5>
                     <div class="normal-table-list mg-t-20">
                     
                         <table class="table table-striped font-table" style="text-align:center;">
                             <thead class="table-dark">
                             <tr>
                             <th scope="col">Género</th>
-                            <th scope="col">Estudiantes</th>
+                            <th scope="col">Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,16 +92,16 @@
                 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             
-                <h5><strong>Estudiantes inscritos por carrera</strong></h5><br><br><br>
+                <h5><strong>Estudiantes por carrera</strong></h5><br><br><br>
                 <img alt="" src="{{$url_grafico_carreras}}" width="90%;">
-                <h5><strong>Tabla de estudiantes inscritos por carrera</strong></h5>
+                <h5><strong>Tabla de estudiantes por carrera</strong></h5>
                     <div class="normal-table-list mg-t-30">
                         
                         <table class="table table-striped">
                             <thead class="table-dark">
                             <tr>
                             <th scope="col">Carrera</th>
-                            <th scope="col">Estudiantes</th>
+                            <th scope="col">Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
