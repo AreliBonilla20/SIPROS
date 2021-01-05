@@ -60,10 +60,10 @@
                         </table>
    
                 <br><br>
-                <h5><strong>Proyectos registradas por sector</strong></h5><br><br>
+                <h5><strong>Proyectos por sector de instituciones</strong></h5><br><br>
       
                 <img alt="" src="{{$url_grafico_sectores}}" width="75%;" >
-                <h5><strong>Tabla de proyectos registradas por sector</strong></h5>
+                <h5><strong>Tabla de proyectos por sector</strong></h5>
                     <div class="normal-table-list mg-t-20">
                     
                         <table class="table table-striped font-table" style="text-align:center;">
@@ -91,9 +91,9 @@
                 <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <br>
-                <h5><strong>Estudiantes inscritos por carrera</strong></h5><br><br>
+                <h5><strong>Proyectos por tipo de instituciones </strong></h5><br><br>
                 <img alt="" src="{{$url_grafico_tipo_instituciones}}" width="90%;">
-                <h5><strong>Tabla de estudiantes inscritos por carrera</strong></h5>
+                <h5><strong>Tabla de proyectos por tipo de institución</strong></h5>
                     <div class="normal-table-list mg-t-30">
                         
                         <table class="table table-striped">
