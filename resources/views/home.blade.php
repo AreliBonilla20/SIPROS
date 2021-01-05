@@ -323,7 +323,7 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="footer-copy-right">
-        <p>Derechos reservados © 2020
+        <p>Derechos reservados © {{date("Y")}}
             <a href="{{ url('home') }}">. Proyeccción social FCE Universidad de El Salvador</a>.</p>
         </div>
     </div>
