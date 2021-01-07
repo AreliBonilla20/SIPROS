@@ -314,16 +314,16 @@ INSERT INTO `sexos` (`id`, `sexo`) VALUES
 
 INSERT INTO `estudiantes` (`carne`, `nombres`, `apellidos`, `fecha_nacimiento`, `dui`, `direccion`, `email`, `telefono`, `area_id`, `codigo`, `sexo_id`, `municipio_id`, `departamento_id`, `estado_servicio`, `horas_registradas`, `created_at`, `updated_at`) VALUES
 ('BR14005', 'Esperanza Areli', 'Bonilla Ramos', '2000-01-01', '11223344-5', 'Direccion 1', 'br14005@ues.edu.sv', '1111-1111', 1, 'L10801', 1, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:33', '2020-09-21 07:44:33'),
-('CL11004', 'María Gabriela', 'Chávez López', '1990-08-04', '07832232-1', 'Col. Bella vista', 'cl11004@ues.edu.sv', '2467-2368', 2, 'L10801', 1, 219, 8, 'Iniciado', 250, '2020-11-12 22:34:58', '2020-11-13 23:55:58'),
+('CL11004', 'María Gabriela', 'Chávez López', '1990-08-04', '07832232-1', 'Col. Bella vista', 'cl11004@ues.edu.sv', '2467-2368', 2, 'L10801', 1, 219, 8, 'No iniciado', 0, '2020-11-12 22:34:58', '2020-11-13 23:55:58'),
 ('CP12005', 'Karen Vanesa', 'Cardona Pérez', '1993-02-15', '12345678-2', 'Calle El Matazano', 'prueba@example.com', '7123-2356', 1, 'L10802', 1, 17, 2, 'No iniciado', 0, '2020-10-17 17:06:05', '2020-10-17 17:06:05'),
-('GC14057', 'Arleny Raquel', 'García Claros', '2000-01-01', '11223344-6', 'Direccion 2', 'gc14057@ues.edu.sv', '2222-2222', 1, 'L10802', 1, 214, 6, 'Iniciado', 500, '2020-09-21 07:44:34', '2020-09-26 00:57:19'),
+('GC14057', 'Arleny Raquel', 'García Claros', '2000-01-01', '11223344-6', 'Direccion 2', 'gc14057@ues.edu.sv', '2222-2222', 1, 'L10802', 1, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:34', '2020-09-26 00:57:19'),
 ('HE12002', 'Grace Gisselle', 'Hernández Escobar', '1995-05-12', '12345678-7', 'Dirección 1', 'grace@gmail.com', '7123-2356', 1, 'D10801', 1, 14, 2, 'No iniciado', 0, '2020-10-12 22:33:54', '2020-10-12 22:33:54'),
-('LA15006', 'Jocelyn Iveth', 'López Acosta', '1994-12-13', '01234567-6', 'Col. La Ceiba', 'la15006@ues.edu.sv', '2467-9023', 1, 'L10802', 1, 214, 6, 'Iniciado', 0, '2020-09-26 01:59:56', '2020-09-26 02:06:14'),
-('MH11066', 'Elmer Alexander', 'Mejía Huiza', '2000-01-01', '11223344-7', 'Direccion 3', 'mh11066@ues.edu.sv', '3333-3333', 1, 'L10803', 2, 214, 6, 'Iniciado', 500, '2020-09-21 07:44:35', '2020-09-25 23:37:14'),
-('PA06010', 'Karen Elvira', 'Peñate Aviles', '1987-10-24', '99999999-9', 'fafafda afafdafafdasfdasf', 'karen.penate@ues.edu.sv', '2276-1821', 1, 'D10801', 1, 1, 1, 'Iniciado', 40, '2020-09-28 20:20:52', '2020-09-28 20:26:16'),
-('RP16062', 'Samantha Alexandra', 'Romero Marínez', '1999-02-14', '12345678-5', 'Calle El Litoral', 'samladyblue@hotmail.com', '7123-2356', 2, 'L10801', 1, 14, 2, 'Iniciado', 500, '2020-10-15 15:54:42', '2020-10-15 16:23:27'),
+('LA15006', 'Jocelyn Iveth', 'López Acosta', '1994-12-13', '01234567-6', 'Col. La Ceiba', 'la15006@ues.edu.sv', '2467-9023', 1, 'L10802', 1, 214, 6, 'No iniciado', 0, '2020-09-26 01:59:56', '2020-09-26 02:06:14'),
+('MH11066', 'Elmer Alexander', 'Mejía Huiza', '2000-01-01', '11223344-7', 'Direccion 3', 'mh11066@ues.edu.sv', '3333-3333', 1, 'L10803', 2, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:35', '2020-09-25 23:37:14'),
+('PA06010', 'Karen Elvira', 'Peñate Aviles', '1987-10-24', '99999999-9', 'fafafda afafdafafdasfdasf', 'karen.penate@ues.edu.sv', '2276-1821', 1, 'D10801', 1, 1, 1, 'No iniciado', 0, '2020-09-28 20:20:52', '2020-09-28 20:26:16'),
+('RP16062', 'Samantha Alexandra', 'Romero Marínez', '1999-02-14', '12345678-5', 'Calle El Litoral', 'samladyblue@hotmail.com', '7123-2356', 2, 'L10801', 1, 14, 2, 'No iniciado', 0, '2020-10-15 15:54:42', '2020-10-15 16:23:27'),
 ('SS15027', 'Nahara Jazmín', 'Sandoval Serrano', '1995-04-15', '24536871-4', 'Calle El Litoral', 'prueba@example.com', '7123-2356', 4, 'M10807', 1, 28, 3, 'No iniciado', 0, '2020-10-15 16:05:40', '2020-10-15 16:05:40'),
-('VR12015', 'Jessica Esmeralda', 'Vides Romero', '2000-01-01', '11223344-8', 'Direccion 4', 'vr12015@ues.edu.sv', '4444-4444', 1, 'L10804', 1, 214, 6, 'Iniciado', 510, '2020-09-21 07:44:36', '2020-11-12 21:40:42'),
+('VR12015', 'Jessica Esmeralda', 'Vides Romero', '2000-01-01', '11223344-8', 'Direccion 4', 'vr12015@ues.edu.sv', '4444-4444', 1, 'L10804', 1, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:36', '2020-11-12 21:40:42'),
 ('VR15004', 'Alfredo Alexander', 'Villeda Romero', '2000-01-01', '11223344-9', 'Direccion 5', 'vr15004@ues.edu.sv', '5555-5555', 1, 'M10809', 2, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:37', '2020-09-21 07:44:37');
 
 
@@ -356,41 +356,4 @@ INSERT INTO `proyectos` (`id`, `nombre`, `area_de_conocimiento`, `objetivos`, `l
 (9, 'Clubes educativos', 'Asesoría y asistencia técnica', 'Contribuir al desarrollo integral', 'Colaboración con los estudiantes', '5', 5, 'Licda. Sophia Rivera', '2213-6734', 'soph.rivera@outlook.com', 'L10803', 'Disponible', 0, '2020-09-26 01:33:49', '2020-09-26 01:33:49'),
 (10, 'Apoyo en el área administrativa', 'Asesoría y asistencia técnica', 'Diseñar e implementar procedimientos y bases de datos', 'Brindar a la comunidad estudiantil de la UES', '1', 3, 'Licda. Carmen Rivas', '2567-0034', 'carmen.rivas@ues.edu.sv', 'L10801', 'Disponible', 0, '2020-09-26 01:39:39', '2020-09-26 01:39:39'),
 (11, 'Nuevo proyecto para prueba', 'Area de conocimiento Proyecto', 'objetivo del proyecto', 'logros del proyecto', '1', 2, 'Licenciado Encargado', '2276-1821', 'karen.penate@ues.edu.sv', 'D10801', 'Disponible', 1, '2020-09-28 20:22:44', '2020-09-28 20:24:02');
-
-
-INSERT INTO `asignacions` (`id`, `carne`, `id_proyecto`, `horas_asignadas`, `estado_asignacion`, `created_at`, `updated_at`) VALUES
-(1, 'MH11066', 2, 500, 'Iniciado', '2020-09-25 22:31:43', '2020-09-25 22:31:43'),
-(2, 'VR12015', 1, 450, 'Iniciado', '2020-09-25 23:32:52', '2020-09-25 23:32:52'),
-(3, 'MH11066', 2, 490, 'Iniciado', '2020-09-25 23:36:26', '2020-09-25 23:36:26'),
-(4, 'VR12015', 1, 10, 'Iniciado', '2020-09-25 23:50:07', '2020-09-25 23:50:07'),
-(5, 'GC14057', 4, 500, 'Iniciado', '2020-09-26 00:56:33', '2020-09-26 00:56:33'),
-(6, 'LA15006', 4, 300, 'Iniciado', '2020-09-26 02:06:13', '2020-09-26 02:06:13'),
-(7, 'pa06010', 11, 10, 'Iniciado', '2020-09-28 20:24:01', '2020-09-28 20:24:01'),
-(8, 'RP16062', 3, 500, 'Iniciado', '2020-10-15 16:15:48', '2020-10-15 16:15:48'),
-(9, 'CL11004', 3, 200, 'Iniciado', '2020-11-13 23:52:53', '2020-11-13 23:52:53');
-
-
-INSERT INTO `memorias` (`id`, `asignacion_id`, `fecha_inicio`, `fecha_fin`, `docente_benef_m`, `docente_benef_f`, `personal_benef_m`, `personal_benef_f`, `estudiante_benef_m`, `estudiante_benef_f`, `otros_benef_m`, `otros_benef_f`, `total_benef_m`, `total_benef_f`, `total_benef`, `inversion_institucion`, `inversion_estudiante`, `horas_completadas`, `estado_constancia`, `created_at`, `updated_at`) VALUES
-(1, 1, '2020-09-01', '2020-09-24', 10, 10, 0, 0, 10, 10, 10, 10, 30, 30, 60, 10, 10, 10, 'Emitida', '2020-09-25 22:33:14', '2020-09-25 22:34:01'),
-(2, 2, '2020-05-05', '2020-08-08', NULL, 3, 0, 0, NULL, NULL, 5, NULL, 5, 3, 8, 12, 10, 450, 'Emitida', '2020-09-25 23:33:42', '2020-11-12 22:00:31'),
-(3, 1, '2020-08-08', '2020-09-30', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 12, 10, 490, 'Pendiente', '2020-09-25 23:37:13', '2020-09-25 23:37:13'),
-(4, 2, '2020-05-05', '2020-08-08', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 12, 10, 10, 'Pendiente', '2020-09-25 23:50:51', '2020-09-25 23:50:51'),
-(5, 5, '2020-05-05', '2020-08-08', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 12, 10, 500, 'Emitida', '2020-09-26 00:57:18', '2020-09-26 00:58:07'),
-(6, 7, '2020-09-21', '2020-09-30', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 2000, 200, 20, 'Pendiente', '2020-09-28 20:25:08', '2020-09-28 20:25:08'),
-(7, 7, '2020-09-30', '2020-10-11', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 2000, 200, 20, 'Pendiente', '2020-09-28 20:26:15', '2020-09-28 20:26:15'),
-(8, 8, '2020-09-01', '2020-10-15', 10, 25, 0, 0, 125, 100, 10, 25, 145, 150, 295, 25, 125, 500, 'Emitida', '2020-10-15 16:23:26', '2020-10-15 16:23:49'),
-(9, 2, '2019-12-27', '2020-11-07', 4, NULL, 0, 0, 2, NULL, NULL, NULL, 6, 0, 6, 5000, 100, 50, 'Pendiente', '2020-11-12 21:40:41', '2020-11-12 21:40:41'),
-(10, 9, '2020-11-15', '2021-11-15', 4, 8, 0, 0, 3, 3, 5, NULL, 12, 11, 23, 5000, 100, 250, 'Pendiente', '2020-11-13 23:55:57', '2020-11-13 23:55:57');
-
-
-INSERT INTO `prorrogas` (`id`, `carne`, `fecha_solicitud`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'MH11066', '2020-09-25', 'Rechazada', '2020-09-25 22:32:09', '2020-09-25 23:53:39'),
-(2, 'MH11066', '2020-09-22', 'Aprobada', '2020-09-25 23:38:37', '2020-09-26 01:01:10'),
-(3, 'VR12015', '2020-09-15', 'Aprobada', '2020-09-25 23:51:19', '2020-09-25 23:51:38'),
-(4, 'GC14057', '2020-09-04', 'Aprobada', '2020-09-26 00:58:28', '2020-09-26 00:58:44'),
-(5, 'pa06010', '2020-09-28', 'Pendiente', '2020-09-28 20:45:29', '2020-09-28 20:45:29'),
-(6, 'pa06010', '2020-09-28', 'Pendiente', '2020-09-28 20:45:32', '2020-09-28 20:45:32'),
-(7, 'CL11004', '2020-11-03', 'Aprobada', '2020-11-12 22:40:46', '2020-11-12 23:24:49'),
-(8, 'CL11004', '2020-11-03', 'Pendiente', '2020-11-12 22:53:12', '2020-11-12 22:53:12'),
-(9, 'CL11004', '2020-12-03', 'Aprobada', '2020-11-14 02:23:40', '2020-11-14 02:49:06');
 
