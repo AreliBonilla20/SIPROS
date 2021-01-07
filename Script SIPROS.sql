@@ -314,16 +314,16 @@ INSERT INTO `sexos` (`id`, `sexo`) VALUES
 
 INSERT INTO `estudiantes` (`carne`, `nombres`, `apellidos`, `fecha_nacimiento`, `dui`, `direccion`, `email`, `telefono`, `area_id`, `codigo`, `sexo_id`, `municipio_id`, `departamento_id`, `estado_servicio`, `horas_registradas`, `created_at`, `updated_at`) VALUES
 ('BR14005', 'Esperanza Areli', 'Bonilla Ramos', '2000-01-01', '11223344-5', 'Direccion 1', 'br14005@ues.edu.sv', '1111-1111', 1, 'L10801', 1, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:33', '2020-09-21 07:44:33'),
-('CL11004', 'María Gabriela', 'Chávez López', '1990-08-04', '07832232-1', 'Col. Bella vista', 'cl11004@ues.edu.sv', '2467-2368', 2, 'L10801', 1, 219, 8, 'Iniciado', 250, '2020-11-12 22:34:58', '2020-11-13 23:55:58'),
+('CL11004', 'María Gabriela', 'Chávez López', '1990-08-04', '07832232-1', 'Col. Bella vista', 'cl11004@ues.edu.sv', '2467-2368', 2, 'L10801', 1, 219, 8, 'No iniciado', 0, '2020-11-12 22:34:58', '2020-11-13 23:55:58'),
 ('CP12005', 'Karen Vanesa', 'Cardona Pérez', '1993-02-15', '12345678-2', 'Calle El Matazano', 'prueba@example.com', '7123-2356', 1, 'L10802', 1, 17, 2, 'No iniciado', 0, '2020-10-17 17:06:05', '2020-10-17 17:06:05'),
-('GC14057', 'Arleny Raquel', 'García Claros', '2000-01-01', '11223344-6', 'Direccion 2', 'gc14057@ues.edu.sv', '2222-2222', 1, 'L10802', 1, 214, 6, 'Iniciado', 500, '2020-09-21 07:44:34', '2020-09-26 00:57:19'),
+('GC14057', 'Arleny Raquel', 'García Claros', '2000-01-01', '11223344-6', 'Direccion 2', 'gc14057@ues.edu.sv', '2222-2222', 1, 'L10802', 1, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:34', '2020-09-26 00:57:19'),
 ('HE12002', 'Grace Gisselle', 'Hernández Escobar', '1995-05-12', '12345678-7', 'Dirección 1', 'grace@gmail.com', '7123-2356', 1, 'D10801', 1, 14, 2, 'No iniciado', 0, '2020-10-12 22:33:54', '2020-10-12 22:33:54'),
-('LA15006', 'Jocelyn Iveth', 'López Acosta', '1994-12-13', '01234567-6', 'Col. La Ceiba', 'la15006@ues.edu.sv', '2467-9023', 1, 'L10802', 1, 214, 6, 'Iniciado', 0, '2020-09-26 01:59:56', '2020-09-26 02:06:14'),
-('MH11066', 'Elmer Alexander', 'Mejía Huiza', '2000-01-01', '11223344-7', 'Direccion 3', 'mh11066@ues.edu.sv', '3333-3333', 1, 'L10803', 2, 214, 6, 'Iniciado', 500, '2020-09-21 07:44:35', '2020-09-25 23:37:14'),
-('PA06010', 'Karen Elvira', 'Peñate Aviles', '1987-10-24', '99999999-9', 'fafafda afafdafafdasfdasf', 'karen.penate@ues.edu.sv', '2276-1821', 1, 'D10801', 1, 1, 1, 'Iniciado', 40, '2020-09-28 20:20:52', '2020-09-28 20:26:16'),
-('RP16062', 'Samantha Alexandra', 'Romero Marínez', '1999-02-14', '12345678-5', 'Calle El Litoral', 'samladyblue@hotmail.com', '7123-2356', 2, 'L10801', 1, 14, 2, 'Iniciado', 500, '2020-10-15 15:54:42', '2020-10-15 16:23:27'),
+('LA15006', 'Jocelyn Iveth', 'López Acosta', '1994-12-13', '01234567-6', 'Col. La Ceiba', 'la15006@ues.edu.sv', '2467-9023', 1, 'L10802', 1, 214, 6, 'No iniciado', 0, '2020-09-26 01:59:56', '2020-09-26 02:06:14'),
+('MH11066', 'Elmer Alexander', 'Mejía Huiza', '2000-01-01', '11223344-7', 'Direccion 3', 'mh11066@ues.edu.sv', '3333-3333', 1, 'L10803', 2, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:35', '2020-09-25 23:37:14'),
+('PA06010', 'Karen Elvira', 'Peñate Aviles', '1987-10-24', '99999999-9', 'fafafda afafdafafdasfdasf', 'karen.penate@ues.edu.sv', '2276-1821', 1, 'D10801', 1, 1, 1, 'No iniciado', 0, '2020-09-28 20:20:52', '2020-09-28 20:26:16'),
+('RP16062', 'Samantha Alexandra', 'Romero Marínez', '1999-02-14', '12345678-5', 'Calle El Litoral', 'samladyblue@hotmail.com', '7123-2356', 2, 'L10801', 1, 14, 2, 'No iniciado', 0, '2020-10-15 15:54:42', '2020-10-15 16:23:27'),
 ('SS15027', 'Nahara Jazmín', 'Sandoval Serrano', '1995-04-15', '24536871-4', 'Calle El Litoral', 'prueba@example.com', '7123-2356', 4, 'M10807', 1, 28, 3, 'No iniciado', 0, '2020-10-15 16:05:40', '2020-10-15 16:05:40'),
-('VR12015', 'Jessica Esmeralda', 'Vides Romero', '2000-01-01', '11223344-8', 'Direccion 4', 'vr12015@ues.edu.sv', '4444-4444', 1, 'L10804', 1, 214, 6, 'Iniciado', 510, '2020-09-21 07:44:36', '2020-11-12 21:40:42'),
+('VR12015', 'Jessica Esmeralda', 'Vides Romero', '2000-01-01', '11223344-8', 'Direccion 4', 'vr12015@ues.edu.sv', '4444-4444', 1, 'L10804', 1, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:36', '2020-11-12 21:40:42'),
 ('VR15004', 'Alfredo Alexander', 'Villeda Romero', '2000-01-01', '11223344-9', 'Direccion 5', 'vr15004@ues.edu.sv', '5555-5555', 1, 'M10809', 2, 214, 6, 'No iniciado', 0, '2020-09-21 07:44:37', '2020-09-21 07:44:37');
 
 

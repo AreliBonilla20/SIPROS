@@ -26,16 +26,16 @@
         <p>CARNET: <strong>{{$estudiante->carne}}</strong> </p>
         <p>CARRERA: <strong>{{$estudiante->carrera->codigo}} - {{$estudiante->carrera->nombre_carrera}}</strong> </p>
     </div>
-    <p>Ha cumplido <strong> ({{$proyecto->horas_completadas}})</strong> horas sociales, legalmente establecidas en el Art. 60 2° del Reglamento General De La Ley Orgánica
+    <p>Ha cumplido <strong> ({{$memoria->horas_completadas}})</strong> horas sociales, legalmente establecidas en el Art. 60 2° del Reglamento General De La Ley Orgánica
        de la Universidad de El Salvador, en el proyecto denominado :</p>
     <br>
        <div style="line-height: 0.3;padding-left:5%; text-align:center;">
-        <p><strong>{{$proyecto->nombre_proyecto}}</strong></p>
+        <p><strong>{{$proyecto->nombre}}</strong></p>
         <p>Apoyo en el área de {{$proyecto->area_de_conocimiento}}</p><br>
     </div>
 
     <div style="line-height: 0.3;">
-        <p>INSTITUCIÓN: <strong>{{$proyecto->nombre_institucion}}</strong></p>
+        <p>INSTITUCIÓN: <strong>{{$proyecto->institucion->nombre}}</strong></p>
         <p>FECHA DE INICIO : <strong>{{$fecha_inicio}}</strong></p>
         <p>FECHA DE FINALIZACIÓN: <strong>{{$fecha_fin}}</strong></p>
     </div>
