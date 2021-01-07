@@ -87,10 +87,10 @@ Route::get('/expedientes/estadisticas/', 'EstudianteController@estadisticas')->n
 Route::post('/pdfExpedientes','ReporteController@pdfExpedientes')->name('reporte_expedientes')
     ->middleware(['permission:expediente.index', 'auth']);
 
-Route::get('/expedientes/certificado/{id}', 'ReporteController@pdfCertificado')->name('certificado_estudiante')
-    ->middleware(['permission:expediente.show' , 'auth']);
-
 Route::get('/expedientes/asignacion/{id}', 'ReporteController@pdfAsignacion')->name('asignacion_estudiante')
+    ->middleware(['permission:expediente.show', 'auth']);
+
+Route::get('/expedientes/certificacion/{id}', 'ReporteController@pdfCertificacion')->name('certificacion_estudiante')
     ->middleware(['permission:expediente.show', 'auth']);
 
 Route::post('/expedientes/reporte_estadisticas/', 'ReporteController@expediente_estadisticas')->name('reporte_estadisticas_expedientes')

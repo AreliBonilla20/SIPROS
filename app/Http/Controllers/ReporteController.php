@@ -61,6 +61,7 @@ class ReporteController extends Controller
         if($estado_proyecto[0]=='0'){
             $estado_proyecto[0]='Disponible';
             $estado_proyecto[1]='No disponible';
+            $estado_proyecto[1]='Terminado';
         }
 
         $proyectos=Proyecto::whereIn('id_institucion',$id_instituciones)
@@ -111,29 +112,30 @@ class ReporteController extends Controller
         return $pdf->stream('Prorrogas.pdf');
     }
 
-    /*Función para generar el certificado de servicio social*/
-    public function pdfCertificado($carne){
 
-        $estudiante = Estudiante::findOrFail($carne);//Devuelve el estudiante con el carne solicitado.
-        $asignacion = Asignacion::where('carne', '=', $carne)->first();
-        $proyecto = Asignacion::proyectos($carne);/*Devuelve el proyecto que está asignado al estudiante.*/
+    /*Función para generar el certificado de servicio social*/
+    public function pdfCertificacion($id){
+
+        //Devuelve el estudiante con el carne solicitado.
+        $asignacion = Asignacion::findOrFail($id);
+        $proyecto = Proyecto::findOrFail($asignacion->id_proyecto);/*Devuelve el proyecto que está asignado al estudiante.*/
+        $estudiante = Estudiante::findOrFail($asignacion->carne);
         $memoria = Memoria::where('asignacion_id', $asignacion->id)->first();
 
         if(!$memoria){
-            return redirect()->route('ver_expediente', $carne)->withWarning('No se ha registrado memoria para este proyecto!');
+            return redirect()->route('ver_expediente', $estudiante->carne)->withWarning('No se ha registrado memoria para este proyecto!');
         }
         
         setlocale(LC_TIME, "Spanish");//Traducir la fecha a español
-        $fecha_inicio = Fecha::fechaTexto($proyecto->fecha_inicio);
-        $fecha_fin = Fecha::fechaTexto($proyecto->fecha_fin);
+        $fecha_inicio = Fecha::fechaTexto($memoria->fecha_inicio);
+        $fecha_fin = Fecha::fechaTexto($memoria->fecha_fin);
         $fecha_actual = Fecha::fecha_hoy();
 
-        //Actualizar estado de constancia de certificación
-        $memoria_actualizar = Memoria::where('asignacion_id', '=', $asignacion->id)->first();
-        $memoria_actualizar->estado_constancia = "Emitida";
-        $memoria_actualizar->save();
 
-        $pdf = PDF::loadView('Reportes/certificados',compact('estudiante','proyecto','fecha_actual','fecha_inicio','fecha_fin'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
+        $memoria->estado_constancia = "Emitida";
+        $memoria->save();
+
+        $pdf = PDF::loadView('Reportes/certificados',compact('asignacion', 'estudiante', 'fecha_inicio', 'fecha_fin', 'memoria', 'fecha_actual', 'proyecto'));//Cargar la vista y recibe como parametro el estudiante y el proyecto.
         return $pdf->stream('Certificado.pdf');//Retorna el certificado de servicio social
     }
 

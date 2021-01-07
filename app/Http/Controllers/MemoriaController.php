@@ -59,6 +59,8 @@ class MemoriaController extends Controller
         $memoria->docente_benef_f       = $request->docente_benef_f;
         $memoria->estudiante_benef_m    = $request->estudiante_benef_m;
         $memoria->estudiante_benef_f    = $request->estudiante_benef_f;
+        $memoria->personal_benef_m      = $request->personal_benef_m;
+        $memoria->personal_benef_f      = $request->personal_benef_f;
         $memoria->otros_benef_m         = $request->otros_benef_m;
         $memoria->otros_benef_f         = $request->otros_benef_f;
         $memoria->inversion_institucion = $request->inversion_institucion;
@@ -125,6 +127,8 @@ class MemoriaController extends Controller
         $memoria_actualizar->docente_benef_f       = $request->docente_benef_f;
         $memoria_actualizar->estudiante_benef_m    = $request->estudiante_benef_m;
         $memoria_actualizar->estudiante_benef_f    = $request->estudiante_benef_f;
+        $memoria_actualizar->personal_benef_m      = $request->personal_benef_m;
+        $memoria_actualizar->personal_benef_f      = $request->personal_benef_f;
         $memoria_actualizar->otros_benef_m         = $request->otros_benef_m;
         $memoria_actualizar->otros_benef_f         = $request->otros_benef_f;
         $memoria_actualizar->inversion_institucion = $request->inversion_institucion;
